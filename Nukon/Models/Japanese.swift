@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct Japanese {
+    let letters: [String]
+}

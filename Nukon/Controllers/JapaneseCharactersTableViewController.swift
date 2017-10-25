@@ -8,7 +8,14 @@
 
 import UIKit
 
-class JapaneseCharacterTableViewController: UITableViewController {
+class JapaneseCharactersTableViewController: UITableViewController {
+    
+    let japaneseList = [
+        Japanese(letters: ["vowel", "あ", "い", "う", "え", "お"]),
+        Japanese(letters: ["k sounds","か", "き", "く", "け", "こ"])
+    ]
+    
+    weak var delegate: JapaneseDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +41,33 @@ class JapaneseCharacterTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return japaneseList.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text =  japaneseList[indexPath.row].letters[0] + " " +  japaneseList[indexPath.row].letters[1] + " " +  japaneseList[indexPath.row].letters[2] + " " +  japaneseList[indexPath.row].letters[3] + " " +  japaneseList[indexPath.row].letters[4] 
 
         return cell
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedJapanese = japaneseList[indexPath.row].letters
+        delegate?.sendJapanese(selectedJapanese: selectedJapanese)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "done"{
+            let practiceVC = segue.destination as! PracticeViewController
+            
+            practiceVC.viewDidLoad()
+        }
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
