@@ -9,7 +9,10 @@
 import UIKit
 
 class JapaneseCharactersTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var soundLabel: UILabel!
+    @IBOutlet weak var japaneseCharactersLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

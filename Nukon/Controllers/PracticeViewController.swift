@@ -15,17 +15,11 @@ protocol JapaneseDelegate: class {
 class PracticeViewController: UIViewController, JapaneseDelegate {
 
     @IBOutlet weak var printLabel: UILabel!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var haraganaButton: UIButton!
+    @IBOutlet weak var katakanaButton: UIButton!
     
     var displayJapanese = [[String]]()
     var japanese = ""
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.displayJapanese = [[]]
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +37,12 @@ class PracticeViewController: UIViewController, JapaneseDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func buttonTapped(_ sender: UIButton) {
-        printLabel.text = "button tapped"
+    @IBAction func hiraganaButtonTapped(_ sender: UIButton) {
+        printLabel.text = "hiragana tapped"
+    }
+    
+    @IBAction func katakanaButtonTapped(_ sender: UIButton) {
+        printLabel.text = "katakana tapped"
     }
     
     func sendJapanese(selectedJapanese: [String]) {
@@ -52,13 +50,16 @@ class PracticeViewController: UIViewController, JapaneseDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "button"{
-            let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
-            japaneseCharactersTVC.delegate = self
-            self.displayJapanese = [[]]
-            self.japanese = ""
+        let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
+        japaneseCharactersTVC.delegate = self
+        if segue.identifier == "hiragana"{
+            japaneseCharactersTVC.selectedType = JapaneseType.hiragana.rawValue
         }
-        
+        else if segue.identifier == "katakana" {
+            japaneseCharactersTVC.selectedType = JapaneseType.katakana.rawValue
+        }
+        self.displayJapanese = [[]]
+        self.japanese = ""
     }
     
     @IBAction func unwindToPracticeViewController(_ segue: UIStoryboardSegue) {

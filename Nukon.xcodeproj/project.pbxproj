@@ -77,6 +77,7 @@
 				BF5FF96A1FA0D56300A46DE0 /* Supportings */,
 				BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */,
 				BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */,
+				BF5FF9611FA0D35D00A46DE0 /* Info.plist */,
 			);
 			path = Nukon;
 			sourceTree = "<group>";
@@ -102,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				BF5FF95E1FA0D35D00A46DE0 /* LaunchScreen.storyboard */,
-				BF5FF9611FA0D35D00A46DE0 /* Info.plist */,
 			);
 			path = Supportings;
 			sourceTree = "<group>";
