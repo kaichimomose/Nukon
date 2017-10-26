@@ -10,16 +10,41 @@ import UIKit
 
 class JapaneseCharactersTableViewController: UITableViewController {
     
-    let japaneseList = [
-        Japanese(letters: ["vowel", "あ", "い", "う", "え", "お"]),
-        Japanese(letters: ["k sounds","か", "き", "く", "け", "こ"])
+    var japaneseList = [Japanese]()
+    var selectedType = JapaneseType.hiragana.rawValue
+    
+    var hiraganaList = [
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "vowel", letters: ["あ", "い", "う", "え", "お"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "K sound", letters: ["か", "き", "く", "け", "こ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "S sound", letters: ["さ", "し", "す", "せ", "そ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "T sound", letters: ["た", "ち", "つ", "て", "と"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "N sound", letters: ["な", "に", "ぬ", "ね", "の", "ん"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "H sound", letters: ["は", "ひ", "ふ", "へ", "ほ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "M sound", letters: ["ま", "み", "む", "め", "も"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "Y sound", letters: ["や", "　", "ゆ","　", "よ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "R sound", letters: ["ら", "り", "る", "れ", "ろ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "W sound", letters: ["わ", "　", "　", "　", "を"])
+        ]
+    
+    var katakanaList = [
+        Japanese(select: false, type: JapaneseType.katakana.rawValue, sound: "vowel", letters: ["ア", "イ", "ウ", "エ", "オ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "K sound", letters: ["カ", "キ", "ク", "ケ", "コ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "S sound", letters: ["サ", "シ", "ス", "セ", "ソ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "T sound", letters: ["タ", "チ", "ツ", "テ", "ト"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "N sound", letters: ["ナ", "ニ", "ヌ", "ネ", "ノ", "ン"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "H sound", letters: ["ハ", "ヒ", "フ", "ヘ", "ホ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "M sound", letters: ["マ", "ミ", "ム", "メ", "モ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "Y sound", letters: ["ヤ", "　", "ユ","　", "ヨ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "R sound", letters: ["ラ", "リ", "ル", "レ", "ロ"]),
+        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "W sound", letters: ["ワ", "　", "　", "　", "ヲ"])
     ]
     
     weak var delegate: JapaneseDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.chooseJapaneseCharacterType()
+        self.title = self.selectedType
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,6 +55,15 @@ class JapaneseCharactersTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func chooseJapaneseCharacterType() {
+        if self.selectedType == JapaneseType.hiragana.rawValue {
+            self.japaneseList =  self.hiraganaList
+        }
+        else {
+            self.japaneseList =  self.katakanaList
+        }
     }
 
     // MARK: - Table view data source
@@ -46,18 +80,22 @@ class JapaneseCharactersTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath)
-
-        cell.textLabel?.text =  japaneseList[indexPath.row].letters[0] + " " +  japaneseList[indexPath.row].letters[1] + " " +  japaneseList[indexPath.row].letters[2] + " " +  japaneseList[indexPath.row].letters[3] + " " +  japaneseList[indexPath.row].letters[4] 
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath) as! JapaneseCharactersTableViewCell
+        var words = ""
+        cell.soundLabel.text = japaneseList[indexPath.row].sound
+        for letter in japaneseList[indexPath.row].letters {
+            words += letter + " "
+        }
+        cell.japaneseCharactersLabel.text = words
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let selectedJapanese = japaneseList[indexPath.row].letters
-        delegate?.sendJapanese(selectedJapanese: selectedJapanese)
-        
+        if japaneseList[indexPath.row].select != true {
+            let selectedJapanese = japaneseList[indexPath.row].letters
+            delegate?.sendJapanese(selectedJapanese: selectedJapanese)
+            japaneseList[indexPath.row].select = true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

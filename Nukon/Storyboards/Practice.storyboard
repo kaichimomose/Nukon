@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,17 +27,36 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufr-1q-xMJ">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uRf-qT-3NU">
                                         <rect key="frame" x="0.0" y="40.5" width="296" height="30"/>
-                                        <color key="backgroundColor" red="0.21153075664890164" green="0.87534754607347764" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="buttonTapped:" destination="vNR-ge-zHm" eventType="touchUpInside" id="UV1-8A-zZa"/>
-                                            <segue destination="kJm-oL-KB3" kind="show" identifier="button" id="EgW-Kj-TXj"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXj-8I-ajl">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="ひらがな">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="hiraganaButtonTapped:" destination="vNR-ge-zHm" eventType="touchUpInside" id="q7I-jX-Y54"/>
+                                                    <segue destination="kJm-oL-KB3" kind="show" identifier="hiragana" id="gA7-R8-5Nj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufr-1q-xMJ">
+                                                <rect key="frame" x="158" y="0.0" width="138" height="30"/>
+                                                <color key="backgroundColor" red="0.21153075664890164" green="0.87534754607347764" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="カタカナ">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="katakanaButtonTapped:" destination="vNR-ge-zHm" eventType="touchUpInside" id="HhU-Pp-r00"/>
+                                                    <segue destination="kJm-oL-KB3" kind="show" identifier="katakana" id="EgW-Kj-TXj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="OXj-8I-ajl" firstAttribute="width" secondItem="Ufr-1q-xMJ" secondAttribute="width" id="Ggl-LJ-94E"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -50,7 +70,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="vEJ-jX-ZJb"/>
                     <connections>
-                        <outlet property="button" destination="Ufr-1q-xMJ" id="0DX-NH-Ffk"/>
+                        <outlet property="haraganaButton" destination="OXj-8I-ajl" id="PIc-dh-JXV"/>
+                        <outlet property="katakanaButton" destination="Ufr-1q-xMJ" id="0bh-8Q-lOG"/>
                         <outlet property="printLabel" destination="nVL-Ws-Tw6" id="Gnp-aM-WzU"/>
                     </connections>
                 </viewController>
@@ -67,13 +88,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JapaneseCharactersTableViewCell" id="vnR-fB-Ha9">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JapaneseCharactersTableViewCell" rowHeight="69" id="vnR-fB-Ha9" customClass="JapaneseCharactersTableViewCell" customModule="Nukon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnR-fB-Ha9" id="Bsw-sy-NdM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sound kind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfb-KD-V8l">
+                                            <rect key="frame" x="8" y="0.0" width="179.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あ  い  う  え  お" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHh-rf-0ED">
+                                            <rect key="frame" x="0.0" y="23" width="375" height="45"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tfb-KD-V8l" firstAttribute="top" secondItem="Bsw-sy-NdM" secondAttribute="top" id="1ur-hM-uL3"/>
+                                        <constraint firstAttribute="trailing" secondItem="LHh-rf-0ED" secondAttribute="trailing" id="Q7A-bT-cgR"/>
+                                        <constraint firstItem="tfb-KD-V8l" firstAttribute="leading" secondItem="Bsw-sy-NdM" secondAttribute="leading" constant="8" id="Une-Ox-lMZ"/>
+                                        <constraint firstItem="LHh-rf-0ED" firstAttribute="leading" secondItem="Bsw-sy-NdM" secondAttribute="leading" id="ddO-a6-rX2"/>
+                                        <constraint firstAttribute="bottom" secondItem="LHh-rf-0ED" secondAttribute="bottom" constant="0.5" id="dxE-oK-ANi"/>
+                                        <constraint firstAttribute="trailing" secondItem="tfb-KD-V8l" secondAttribute="trailing" multiplier="2" id="pxM-RN-kSz"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="japaneseCharactersLabel" destination="LHh-rf-0ED" id="Lzq-Bw-XrD"/>
+                                    <outlet property="soundLabel" destination="tfb-KD-V8l" id="nTb-JY-I3b"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -97,7 +144,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhf-vy-jnH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CMB-LD-Jke" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2211" y="518"/>
+            <point key="canvasLocation" x="2210.4000000000001" y="517.6911544227886"/>
         </scene>
         <!--practice-->
         <scene sceneID="lFd-Ul-gz0">
@@ -119,4 +166,7 @@
             <point key="canvasLocation" x="737" y="516"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gA7-R8-5Nj"/>
+    </inferredMetricsTieBreakers>
 </document>
