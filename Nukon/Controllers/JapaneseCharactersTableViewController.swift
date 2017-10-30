@@ -11,7 +11,7 @@ import UIKit
 class JapaneseCharactersTableViewController: UITableViewController {
     
     var japaneseList = [Japanese]()
-    var selectedType = JapaneseType.hiragana.rawValue
+    var selectedType: String?
     
     var hiraganaList = [
         Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "vowel", letters: ["あ", "い", "う", "え", "お"]),
