@@ -12,6 +12,7 @@ class JapaneseCharactersTableViewController: UITableViewController {
     
     var japaneseList = [Japanese]()
     var selectedType: String?
+    var selectedJapaneseList = [[String]]()
     
     var hiraganaList = [
         Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "vowel", letters: ["あ", "い", "う", "え", "お"]),
@@ -93,16 +94,17 @@ class JapaneseCharactersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if japaneseList[indexPath.row].select != true {
             let selectedJapanese = japaneseList[indexPath.row].letters
-            delegate?.sendJapanese(selectedJapanese: selectedJapanese)
+            selectedJapaneseList.append(selectedJapanese)
+//            delegate?.sendJapanese(selectedJapanese: selectedJapanese)
             japaneseList[indexPath.row].select = true
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "done"{
-            let practiceVC = segue.destination as! PracticeViewController
-            
-            practiceVC.viewDidLoad()
+            let showCharactersVC = segue.destination as! ShowCharactersViewController
+            showCharactersVC.list = selectedJapaneseList
+            //showCharactersVC.viewDidLoad()
         }
         
     }

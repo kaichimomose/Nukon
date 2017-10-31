@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sAD-rc-aIt">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,23 +16,23 @@
             <objects>
                 <viewController id="vNR-ge-zHm" customClass="PracticeViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7V-mz-ev2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fne-nz-f7u">
-                                <rect key="frame" x="39" y="330.5" width="296" height="70.5"/>
+                                <rect key="frame" x="40" y="365" width="334" height="70.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hellow!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVL-Ws-Tw6">
-                                        <rect key="frame" x="0.0" y="0.0" width="296" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uRf-qT-3NU">
-                                        <rect key="frame" x="0.0" y="40.5" width="296" height="30"/>
+                                        <rect key="frame" x="0.0" y="40.333333333333314" width="334" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXj-8I-ajl">
-                                                <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="157" height="30"/>
                                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="ひらがな">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,7 +43,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufr-1q-xMJ">
-                                                <rect key="frame" x="158" y="0.0" width="138" height="30"/>
+                                                <rect key="frame" x="177" y="0.0" width="157" height="30"/>
                                                 <color key="backgroundColor" red="0.21153075664890164" green="0.87534754607347764" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="カタカナ">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,25 +85,25 @@
             <objects>
                 <tableViewController id="kJm-oL-KB3" customClass="JapaneseCharactersTableViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IYW-am-m92">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JapaneseCharactersTableViewCell" rowHeight="69" id="vnR-fB-Ha9" customClass="JapaneseCharactersTableViewCell" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="69"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnR-fB-Ha9" id="Bsw-sy-NdM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sound kind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfb-KD-V8l">
-                                            <rect key="frame" x="8" y="0.0" width="179.5" height="21"/>
+                                            <rect key="frame" x="8" y="0.0" width="199" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あ  い  う  え  お" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHh-rf-0ED">
-                                            <rect key="frame" x="0.0" y="23" width="375" height="45"/>
+                                            <rect key="frame" x="0.0" y="23" width="414" height="45"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -136,7 +137,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="cyn-z9-T8D">
                             <connections>
-                                <segue destination="CMB-LD-Jke" kind="unwind" identifier="done" unwindAction="unwindToPracticeViewController:" id="ZJm-AZ-H8i"/>
+                                <segue destination="271-uL-ivj" kind="show" identifier="done" id="r5R-WU-kMl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -146,6 +147,66 @@
             </objects>
             <point key="canvasLocation" x="2210.4000000000001" y="517.6911544227886"/>
         </scene>
+        <!--Show Characters View Controller-->
+        <scene sceneID="iU1-vy-cwi">
+            <objects>
+                <viewController id="271-uL-ivj" customClass="ShowCharactersViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ga9-rs-NJz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jto-EP-unI">
+                                <rect key="frame" x="50" y="114" width="314" height="314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jto-EP-unI" secondAttribute="height" multiplier="1:1" id="UfU-GU-jhk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GYl-45-thh">
+                                <rect key="frame" x="50" y="625.66666666666652" width="314" height="60.333333333333371"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5o5-tB-L1e">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="20.333333333333371"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXl-VM-Vtm">
+                                        <rect key="frame" x="0.0" y="30.333333333333371" width="314" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.24876445143013037" blue="0.20555129219053092" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Next Character">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextCharacterButtonTapped:" destination="271-uL-ivj" eventType="touchUpInside" id="dcQ-68-Qf6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jto-EP-unI" firstAttribute="centerX" secondItem="JzO-jJ-suG" secondAttribute="centerX" id="1Az-fV-doj"/>
+                            <constraint firstItem="JzO-jJ-suG" firstAttribute="trailing" secondItem="Jto-EP-unI" secondAttribute="trailing" constant="50" id="MVJ-hW-Lor"/>
+                            <constraint firstItem="JzO-jJ-suG" firstAttribute="bottom" secondItem="GYl-45-thh" secondAttribute="bottom" constant="50" id="cza-tk-zAt"/>
+                            <constraint firstItem="GYl-45-thh" firstAttribute="centerX" secondItem="JzO-jJ-suG" secondAttribute="centerX" id="g5M-Yg-Ijh"/>
+                            <constraint firstItem="Jto-EP-unI" firstAttribute="top" secondItem="JzO-jJ-suG" secondAttribute="top" constant="50" id="gtJ-Ot-q4t"/>
+                            <constraint firstItem="GYl-45-thh" firstAttribute="width" secondItem="Jto-EP-unI" secondAttribute="width" id="sJz-Yn-uRj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JzO-jJ-suG"/>
+                    </view>
+                    <connections>
+                        <outlet property="characterLabel" destination="Jto-EP-unI" id="8ee-HM-kVk"/>
+                        <outlet property="countCharacters" destination="5o5-tB-L1e" id="uBE-EB-vQY"/>
+                        <outlet property="nextCharacterButton" destination="JXl-VM-Vtm" id="Z8Q-mD-zae"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWj-eQ-zH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2965.5999999999999" y="517.6911544227886"/>
+        </scene>
         <!--practice-->
         <scene sceneID="lFd-Ul-gz0">
             <objects>
@@ -153,7 +214,7 @@
                     <tabBarItem key="tabBarItem" title="practice" id="Q9V-WR-Qak"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KpW-re-UZ2">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
