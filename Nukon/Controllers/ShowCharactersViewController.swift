@@ -12,6 +12,10 @@ class ShowCharactersViewController: UIViewController {
     
     var list: [[String]]?
     var appearedCharacters = [String]()
+    var vowelIndexCounter: Int = 0
+    var soundIndexCounter: Int = 0
+    var counter: Int = 0
+    var maxChara: Int = 0
     
     @IBOutlet weak var characterLabel: UILabel!
     @IBOutlet weak var countCharacters: UILabel!
@@ -19,7 +23,9 @@ class ShowCharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        characterLabel.text = randomCharacter()
+        maxChara = numberOfCharacters()
+        characterLabel.text = orderCharacter()
+        countCharacters.text = "\(counter)/\(maxChara)"
         // Do any additional setup after loading the view.
     }
 
@@ -30,7 +36,24 @@ class ShowCharactersViewController: UIViewController {
     
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
         print("tapped")
-        findNewCharacter()
+        if counter < maxChara {
+            characterLabel.text = orderCharacter()
+            countCharacters.text = "\(counter)/\(maxChara)"
+        }
+        else {
+            characterLabel.text = "END"
+        }
+    }
+    
+    func numberOfCharacters() -> Int {
+        if let list = list {
+            var numberOfCharacters = 0
+            for soundArray in list {
+                let lengthOfSoundArray = soundArray.count
+                numberOfCharacters += lengthOfSoundArray
+            }
+            return numberOfCharacters
+        } else {return 0}
     }
     
     func randomCharacter() -> String {
@@ -43,17 +66,33 @@ class ShowCharactersViewController: UIViewController {
         
     }
     
-    func findNewCharacter() {
-        let willAppearCharacter = randomCharacter()
-        for character in appearedCharacters {
-            if character == willAppearCharacter {
-                findNewCharacter()
+    func orderCharacter() -> String {
+        if let list = list {
+            if vowelIndexCounter == list[soundIndexCounter].count {
+                vowelIndexCounter = 0
+                soundIndexCounter += 1
+                if soundIndexCounter == list.count {
+                    vowelIndexCounter = 0
+                    soundIndexCounter = 0
+                }
             }
-            else {
-                characterLabel.text = willAppearCharacter
-            }
-        }
+            counter += 1
+            vowelIndexCounter += 1
+            return list[soundIndexCounter][vowelIndexCounter - 1]
+        } else {return ""}
     }
+    
+//    func findNewCharacter() {
+//        let willAppearCharacter = randomCharacter()
+//        for character in appearedCharacters {
+//            if willAppearCharacter == character {
+//                findNewCharacter()
+//            }
+//            else {
+//                characterLabel.text = willAppearCharacter
+//            }
+//        }
+//    }
     
     /*
     // MARK: - Navigation
