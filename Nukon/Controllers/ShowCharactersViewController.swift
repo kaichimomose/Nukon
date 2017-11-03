@@ -24,7 +24,9 @@ class ShowCharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.characterLabel.layer.cornerRadius = 6
+        self.characterLabel.layer.borderColor = UIColor.lightGray.cgColor
+        self.characterLabel.layer.borderWidth = 1
         maxChara = numberOfCharacters()
         countCharacters.text = "\(counter)/\(maxChara)"
         if let list = list {
