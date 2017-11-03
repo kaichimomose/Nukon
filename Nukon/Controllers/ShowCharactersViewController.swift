@@ -16,6 +16,7 @@ class ShowCharactersViewController: UIViewController {
     var soundIndexCounter: Int = 0
     var counter: Int = 0
     var maxChara: Int = 0
+    var mutableList = [[String]]()
     
     @IBOutlet weak var characterLabel: UILabel!
     @IBOutlet weak var countCharacters: UILabel!
@@ -23,9 +24,13 @@ class ShowCharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         maxChara = numberOfCharacters()
-        characterLabel.text = orderCharacter()
         countCharacters.text = "\(counter)/\(maxChara)"
+        if let list = list {
+            mutableList = list
+        }
+        characterLabel.text = randomCharacter()
         // Do any additional setup after loading the view.
     }
 
@@ -35,9 +40,8 @@ class ShowCharactersViewController: UIViewController {
     }
     
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
-        print("tapped")
         if counter < maxChara {
-            characterLabel.text = orderCharacter()
+            characterLabel.text = randomCharacter()
             countCharacters.text = "\(counter)/\(maxChara)"
         }
         else {
@@ -57,13 +61,16 @@ class ShowCharactersViewController: UIViewController {
     }
     
     func randomCharacter() -> String {
-        if let list = list {
-            let soundIndex = Int(arc4random()) % list.count
-            let vowelIndex = Int(arc4random()) % list[soundIndex].count
-            appearedCharacters.append(list[soundIndex][vowelIndex])
-            return list[soundIndex][vowelIndex]
-        } else {return ""}
-        
+        let soundIndex = Int(arc4random()) % mutableList.count
+        let vowelIndex = Int(arc4random()) % mutableList[soundIndex].count
+        let showCharacter = mutableList[soundIndex][vowelIndex]
+        mutableList[soundIndex].remove(at: vowelIndex)
+        if mutableList[soundIndex] == [] {
+            mutableList.remove(at: soundIndex)
+        }
+        print(mutableList)
+        counter += 1
+        return showCharacter
     }
     
     func orderCharacter() -> String {
