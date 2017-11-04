@@ -53,10 +53,10 @@ class PracticeViewController: UIViewController, JapaneseDelegate {
         let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
         japaneseCharactersTVC.delegate = self
         if segue.identifier == "hiragana"{
-            japaneseCharactersTVC.selectedType = JapaneseType.hiragana.rawValue
+            japaneseCharactersTVC.selectedType = JapaneseType.hiragana
         }
         else if segue.identifier == "katakana" {
-            japaneseCharactersTVC.selectedType = JapaneseType.katakana.rawValue
+            japaneseCharactersTVC.selectedType = JapaneseType.katakana
         }
         self.displayJapanese = [[]]
         self.japanese = ""

@@ -11,46 +11,18 @@ import UIKit
 class JapaneseCharactersTableViewController: UITableViewController {
     
     var japaneseList = [Japanese]()
-    var selectedType: String?
+    var selectedType: JapaneseType?
     var selectedJapaneseList = [[String]]()
-    
-    var hiraganaList = [
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "vowel", letters: ["あ", "い", "う", "え", "お"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "K sound", letters: ["か", "き", "く", "け", "こ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "S sound", letters: ["さ", "し", "す", "せ", "そ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "T sound", letters: ["た", "ち", "つ", "て", "と"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "N sound", letters: ["な", "に", "ぬ", "ね", "の", "ん"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "H sound", letters: ["は", "ひ", "ふ", "へ", "ほ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "M sound", letters: ["ま", "み", "む", "め", "も"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "Y sound", letters: ["や", "　", "ゆ","　", "よ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "R sound", letters: ["ら", "り", "る", "れ", "ろ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "W sound", letters: ["わ", "　", "　", "　", "を"])
-        ]
-    
-    var katakanaList = [
-        Japanese(select: false, type: JapaneseType.katakana.rawValue, sound: "vowel", letters: ["ア", "イ", "ウ", "エ", "オ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "K sound", letters: ["カ", "キ", "ク", "ケ", "コ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "S sound", letters: ["サ", "シ", "ス", "セ", "ソ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "T sound", letters: ["タ", "チ", "ツ", "テ", "ト"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "N sound", letters: ["ナ", "ニ", "ヌ", "ネ", "ノ", "ン"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "H sound", letters: ["ハ", "ヒ", "フ", "ヘ", "ホ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "M sound", letters: ["マ", "ミ", "ム", "メ", "モ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "Y sound", letters: ["ヤ", "　", "ユ","　", "ヨ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "R sound", letters: ["ラ", "リ", "ル", "レ", "ロ"]),
-        Japanese(select: false, type: JapaneseType.hiragana.rawValue, sound: "W sound", letters: ["ワ", "　", "　", "　", "ヲ"])
-    ]
     
     weak var delegate: JapaneseDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.chooseJapaneseCharacterType()
-        self.title = self.selectedType
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.chooseJapaneseCharacterType(type: selectedType!)
+        self.title = self.selectedType?.rawValue
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 80
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,12 +30,12 @@ class JapaneseCharactersTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func chooseJapaneseCharacterType() {
-        if self.selectedType == JapaneseType.hiragana.rawValue {
-            self.japaneseList =  self.hiraganaList
-        }
-        else {
-            self.japaneseList =  self.katakanaList
+    func chooseJapaneseCharacterType(type: JapaneseType) {
+        switch type {
+        case .hiragana:
+            self.japaneseList = JapaneseCharacters().hiraganaList
+        case .katakana:
+            self.japaneseList = JapaneseCharacters().katakanaList
         }
     }
 
@@ -72,6 +44,16 @@ class JapaneseCharactersTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell")
+        cell?.layer.backgroundColor = UIColor.gray.cgColor
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,6 +65,9 @@ class JapaneseCharactersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath) as! JapaneseCharactersTableViewCell
         var words = ""
+        cell.soundLabel.layer.cornerRadius = 20
+        cell.soundLabel.layer.borderWidth = 1
+        cell.soundLabel.layer.borderColor = UIColor.lightGray.cgColor
         cell.soundLabel.text = japaneseList[indexPath.row].sound
         for letter in japaneseList[indexPath.row].letters {
             words += letter + " "
@@ -104,7 +89,6 @@ class JapaneseCharactersTableViewController: UITableViewController {
         if segue.identifier == "done"{
             let showCharactersVC = segue.destination as! ShowCharactersViewController
             showCharactersVC.list = selectedJapaneseList
-            //showCharactersVC.viewDidLoad()
         }
         
     }

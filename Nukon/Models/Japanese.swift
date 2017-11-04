@@ -10,7 +10,6 @@ import Foundation
 
 struct Japanese {
     var select: Bool
-    let type: String
     let sound: String
     let letters: [String]
 }

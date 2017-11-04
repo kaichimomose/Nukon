@@ -28,11 +28,11 @@ class ShowCharactersViewController: UIViewController {
         self.characterLabel.layer.borderColor = UIColor.lightGray.cgColor
         self.characterLabel.layer.borderWidth = 1
         maxChara = numberOfCharacters()
-        countCharacters.text = "\(counter)/\(maxChara)"
         if let list = list {
             mutableList = list
         }
         characterLabel.text = randomCharacter()
+        countCharacters.text = "\(counter)/\(maxChara)"
         // Do any additional setup after loading the view.
     }
 
@@ -54,9 +54,12 @@ class ShowCharactersViewController: UIViewController {
     func numberOfCharacters() -> Int {
         if let list = list {
             var numberOfCharacters = 0
-            for soundArray in list {
-                let lengthOfSoundArray = soundArray.count
-                numberOfCharacters += lengthOfSoundArray
+            for i in 0...list.count - 1 {
+                for j in 0...list[i].count - 1 {
+                    if list[i][j] != "　" {
+                        numberOfCharacters += 1
+                    }
+                }
             }
             return numberOfCharacters
         } else {return 0}
@@ -65,13 +68,17 @@ class ShowCharactersViewController: UIViewController {
     func randomCharacter() -> String {
         let soundIndex = Int(arc4random()) % mutableList.count
         let vowelIndex = Int(arc4random()) % mutableList[soundIndex].count
-        let showCharacter = mutableList[soundIndex][vowelIndex]
-        mutableList[soundIndex].remove(at: vowelIndex)
-        if mutableList[soundIndex] == [] {
-            mutableList.remove(at: soundIndex)
+        var showCharacter = mutableList[soundIndex][vowelIndex]
+        if showCharacter == "　" {
+            showCharacter = randomCharacter()
         }
-        print(mutableList)
-        counter += 1
+        else {
+            mutableList[soundIndex].remove(at: vowelIndex)
+            if mutableList[soundIndex] == [] {
+                mutableList.remove(at: soundIndex)
+            }
+            counter += 1
+        }
         return showCharacter
     }
     

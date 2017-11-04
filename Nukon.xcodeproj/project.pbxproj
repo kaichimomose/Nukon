@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */; };
 		BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */; };
 		BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */; };
 		BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharacters.swift; sourceTree = "<group>"; };
 		BF5FF94F1FA0D35D00A46DE0 /* Nukon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nukon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5FF95A1FA0D35D00A46DE0 /* Nukon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nukon.xcdatamodel; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */,
 				BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */,
+				BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
+				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF5FF9771FA0D9D500A46DE0 /* UserProfileViewController.swift in Sources */,
 				BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */,
 			);
