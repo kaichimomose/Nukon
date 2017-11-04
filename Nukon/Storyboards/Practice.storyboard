@@ -96,8 +96,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ａ  ｉ  ｕ  ｅ  ｏ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHh-rf-0ED">
-                                            <rect key="frame" x="82" y="7.3333333333333321" width="250.33333333333331" height="45.333333333333329"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ａ ｉ ｕ ｅ ｏ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHh-rf-0ED">
+                                            <rect key="frame" x="82" y="7.3333333333333321" width="226.33333333333331" height="45.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -213,22 +213,48 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYQ-Jw-ba4">
+                                <rect key="frame" x="186" y="492" width="41.666666666666657" height="20.333333333333371"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="41.670000000000002" id="Iqj-dz-4W6"/>
+                                    <constraint firstAttribute="height" constant="20.329999999999998" id="cB3-NY-yJM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3n-OD-Rpn">
+                                <rect key="frame" x="50" y="114" width="314" height="314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="200"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jto-EP-unI" firstAttribute="centerX" secondItem="JzO-jJ-suG" secondAttribute="centerX" id="1Az-fV-doj"/>
+                            <constraint firstItem="OYQ-Jw-ba4" firstAttribute="centerX" secondItem="ga9-rs-NJz" secondAttribute="centerX" id="ECV-Ze-XOa"/>
+                            <constraint firstItem="a3n-OD-Rpn" firstAttribute="height" secondItem="Jto-EP-unI" secondAttribute="height" id="JgY-mT-Wp7"/>
+                            <constraint firstItem="a3n-OD-Rpn" firstAttribute="width" secondItem="Jto-EP-unI" secondAttribute="width" id="KTr-vQ-2D6"/>
                             <constraint firstItem="JzO-jJ-suG" firstAttribute="trailing" secondItem="Jto-EP-unI" secondAttribute="trailing" constant="50" id="MVJ-hW-Lor"/>
                             <constraint firstItem="JzO-jJ-suG" firstAttribute="bottom" secondItem="GYl-45-thh" secondAttribute="bottom" constant="50" id="cza-tk-zAt"/>
                             <constraint firstItem="GYl-45-thh" firstAttribute="centerX" secondItem="JzO-jJ-suG" secondAttribute="centerX" id="g5M-Yg-Ijh"/>
                             <constraint firstItem="Jto-EP-unI" firstAttribute="top" secondItem="JzO-jJ-suG" secondAttribute="top" constant="50" id="gtJ-Ot-q4t"/>
+                            <constraint firstItem="OYQ-Jw-ba4" firstAttribute="top" secondItem="Jto-EP-unI" secondAttribute="bottom" constant="64" id="iA7-VH-gdu"/>
+                            <constraint firstItem="a3n-OD-Rpn" firstAttribute="leading" secondItem="Jto-EP-unI" secondAttribute="leading" id="ioj-VT-s4N"/>
+                            <constraint firstItem="a3n-OD-Rpn" firstAttribute="width" secondItem="a3n-OD-Rpn" secondAttribute="height" multiplier="1:1" id="k25-TO-caa"/>
                             <constraint firstItem="GYl-45-thh" firstAttribute="width" secondItem="Jto-EP-unI" secondAttribute="width" id="sJz-Yn-uRj"/>
+                            <constraint firstItem="a3n-OD-Rpn" firstAttribute="top" secondItem="Jto-EP-unI" secondAttribute="top" id="xUQ-JB-1Q2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JzO-jJ-suG"/>
                     </view>
                     <connections>
                         <outlet property="characterLabel" destination="Jto-EP-unI" id="8ee-HM-kVk"/>
+                        <outlet property="checkLabel" destination="a3n-OD-Rpn" id="GUI-Ec-NsJ"/>
                         <outlet property="countCharacters" destination="5o5-tB-L1e" id="uBE-EB-vQY"/>
                         <outlet property="nextCharacterButton" destination="JXl-VM-Vtm" id="Z8Q-mD-zae"/>
+                        <outlet property="spokenCharacterLabel" destination="OYQ-Jw-ba4" id="3pi-SE-yAG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWj-eQ-zH1" userLabel="First Responder" sceneMemberID="firstResponder"/>

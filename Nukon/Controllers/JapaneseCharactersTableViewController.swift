@@ -89,6 +89,7 @@ class JapaneseCharactersTableViewController: UITableViewController {
         if segue.identifier == "done"{
             let showCharactersVC = segue.destination as! ShowCharactersViewController
             showCharactersVC.list = selectedJapaneseList
+            showCharactersVC.recordAndRecognizeSpeech()
         }
         
     }

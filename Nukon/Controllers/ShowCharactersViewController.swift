@@ -7,20 +7,31 @@
 //
 
 import UIKit
+import Speech
 
 class ShowCharactersViewController: UIViewController {
     
+    //values to show characters
     var list: [[String]]?
     var appearedCharacters = [String]()
+    var shownCharacter = ""
     var vowelIndexCounter: Int = 0
     var soundIndexCounter: Int = 0
     var counter: Int = 0
     var maxChara: Int = 0
     var mutableList = [[String]]()
     
+    // values for voice recognization
+    let audioEngine = AVAudioEngine()
+    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale(identifier: "ja-JP"))
+    let request = SFSpeechAudioBufferRecognitionRequest()
+    var recognitionTask: SFSpeechRecognitionTask?
+    
     @IBOutlet weak var characterLabel: UILabel!
     @IBOutlet weak var countCharacters: UILabel!
     @IBOutlet weak var nextCharacterButton: UIButton!
+    @IBOutlet weak var spokenCharacterLabel: UILabel!
+    @IBOutlet weak var checkLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +42,8 @@ class ShowCharactersViewController: UIViewController {
         if let list = list {
             mutableList = list
         }
-        characterLabel.text = randomCharacter()
+        self.shownCharacter = orderCharacter()
+        characterLabel.text = self.shownCharacter
         countCharacters.text = "\(counter)/\(maxChara)"
         // Do any additional setup after loading the view.
     }
@@ -43,12 +55,14 @@ class ShowCharactersViewController: UIViewController {
     
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
         if counter < maxChara {
-            characterLabel.text = randomCharacter()
+            self.shownCharacter = orderCharacter()
+            characterLabel.text = self.shownCharacter
             countCharacters.text = "\(counter)/\(maxChara)"
         }
         else {
             characterLabel.text = "END"
         }
+        self.checkLabel.text = ""
     }
     
     func numberOfCharacters() -> Int {
@@ -110,14 +124,50 @@ class ShowCharactersViewController: UIViewController {
 //        }
 //    }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+//voice recoginization function
+extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
+    func recordAndRecognizeSpeech() {
+        let node = audioEngine.inputNode
+        let recordingFormat = node.outputFormat(forBus: 0)
+        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+            self.request.append(buffer)
+        }
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            return print(error)
+        }
+        guard let myRecognizer = SFSpeechRecognizer() else {
+            return
+        }
+        if !myRecognizer.isAvailable {
+            return
+        }
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
+            if let result = result {
+                let bestString = result.bestTranscription.formattedString
+                
+                let lastCharacter = String(describing: bestString.last!)
+                
+                self.spokenCharacterLabel.text = lastCharacter
+                self.checkCharacter(character: lastCharacter)
+            } else {
+                print(error ?? "")
+            }
+        })
+    }
+    
+    func checkCharacter(character: String) {
+        switch character {
+        case self.shownCharacter:
+            self.checkLabel.text = "⭕️"
+        default:
+            self.checkLabel.text = "❌"
+        }
+    }
+}
+
