@@ -22,7 +22,6 @@ class JapaneseCharactersTableViewController: UITableViewController {
         self.title = self.selectedType?.rawValue
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 80
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,7 +88,8 @@ class JapaneseCharactersTableViewController: UITableViewController {
         if segue.identifier == "done"{
             let showCharactersVC = segue.destination as! ShowCharactersViewController
             showCharactersVC.list = selectedJapaneseList
-            showCharactersVC.recordAndRecognizeSpeech()
+            showCharactersVC.recordAndRecognizeSpeech(type: selectedType!)
+            showCharactersVC.selectedType = self.selectedType
         }
         
     }

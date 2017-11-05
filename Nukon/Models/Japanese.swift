@@ -12,6 +12,7 @@ struct Japanese {
     var select: Bool
     let sound: String
     let letters: [String]
+//    let hiragana: [String]?
 }
 
 enum JapaneseType: String {

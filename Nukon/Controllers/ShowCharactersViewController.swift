@@ -9,6 +9,12 @@
 import UIKit
 import Speech
 
+enum Decision: String {
+    case correct = "⭕️"
+    case wrong = "❌"
+    case yet = ""
+}
+
 class ShowCharactersViewController: UIViewController {
     
     //values to show characters
@@ -20,6 +26,8 @@ class ShowCharactersViewController: UIViewController {
     var counter: Int = 0
     var maxChara: Int = 0
     var mutableList = [[String]]()
+    var selectedType: JapaneseType?
+    var decision = Decision.yet
     
     // values for voice recognization
     let audioEngine = AVAudioEngine()
@@ -54,6 +62,10 @@ class ShowCharactersViewController: UIViewController {
     }
     
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
+        self.nextCharacter()
+    }
+    
+    func nextCharacter() {
         if counter < maxChara {
             self.shownCharacter = orderCharacter()
             characterLabel.text = self.shownCharacter
@@ -62,7 +74,8 @@ class ShowCharactersViewController: UIViewController {
         else {
             characterLabel.text = "END"
         }
-        self.checkLabel.text = ""
+        self.decision = .yet
+        self.checkLabel.text = self.decision.rawValue
     }
     
     func numberOfCharacters() -> Int {
@@ -83,11 +96,11 @@ class ShowCharactersViewController: UIViewController {
         let soundIndex = Int(arc4random()) % mutableList.count
         let vowelIndex = Int(arc4random()) % mutableList[soundIndex].count
         var showCharacter = mutableList[soundIndex][vowelIndex]
+        mutableList[soundIndex].remove(at: vowelIndex)
         if showCharacter == "　" {
             showCharacter = randomCharacter()
         }
         else {
-            mutableList[soundIndex].remove(at: vowelIndex)
             if mutableList[soundIndex] == [] {
                 mutableList.remove(at: soundIndex)
             }
@@ -106,9 +119,15 @@ class ShowCharactersViewController: UIViewController {
                     soundIndexCounter = 0
                 }
             }
-            counter += 1
             vowelIndexCounter += 1
-            return list[soundIndexCounter][vowelIndexCounter - 1]
+            var showCharacter = list[soundIndexCounter][vowelIndexCounter - 1]
+            if showCharacter == "　" {
+                showCharacter = orderCharacter()
+            }
+            else {
+                counter += 1
+            }
+            return showCharacter
         } else {return ""}
     }
     
@@ -128,7 +147,7 @@ class ShowCharactersViewController: UIViewController {
 
 //voice recoginization function
 extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
-    func recordAndRecognizeSpeech() {
+    func recordAndRecognizeSpeech(type: JapaneseType) {
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
@@ -149,25 +168,47 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
             if let result = result {
-                let bestString = result.bestTranscription.formattedString
+                var bestString = result.bestTranscription.formattedString
                 
                 let lastCharacter = String(describing: bestString.last!)
                 
-                self.spokenCharacterLabel.text = lastCharacter
-                self.checkCharacter(character: lastCharacter)
+                switch type {
+                case .hiragana:
+                    self.spokenCharacterLabel.text = bestString
+                case .katakana:
+                    let changeCharacter = NSMutableString(string: bestString) as CFMutableString
+                    CFStringTransform(changeCharacter, nil, kCFStringTransformHiraganaKatakana, false)
+                    bestString = changeCharacter as String
+                    self.spokenCharacterLabel.text = bestString
+                }
+                self.checkCharacter(decision: self.decision, character: lastCharacter)
             } else {
                 print(error ?? "")
             }
         })
     }
     
-    func checkCharacter(character: String) {
+    func checkCharacter(decision: Decision, character: String) {
         switch character {
         case self.shownCharacter:
-            self.checkLabel.text = "⭕️"
+//            switch decision {
+//            case .correct:
+//                self.decision = .yet
+//            case .wrong:
+//                self.decision = .yet
+//            case .yet:
+                self.decision = .correct
+//                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+//                    // Put your code which should be executed with a delay here
+//                    self.nextCharacter()
+//                })
+//            }
+
         default:
-            self.checkLabel.text = "❌"
+            self.decision = .wrong
         }
+        print(self.decision)
+        self.checkLabel.text = self.decision.rawValue
     }
 }
 
