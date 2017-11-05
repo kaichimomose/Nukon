@@ -63,6 +63,13 @@ class ShowCharactersViewController: UIViewController {
     
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
         self.nextCharacter()
+//        refreshTask()
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            return print(error)
+        }
     }
     
     func nextCharacter() {
@@ -169,6 +176,9 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
             if let result = result {
                 var bestString = result.bestTranscription.formattedString
+                var posibilities = result.transcriptions
+                
+                print(posibilities)
                 
                 let lastCharacter = String(describing: bestString.last!)
                 
@@ -209,6 +219,16 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         }
         print(self.decision)
         self.checkLabel.text = self.decision.rawValue
+        if audioEngine.isRunning {
+            audioEngine.stop()
+        }
+    }
+    
+    private func refreshTask() {
+        if let recognitionTask = recognitionTask {
+            recognitionTask.cancel()
+            self.recognitionTask = nil
+        }
     }
 }
 
