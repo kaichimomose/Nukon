@@ -1,5 +1,5 @@
 # Nukon
-studying Japanese App for English Speaker
+studying Japanese ios App for English Speaker
 
 ## Features
 
