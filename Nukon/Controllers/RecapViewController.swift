@@ -13,14 +13,14 @@ class RecapViewController: UIViewController {
     @IBOutlet weak var choosedCharactersLabel: UILabel!
     @IBOutlet weak var generatedCharactersLabel: UILabel!
     
-    var choosedCharacters: [[String]]?
+    var choosedCharacters: [Japanese]?
     var characters = ""
     var generatedCharacters: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         for listOfCharacters in choosedCharacters!{
-            characters += "「" + listOfCharacters.joined() + "」"
+            characters += "「" + listOfCharacters.letters.joined() + "」"
         }
         choosedCharactersLabel.text = characters
         generatedCharactersLabel.text = generatedCharacters

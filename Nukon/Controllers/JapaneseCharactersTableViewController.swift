@@ -12,7 +12,7 @@ class JapaneseCharactersTableViewController: UITableViewController {
     
     var japaneseList = [Japanese]()
     var selectedType: JapaneseType?
-    var selectedJapaneseList = [[String]]()
+    var selectedJapaneseList = [Japanese]()
     
     weak var delegate: JapaneseDelegate?
 
@@ -75,7 +75,7 @@ class JapaneseCharactersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if japaneseList[indexPath.row].select != true {
-            let selectedJapanese = japaneseList[indexPath.row].letters
+            let selectedJapanese = japaneseList[indexPath.row]
             selectedJapaneseList.append(selectedJapanese)
 //            delegate?.sendJapanese(selectedJapanese: selectedJapanese)
             japaneseList[indexPath.row].select = true

@@ -18,7 +18,7 @@ enum Decision: String {
 class ShowCharactersViewController: UIViewController {
     
     //values to show characters
-    var list: [[String]]?
+    var list: [Japanese]?
     var appearedCharacters = [String]()
     var shownCharacter = ""
     var vowelIndexCounter: Int = 0
@@ -44,18 +44,23 @@ class ShowCharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.characterLabel.layer.cornerRadius = 6
         self.characterLabel.layer.borderColor = UIColor.lightGray.cgColor
         self.characterLabel.layer.borderWidth = 1
-        maxChara = numberOfCharacters()
+        
         if let list = list {
-            mutableList = list
+            for listOfCharacters in list{
+                mutableList.append(listOfCharacters.letters)
+            }
         }
+        self.maxChara = numberOfCharacters()
         self.shownCharacter = orderCharacter()
-        characterLabel.text = self.shownCharacter
-        countCharacters.text = "\(counter)/\(maxChara)"
+        self.characterLabel.text = self.shownCharacter
+        self.countCharacters.text = "\(self.counter)/\(self.maxChara)"
         self.spokenCharacterLabel.text = "recording"
-        // Do any additional setup after loading the view.
+//        self.nextCharacterButton.isEnabled = false
+        self.nextCharacterButton.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,24 +70,25 @@ class ShowCharactersViewController: UIViewController {
     
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
         self.nextCharacter()
-//        refreshTask()
 //        audioEngine.prepare()
 //        do {
 //            try audioEngine.start()
 //        } catch {
 //            return print(error)
 //        }
+//        self.nextCharacterButton.isEnabled = false
+        self.nextCharacterButton.isHidden = true
     }
     
     func nextCharacter() {
         if counter < maxChara {
             self.spokenCharacterLabel.text = "recording"
             self.shownCharacter = orderCharacter()
-            characterLabel.text = self.shownCharacter
-            countCharacters.text = "\(counter)/\(maxChara)"
+            self.characterLabel.text = self.shownCharacter
+            self.countCharacters.text = "\(self.counter)/\(self.maxChara)"
         }
         else {
-            characterLabel.text = ""
+            self.characterLabel.text = ""
             let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
             recapVC.choosedCharacters = self.list
             recapVC.generatedCharacters = self.bestString
@@ -97,8 +103,8 @@ class ShowCharactersViewController: UIViewController {
         if let list = list {
             var numberOfCharacters = 0
             for i in 0...list.count - 1 {
-                for j in 0...list[i].count - 1 {
-                    if list[i][j] != "　" {
+                for j in 0...list[i].letters.count - 1 {
+                    if list[i].letters[j] != "　" {
                         numberOfCharacters += 1
                     }
                 }
@@ -108,40 +114,41 @@ class ShowCharactersViewController: UIViewController {
     }
     
     func randomCharacter() -> String {
-        let soundIndex = Int(arc4random()) % mutableList.count
-        let vowelIndex = Int(arc4random()) % mutableList[soundIndex].count
-        var showCharacter = mutableList[soundIndex][vowelIndex]
-        mutableList[soundIndex].remove(at: vowelIndex)
+        let soundIndex = Int(arc4random()) % self.mutableList.count
+        let vowelIndex = Int(arc4random()) % self.mutableList[soundIndex].count
+        var showCharacter = self.mutableList[soundIndex][vowelIndex]
+        self.mutableList[soundIndex].remove(at: vowelIndex)
         if showCharacter == "　" {
             showCharacter = randomCharacter()
         }
         else {
-            if mutableList[soundIndex] == [] {
-                mutableList.remove(at: soundIndex)
+            if self.mutableList[soundIndex] == [] {
+                self.mutableList.remove(at: soundIndex)
             }
-            counter += 1
+            self.counter += 1
         }
         return showCharacter
     }
     
     func orderCharacter() -> String {
         if let list = list {
-            if vowelIndexCounter == list[soundIndexCounter].count {
-                vowelIndexCounter = 0
-                soundIndexCounter += 1
-                if soundIndexCounter == list.count {
-                    vowelIndexCounter = 0
-                    soundIndexCounter = 0
+            if self.vowelIndexCounter == list[self.soundIndexCounter].letters.count {
+                self.vowelIndexCounter = 0
+                self.soundIndexCounter += 1
+                if self.soundIndexCounter == list.count {
+                    self.vowelIndexCounter = 0
+                    self.soundIndexCounter = 0
                 }
             }
-            vowelIndexCounter += 1
-            var showCharacter = list[soundIndexCounter][vowelIndexCounter - 1]
+            var showCharacter = list[self.soundIndexCounter].letters[self.vowelIndexCounter]
+            self.soundLabel.text = list[self.soundIndexCounter].sound
             if showCharacter == "　" {
                 showCharacter = orderCharacter()
             }
             else {
-                counter += 1
+                self.counter += 1
             }
+            self.vowelIndexCounter += 1
             return showCharacter
         } else {return ""}
     }
@@ -183,26 +190,25 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
             if let result = result {
-                self.bestString = result.bestTranscription.formattedString
-                let posibilities = result.transcriptions
+//                let posibilities = result.transcriptions
                 
-                print(posibilities)
-                
-//                let lastCharacter = String(describing: self.bestString.last!)
-                
+//                print(posibilities)
+
                 switch type {
                 case .hiragana:
-                    if self.counter == self.maxChara{
-                        self.spokenCharacterLabel.text = "tap recap"
-                        self.nextCharacterButton.setTitle("Recap", for: .normal)
-                    }
-                    else{
-                        self.spokenCharacterLabel.text = "tap next"
-                    }
+                    self.bestString = result.bestTranscription.formattedString
                 case .katakana:
+                    self.bestString = result.bestTranscription.formattedString
                     let changeCharacter = NSMutableString(string: self.bestString) as CFMutableString
                     CFStringTransform(changeCharacter, nil, kCFStringTransformHiraganaKatakana, false)
                     self.bestString = changeCharacter as String
+                }
+//                if self.audioEngine.isRunning {
+//                    self.audioEngine.stop()
+//                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                    // Put your code which should be executed with a delay here
                     if self.counter == self.maxChara{
                         self.spokenCharacterLabel.text = "tap recap"
                         self.nextCharacterButton.setTitle("Recap", for: .normal)
@@ -210,7 +216,10 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     else{
                         self.spokenCharacterLabel.text = "tap next"
                     }
-                }
+//                    self.nextCharacterButton.isEnabled = true
+                    self.nextCharacterButton.isHidden = false
+                })
+                print(self.bestString)
 //                self.checkCharacter(decision: self.decision, character: lastCharacter)
             } else {
                 print(error ?? "")
