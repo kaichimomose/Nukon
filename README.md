@@ -1,6 +1,8 @@
 # Nukon
 studying Japanese ios App for English Speaker
 
+## Introduction
+
 ## Features
 
 A few things you can do with Nukon:

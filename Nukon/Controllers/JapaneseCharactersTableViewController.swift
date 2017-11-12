@@ -63,14 +63,12 @@ class JapaneseCharactersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath) as! JapaneseCharactersTableViewCell
-        var words = ""
+        let row = indexPath.row
         cell.soundLabel.layer.cornerRadius = 20
         cell.soundLabel.layer.borderWidth = 1
         cell.soundLabel.layer.borderColor = UIColor.lightGray.cgColor
-        cell.soundLabel.text = japaneseList[indexPath.row].sound
-        for letter in japaneseList[indexPath.row].letters {
-            words += letter + " "
-        }
+        cell.soundLabel.text = japaneseList[row].sound
+        let words = japaneseList[row].letters.joined(separator: " ")
         cell.japaneseCharactersLabel.text = words
         return cell
     }

@@ -28,6 +28,7 @@ class ShowCharactersViewController: UIViewController {
     var mutableList = [[String]]()
     var selectedType: JapaneseType?
     var decision = Decision.yet
+    var bestString = ""
     
     // values for voice recognization
     let audioEngine = AVAudioEngine()
@@ -39,7 +40,7 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var countCharacters: UILabel!
     @IBOutlet weak var nextCharacterButton: UIButton!
     @IBOutlet weak var spokenCharacterLabel: UILabel!
-    @IBOutlet weak var checkLabel: UILabel!
+    @IBOutlet weak var soundLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ class ShowCharactersViewController: UIViewController {
         self.shownCharacter = orderCharacter()
         characterLabel.text = self.shownCharacter
         countCharacters.text = "\(counter)/\(maxChara)"
+        self.spokenCharacterLabel.text = "recording"
         // Do any additional setup after loading the view.
     }
 
@@ -64,25 +66,31 @@ class ShowCharactersViewController: UIViewController {
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
         self.nextCharacter()
 //        refreshTask()
-        audioEngine.prepare()
-        do {
-            try audioEngine.start()
-        } catch {
-            return print(error)
-        }
+//        audioEngine.prepare()
+//        do {
+//            try audioEngine.start()
+//        } catch {
+//            return print(error)
+//        }
     }
     
     func nextCharacter() {
         if counter < maxChara {
+            self.spokenCharacterLabel.text = "recording"
             self.shownCharacter = orderCharacter()
             characterLabel.text = self.shownCharacter
             countCharacters.text = "\(counter)/\(maxChara)"
         }
         else {
-            characterLabel.text = "END"
+            characterLabel.text = ""
+            let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
+            recapVC.choosedCharacters = self.list
+            recapVC.generatedCharacters = self.bestString
+            
+            self.navigationController?.pushViewController(recapVC, animated: true)
         }
         self.decision = .yet
-        self.checkLabel.text = self.decision.rawValue
+//        self.checkLabel.text = self.decision.rawValue
     }
     
     func numberOfCharacters() -> Int {
@@ -175,23 +183,35 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
             if let result = result {
-                var bestString = result.bestTranscription.formattedString
-                var posibilities = result.transcriptions
+                self.bestString = result.bestTranscription.formattedString
+                let posibilities = result.transcriptions
                 
                 print(posibilities)
                 
-                let lastCharacter = String(describing: bestString.last!)
+//                let lastCharacter = String(describing: self.bestString.last!)
                 
                 switch type {
                 case .hiragana:
-                    self.spokenCharacterLabel.text = bestString
+                    if self.counter == self.maxChara{
+                        self.spokenCharacterLabel.text = "tap recap"
+                        self.nextCharacterButton.setTitle("Recap", for: .normal)
+                    }
+                    else{
+                        self.spokenCharacterLabel.text = "tap next"
+                    }
                 case .katakana:
-                    let changeCharacter = NSMutableString(string: bestString) as CFMutableString
+                    let changeCharacter = NSMutableString(string: self.bestString) as CFMutableString
                     CFStringTransform(changeCharacter, nil, kCFStringTransformHiraganaKatakana, false)
-                    bestString = changeCharacter as String
-                    self.spokenCharacterLabel.text = bestString
+                    self.bestString = changeCharacter as String
+                    if self.counter == self.maxChara{
+                        self.spokenCharacterLabel.text = "tap recap"
+                        self.nextCharacterButton.setTitle("Recap", for: .normal)
+                    }
+                    else{
+                        self.spokenCharacterLabel.text = "tap next"
+                    }
                 }
-                self.checkCharacter(decision: self.decision, character: lastCharacter)
+//                self.checkCharacter(decision: self.decision, character: lastCharacter)
             } else {
                 print(error ?? "")
             }
@@ -208,17 +228,13 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
 //                self.decision = .yet
 //            case .yet:
                 self.decision = .correct
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-//                    // Put your code which should be executed with a delay here
-//                    self.nextCharacter()
-//                })
 //            }
 
         default:
             self.decision = .wrong
         }
         print(self.decision)
-        self.checkLabel.text = self.decision.rawValue
+//        self.checkLabel.text = self.decision.rawValue
         if audioEngine.isRunning {
             audioEngine.stop()
         }
