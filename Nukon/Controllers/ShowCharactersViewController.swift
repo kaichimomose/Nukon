@@ -55,7 +55,7 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var characterLabel: UILabel!
     @IBOutlet weak var countCharacters: UILabel!
     @IBOutlet weak var nextCharacterButton: UIButton!
-    @IBOutlet weak var spokenCharacterLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
     
     override func viewDidLoad() {
@@ -83,7 +83,7 @@ class ShowCharactersViewController: UIViewController {
         else {
             self.soundLabel.font = self.soundLabel.font.withSize(40.0)
         }
-        self.spokenCharacterLabel.text = self.comment.rawValue
+        self.commentLabel.text = self.comment.rawValue
         self.soundLabel.text = self.list[self.soundIndexCounter].sound
         self.characterLabel.text = self.shownCharacter
         self.countCharacters.text = "\(self.counter)/\(self.maxChara)"

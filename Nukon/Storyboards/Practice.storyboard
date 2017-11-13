@@ -117,7 +117,6 @@
                                         <constraint firstItem="L0g-E5-hR0" firstAttribute="leading" secondItem="sCu-2p-Ajo" secondAttribute="leadingMargin" id="9K2-CH-tJZ"/>
                                         <constraint firstItem="pS6-Cp-tq7" firstAttribute="top" secondItem="sCu-2p-Ajo" secondAttribute="topMargin" constant="8.3300000000000001" id="EPN-PH-gar"/>
                                         <constraint firstItem="L0g-E5-hR0" firstAttribute="centerY" secondItem="sCu-2p-Ajo" secondAttribute="centerY" id="Phc-ia-bU4"/>
-                                        <constraint firstItem="L0g-E5-hR0" firstAttribute="top" secondItem="sCu-2p-Ajo" secondAttribute="topMargin" constant="2" id="Zf0-HR-b6j"/>
                                         <constraint firstItem="pS6-Cp-tq7" firstAttribute="centerY" secondItem="sCu-2p-Ajo" secondAttribute="centerY" id="wDl-Sc-TJN"/>
                                         <constraint firstItem="pS6-Cp-tq7" firstAttribute="leading" secondItem="L0g-E5-hR0" secondAttribute="trailing" constant="10" id="yBA-8s-Ovb"/>
                                     </constraints>
@@ -296,10 +295,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="characterLabel" destination="Jto-EP-unI" id="8ee-HM-kVk"/>
+                        <outlet property="commentLabel" destination="OYQ-Jw-ba4" id="3pi-SE-yAG"/>
                         <outlet property="countCharacters" destination="5o5-tB-L1e" id="uBE-EB-vQY"/>
                         <outlet property="nextCharacterButton" destination="JXl-VM-Vtm" id="Z8Q-mD-zae"/>
                         <outlet property="soundLabel" destination="nKH-Zc-ZVF" id="SUO-jC-9h2"/>
-                        <outlet property="spokenCharacterLabel" destination="OYQ-Jw-ba4" id="3pi-SE-yAG"/>
                         <segue destination="QRY-Hc-RGH" kind="show" id="exy-1i-gye"/>
                     </connections>
                 </viewController>
