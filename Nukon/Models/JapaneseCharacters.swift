@@ -10,7 +10,7 @@ import Foundation
 
 struct JapaneseCharacters {
     var hiraganaList = [
-        Japanese(select: false, sound: "", letters: ["あ", "い", "う", "え", "お"]),
+        Japanese(select: false, sound: "vowel", letters: ["あ", "い", "う", "え", "お"]),
         Japanese(select: false, sound: "K", letters: ["か", "き", "く", "け", "こ"]),
         Japanese(select: false, sound: "S", letters: ["さ", "し", "す", "せ", "そ"]),
         Japanese(select: false, sound: "T", letters: ["た", "ち", "つ", "て", "と"]),
@@ -23,7 +23,7 @@ struct JapaneseCharacters {
     ]
     
     var katakanaList = [
-        Japanese(select: false, sound: "", letters: ["ア", "イ", "ウ", "エ", "オ"]),
+        Japanese(select: false, sound: "vowel", letters: ["ア", "イ", "ウ", "エ", "オ"]),
         Japanese(select: false, sound: "K", letters: ["カ", "キ", "ク", "ケ", "コ"]),
         Japanese(select: false, sound: "S", letters: ["サ", "シ", "ス", "セ", "ソ"]),
         Japanese(select: false, sound: "T", letters: ["タ", "チ", "ツ", "テ", "ト"]),

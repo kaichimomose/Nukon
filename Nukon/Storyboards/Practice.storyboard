@@ -22,7 +22,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fne-nz-f7u">
                                 <rect key="frame" x="40" y="365" width="334" height="70.333333333333314"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hellow!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVL-Ws-Tw6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVL-Ws-Tw6">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -89,8 +89,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderTableViewCell" rowHeight="60" id="vnR-fB-Ha9" customClass="JapaneseCharactersTableViewCell" customModule="Nukon" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectedSoundsHeaderTableViewCell" rowHeight="60" id="fHi-Tz-ezd" customClass="SelectedSoundsHeaderTableViewCell" customModule="Nukon" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fHi-Tz-ezd" id="sCu-2p-Ajo">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Sounds" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0g-E5-hR0">
+                                            <rect key="frame" x="8" y="10" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="11T-Gp-h1e"/>
+                                                <constraint firstAttribute="width" constant="40" id="oCX-NI-Aew"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select sounds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pS6-Cp-tq7">
+                                            <rect key="frame" x="58.000000000000014" y="16.333333333333329" width="140.33333333333337" height="27.666666666666671"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="L0g-E5-hR0" firstAttribute="leading" secondItem="sCu-2p-Ajo" secondAttribute="leadingMargin" id="9K2-CH-tJZ"/>
+                                        <constraint firstItem="pS6-Cp-tq7" firstAttribute="top" secondItem="sCu-2p-Ajo" secondAttribute="topMargin" constant="8.3300000000000001" id="EPN-PH-gar"/>
+                                        <constraint firstItem="L0g-E5-hR0" firstAttribute="centerY" secondItem="sCu-2p-Ajo" secondAttribute="centerY" id="Phc-ia-bU4"/>
+                                        <constraint firstItem="L0g-E5-hR0" firstAttribute="top" secondItem="sCu-2p-Ajo" secondAttribute="topMargin" constant="2" id="Zf0-HR-b6j"/>
+                                        <constraint firstItem="pS6-Cp-tq7" firstAttribute="centerY" secondItem="sCu-2p-Ajo" secondAttribute="centerY" id="wDl-Sc-TJN"/>
+                                        <constraint firstItem="pS6-Cp-tq7" firstAttribute="leading" secondItem="L0g-E5-hR0" secondAttribute="trailing" constant="10" id="yBA-8s-Ovb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="selectedSoundsLable" destination="L0g-E5-hR0" id="7SY-v1-PK3"/>
+                                    <outlet property="showSelectedSoundsLable" destination="pS6-Cp-tq7" id="AEg-nv-3y8"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderTableViewCell" rowHeight="60" id="vnR-fB-Ha9" customClass="JapaneseCharactersTableViewCell" customModule="Nukon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnR-fB-Ha9" id="Bsw-sy-NdM">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
@@ -114,19 +152,19 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JapaneseCharactersTableViewCell" rowHeight="80" id="ZRm-KC-nQ3" customClass="JapaneseCharactersTableViewCell" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZRm-KC-nQ3" id="x0E-NL-qUP">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq1-J9-Rod">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vowel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq1-J9-Rod">
                                             <rect key="frame" x="8" y="19" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="DPC-Sf-drh"/>
                                                 <constraint firstAttribute="width" constant="40" id="kPZ-Ja-CXu"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -223,13 +261,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKH-Zc-ZVF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vowel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKH-Zc-ZVF">
                                 <rect key="frame" x="50" y="114" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="QfJ-Nf-BoJ"/>
                                     <constraint firstAttribute="width" constant="70" id="cPW-WU-VXj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -249,6 +287,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JzO-jJ-suG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="966-Dl-Uls">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Xzz-LG-1Lv">
+                            <connections>
+                                <segue destination="VGa-6i-zi0" kind="unwind" identifier="cancel" unwindAction="unwindToJapaneseCharactersTableViewController:" id="8bA-K4-ake"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="characterLabel" destination="Jto-EP-unI" id="8ee-HM-kVk"/>
                         <outlet property="countCharacters" destination="5o5-tB-L1e" id="uBE-EB-vQY"/>
@@ -259,6 +304,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWj-eQ-zH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VGa-6i-zi0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2965.217391304348" y="517.66304347826087"/>
         </scene>
@@ -310,7 +356,7 @@
                         <viewLayoutGuide key="safeArea" id="e7I-Tz-jMe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recap" id="lhh-F6-Bpd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="f7D-4q-52Q">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="f7D-4q-52Q">
                             <connections>
                                 <segue destination="y6D-Yo-E9q" kind="unwind" unwindAction="unwindToPracticeViewController:" id="Ytl-zT-HU9"/>
                             </connections>

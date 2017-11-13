@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A86961FB7C49E00B8305A /* RecapViewController.swift */; };
+		BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A86981FB8C32B00B8305A /* AlertHelper.swift */; };
+		BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */; };
 		BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */; };
 		BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */; };
 		BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		BF0A86961FB7C49E00B8305A /* RecapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapViewController.swift; sourceTree = "<group>"; };
+		BF0A86981FB8C32B00B8305A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSoundsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharacters.swift; sourceTree = "<group>"; };
 		BF5FF94F1FA0D35D00A46DE0 /* Nukon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nukon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */,
+				BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 		BF5FF9701FA0D57200A46DE0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BF0A86981FB8C32B00B8305A /* AlertHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -225,7 +231,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */,
+				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
+				BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */,
 				BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */,
 				BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,

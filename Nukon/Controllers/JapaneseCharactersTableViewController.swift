@@ -8,11 +8,12 @@
 
 import UIKit
 
-class JapaneseCharactersTableViewController: UITableViewController {
+class JapaneseCharactersTableViewController: UITableViewController, AlertPresentable {
     
     var japaneseList = [Japanese]()
     var selectedType: JapaneseType?
     var selectedJapaneseList = [Japanese]()
+    var sectionData = [Int: [Japanese]]()
     
     weak var delegate: JapaneseDelegate?
 
@@ -22,6 +23,7 @@ class JapaneseCharactersTableViewController: UITableViewController {
         self.title = self.selectedType?.rawValue
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 80
+        self.sectionData = [0: [], 1: japaneseList]
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,28 +41,39 @@ class JapaneseCharactersTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
     
+    //////Header cell functions
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell")
-        cell?.layer.backgroundColor = UIColor.gray.cgColor
-        return cell
+        if section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedSoundsHeaderTableViewCell") as! SelectedSoundsHeaderTableViewCell
+            cell.selectedJapanese = self.selectedJapaneseList
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell")
+            cell?.layer.backgroundColor = UIColor.gray.cgColor
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
-
+    /////
+    
+    /////table view cell functions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return japaneseList.count
+        return (sectionData[section]!.count)
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath) as! JapaneseCharactersTableViewCell
         let row = indexPath.row
@@ -68,6 +81,12 @@ class JapaneseCharactersTableViewController: UITableViewController {
         cell.soundLabel.layer.borderWidth = 1
         cell.soundLabel.layer.borderColor = UIColor.lightGray.cgColor
         cell.soundLabel.text = japaneseList[row].sound
+        if row == 0 {
+            cell.soundLabel.font = cell.soundLabel.font.withSize(14.0)
+        }
+        else{
+            cell.soundLabel.font = cell.soundLabel.font.withSize(30.0)
+        }
         let words = japaneseList[row].letters.joined(separator: " ")
         cell.japaneseCharactersLabel.text = words
         return cell
@@ -79,18 +98,33 @@ class JapaneseCharactersTableViewController: UITableViewController {
             selectedJapaneseList.append(selectedJapanese)
 //            delegate?.sendJapanese(selectedJapanese: selectedJapanese)
             japaneseList[indexPath.row].select = true
+            tableView.reloadData()
         }
     }
+    //////
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "done"{
-            let showCharactersVC = segue.destination as! ShowCharactersViewController
-            showCharactersVC.list = selectedJapaneseList
-            showCharactersVC.recordAndRecognizeSpeech(type: selectedType!)
-            showCharactersVC.selectedType = self.selectedType
+            // show alert message if users does not choose any cells
+            if selectedJapaneseList.count == 0 {
+                selectAlert()
+            }
+            else {
+                for i in 0...japaneseList.count - 1 {
+                    japaneseList[i].select = false
+                }
+                let showCharactersVC = segue.destination as! ShowCharactersViewController
+                showCharactersVC.list = selectedJapaneseList
+                showCharactersVC.selectedType = self.selectedType
+            }
         }
         
     }
+    
+    @IBAction func unwindToJapaneseCharactersTableViewController(_ segue: UIStoryboardSegue) {
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
