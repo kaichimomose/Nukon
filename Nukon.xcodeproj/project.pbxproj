@@ -10,7 +10,9 @@
 		BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A86961FB7C49E00B8305A /* RecapViewController.swift */; };
 		BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A86981FB8C32B00B8305A /* AlertHelper.swift */; };
 		BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */; };
+		BF0A869D1FC50D8700B8305A /* AllPosibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A869C1FC50D8600B8305A /* AllPosibilities.swift */; };
 		BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */; };
+		BF5D5C401FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D5C3F1FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift */; };
 		BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */; };
 		BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */; };
 		BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */; };
@@ -30,7 +32,9 @@
 		BF0A86961FB7C49E00B8305A /* RecapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapViewController.swift; sourceTree = "<group>"; };
 		BF0A86981FB8C32B00B8305A /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSoundsHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		BF0A869C1FC50D8600B8305A /* AllPosibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPosibilities.swift; sourceTree = "<group>"; };
 		BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharacters.swift; sourceTree = "<group>"; };
+		BF5D5C3F1FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF5FF94F1FA0D35D00A46DE0 /* Nukon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nukon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5FF95A1FA0D35D00A46DE0 /* Nukon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nukon.xcdatamodel; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			children = (
 				BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */,
 				BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */,
+				BF5D5C3F1FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */,
 				BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */,
 				BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */,
+				BF0A869C1FC50D8600B8305A /* AllPosibilities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,8 +246,10 @@
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
 				BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */,
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
+				BF0A869D1FC50D8700B8305A /* AllPosibilities.swift in Sources */,
 				BF5FF9771FA0D9D500A46DE0 /* UserProfileViewController.swift in Sources */,
 				BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */,
+				BF5D5C401FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,21 +9,18 @@
 import UIKit
 
 class RecapViewController: UIViewController {
-
-    @IBOutlet weak var choosedCharactersLabel: UILabel!
-    @IBOutlet weak var generatedCharactersLabel: UILabel!
     
-    var choosedCharacters: [Japanese]?
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var choosenCharacters: [Japanese]?
     var characters = ""
-    var generatedCharacters: String?
+    var generatedCharacters: [String: [String: String]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for listOfCharacters in choosedCharacters!{
+        for listOfCharacters in choosenCharacters!{
             characters += "「" + listOfCharacters.letters.joined() + "」"
         }
-        choosedCharactersLabel.text = characters
-        generatedCharactersLabel.text = generatedCharacters
         // Do any additional setup after loading the view.
     }
 
@@ -31,16 +28,57 @@ class RecapViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+extension RecapViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JapaneseCharacterCell", for: indexPath) as! JapaneseCharactersCollectionViewCell
+        cell.backgroundColor = .red
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionElementKindSectionHeader else {
+            fatalError("Unexpected element kind.")
+        }
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Wrong", for: indexPath)
+        
+        headerView.layer.backgroundColor = UIColor.gray.cgColor
+        //headerView.profileImageView.backgroundColor = .red
+        
+        return headerView
+    }
+}
+
+extension RecapViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let columns: CGFloat = 3
+        let spacing: CGFloat = 1.5
+        let totalHorizontalSpacing = (columns - 1) * spacing
+        
+        let itemWidth = (collectionView.bounds.width - totalHorizontalSpacing) / columns
+        let itemSize = CGSize(width: itemWidth, height: itemWidth)
+        
+        return itemSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.5
+    }
+}
+

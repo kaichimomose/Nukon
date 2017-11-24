@@ -14,6 +14,8 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     var selectedType: JapaneseType?
     var selectedJapaneseList = [Japanese]()
     var sectionData = [Int: [Japanese]]()
+    var posibilitiesList = AllPosibilities().allPosibilitiesList
+    var selectedPosibilitiesList = [Posibilities]()
     
     weak var delegate: JapaneseDelegate?
 
@@ -81,6 +83,9 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         cell.soundLabel.layer.borderWidth = 1
         cell.soundLabel.layer.borderColor = UIColor.lightGray.cgColor
         cell.soundLabel.text = japaneseList[row].sound
+        if japaneseList[row].select != true {
+            cell.layer.backgroundColor = UIColor.white.cgColor
+        }
         if row == 0 {
             cell.soundLabel.font = cell.soundLabel.font.withSize(14.0)
         }
@@ -93,20 +98,38 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if japaneseList[indexPath.row].select != true {
-            let selectedJapanese = japaneseList[indexPath.row]
+        let cell = self.tableView.cellForRow(at: indexPath) as! JapaneseCharactersTableViewCell
+        let row = indexPath.row
+        let selectedJapanese = japaneseList[row]
+        let posibilities = posibilitiesList[row]
+        if japaneseList[row].select != true {
+            cell.layer.backgroundColor = UIColor.blue.cgColor
             selectedJapaneseList.append(selectedJapanese)
+            selectedPosibilitiesList.append(posibilities)
+            print(selectedJapaneseList)
+            print(selectedPosibilitiesList)
 //            delegate?.sendJapanese(selectedJapanese: selectedJapanese)
-            japaneseList[indexPath.row].select = true
-            tableView.reloadData()
+            japaneseList[row].select = true
         }
+        else {
+            cell.layer.backgroundColor = UIColor.white.cgColor
+            for index in 0...selectedJapaneseList.count {
+                if selectedJapaneseList[index].letters == selectedJapanese.letters {
+                    selectedJapaneseList.remove(at: index)
+                    selectedPosibilitiesList.remove(at: index)
+                    break
+                }
+            }
+            japaneseList[row].select = false
+        }
+        self.tableView.reloadData()
     }
     //////
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "done"{
-            // show alert message if users does not choose any cells
+            // show alert message if users do not choose any cells
             if selectedJapaneseList.count == 0 {
                 selectAlert()
             }
@@ -117,9 +140,9 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
                 let showCharactersVC = segue.destination as! ShowCharactersViewController
                 showCharactersVC.list = selectedJapaneseList
                 showCharactersVC.selectedType = self.selectedType
+                showCharactersVC.posibilitiesList = selectedPosibilitiesList
             }
         }
-        
     }
     
     @IBAction func unwindToJapaneseCharactersTableViewController(_ segue: UIStoryboardSegue) {

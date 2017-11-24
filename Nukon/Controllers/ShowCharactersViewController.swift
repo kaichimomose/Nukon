@@ -9,7 +9,7 @@
 import UIKit
 import Speech
 
-enum Decision: String {
+enum Judge: String {
     case correct = "⭕️"
     case wrong = "❌"
     case yet = ""
@@ -18,13 +18,14 @@ enum Decision: String {
 enum Comment: String {
     case start = "tap start button to begin recording"
     case recording = "recording your pronunciation, say just once"
-    case recognizing = "recognizing your voice, keep silent"
-    case next = "tap next"
+    case recognized = "recognizing your voice, keep silent"
+    case next = "tap start if you are ready"
     case recap = "tap recap"
 }
 
 enum ButtonTitle: String {
     case start = "Start Voice Recognition"
+    case stop = "Stop Voice Recognition"
     case next = "Next Character"
     case recap = "See Recap"
 }
@@ -35,16 +36,21 @@ class ShowCharactersViewController: UIViewController {
     var list = [Japanese]()
     var appearedCharacters = [String]()
     var shownCharacter = ""
+    var soundType = ""
     var vowelIndexCounter: Int = 0
     var soundIndexCounter: Int = 0
     var counter: Int = 0
     var maxChara: Int = 0
-    var mutableList = [[String]]()
+    var mutableList = [(String, [String])]()
     var selectedType: JapaneseType?
-    var decision = Decision.yet
-    var bestString = ""
-    var comment = Comment.start
+    var judge = Judge.yet
+    var bestString = ["correct": [String: String](), "wrong": [String: String]()]
+    var comment = Comment.next
     var buttonTitle = ButtonTitle.start
+    
+    var posibilitiesList = [Posibilities]()
+    var posibilities = [String]()
+    var mutablePosibilitiesList = [[[String]]]()
     
     // values for voice recognization
 //    let audioEngine = AVAudioEngine()
@@ -63,6 +69,7 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var nextCharacterButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
+    @IBOutlet weak var judgeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,23 +85,29 @@ class ShowCharactersViewController: UIViewController {
 //        self.soundLabel.layer.borderWidth = 1
         
         for listOfCharacters in list{
-            mutableList.append(listOfCharacters.letters)
+            mutableList.append((listOfCharacters.sound, listOfCharacters.letters))
+        }
+        print(mutableList)
+        for listOfPosibilities in posibilitiesList{
+            mutablePosibilitiesList.append(listOfPosibilities.posibilitiesList)
         }
         self.maxChara = numberOfCharacters()
+        self.shownCharacter = randomCharacter()
         self.updateLabels()
     }
     
     func updateLabels() {
-        if self.list[self.soundIndexCounter].sound == "vowel" {
+        if self.soundType == "vowel" {
             self.soundLabel.font = self.soundLabel.font.withSize(20.0)
          }
         else {
             self.soundLabel.font = self.soundLabel.font.withSize(40.0)
         }
         self.commentLabel.text = self.comment.rawValue
-        self.soundLabel.text = self.list[self.soundIndexCounter].sound
+        self.soundLabel.text = self.soundType
         self.characterLabel.text = self.shownCharacter
         self.countCharacters.text = "\(self.counter)/\(self.maxChara)"
+        self.judgeLabel.text = self.judge.rawValue
         self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: .normal)
     }
 
@@ -105,60 +118,39 @@ class ShowCharactersViewController: UIViewController {
     
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
         self.nextCharacter()
-//        self.nextCharacterButton.isHidden = true
     }
     
     func nextCharacter() {
-        
-        if audioEngine.isRunning {
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-            nextCharacterButton.isEnabled = false
-            nextCharacterButton.setTitle("停止中", for: .disabled)
-        } else {
+        switch buttonTitle {
+        case .next:
+            self.shownCharacter = randomCharacter()
+            self.buttonTitle = .start
+        case .start:
             try! startRecording()
-            nextCharacterButton.setTitle("音声認識を中止", for: [])
-        }
-        
-//        if self.counter == 0{
-//            self.recordAndRecognizeSpeech(type: selectedType!)
-//            self.shownCharacter = orderCharacter()
-//            self.comment = .recording
-//        }
-//        else
-        if counter < maxChara {
-            self.shownCharacter = orderCharacter()
+            self.buttonTitle = .stop
             self.comment = .recording
-//            audioEngine.prepare()
-//            do {
-//                try audioEngine.start()
-//            } catch {
-//                return print(error)
-//            }
+        case .stop:
             if audioEngine.isRunning {
                 audioEngine.stop()
                 recognitionRequest?.endAudio()
                 nextCharacterButton.isEnabled = false
                 nextCharacterButton.setTitle("停止中", for: .disabled)
-            } else {
-                try! startRecording()
-                nextCharacterButton.setTitle("音声認識を中止", for: [])
             }
-        }
-        else {
+            self.comment = .next
+            self.buttonTitle = .start
+        case .recap:
             if self.audioEngine.isRunning {
                 self.audioEngine.stop()
             }
             self.characterLabel.text = ""
             let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
-            recapVC.choosedCharacters = self.list
+            recapVC.choosenCharacters = self.list
             recapVC.generatedCharacters = self.bestString
             
             self.navigationController?.pushViewController(recapVC, animated: true)
         }
-        self.decision = .yet
+        self.judge = .yet
         self.updateLabels()
-//        self.checkLabel.text = self.decision.rawValue
     }
     
     func numberOfCharacters() -> Int {
@@ -175,15 +167,19 @@ class ShowCharactersViewController: UIViewController {
     
     func randomCharacter() -> String {
         let soundIndex = Int(arc4random()) % self.mutableList.count
-        let vowelIndex = Int(arc4random()) % self.mutableList[soundIndex].count
-        var showCharacter = self.mutableList[soundIndex][vowelIndex]
-        self.mutableList[soundIndex].remove(at: vowelIndex)
+        let vowelIndex = Int(arc4random()) % self.mutableList[soundIndex].1.count
+        var showCharacter = self.mutableList[soundIndex].1[vowelIndex]
+        self.posibilities = self.mutablePosibilitiesList[soundIndex][vowelIndex]
+        self.mutableList[soundIndex].1.remove(at: vowelIndex)
+        self.soundType = self.mutableList[soundIndex].0
+        self.mutablePosibilitiesList[soundIndex].remove(at: vowelIndex)
         if showCharacter == "　" {
             showCharacter = randomCharacter()
         }
         else {
-            if self.mutableList[soundIndex] == [] {
+            if self.mutableList[soundIndex].1 == [] {
                 self.mutableList.remove(at: soundIndex)
+                self.mutablePosibilitiesList.remove(at: soundIndex)
             }
             self.counter += 1
         }
@@ -200,13 +196,16 @@ class ShowCharactersViewController: UIViewController {
             }
         }
         var showCharacter = list[self.soundIndexCounter].letters[self.vowelIndexCounter]
+        self.soundType = list[self.soundIndexCounter].sound
+        self.posibilities = self.posibilitiesList[self.soundIndexCounter].posibilitiesList[self.vowelIndexCounter]
+        self.vowelIndexCounter += 1
         if showCharacter == "　" {
             showCharacter = orderCharacter()
+            self.counter += 0
         }
         else {
             self.counter += 1
         }
-        self.vowelIndexCounter += 1
         return showCharacter
     }
     
@@ -214,6 +213,7 @@ class ShowCharactersViewController: UIViewController {
         if segue.identifier == "cancel" {
             let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
             japaneseCharactersTVC.selectedJapaneseList = [Japanese]()
+            japaneseCharactersTVC.selectedPosibilitiesList = [Posibilities]()
             japaneseCharactersTVC.tableView.reloadData()
         }
     }
@@ -225,7 +225,8 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             nextCharacterButton.isEnabled = true
-            nextCharacterButton.setTitle("音声認識スタート", for: [])
+            self.buttonTitle = .start
+            nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
         } else {
             nextCharacterButton.isEnabled = false
             nextCharacterButton.setTitle("音声認識ストップ", for: .disabled)
@@ -248,17 +249,48 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         
         // 録音が完了する前のリクエストを作るかどうかのフラグ。
         // trueだと現在-1回目のリクエスト結果が返ってくる模様。falseだとボタンをオフにしたときに音声認識の結果が返ってくる設定。
-        recognitionRequest.shouldReportPartialResults = false
-        
+        recognitionRequest.shouldReportPartialResults = true
+        var willAppend = false
+
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
             guard let `self` = self else { return }
             
             var isFinal = false
             
             if let result = result {
-                self.commentLabel.text = result.bestTranscription.formattedString
+//                let posibilities = result.transcriptions
+//                print(posibilities)
+                let theBestString = result.bestTranscription.formattedString
+                if willAppend == true {
+                    for posibility in self.posibilities {
+                        if theBestString == posibility {
+                            self.commentLabel.text = self.shownCharacter
+                            self.bestString["correct"]! = [self.shownCharacter: self.shownCharacter]
+                            willAppend = false
+                            self.judge = .correct
+                            self.judgeLabel.text = self.judge.rawValue
+                            break
+                        }
+                    }
+                    
+                }
+                if willAppend == true {
+                    self.commentLabel.text = theBestString
+                    self.bestString["wrong"]! = [self.shownCharacter: theBestString]
+                    willAppend = false
+                    self.judge = .wrong
+                    self.judgeLabel.text = self.judge.rawValue
+                }
+
                 isFinal = result.isFinal
+                recognitionRequest.shouldReportPartialResults = false
+                willAppend = true
+                self.audioEngine.stop()
+                recognitionRequest.endAudio()
+                self.nextCharacterButton.isEnabled = false
+                self.nextCharacterButton.setTitle("停止中", for: .disabled)
             }
+            
             
             // エラーがある、もしくは最後の認識結果だった場合の処理
             if error != nil || isFinal {
@@ -269,7 +301,19 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 self.recognitionTask = nil
                 
                 self.nextCharacterButton.isEnabled = true
-                self.nextCharacterButton.setTitle("音声認識スタート", for: [])
+                if self.counter == self.maxChara{
+                    self.comment = .recap
+                    self.buttonTitle = .recap
+                }
+                else if error != nil {
+                    self.comment = .next
+                    self.buttonTitle = .start
+                }
+                else{
+                    self.comment = .next
+                    self.buttonTitle = .next
+                }
+                self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
             }
         }
         // マイクから取得した音声バッファをリクエストに渡す
@@ -294,99 +338,6 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         
         try audioEngine.start()
         
-        commentLabel.text = "どうぞ喋ってください。"
     }
 }
-
-//voice recoginization function
-//extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
-//    func recordAndRecognizeSpeech(type: JapaneseType) {
-//        let node = audioEngine.inputNode
-//        let recordingFormat = node.outputFormat(forBus: 0)
-//        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
-//            self.request.append(buffer)
-//        }
-//        audioEngine.prepare()
-//        do {
-//            try audioEngine.start()
-//        } catch {
-//            return print(error)
-//        }
-//        guard let myRecognizer = SFSpeechRecognizer() else {
-//            return
-//        }
-//        if !myRecognizer.isAvailable {
-//            return
-//        }
-//
-//        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { (result, error) in
-//            if let result = result {
-//                let posibilities = result.transcriptions
-//
-//                print(posibilities)
-//                if self.audioEngine.isRunning {
-//                    self.audioEngine.stop()
-//                }
-//                self.comment = .recognizing
-//                switch type {
-//                case .hiragana:
-//                    self.bestString = result.bestTranscription.formattedString
-//                case .katakana:
-//                    self.bestString = result.bestTranscription.formattedString
-//                    let changeCharacter = NSMutableString(string: self.bestString) as CFMutableString
-//                    CFStringTransform(changeCharacter, nil, kCFStringTransformHiraganaKatakana, false)
-//                    self.bestString = changeCharacter as String
-//                }
-//
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-//                    // Put your code which should be executed with a delay here
-//                    if self.counter == self.maxChara{
-//                        self.comment = .recap
-//                        self.buttonTitle = .recap
-//                    }
-//                    else{
-//                        self.comment = .next
-//                        self.buttonTitle = .next
-//                    }
-//                    self.updateLabels()
-//                    self.nextCharacterButton.isHidden = false
-//                })
-//                self.updateLabels()
-//                print(self.bestString)
-////                self.checkCharacter(decision: self.decision, character: lastCharacter)
-//            } else {
-//                print(error ?? "")
-//            }
-//        })
-//    }
-//
-//    func checkCharacter(decision: Decision, character: String) {
-//        switch character {
-//        case self.shownCharacter:
-////            switch decision {
-////            case .correct:
-////                self.decision = .yet
-////            case .wrong:
-////                self.decision = .yet
-////            case .yet:
-//                self.decision = .correct
-////            }
-//
-//        default:
-//            self.decision = .wrong
-//        }
-//        print(self.decision)
-////        self.checkLabel.text = self.decision.rawValue
-//        if audioEngine.isRunning {
-//            audioEngine.stop()
-//        }
-//    }
-//
-//    private func refreshTask() {
-//        if let recognitionTask = recognitionTask {
-//            recognitionTask.cancel()
-//            self.recognitionTask = nil
-//        }
-//    }
-//}
 
