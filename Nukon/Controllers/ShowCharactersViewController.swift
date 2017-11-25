@@ -16,10 +16,8 @@ enum Judge: String {
 }
 
 enum Comment: String {
-    case start = "tap start button to begin recording"
+    case start = "tap start button if you are ready"
     case recording = "recording your pronunciation, say just once"
-    case recognized = "recognizing your voice, keep silent"
-    case next = "tap start if you are ready"
     case recap = "tap recap"
 }
 
@@ -34,7 +32,6 @@ class ShowCharactersViewController: UIViewController {
     
     //values to show characters
     var list = [Japanese]()
-    var appearedCharacters = [String]()
     var shownCharacter = ""
     var soundType = ""
     var vowelIndexCounter: Int = 0
@@ -42,22 +39,16 @@ class ShowCharactersViewController: UIViewController {
     var counter: Int = 0
     var maxChara: Int = 0
     var mutableList = [(String, [String])]()
-    var selectedType: JapaneseType?
     var judge = Judge.yet
-    var bestString = ["correct": [String: String](), "wrong": [String: String]()]
-    var comment = Comment.next
+    var comment = Comment.start
     var buttonTitle = ButtonTitle.start
+    var bestString = ["correct": [(String, String)](), "wrong": [(String, String)]()]
     
     var posibilitiesList = [Posibilities]()
     var posibilities = [String]()
     var mutablePosibilitiesList = [[[String]]]()
     
     // values for voice recognization
-//    let audioEngine = AVAudioEngine()
-//    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale(identifier: "ja-JP"))
-//    let request = SFSpeechAudioBufferRecognitionRequest()
-//    var recognitionTask: SFSpeechRecognitionTask?
-    
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja-JP"))!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -134,15 +125,15 @@ class ShowCharactersViewController: UIViewController {
                 audioEngine.stop()
                 recognitionRequest?.endAudio()
                 nextCharacterButton.isEnabled = false
-                nextCharacterButton.setTitle("停止中", for: .disabled)
+                nextCharacterButton.setTitle("Stopping", for: .disabled)
             }
-            self.comment = .next
+            self.comment = .start
             self.buttonTitle = .start
         case .recap:
             if self.audioEngine.isRunning {
                 self.audioEngine.stop()
+                recognitionRequest?.endAudio()
             }
-            self.characterLabel.text = ""
             let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
             recapVC.choosenCharacters = self.list
             recapVC.generatedCharacters = self.bestString
@@ -229,7 +220,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
             nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
         } else {
             nextCharacterButton.isEnabled = false
-            nextCharacterButton.setTitle("音声認識ストップ", for: .disabled)
+            nextCharacterButton.setTitle("voice recognition is unavailable", for: .disabled)
         }
     }
     
@@ -250,6 +241,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         // 録音が完了する前のリクエストを作るかどうかのフラグ。
         // trueだと現在-1回目のリクエスト結果が返ってくる模様。falseだとボタンをオフにしたときに音声認識の結果が返ってくる設定。
         recognitionRequest.shouldReportPartialResults = true
+        
         var willAppend = false
 
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
@@ -265,7 +257,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     for posibility in self.posibilities {
                         if theBestString == posibility {
                             self.commentLabel.text = self.shownCharacter
-                            self.bestString["correct"]! = [self.shownCharacter: self.shownCharacter]
+                            self.bestString["correct"]!.append((self.shownCharacter, self.shownCharacter))
                             willAppend = false
                             self.judge = .correct
                             self.judgeLabel.text = self.judge.rawValue
@@ -276,7 +268,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 }
                 if willAppend == true {
                     self.commentLabel.text = theBestString
-                    self.bestString["wrong"]! = [self.shownCharacter: theBestString]
+                    self.bestString["wrong"]!.append((self.shownCharacter, theBestString))
                     willAppend = false
                     self.judge = .wrong
                     self.judgeLabel.text = self.judge.rawValue
@@ -288,7 +280,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 self.audioEngine.stop()
                 recognitionRequest.endAudio()
                 self.nextCharacterButton.isEnabled = false
-                self.nextCharacterButton.setTitle("停止中", for: .disabled)
+                self.nextCharacterButton.setTitle("Stopping", for: .disabled)
             }
             
             
@@ -301,16 +293,16 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 self.recognitionTask = nil
                 
                 self.nextCharacterButton.isEnabled = true
-                if self.counter == self.maxChara{
+                if error != nil {
+                    self.comment = .start
+                    self.buttonTitle = .start
+                }
+                else if self.counter == self.maxChara{
                     self.comment = .recap
                     self.buttonTitle = .recap
                 }
-                else if error != nil {
-                    self.comment = .next
-                    self.buttonTitle = .start
-                }
                 else{
-                    self.comment = .next
+                    self.comment = .start
                     self.buttonTitle = .next
                 }
                 self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])

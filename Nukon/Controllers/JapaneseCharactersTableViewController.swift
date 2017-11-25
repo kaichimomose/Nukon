@@ -13,12 +13,9 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     var japaneseList = [Japanese]()
     var selectedType: JapaneseType?
     var selectedJapaneseList = [Japanese]()
-    var sectionData = [Int: [Japanese]]()
-    var posibilitiesList = AllPosibilities().allPosibilitiesList
     var selectedPosibilitiesList = [Posibilities]()
+    var sectionData = [Int: [Japanese]]()
     
-    weak var delegate: JapaneseDelegate?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.chooseJapaneseCharacterType(type: selectedType!)
@@ -34,6 +31,7 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     }
     
     func chooseJapaneseCharacterType(type: JapaneseType) {
+        // chooses hiragana or katakana based on users' choice
         switch type {
         case .hiragana:
             self.japaneseList = JapaneseCharacters().hiraganaList
@@ -54,11 +52,13 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     //////Header cell functions
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
+            // the header that shows what sound user select
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedSoundsHeaderTableViewCell") as! SelectedSoundsHeaderTableViewCell
             cell.selectedJapanese = self.selectedJapaneseList
             return cell
         }
         else {
+            // the header that shows vowels (a, i, u, e, o)
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell")
             cell?.layer.backgroundColor = UIColor.gray.cgColor
             return cell
@@ -66,32 +66,37 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // sets height of header cells
         return 60
     }
     /////
     
     /////table view cell functions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        // returns the number of table view rows
         return (sectionData[section]!.count)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath) as! JapaneseCharactersTableViewCell
         let row = indexPath.row
+        // sets layers
         cell.soundLabel.layer.cornerRadius = 20
         cell.soundLabel.layer.borderWidth = 1
         cell.soundLabel.layer.borderColor = UIColor.lightGray.cgColor
         cell.soundLabel.text = japaneseList[row].sound
         if japaneseList[row].select != true {
+            // changes the background color from blue to white when returning from ShowCharactersView to here
             cell.layer.backgroundColor = UIColor.white.cgColor
         }
+        // ajusts font size based on rows
         if row == 0 {
             cell.soundLabel.font = cell.soundLabel.font.withSize(14.0)
         }
         else{
             cell.soundLabel.font = cell.soundLabel.font.withSize(30.0)
         }
+        // makes one string from character letters lists
         let words = japaneseList[row].letters.joined(separator: " ")
         cell.japaneseCharactersLabel.text = words
         return cell
@@ -101,18 +106,21 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         let cell = self.tableView.cellForRow(at: indexPath) as! JapaneseCharactersTableViewCell
         let row = indexPath.row
         let selectedJapanese = japaneseList[row]
-        let posibilities = posibilitiesList[row]
+        let posibilities = AllPosibilities().allPosibilitiesList[row]
         if japaneseList[row].select != true {
+            // once being selected, changes the background color to blue
             cell.layer.backgroundColor = UIColor.blue.cgColor
             selectedJapaneseList.append(selectedJapanese)
             selectedPosibilitiesList.append(posibilities)
             print(selectedJapaneseList)
             print(selectedPosibilitiesList)
-//            delegate?.sendJapanese(selectedJapanese: selectedJapanese)
+            // avoids choosing the same row
             japaneseList[row].select = true
         }
         else {
+            // changes the background color from blue to white when choose the row that has been already choosen
             cell.layer.backgroundColor = UIColor.white.cgColor
+            // remove the row form selectedList
             for index in 0...selectedJapaneseList.count {
                 if selectedJapaneseList[index].letters == selectedJapanese.letters {
                     selectedJapaneseList.remove(at: index)
@@ -134,12 +142,13 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
                 selectAlert()
             }
             else {
+                //
                 for i in 0...japaneseList.count - 1 {
                     japaneseList[i].select = false
                 }
+                // sends lists to ShowCharactersViewController
                 let showCharactersVC = segue.destination as! ShowCharactersViewController
                 showCharactersVC.list = selectedJapaneseList
-                showCharactersVC.selectedType = self.selectedType
                 showCharactersVC.posibilitiesList = selectedPosibilitiesList
             }
         }

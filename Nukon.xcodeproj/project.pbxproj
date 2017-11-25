@@ -26,6 +26,7 @@
 		BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */; };
 		BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
+		BFA65BB01FC8D35400F426F0 /* RecapCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersTableViewCell.swift; sourceTree = "<group>"; };
 		BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
+		BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */,
 				BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */,
 				BF5D5C3F1FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift */,
+				BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */,
 				BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */,
 				BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */,
+				BFA65BB01FC8D35400F426F0 /* RecapCollectionReusableView.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
 				BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */,

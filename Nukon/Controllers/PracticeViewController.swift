@@ -12,24 +12,15 @@ protocol JapaneseDelegate: class {
     func sendJapanese(selectedJapanese: [String])
 }
 
-class PracticeViewController: UIViewController, JapaneseDelegate {
+class PracticeViewController: UIViewController {
 
     @IBOutlet weak var printLabel: UILabel!
     @IBOutlet weak var haraganaButton: UIButton!
     @IBOutlet weak var katakanaButton: UIButton!
     
-    var displayJapanese = [[String]]()
-    var japanese = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        for words in displayJapanese {
-            for word in words {
-                self.japanese += "\(word) "
-            }
-        // Do any additional setup after loading the view.
-        }
-        printLabel.text = self.japanese
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,21 +36,15 @@ class PracticeViewController: UIViewController, JapaneseDelegate {
         printLabel.text = "katakana tapped"
     }
     
-    func sendJapanese(selectedJapanese: [String]) {
-        displayJapanese.append(selectedJapanese)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
-        japaneseCharactersTVC.delegate = self
         if segue.identifier == "hiragana"{
             japaneseCharactersTVC.selectedType = JapaneseType.hiragana
         }
         else if segue.identifier == "katakana" {
             japaneseCharactersTVC.selectedType = JapaneseType.katakana
         }
-        self.displayJapanese = [[]]
-        self.japanese = ""
     }
     
     @IBAction func unwindToPracticeViewController(_ segue: UIStoryboardSegue) {

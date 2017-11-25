@@ -9,5 +9,12 @@
 import UIKit
 
 class JapaneseCharactersCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var characterLabel: UILabel!
+    
+//    var correctOrWrongList: [String: [[String: String]]]? {
+//        didSet{
+//            characterLabel
+//        }
+//    }
     
 }
