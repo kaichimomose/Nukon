@@ -12,15 +12,10 @@ class RecapViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var choosenCharacters: [Japanese]?
-    var characters = ""
     var generatedCharacters: [String: [(String, String)]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for listOfCharacters in choosenCharacters!{
-            characters += "「" + listOfCharacters.letters.joined() + "」"
-        }
         // Do any additional setup after loading the view.
     }
 
@@ -90,7 +85,9 @@ extension RecapViewController: UICollectionViewDataSource {
 }
 
 extension RecapViewController: UICollectionViewDelegateFlowLayout {
+    // sets collectionview cell size and space between each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // returns cell size, 3 cells in each row
         let columns: CGFloat = 3
         let spacing: CGFloat = 1.5
         let totalHorizontalSpacing = (columns - 1) * spacing

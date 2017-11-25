@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "533256677.305343"
+            timestampString = "533266993.14827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "startRecording()"
             landmarkType = "7">
          </BreakpointContent>
