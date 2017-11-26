@@ -27,6 +27,7 @@
 		BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
 		BFA65BB01FC8D35400F426F0 /* RecapCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */; };
+		BFA65BB21FC9FF4200F426F0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
 		BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapCollectionReusableView.swift; sourceTree = "<group>"; };
+		BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 				BF0A86961FB7C49E00B8305A /* RecapViewController.swift */,
+				BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
 				BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */,
+				BFA65BB21FC9FF4200F426F0 /* AnalysisViewController.swift in Sources */,
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF0A869D1FC50D8700B8305A /* AllPosibilities.swift in Sources */,
 				BF5FF9771FA0D9D500A46DE0 /* UserProfileViewController.swift in Sources */,

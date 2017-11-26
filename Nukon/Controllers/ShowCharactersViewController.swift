@@ -42,7 +42,9 @@ class ShowCharactersViewController: UIViewController {
     var judge = Judge.yet
     var comment = Comment.start
     var buttonTitle = ButtonTitle.start
-    var bestString = ["correct": [(String, String)](), "wrong": [(String, String)]()]
+    var bestString = [Judge.correct: [(String, String)](), Judge.wrong: [(String, String)]()]
+    var buffers = [AVAudioPCMBuffer]()
+    var buffer: AVAudioPCMBuffer!
     
     var posibilitiesList = [Posibilities]()
     var posibilities = [String]()
@@ -130,9 +132,15 @@ class ShowCharactersViewController: UIViewController {
             self.comment = .start
             self.buttonTitle = .start
         case .recap:
+            if audioEngine.isRunning {
+                audioEngine.stop()
+                recognitionRequest?.endAudio()
+            }
             let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
             // sends dictionaly of generated character by voice recognition to RecapViewController
             recapVC.generatedCharacters = self.bestString
+            print(self.buffers)
+            recapVC.buffer = self.buffers
             // goes to RecapViewController
             self.navigationController?.pushViewController(recapVC, animated: true)
         }
@@ -236,7 +244,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         
         let audioSession = AVAudioSession.sharedInstance()
         // sets category for record
-        try audioSession.setCategory(AVAudioSessionCategoryRecord)
+        try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
         try audioSession.setMode(AVAudioSessionModeMeasurement)
         try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         
@@ -265,11 +273,11 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     // passes first result
                     for posibility in self.posibilities {
                         if theBestString == posibility {
-                            self.commentLabel.text = self.shownCharacter
-                            self.bestString["correct"]!.append((self.shownCharacter, self.shownCharacter))
-                            willAppend = false
                             self.judge = .correct
+                            self.commentLabel.text = self.shownCharacter
+                            self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter))
                             self.judgeLabel.text = self.judge.rawValue
+                            willAppend = false
                             break
                         }
                     }
@@ -277,11 +285,12 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 }
                 if willAppend == true {
                     // passes when a character has been already appended
-                    self.commentLabel.text = theBestString
-                    self.bestString["wrong"]!.append((self.shownCharacter, theBestString))
-                    willAppend = false
                     self.judge = .wrong
+                    self.commentLabel.text = theBestString
+                    self.bestString[self.judge]!.append((self.shownCharacter, theBestString))
+                    self.buffers.append(self.buffer)
                     self.judgeLabel.text = self.judge.rawValue
+                    willAppend = false
                 }
                 
                 
@@ -321,11 +330,13 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
             }
         }
-        // give an buffer that get from microphone to the request
+        // give an buffer from microphone to the request
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            self.buffer = buffer
             self.recognitionRequest?.append(buffer)
         }
+        
         
         try startAudioEngine()
     }
@@ -342,7 +353,6 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         audioEngine.prepare()
         
         try audioEngine.start()
-        
     }
 }
 
