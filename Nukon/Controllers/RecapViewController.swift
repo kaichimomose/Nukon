@@ -15,10 +15,13 @@ class RecapViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     var generatedCharacters: [Judge: [(String, String)]]?
     var buffer: [AVAudioPCMBuffer]?
+    var wordsLearnt = [WordLearnt]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //retrieve core data
+        wordsLearnt = CoreDataHelper.retrieveWordLearnt()
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,12 +110,12 @@ extension RecapViewController: UICollectionViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "done" {
-            let userProfileVC = segue.destination as! UserProfileViewController
+//            let userProfileVC = segue.destination as! UserProfileViewController
 //            let userData = userProfileVC.userData
-            let wordsList = userProfileVC.wordsLearnt
+//            let wordsList = userProfileVC.wordsLearnt
             for correctWord in generatedCharacters![.correct]! {
                 var find = false
-                for wordLearnt in wordsList {
+                for wordLearnt in wordsLearnt {
                     if wordLearnt.word == correctWord.1 {
                         wordLearnt.numberOfCorrect += 1
                         find = true
@@ -123,6 +126,21 @@ extension RecapViewController: UICollectionViewDataSource {
                     let newWordLearnt = CoreDataHelper.newWordLearnt()
                     newWordLearnt.word = correctWord.1
                     newWordLearnt.numberOfCorrect = 1
+                }
+            }
+            for wrongWord in generatedCharacters![.wrong]! {
+                var find = false
+                for wordLearnt in wordsLearnt {
+                    if wordLearnt.word == wrongWord.1 {
+                        wordLearnt.numberOfWrong += 1
+                        find = true
+                        break
+                    }
+                }
+                if find == false{
+                    let newWordLearnt = CoreDataHelper.newWordLearnt()
+                    newWordLearnt.word = wrongWord.0
+                    newWordLearnt.numberOfWrong = 1
                 }
             }
             CoreDataHelper.saveWordLearnt()

@@ -8,15 +8,20 @@
 
 import UIKit
 
-@IBDesignable class UserProfileViewController: UIViewController {
+@IBDesignable class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 
     @IBOutlet var backSuper: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var leaderboardIcon: UIImageView!
     @IBOutlet weak var updatedViewWithArc: Arc!
     @IBOutlet weak var numberOfWordsLearntLabel: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var longestStreakLabel: UILabel!
+    @IBOutlet weak var numberOfWordsToReviewLabel: UILabel!
     
     let arclayer = CAShapeLayer()
+    var userDatas = [UserData]()
+    var userData = UserData()
     var wordsLearnt = [WordLearnt]()
     
     //create leaderBoardIcon programmatically
@@ -84,19 +89,66 @@ import UIKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
         
         //retrive core data
         wordsLearnt = CoreDataHelper.retrieveWordLearnt()
+        userDatas = CoreDataHelper.retrieveUserData()
         
         //set up labels and images
         setUpImage()
 //        setUpLeaderBoardIcon()
+        
+        if userDatas == [] {
+            userData =  CoreDataHelper.newUserData()
+            userData.loginDate = Date().convertToString().components(separatedBy: ",")[0]
+            userData.nextDateofLoginDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())?.convertToString().components(separatedBy: ",")[0]
+            userData.streak = 1
+            userData.longestStreak = 1
+            userData.points = 0
+        }
+        else {
+            userData = userDatas[0]
+            let userLastLoginDate = userData.loginDate
+            let correntDate = Date().convertToString().components(separatedBy: ",")[0]
+            if userLastLoginDate != correntDate {
+                let nextDateOfUserLastLoginDate = userData.nextDateofLoginDate
+                if nextDateOfUserLastLoginDate == correntDate {
+                    userData.streak += 1
+                    if userData.streak > userData.longestStreak {
+                        userData.longestStreak = userData.streak
+                    }
+                }
+                else {
+                    userData.streak = 0
+                }
+            }
+            userData.loginDate = Date().convertToString().components(separatedBy: ",")[0]
+            userData.nextDateofLoginDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())?.convertToString().components(separatedBy: ",")[0]
+        }
+        CoreDataHelper.saveUserData()
+        pointsLabel.text = String(userData.points)
+        longestStreakLabel.text = String(userData.longestStreak)
+        
         if wordsLearnt == [] {
             numberOfWordsLearntLabel.text = String(0)
         }
         else {
-            numberOfWordsLearntLabel.text = String(describing: wordsLearnt.count)
+            var numberOfWordsLearnt = [String]()
+            var numberOfWordsToReview = [String]()
+            for wordLearnt in wordsLearnt {
+                if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
+                    numberOfWordsLearnt.append(wordLearnt.word!)
+                }
+                else {
+                    numberOfWordsToReview.append(wordLearnt.word!)
+                }
+                //CoreDataHelper.delete(wordLearnt: wordLearnt)
+            }
+            numberOfWordsToReviewLabel.text = String(numberOfWordsToReview.count)
+            numberOfWordsLearntLabel.text = String(numberOfWordsLearnt.count)
         }
+//        CoreDataHelper.saveWordLearnt()
         
         //create leader board icon
         create()
@@ -135,8 +187,13 @@ import UIKit
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
     }
     
-    
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 0 {
+            //do your stuff
+            self.viewDidLoad()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -144,8 +201,6 @@ import UIKit
     }
     
     @IBAction func unwindToUserProfileViewController(_ segue: UIStoryboardSegue) {
-        
-        self.wordsLearnt = CoreDataHelper.retrieveWordLearnt()
         self.viewDidLoad()
     }
     

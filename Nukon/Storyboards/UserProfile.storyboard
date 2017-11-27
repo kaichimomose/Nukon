@@ -156,7 +156,10 @@
                     <connections>
                         <outlet property="backSuper" destination="TuU-rQ-qWi" id="aV3-Kp-eO0"/>
                         <outlet property="leaderboardIcon" destination="3DP-qY-sGb" id="bqj-o3-EZE"/>
+                        <outlet property="longestStreakLabel" destination="ZZ5-Eg-nih" id="WuM-pf-5t8"/>
                         <outlet property="numberOfWordsLearntLabel" destination="yMq-4K-7OI" id="vnK-OZ-W0G"/>
+                        <outlet property="numberOfWordsToReviewLabel" destination="Z8Y-7V-cbm" id="qHc-Io-fmL"/>
+                        <outlet property="pointsLabel" destination="LSr-h6-NtD" id="Zjg-d5-DrP"/>
                         <outlet property="profileImage" destination="gci-K0-MGS" id="VzV-4M-pbq"/>
                         <outlet property="updatedViewWithArc" destination="JbO-kc-3hN" id="L01-rI-zcm"/>
                     </connections>

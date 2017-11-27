@@ -402,7 +402,7 @@
                     <navigationItem key="navigationItem" title="Recap" id="lhh-F6-Bpd">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="f7D-4q-52Q">
                             <connections>
-                                <segue destination="y6D-Yo-E9q" kind="unwind" identifier="done" unwindAction="unwindToUserProfileViewController:" id="Ytl-zT-HU9"/>
+                                <segue destination="y6D-Yo-E9q" kind="unwind" identifier="done" unwindAction="unwindToPracticeViewController:" id="Ytl-zT-HU9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
