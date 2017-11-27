@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class Arc: UIView {
+class Arc: UIView {
     var shape = CAShapeLayer()
     
     override func layoutSubviews() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController {
 
     @IBOutlet var backSuper: UIView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -17,20 +17,20 @@ import UIKit
     
     //LABELS
     
-    @IBOutlet weak var points: UILabel!
-    @IBOutlet weak var numOfPoints: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var numOfPointsLabel: UILabel!
     
     
-    @IBOutlet weak var longestStreak: UILabel!
-    @IBOutlet weak var numOfdays: UILabel!
+    @IBOutlet weak var longestStreakLabel: UILabel!
+    @IBOutlet weak var numOfdaysLabel: UILabel!
     
     
-    @IBOutlet weak var wordsToReview: UILabel!
-    @IBOutlet weak var numOfWordsToReview: UILabel!
+    @IBOutlet weak var wordsToReviewLabel: UILabel!
+    @IBOutlet weak var numOfWordsToReviewLabel: UILabel!
     
     
-    @IBOutlet weak var wordsLearnt: UILabel!
-    @IBOutlet weak var numOfwordsLearnt: UILabel!
+    @IBOutlet weak var wordsLearntLabel: UILabel!
+    @IBOutlet weak var numOfwordsLearntLabel: UILabel!
     
     
     
@@ -150,31 +150,31 @@ import UIKit
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        self.points.center.x += self.view.bounds.width
-        numOfPoints.center.x += view.bounds.width
+        self.pointsLabel.center.x += self.view.bounds.width
+        numOfPointsLabel.center.x += view.bounds.width
         
-        longestStreak.center.x += view.bounds.width
-        numOfdays.center.x += view.bounds.width
+        longestStreakLabel.center.x += view.bounds.width
+        numOfdaysLabel.center.x += view.bounds.width
         
-        wordsToReview.center.x -= view.bounds.width
-        numOfWordsToReview.center.x -= view.bounds.width
+        wordsToReviewLabel.center.x -= view.bounds.width
+        numOfWordsToReviewLabel.center.x -= view.bounds.width
         
-        wordsLearnt.center.x -= view.bounds.width
-        numOfwordsLearnt.center.x -= view.bounds.width
+        wordsLearntLabel.center.x -= view.bounds.width
+        numOfwordsLearntLabel.center.x -= view.bounds.width
         
         //ANIMATIONS
         UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut],
                        animations: {
-                        self.points.center.x -= self.view.bounds.width
-                        self.numOfPoints.center.x -= self.view.bounds.width
+                        self.pointsLabel.center.x -= self.view.bounds.width
+                        self.numOfPointsLabel.center.x -= self.view.bounds.width
                         },
                        completion: nil
         )
 
         UIView.animate(withDuration: 0.6, delay: 0.4, options: [.curveEaseIn],
                        animations: {
-                        self.longestStreak.center.x -= self.view.bounds.width
-                        self.numOfdays.center.x -= self.view.bounds.width
+                        self.longestStreakLabel.center.x -= self.view.bounds.width
+                        self.numOfdaysLabel.center.x -= self.view.bounds.width
         },
                        completion: nil
         )
@@ -182,16 +182,16 @@ import UIKit
 
         UIView.animate(withDuration: 0.7, delay: 0.6, options: [.curveEaseIn],
                        animations: {
-                        self.wordsToReview.center.x += self.view.bounds.width
-                        self.numOfWordsToReview.center.x += self.view.bounds.width
+                        self.wordsToReviewLabel.center.x += self.view.bounds.width
+                        self.numOfWordsToReviewLabel.center.x += self.view.bounds.width
         },
                        completion: nil)
 
 
         UIView.animate(withDuration: 0.8, delay: 0.8, options: [.curveEaseIn],
                        animations: {
-                        self.wordsLearnt.center.x += self.view.bounds.width
-                        self.numOfwordsLearnt.center.x += self.view.bounds.width
+                        self.wordsLearntLabel.center.x += self.view.bounds.width
+                        self.numOfwordsLearntLabel.center.x += self.view.bounds.width
         },
                        completion: nil)
 //
