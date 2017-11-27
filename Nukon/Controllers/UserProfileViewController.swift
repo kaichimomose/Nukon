@@ -2,8 +2,8 @@
 //  UserProfileViewController.swift
 //  Nukon
 //
-//  Created by Kaichi Momose on 2017/10/25.
-//  Copyright © 2017 Kaichi Momose. All rights reserved.
+//  Created by Chiris Mauldin on 2017/10/25.
+//  Copyright © 2017 Chiris Mauldin. All rights reserved.
 //
 
 import UIKit
@@ -14,8 +14,10 @@ import UIKit
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var leaderboardIcon: UIImageView!
     @IBOutlet weak var updatedViewWithArc: Arc!
+    @IBOutlet weak var numberOfWordsLearntLabel: UILabel!
     
     let arclayer = CAShapeLayer()
+    var wordsLearnt = [WordLearnt]()
     
     //create leaderBoardIcon programmatically
     func create() {
@@ -82,8 +84,19 @@ import UIKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //retrive core data
+        wordsLearnt = CoreDataHelper.retrieveWordLearnt()
+        
+        //set up labels and images
         setUpImage()
 //        setUpLeaderBoardIcon()
+        if wordsLearnt == [] {
+            numberOfWordsLearntLabel.text = String(0)
+        }
+        else {
+            numberOfWordsLearntLabel.text = String(describing: wordsLearnt.count)
+        }
         
         //create leader board icon
         create()
@@ -130,7 +143,12 @@ import UIKit
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func unwindToUserProfileViewController(_ segue: UIStoryboardSegue) {
+        
+        self.wordsLearnt = CoreDataHelper.retrieveWordLearnt()
+        self.viewDidLoad()
+    }
+    
     /*
     // MARK: - Navigation
 

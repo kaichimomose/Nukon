@@ -104,6 +104,31 @@ extension RecapViewController: UICollectionViewDataSource {
             self.navigationController?.pushViewController(analysisVC, animated: true)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "done" {
+            let userProfileVC = segue.destination as! UserProfileViewController
+//            let userData = userProfileVC.userData
+            let wordsList = userProfileVC.wordsLearnt
+            for correctWord in generatedCharacters![.correct]! {
+                var find = false
+                for wordLearnt in wordsList {
+                    if wordLearnt.word == correctWord.1 {
+                        wordLearnt.numberOfCorrect += 1
+                        find = true
+                        break
+                    }
+                }
+                if find == false{
+                    let newWordLearnt = CoreDataHelper.newWordLearnt()
+                    newWordLearnt.word = correctWord.1
+                    newWordLearnt.numberOfCorrect = 1
+                }
+            }
+            CoreDataHelper.saveWordLearnt()
+//            CoreDataHelper.saveUserData()
+        }
+    }
 }
 
 extension RecapViewController: UICollectionViewDelegateFlowLayout {
