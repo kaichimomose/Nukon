@@ -156,12 +156,16 @@
                     <connections>
                         <outlet property="backSuper" destination="TuU-rQ-qWi" id="aV3-Kp-eO0"/>
                         <outlet property="leaderboardIcon" destination="3DP-qY-sGb" id="bqj-o3-EZE"/>
-                        <outlet property="longestStreakLabel" destination="ZZ5-Eg-nih" id="WuM-pf-5t8"/>
-                        <outlet property="numberOfWordsLearntLabel" destination="yMq-4K-7OI" id="vnK-OZ-W0G"/>
-                        <outlet property="numberOfWordsToReviewLabel" destination="Z8Y-7V-cbm" id="qHc-Io-fmL"/>
-                        <outlet property="pointsLabel" destination="LSr-h6-NtD" id="Zjg-d5-DrP"/>
+                        <outlet property="longestStreakLabel" destination="TCz-7m-cyx" id="bsB-z7-BuB"/>
+                        <outlet property="numOfDaysLabel" destination="ZZ5-Eg-nih" id="J4F-Ns-Ajx"/>
+                        <outlet property="numOfPointsLabel" destination="LSr-h6-NtD" id="MxY-xe-yn9"/>
+                        <outlet property="numOfWordsLearntLabel" destination="yMq-4K-7OI" id="P5v-UZ-Oxl"/>
+                        <outlet property="numOfWordsToReviewLabel" destination="Z8Y-7V-cbm" id="n9c-Ea-2lH"/>
+                        <outlet property="pointsLabel" destination="Tk4-8D-Wxn" id="UwO-Sf-3ea"/>
                         <outlet property="profileImage" destination="gci-K0-MGS" id="VzV-4M-pbq"/>
                         <outlet property="updatedViewWithArc" destination="JbO-kc-3hN" id="L01-rI-zcm"/>
+                        <outlet property="wordsLearntLabel" destination="5gd-gI-bzt" id="mVy-Q5-XXN"/>
+                        <outlet property="wordsToReviewLabel" destination="dW1-rp-xSi" id="Jou-qs-VAm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqV-Yf-lMf" userLabel="First Responder" sceneMemberID="firstResponder"/>

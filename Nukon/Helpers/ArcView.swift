@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class Arc: UIView {
+class Arc: UIView {
     var shape = CAShapeLayer()
     
     override func layoutSubviews() {
@@ -28,11 +28,11 @@ import UIKit
         shape.strokeColor = UIColor.clear.cgColor
     }
     
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        setUp()
-        configure()
-    }
+//    override func prepareForInterfaceBuilder() {
+//        super.prepareForInterfaceBuilder()
+//        setUp()
+//        configure()
+//    }
     
     func degreesToRadians(_ degrees: Double) -> CGFloat {
         return CGFloat(degrees * .pi / 180.0)
