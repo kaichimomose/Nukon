@@ -15,12 +15,31 @@ import UIKit
     @IBOutlet weak var leaderboardIcon: UIImageView!
     @IBOutlet weak var updatedViewWithArc: Arc!
     
+    //LABELS
+    
+    @IBOutlet weak var points: UILabel!
+    @IBOutlet weak var numOfPoints: UILabel!
+    
+    
+    @IBOutlet weak var longestStreak: UILabel!
+    @IBOutlet weak var numOfdays: UILabel!
+    
+    
+    @IBOutlet weak var wordsToReview: UILabel!
+    @IBOutlet weak var numOfWordsToReview: UILabel!
+    
+    
+    @IBOutlet weak var wordsLearnt: UILabel!
+    @IBOutlet weak var numOfwordsLearnt: UILabel!
+    
+    
+    
     let arclayer = CAShapeLayer()
     
     //create leaderBoardIcon programmatically
     func create() {
-        leaderboardIcon.center = CGPoint(x: backSuper.frame.width/3.295,
-                                 y: backSuper.bounds.height/4)
+        leaderboardIcon.center = CGPoint(x: updatedViewWithArc.frame.width/2.95,
+                 y: updatedViewWithArc.frame.height - 10)
         let size = CGSize(width: 90.0, height: 90.0)
         leaderboardIcon.sizeThatFits(size)
     }
@@ -61,12 +80,12 @@ import UIKit
         
         iconGradient.colors = [
 //            UIColor(red: 255/255, green: 75/255, blue: 52/255, alpha: 1).cgColor,
-//            UIColor(red: 236/255, green: 75/255, blue: 164/255, alpha: 1).cgColor,
+            UIColor(red: 236/255, green: 75/255, blue: 164/255, alpha: 1).cgColor,
             UIColor(red: 255/255, green: 120/255, blue: 52/255, alpha: 1).cgColor,
             UIColor(red: 252/255, green: 252/255, blue: 103/255, alpha: 1).cgColor
         ]
         
-        iconGradient.locations = [0.35, 0.75, 1.0]
+        iconGradient.locations = [0.00, 0.65, 1.0]
         iconGradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         iconGradient.endPoint = CGPoint(x: 0.0, y: 1.0)
         
@@ -82,6 +101,8 @@ import UIKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         setUpImage()
 //        setUpLeaderBoardIcon()
         
@@ -93,17 +114,87 @@ import UIKit
         
         // Do any additional setup after loading the view.
         profileImage.layer.addSublayer(layer)
-        leaderboardIcon.layer.addSublayer(iconGradient)
+//        leaderboardIcon.layer.addSublayer(iconGradient)
+        
         
         
         
         updatedViewWithArc.setUp()
         updatedViewWithArc.configure()
-        view.addSubview(updatedViewWithArc)
+//        view.addSubview(updatedViewWithArc)
+        
         setUpGradient()
         //add shape object to view
 //        let arcView = Arc(origin: view.center)
 //        self.view.addSubview(arcView)
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        //start up label positions
+//        super.viewWillAppear(animated)
+//        self.points.center.x += self.view.bounds.width
+//        numOfPoints.center.x += view.bounds.width
+//
+//        longestStreak.center.x -= view.bounds.width
+//        numOfdays.center.x -= view.bounds.width
+//
+//        wordsToReview.center.x -= view.bounds.width
+//        numOfWordsToReview.center.x -= view.bounds.width
+//
+//        wordsLearnt.center.x -= view.bounds.width
+//        numOfwordsLearnt.center.x -= view.bounds.width
+//
+//    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.points.center.x += self.view.bounds.width
+        numOfPoints.center.x += view.bounds.width
+        
+        longestStreak.center.x += view.bounds.width
+        numOfdays.center.x += view.bounds.width
+        
+        wordsToReview.center.x -= view.bounds.width
+        numOfWordsToReview.center.x -= view.bounds.width
+        
+        wordsLearnt.center.x -= view.bounds.width
+        numOfwordsLearnt.center.x -= view.bounds.width
+        
+        //ANIMATIONS
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut],
+                       animations: {
+                        self.points.center.x -= self.view.bounds.width
+                        self.numOfPoints.center.x -= self.view.bounds.width
+                        },
+                       completion: nil
+        )
+
+        UIView.animate(withDuration: 0.6, delay: 0.4, options: [.curveEaseIn],
+                       animations: {
+                        self.longestStreak.center.x -= self.view.bounds.width
+                        self.numOfdays.center.x -= self.view.bounds.width
+        },
+                       completion: nil
+        )
+
+
+        UIView.animate(withDuration: 0.7, delay: 0.6, options: [.curveEaseIn],
+                       animations: {
+                        self.wordsToReview.center.x += self.view.bounds.width
+                        self.numOfWordsToReview.center.x += self.view.bounds.width
+        },
+                       completion: nil)
+
+
+        UIView.animate(withDuration: 0.8, delay: 0.8, options: [.curveEaseIn],
+                       animations: {
+                        self.wordsLearnt.center.x += self.view.bounds.width
+                        self.numOfwordsLearnt.center.x += self.view.bounds.width
+        },
+                       completion: nil)
+//
     }
     
     
@@ -129,6 +220,11 @@ import UIKit
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    //ANIMATIONS
     
 
     /*

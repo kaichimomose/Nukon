@@ -150,8 +150,16 @@
                     <connections>
                         <outlet property="backSuper" destination="TuU-rQ-qWi" id="aV3-Kp-eO0"/>
                         <outlet property="leaderboardIcon" destination="3DP-qY-sGb" id="bqj-o3-EZE"/>
+                        <outlet property="longestStreak" destination="TCz-7m-cyx" id="72h-Ux-BNa"/>
+                        <outlet property="numOfPoints" destination="LSr-h6-NtD" id="Y6O-Ez-Cjn"/>
+                        <outlet property="numOfWordsToReview" destination="Z8Y-7V-cbm" id="GFh-2V-Vaw"/>
+                        <outlet property="numOfdays" destination="ZZ5-Eg-nih" id="2pR-fw-v9I"/>
+                        <outlet property="numOfwordsLearnt" destination="yMq-4K-7OI" id="TIf-SE-R4R"/>
+                        <outlet property="points" destination="Tk4-8D-Wxn" id="gc2-Vm-gQY"/>
                         <outlet property="profileImage" destination="gci-K0-MGS" id="VzV-4M-pbq"/>
                         <outlet property="updatedViewWithArc" destination="JbO-kc-3hN" id="L01-rI-zcm"/>
+                        <outlet property="wordsLearnt" destination="5gd-gI-bzt" id="tc5-OH-XiH"/>
+                        <outlet property="wordsToReview" destination="dW1-rp-xSi" id="jR6-Si-2YA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqV-Yf-lMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
