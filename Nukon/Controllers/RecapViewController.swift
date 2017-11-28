@@ -16,12 +16,16 @@ class RecapViewController: UIViewController, AVSpeechSynthesizerDelegate {
     var generatedCharacters: [Judge: [(String, String)]]?
     var buffer: [AVAudioPCMBuffer]?
     var wordsLearnt = [WordLearnt]()
+    var userData = UserData()
+    var points = Int32()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //retrieve core data
         wordsLearnt = CoreDataHelper.retrieveWordLearnt()
+        userData = CoreDataHelper.retrieveUserData()[0]
+        points = Int32(generatedCharacters![.correct]!.count * 10)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,7 +64,7 @@ extension RecapViewController: UICollectionViewDataSource {
         }
         else {
             
-            headerView.wrongOrCorrectLabel.text = "Correct"
+            headerView.wrongOrCorrectLabel.text = "Correct (+\(self.points) points)"
             headerView.layer.backgroundColor = UIColor.green.cgColor
             
             return headerView
@@ -143,8 +147,10 @@ extension RecapViewController: UICollectionViewDataSource {
                     newWordLearnt.numberOfWrong = 1
                 }
             }
+            let userPoints = self.userData.points + self.points
+            self.userData.points = userPoints
             CoreDataHelper.saveWordLearnt()
-//            CoreDataHelper.saveUserData()
+            CoreDataHelper.saveUserData()
         }
     }
 }
