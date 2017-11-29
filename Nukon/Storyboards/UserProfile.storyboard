@@ -156,14 +156,12 @@
                     <connections>
                         <outlet property="backSuper" destination="TuU-rQ-qWi" id="aV3-Kp-eO0"/>
                         <outlet property="leaderboardIcon" destination="3DP-qY-sGb" id="bqj-o3-EZE"/>
-
                         <outlet property="longestStreakLabel" destination="TCz-7m-cyx" id="cdx-6U-WIb"/>
+                        <outlet property="numOfDaysLabel" destination="ZZ5-Eg-nih" id="bKx-jd-zrB"/>
                         <outlet property="numOfPointsLabel" destination="LSr-h6-NtD" id="7MV-Pn-ta9"/>
+                        <outlet property="numOfWordsLearntLabel" destination="yMq-4K-7OI" id="4RB-7N-0ly"/>
                         <outlet property="numOfWordsToReviewLabel" destination="Z8Y-7V-cbm" id="bbX-iS-22a"/>
-                        <outlet property="numOfdaysLabel" destination="ZZ5-Eg-nih" id="zaI-3s-aA2"/>
-                        <outlet property="numOfwordsLearntLabel" destination="yMq-4K-7OI" id="hiO-c0-eMV"/>
                         <outlet property="pointsLabel" destination="Tk4-8D-Wxn" id="yie-Bq-Jlw"/>
-
                         <outlet property="profileImage" destination="gci-K0-MGS" id="VzV-4M-pbq"/>
                         <outlet property="updatedViewWithArc" destination="JbO-kc-3hN" id="L01-rI-zcm"/>
                         <outlet property="wordsLearntLabel" destination="5gd-gI-bzt" id="1V3-wd-QjN"/>

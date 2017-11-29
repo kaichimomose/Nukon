@@ -8,13 +8,14 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController {
+
+class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
+
 
     @IBOutlet var backSuper: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var leaderboardIcon: UIImageView!
     @IBOutlet weak var updatedViewWithArc: Arc!
-    @IBOutlet weak var numberOfWordsLearntLabel: UILabel!
     
     //LABELS
     
@@ -23,7 +24,8 @@ class UserProfileViewController: UIViewController {
     
     
     @IBOutlet weak var longestStreakLabel: UILabel!
-    @IBOutlet weak var numOfdaysLabel: UILabel!
+    @IBOutlet weak var numOfDaysLabel: UILabel!
+
     
     
     @IBOutlet weak var wordsToReviewLabel: UILabel!
@@ -31,11 +33,14 @@ class UserProfileViewController: UIViewController {
     
     
     @IBOutlet weak var wordsLearntLabel: UILabel!
-    @IBOutlet weak var numOfwordsLearntLabel: UILabel!
+    @IBOutlet weak var numOfWordsLearntLabel: UILabel!
+
     
     
     
     let arclayer = CAShapeLayer()
+    var userDatas = [UserData]()
+    var userData: UserData!
     var wordsLearnt = [WordLearnt]()
     
     //create leaderBoardIcon programmatically
@@ -103,19 +108,69 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
         
 
         //retrive core data
         wordsLearnt = CoreDataHelper.retrieveWordLearnt()
 
+        userDatas = CoreDataHelper.retrieveUserData()
+        
+        //set up labels and images
+
         setUpImage()
 //        setUpLeaderBoardIcon()
-        if wordsLearnt == [] {
-            numberOfWordsLearntLabel.text = String(0)
+        
+        if userDatas == [] {
+            userData =  CoreDataHelper.newUserData()
+            userData.loginDate = Date().convertToString().components(separatedBy: ",")[0]
+            userData.nextDateofLoginDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())?.convertToString().components(separatedBy: ",")[0]
+            userData.streak = 1
+            userData.longestStreak = 1
+            userData.points = 0
         }
         else {
-            numberOfWordsLearntLabel.text = String(describing: wordsLearnt.count)
+            userData = userDatas[0]
+            let userLastLoginDate = userData.loginDate
+            let correntDate = Date().convertToString().components(separatedBy: ",")[0]
+            if userLastLoginDate != correntDate {
+                let nextDateOfUserLastLoginDate = userData.nextDateofLoginDate
+                if nextDateOfUserLastLoginDate == correntDate {
+                    userData.streak += 1
+                    if userData.streak > userData.longestStreak {
+                        userData.longestStreak = userData.streak
+                    }
+                }
+                else {
+                    userData.streak = 0
+                }
+            }
+            userData.loginDate = Date().convertToString().components(separatedBy: ",")[0]
+            userData.nextDateofLoginDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())?.convertToString().components(separatedBy: ",")[0]
         }
+        CoreDataHelper.saveUserData()
+        numOfPointsLabel.text = String(userData.points)
+        numOfDaysLabel.text = String(userData.longestStreak)
+        
+        if wordsLearnt == [] {
+            numOfWordsLearntLabel.text = String(0)
+        }
+        else {
+            var numberOfWordsLearnt = [String]()
+            var numberOfWordsToReview = [String]()
+            for wordLearnt in wordsLearnt {
+                if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
+                    numberOfWordsLearnt.append(wordLearnt.word!)
+                }
+                else {
+                    numberOfWordsToReview.append(wordLearnt.word!)
+                }
+//                CoreDataHelper.delete(wordLearnt: wordLearnt)
+            }
+            numOfWordsToReviewLabel.text = String(numberOfWordsToReview.count)
+            numOfWordsLearntLabel.text = String(numberOfWordsLearnt.count)
+        }
+//        CoreDataHelper.saveWordLearnt()
         
         //create leader board icon
         create()
@@ -165,13 +220,14 @@ class UserProfileViewController: UIViewController {
         numOfPointsLabel.center.x += view.bounds.width
         
         longestStreakLabel.center.x += view.bounds.width
-        numOfdaysLabel.center.x += view.bounds.width
+        numOfDaysLabel.center.x += view.bounds.width
         
         wordsToReviewLabel.center.x -= view.bounds.width
         numOfWordsToReviewLabel.center.x -= view.bounds.width
         
         wordsLearntLabel.center.x -= view.bounds.width
-        numOfwordsLearntLabel.center.x -= view.bounds.width
+        numOfWordsLearntLabel.center.x -= view.bounds.width
+
         
         //ANIMATIONS
         UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut],
@@ -185,7 +241,8 @@ class UserProfileViewController: UIViewController {
         UIView.animate(withDuration: 0.6, delay: 0.4, options: [.curveEaseIn],
                        animations: {
                         self.longestStreakLabel.center.x -= self.view.bounds.width
-                        self.numOfdaysLabel.center.x -= self.view.bounds.width
+                        self.numOfDaysLabel.center.x -= self.view.bounds.width
+
         },
                        completion: nil
         )
@@ -202,7 +259,7 @@ class UserProfileViewController: UIViewController {
         UIView.animate(withDuration: 0.8, delay: 0.8, options: [.curveEaseIn],
                        animations: {
                         self.wordsLearntLabel.center.x += self.view.bounds.width
-                        self.numOfwordsLearntLabel.center.x += self.view.bounds.width
+                        self.numOfWordsLearntLabel.center.x += self.view.bounds.width
         },
                        completion: nil)
 //
@@ -224,8 +281,13 @@ class UserProfileViewController: UIViewController {
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
     }
     
-    
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 0 {
+            //do your stuff
+            self.viewDidLoad()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -239,8 +301,6 @@ class UserProfileViewController: UIViewController {
 
 
     @IBAction func unwindToUserProfileViewController(_ segue: UIStoryboardSegue) {
-        
-        self.wordsLearnt = CoreDataHelper.retrieveWordLearnt()
         self.viewDidLoad()
     }
     

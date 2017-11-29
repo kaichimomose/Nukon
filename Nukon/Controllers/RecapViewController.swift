@@ -14,18 +14,113 @@ class RecapViewController: UIViewController, AVSpeechSynthesizerDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var generatedCharacters: [Judge: [(String, String)]]?
+    var correctWords = [(String, Int32, Int32, Int32)]()
+    var wrongWords = [(String, Int32, Int32)]()
     var buffer: [AVAudioPCMBuffer]?
+    var wordsLearnt = [WordLearnt]()
+    var userData: UserData!
+    var points = Int32()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //retrieve core data
+        self.updateCoreData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func updateCoreData() {
+        wordsLearnt = CoreDataHelper.retrieveWordLearnt()
+        userData = CoreDataHelper.retrieveUserData()[0]
+        for correctWord in generatedCharacters![.correct]! {
+            var find = false
+            var point = Int32(0)
+            for wordLearnt in wordsLearnt {
+                if wordLearnt.word == correctWord.1 {
+                    wordLearnt.numberOfCorrect += 1
+                    if wordLearnt.numberOfCorrect == 1 {
+                        point = Int32(20)
+                    } else {
+                        point = Int32(10)
+                    }
+                    correctWords.append((correctWord.1, wordLearnt.numberOfCorrect, wordLearnt.numberOfWrong, point))
+                    find = true
+                    break
+                }
+            }
+            if find == false{
+                let newWordLearnt = CoreDataHelper.newWordLearnt()
+                newWordLearnt.word = correctWord.1
+                newWordLearnt.numberOfCorrect = 1
+                point = Int32(20)
+                correctWords.append((correctWord.1, newWordLearnt.numberOfCorrect, newWordLearnt.numberOfWrong, point))
+            }
+            self.points += point
+        }
+        for wrongWord in generatedCharacters![.wrong]! {
+            var find = false
+            for wordLearnt in wordsLearnt {
+                if wordLearnt.word == wrongWord.0 {
+                    wordLearnt.numberOfWrong += 1
+                    wrongWords.append((wrongWord.0, wordLearnt.numberOfCorrect, wordLearnt.numberOfWrong))
+                    find = true
+                    break
+                }
+            }
+            if find == false{
+                let newWordLearnt = CoreDataHelper.newWordLearnt()
+                newWordLearnt.word = wrongWord.0
+                newWordLearnt.numberOfWrong = 1
+                wrongWords.append((wrongWord.0, newWordLearnt.numberOfCorrect, newWordLearnt.numberOfWrong))
+            }
+        }
+        self.userData.points += self.points
+        CoreDataHelper.saveWordLearnt()
+        CoreDataHelper.saveUserData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "done" {
+            //            for correctWord in generatedCharacters![.correct]! {
+            //                var find = false
+            //                for wordLearnt in wordsLearnt {
+            //                    if wordLearnt.word == correctWord.1 {
+            //                        wordLearnt.numberOfCorrect += 1
+            //                        find = true
+            //                        break
+            //                    }
+            //                }
+            //                if find == false{
+            //                    let newWordLearnt = CoreDataHelper.newWordLearnt()
+            //                    newWordLearnt.word = correctWord.1
+            //                    newWordLearnt.numberOfCorrect = 1
+            //                }
+            //            }
+            //            for wrongWord in generatedCharacters![.wrong]! {
+            //                var find = false
+            //                for wordLearnt in wordsLearnt {
+            //                    if wordLearnt.word == wrongWord.1 {
+            //                        wordLearnt.numberOfWrong += 1
+            //                        find = true
+            //                        break
+            //                    }
+            //                }
+            //                if find == false{
+            //                    let newWordLearnt = CoreDataHelper.newWordLearnt()
+            //                    newWordLearnt.word = wrongWord.0
+            //                    newWordLearnt.numberOfWrong = 1
+            //                }
+            //            }
+            //            let userPoints = self.userData.points + self.points
+            //            self.userData.points = userPoints
+            //            CoreDataHelper.saveWordLearnt()
+            //            CoreDataHelper.saveUserData()
+        }
+    }
 }
 
 extension RecapViewController: UICollectionViewDataSource {
@@ -57,7 +152,7 @@ extension RecapViewController: UICollectionViewDataSource {
         }
         else {
             
-            headerView.wrongOrCorrectLabel.text = "Correct"
+            headerView.wrongOrCorrectLabel.text = "Correct (+\(self.points) points)"
             headerView.layer.backgroundColor = UIColor.green.cgColor
             
             return headerView
@@ -73,10 +168,19 @@ extension RecapViewController: UICollectionViewDataSource {
         cell.layer.borderWidth = 1
         
         if indexPath.section == 0 {
-            cell.characterLabel.text = generatedCharacters![.wrong]![row].0
+            cell.characterLabel.text = wrongWords[row].0//generatedCharacters![.wrong]![row].0
+            cell.numberOfCorrectLabel.text = "⭕️: \(wrongWords[row].1)"
+            cell.numberOfWrongLabel.text = "❌: \(wrongWords[row].2)"
+            cell.bonusLabel.isHidden = true
         }
         else {
-            cell.characterLabel.text = generatedCharacters![.correct]![row].0
+            cell.characterLabel.text = correctWords[row].0//generatedCharacters![.correct]![row].0
+            cell.numberOfCorrectLabel.text = "⭕️: \(correctWords[row].1)"
+            cell.numberOfWrongLabel.text = "❌: \(correctWords[row].2)"
+            cell.bonusLabel.isHidden = true
+            if correctWords[row].3 == 20 {
+                cell.bonusLabel.isHidden = false
+            }
         }
         
         return cell
@@ -102,31 +206,6 @@ extension RecapViewController: UICollectionViewDataSource {
             analysisVC.buffer = self.buffer![row]
             // goes to RecapViewController
             self.navigationController?.pushViewController(analysisVC, animated: true)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "done" {
-            let userProfileVC = segue.destination as! UserProfileViewController
-//            let userData = userProfileVC.userData
-            let wordsList = userProfileVC.wordsLearnt
-            for correctWord in generatedCharacters![.correct]! {
-                var find = false
-                for wordLearnt in wordsList {
-                    if wordLearnt.word == correctWord.1 {
-                        wordLearnt.numberOfCorrect += 1
-                        find = true
-                        break
-                    }
-                }
-                if find == false{
-                    let newWordLearnt = CoreDataHelper.newWordLearnt()
-                    newWordLearnt.word = correctWord.1
-                    newWordLearnt.numberOfCorrect = 1
-                }
-            }
-            CoreDataHelper.saveWordLearnt()
-//            CoreDataHelper.saveUserData()
         }
     }
 }
