@@ -14,7 +14,6 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var leaderboardIcon: UIImageView!
     @IBOutlet weak var updatedViewWithArc: Arc!
-    @IBOutlet weak var numberOfWordsLearntLabel: UILabel!
     
     //LABELS
     
@@ -39,12 +38,7 @@ class UserProfileViewController: UIViewController {
     var wordsLearnt = [WordLearnt]()
     
     //create leaderBoardIcon programmatically
-    func create() {
-        leaderboardIcon.center = CGPoint(x: updatedViewWithArc.frame.width/2.95,
-                 y: updatedViewWithArc.frame.height - 10)
-        let size = CGSize(width: 90.0, height: 90.0)
-        leaderboardIcon.sizeThatFits(size)
-    }
+    
     
     
     let gradientLayer = CAGradientLayer()
@@ -74,7 +68,7 @@ class UserProfileViewController: UIViewController {
         iconGradient.frame = leaderboardIcon.frame
         iconGradient.contents = leaderIcon
         iconGradient.contentsGravity = kCAGravityCenter
-        iconGradient.isGeometryFlipped = false
+//        iconGradient.isGeometryFlipped = false
         iconGradient.cornerRadius = iconGradient.frame.width/2
 //        iconGradient.shadowOpacity = 0.7
 //        iconGradient.shadowRadius = 2.0
@@ -93,6 +87,7 @@ class UserProfileViewController: UIViewController {
         
         iconGradient.frame = leaderboardIcon.frame
         leaderboardIcon.layer.insertSublayer(iconGradient, at: 0)
+        print(iconGradient.frame)
     }
     
     func degreesToRadians(_ degrees: Double) -> CGFloat {
@@ -103,6 +98,14 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpGradient()
+        
+        updatedViewWithArc.setUp()
+        updatedViewWithArc.configure()
+        
+        profileImage.layer.addSublayer(layer)
+        setUpImage()
+        
         
 
         //retrive core data
@@ -111,30 +114,29 @@ class UserProfileViewController: UIViewController {
         setUpImage()
 //        setUpLeaderBoardIcon()
         if wordsLearnt == [] {
-            numberOfWordsLearntLabel.text = String(0)
+            numOfwordsLearntLabel.text = String(0)
         }
         else {
-            numberOfWordsLearntLabel.text = String(describing: wordsLearnt.count)
+            numOfwordsLearntLabel.text = String(describing: wordsLearnt.count)
         }
         
         //create leader board icon
-        create()
-        setUpIconGradient()
+//        create()
+//        setUpIconGradient()
 
         
         
-        // Do any additional setup after loading the view.
-        profileImage.layer.addSublayer(layer)
-//        leaderboardIcon.layer.addSublayer(iconGradient)
-        
-        
-        
-        
-        updatedViewWithArc.setUp()
-        updatedViewWithArc.configure()
+//        // Do any additional setup after loading the view.
+//        profileImage.layer.addSublayer(layer)
+////        leaderboardIcon.layer.addSublayer(iconGradient)
+//        
+//        
+//        
+//        
+//        updatedViewWithArc.setUp()
+//        updatedViewWithArc.configure()
 //        view.addSubview(updatedViewWithArc)
-        
-        setUpGradient()
+    
         //add shape object to view
 //        let arcView = Arc(origin: view.center)
 //        self.view.addSubview(arcView)
@@ -157,6 +159,13 @@ class UserProfileViewController: UIViewController {
 //        numOfwordsLearnt.center.x -= view.bounds.width
 //
 //    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        create()
+//        setUpIconGradient()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -220,7 +229,7 @@ class UserProfileViewController: UIViewController {
 //        layer.borderWidth = 1
 //        layer.borderColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.7
-        layer.shadowRadius = 2.0
+        layer.shadowRadius = 1.0
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
     }
     
