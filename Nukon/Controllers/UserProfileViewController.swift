@@ -36,7 +36,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     
     let arclayer = CAShapeLayer()
     var userDatas = [UserData]()
-    var userData = UserData()
+    var userData: UserData!
     var wordsLearnt = [WordLearnt]()
     
     //create leaderBoardIcon programmatically
@@ -161,7 +161,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
                 else {
                     numberOfWordsToReview.append(wordLearnt.word!)
                 }
-                //CoreDataHelper.delete(wordLearnt: wordLearnt)
+//                CoreDataHelper.delete(wordLearnt: wordLearnt)
             }
             numOfWordsToReviewLabel.text = String(numberOfWordsToReview.count)
             numOfWordsLearntLabel.text = String(numberOfWordsLearnt.count)

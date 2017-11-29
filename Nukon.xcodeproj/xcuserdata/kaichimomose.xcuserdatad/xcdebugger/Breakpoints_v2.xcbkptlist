@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "533434234.519302"
+            timestampString = "533685340.502837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "318"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "533434234.519447"
+            timestampString = "533685340.503193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "533434234.519817"
+            timestampString = "533685340.503664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "337"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/UserProfileViewController.swift"
-            timestampString = "533534839.411191"
+            timestampString = "533685340.504093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/UserProfileViewController.swift"
-            timestampString = "533534839.427083"
+            timestampString = "533685340.504624"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
@@ -134,11 +134,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/UserProfileViewController.swift"
-            timestampString = "533534839.42732"
+            timestampString = "533685340.505222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/UserProfileViewController.swift"
-            timestampString = "533534839.427463"
+            timestampString = "533685340.505796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/UserProfileViewController.swift"
-            timestampString = "533534839.427626"
+            timestampString = "533685340.50635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/RecapViewController.swift"
-            timestampString = "533534839.427752"
+            timestampString = "533685340.506908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "10"
@@ -202,12 +202,12 @@
                   moduleName = "Nukon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/RecapViewController.swift"
-                  timestampString = "533534841.21578"
+                  timestampString = "533667233.801679"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "4">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -217,12 +217,12 @@
                   moduleName = "Nukon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/RecapViewController.swift"
-                  timestampString = "533534841.219874"
+                  timestampString = "533667233.805156"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -232,12 +232,12 @@
                   moduleName = "Nukon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/RecapViewController.swift"
-                  timestampString = "533534841.227795"
+                  timestampString = "533667233.808487"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
                   endingLineNumber = "14"
-                  offsetFromSymbolStart = "72">
+                  offsetFromSymbolStart = "79">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -247,12 +247,12 @@
                   moduleName = "Nukon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/RecapViewController.swift"
-                  timestampString = "533534841.243957"
+                  timestampString = "533667233.811812"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "4">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -262,14 +262,202 @@
                   moduleName = "Nukon"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/RecapViewController.swift"
-                  timestampString = "533534841.247501"
+                  timestampString = "533667233.815303"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
                   endingLineNumber = "14"
-                  offsetFromSymbolStart = "52">
+                  offsetFromSymbolStart = "49">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nukon/Controllers/UserProfileViewController.swift"
+            timestampString = "533685340.507206"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nukon/Controllers/UserProfileViewController.swift"
+            timestampString = "533685340.507743"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "UserProfileViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.UserProfileViewController.userDatas.getter : Swift.Optional&lt;Swift.Array&lt;Nukon.UserData&gt;&gt;"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/UserProfileViewController.swift"
+                  timestampString = "533667233.834868"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "105">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.UserProfileViewController.userDatas.setter : Swift.Optional&lt;Swift.Array&lt;Nukon.UserData&gt;&gt;"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/UserProfileViewController.swift"
+                  timestampString = "533667233.838398"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "110">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.UserProfileViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Nukon.UserProfileViewController"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/UserProfileViewController.swift"
+                  timestampString = "533667233.842641"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "1715">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.UserProfileViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;Nukon.UserProfileViewController&gt;"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/UserProfileViewController.swift"
+                  timestampString = "533667233.847481"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "1590">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nukon/Controllers/UserProfileViewController.swift"
+            timestampString = "533685340.508283"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "UserProfileViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.UserProfileViewController.userData.getter : Nukon.UserData"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/UserProfileViewController.swift"
+                  timestampString = "533666144.245234"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.UserProfileViewController.userData.setter : Nukon.UserData"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/UserProfileViewController.swift"
+                  timestampString = "533666144.248303"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.UserProfileViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Nukon.UserProfileViewController"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/UserProfileViewController.swift"
+                  timestampString = "533666144.25179"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1304">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.UserProfileViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;Nukon.UserProfileViewController&gt;"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/UserProfileViewController.swift"
+                  timestampString = "533666144.255396"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nukon/Controllers/UserProfileViewController.swift"
+            timestampString = "533685340.508777"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "create()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
