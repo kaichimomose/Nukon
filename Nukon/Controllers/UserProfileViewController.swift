@@ -44,12 +44,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     var wordsLearnt = [WordLearnt]()
     
     //create leaderBoardIcon programmatically
-    func create() {
-        leaderboardIcon.center = CGPoint(x: updatedViewWithArc.frame.width/2.95,
-                 y: updatedViewWithArc.frame.height - 10)
-        let size = CGSize(width: 90.0, height: 90.0)
-        leaderboardIcon.sizeThatFits(size)
-    }
+    
     
     
     let gradientLayer = CAGradientLayer()
@@ -79,7 +74,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         iconGradient.frame = leaderboardIcon.frame
         iconGradient.contents = leaderIcon
         iconGradient.contentsGravity = kCAGravityCenter
-        iconGradient.isGeometryFlipped = false
+//        iconGradient.isGeometryFlipped = false
         iconGradient.cornerRadius = iconGradient.frame.width/2
 //        iconGradient.shadowOpacity = 0.7
 //        iconGradient.shadowRadius = 2.0
@@ -98,6 +93,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         
         iconGradient.frame = leaderboardIcon.frame
         leaderboardIcon.layer.insertSublayer(iconGradient, at: 0)
+        print(iconGradient.frame)
     }
     
     func degreesToRadians(_ degrees: Double) -> CGFloat {
@@ -108,7 +104,18 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.tabBarController?.delegate = self
+
+        setUpGradient()
+        
+        updatedViewWithArc.setUp()
+        updatedViewWithArc.configure()
+        
+        profileImage.layer.addSublayer(layer)
+        setUpImage()
+        
+
         
 
         //retrive core data
@@ -173,23 +180,22 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 //        CoreDataHelper.saveWordLearnt()
         
         //create leader board icon
-        create()
-        setUpIconGradient()
+//        create()
+//        setUpIconGradient()
 
         
         
-        // Do any additional setup after loading the view.
-        profileImage.layer.addSublayer(layer)
-//        leaderboardIcon.layer.addSublayer(iconGradient)
-        
-        
-        
-        
-        updatedViewWithArc.setUp()
-        updatedViewWithArc.configure()
+//        // Do any additional setup after loading the view.
+//        profileImage.layer.addSublayer(layer)
+////        leaderboardIcon.layer.addSublayer(iconGradient)
+//        
+//        
+//        
+//        
+//        updatedViewWithArc.setUp()
+//        updatedViewWithArc.configure()
 //        view.addSubview(updatedViewWithArc)
-        
-        setUpGradient()
+    
         //add shape object to view
 //        let arcView = Arc(origin: view.center)
 //        self.view.addSubview(arcView)
@@ -212,6 +218,13 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 //        numOfwordsLearnt.center.x -= view.bounds.width
 //
 //    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        create()
+//        setUpIconGradient()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -277,7 +290,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 //        layer.borderWidth = 1
 //        layer.borderColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.7
-        layer.shadowRadius = 2.0
+        layer.shadowRadius = 1.0
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
     }
     
