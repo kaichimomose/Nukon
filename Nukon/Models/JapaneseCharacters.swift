@@ -34,4 +34,6 @@ struct JapaneseCharacters {
         Japanese(select: false, sound: "R", letters: ["ラ", "リ", "ル", "レ", "ロ", "　"]),
         Japanese(select: false, sound: "W", letters: ["ワ", "　", "　", "　", "ヲ", "　"])
     ]
+    
+    var vowelSounds = ["a", "i", "u", "e", "o", " "]
 }

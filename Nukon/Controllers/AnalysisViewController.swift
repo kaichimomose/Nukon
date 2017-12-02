@@ -21,7 +21,7 @@ class AnalysisViewController: UIViewController {
     var audioMixerNode: AVAudioMixerNode!
     var audioBuffer: AVAudioPCMBuffer!
     
-    var generatedCharacter: (String, String)!
+    var generatedCharacter: (String, String, String)!
     var buffer: AVAudioPCMBuffer!
     var tapped = false
     

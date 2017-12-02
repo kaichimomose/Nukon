@@ -12,6 +12,9 @@
 		BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */; };
 		BF0A869D1FC50D8700B8305A /* AllPosibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A869C1FC50D8600B8305A /* AllPosibilities.swift */; };
 		BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */; };
+		BF51F0CF1FD315CA00DB6DB8 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */; };
+		BF51F0D11FD3171800DB6DB8 /* ReviewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51F0D01FD3171800DB6DB8 /* ReviewCollectionReusableView.swift */; };
+		BF51F0D31FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51F0D21FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift */; };
 		BF5D5C401FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D5C3F1FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift */; };
 		BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */; };
 		BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */; };
@@ -40,6 +43,9 @@
 		BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSoundsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		BF0A869C1FC50D8600B8305A /* AllPosibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPosibilities.swift; sourceTree = "<group>"; };
 		BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharacters.swift; sourceTree = "<group>"; };
+		BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		BF51F0D01FD3171800DB6DB8 /* ReviewCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionReusableView.swift; sourceTree = "<group>"; };
+		BF51F0D21FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewJapaneseCharactersCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF5D5C3F1FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF5FF94F1FA0D35D00A46DE0 /* Nukon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nukon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */,
+				BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */,
 				BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */,
 				BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
@@ -154,6 +161,8 @@
 				BF0A869A1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift */,
 				BF5D5C3F1FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift */,
 				BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */,
+				BF51F0D01FD3171800DB6DB8 /* ReviewCollectionReusableView.swift */,
+				BF51F0D21FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,14 +265,17 @@
 			files = (
 				BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */,
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
+				BF51F0CF1FD315CA00DB6DB8 /* ReviewViewController.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
+				BF51F0D31FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift in Sources */,
 				BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */,
 				BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */,
 				F64CBD9E1FCAC830001E0E47 /* ArcView.swift in Sources */,
 				BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */,
 				BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */,
 				BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */,
+				BF51F0D11FD3171800DB6DB8 /* ReviewCollectionReusableView.swift in Sources */,
 				BFA65BB01FC8D35400F426F0 /* RecapCollectionReusableView.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
@@ -406,7 +418,7 @@
 				DEVELOPMENT_TEAM = CGUE68EN3T;
 				INFOPLIST_FILE = Nukon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.momose-kaichi.Nukon";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaichi-momoseNukon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -421,7 +433,7 @@
 				DEVELOPMENT_TEAM = CGUE68EN3T;
 				INFOPLIST_FILE = Nukon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.momose-kaichi.Nukon";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaichi-momoseNukon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -10,8 +10,8 @@ import UIKit
 import Speech
 
 enum Judge: String {
-    case correct = "⭕️"
-    case wrong = "❌"
+    case correct = "✔️"
+    case wrong = "✖️"
     case yet = ""
 }
 
@@ -32,8 +32,10 @@ class ShowCharactersViewController: UIViewController {
     
     //values to show characters
     var list = [Japanese]()
+    var vowelSounds = [[String]]()
     var shownCharacter = ""
     var soundType = ""
+    var vowel = ""
     var vowelIndexCounter: Int = 0
     var soundIndexCounter: Int = 0
     var counter: Int = 0
@@ -42,7 +44,7 @@ class ShowCharactersViewController: UIViewController {
     var judge = Judge.yet
     var comment = Comment.start
     var buttonTitle = ButtonTitle.start
-    var bestString = [Judge.correct: [(String, String)](), Judge.wrong: [(String, String)]()]
+    var bestString = [Judge.correct: [(String, String, String)](), Judge.wrong: [(String, String, String)]()]
     var buffers = [AVAudioPCMBuffer]()
     var buffer: AVAudioPCMBuffer!
     
@@ -76,6 +78,7 @@ class ShowCharactersViewController: UIViewController {
         for listOfCharacters in list{
             // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
             mutableList.append((listOfCharacters.sound, listOfCharacters.letters))
+            vowelSounds.append(JapaneseCharacters().vowelSounds)
         }
         for listOfPosibilities in posibilitiesList{
             // create list of posibilitiesList of each sound
@@ -100,6 +103,14 @@ class ShowCharactersViewController: UIViewController {
         self.characterLabel.text = self.shownCharacter
         self.countCharacters.text = "\(self.counter)/\(self.totalNumberOfCharacter)"
         self.judgeLabel.text = self.judge.rawValue
+        switch self.judge {
+        case .correct:
+            self.characterLabel.layer.backgroundColor = UIColor.green.cgColor
+        case .wrong:
+            self.characterLabel.layer.backgroundColor = UIColor.red.cgColor
+        case .yet:
+            self.characterLabel.layer.backgroundColor = UIColor.clear.cgColor
+        }
         self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: .normal)
     }
 
@@ -172,9 +183,11 @@ class ShowCharactersViewController: UIViewController {
         self.posibilities = self.mutablePosibilitiesList[soundIndex][vowelIndex]
         
         self.soundType = self.mutableList[soundIndex].0
+        self.vowel = self.vowelSounds[soundIndex][vowelIndex]
         // removes picked characters and list to avoid choosing again
         self.mutableList[soundIndex].1.remove(at: vowelIndex)
         self.mutablePosibilitiesList[soundIndex].remove(at: vowelIndex)
+        self.vowelSounds[soundIndex].remove(at: vowelIndex)
         
         if showCharacter == "　" {
             showCharacter = randomCharacter()
@@ -184,6 +197,7 @@ class ShowCharactersViewController: UIViewController {
                 // removes emply list
                 self.mutableList.remove(at: soundIndex)
                 self.mutablePosibilitiesList.remove(at: soundIndex)
+                self.vowelSounds.remove(at: soundIndex)
             }
             // update counter
             self.counter += 1
@@ -268,15 +282,25 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
             if let result = result {
 //                let posibilities = result.transcriptions
 //                print(posibilities)
+                
+                //show correctsound
+                var correctsound = ""
+                if self.soundType == "vowel" {
+                    correctsound = self.vowel
+                } else {
+                    correctsound = self.soundType.lowercased() + self.vowel
+                }
+                self.commentLabel.text = correctsound
+                
                 let theBestString = result.bestTranscription.formattedString
                 if willAppend == true {
                     // passes first result
                     for posibility in self.posibilities {
                         if theBestString == posibility {
                             self.judge = .correct
-                            self.commentLabel.text = self.shownCharacter
-                            self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter))
-                            self.judgeLabel.text = self.judge.rawValue
+                            self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, correctsound))
+//                            self.judgeLabel.text = self.judge.rawValue
+                            self.characterLabel.layer.backgroundColor = UIColor.green.cgColor
                             willAppend = false
                             break
                         }
@@ -286,13 +310,12 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 if willAppend == true {
                     // passes when a character has been already appended
                     self.judge = .wrong
-                    self.commentLabel.text = theBestString
-                    self.bestString[self.judge]!.append((self.shownCharacter, theBestString))
+                    self.bestString[self.judge]!.append((self.shownCharacter, theBestString, correctsound))
                     self.buffers.append(self.buffer)
-                    self.judgeLabel.text = self.judge.rawValue
+//                    self.judgeLabel.text = self.judge.rawValue
+                    self.characterLabel.layer.backgroundColor = UIColor.red.cgColor
                     willAppend = false
                 }
-                
                 
                 isFinal = result.isFinal
                 // change true to false to get final result quickly

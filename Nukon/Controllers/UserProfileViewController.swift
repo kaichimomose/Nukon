@@ -8,7 +8,9 @@
 
 import UIKit
 
+
 class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
+
 
     @IBOutlet var backSuper: UIView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -23,6 +25,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     
     @IBOutlet weak var longestStreakLabel: UILabel!
     @IBOutlet weak var numOfDaysLabel: UILabel!
+
     
     
     @IBOutlet weak var wordsToReviewLabel: UILabel!
@@ -31,6 +34,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     
     @IBOutlet weak var wordsLearntLabel: UILabel!
     @IBOutlet weak var numOfWordsLearntLabel: UILabel!
+
     
     
     
@@ -40,12 +44,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     var wordsLearnt = [WordLearnt]()
     
     //create leaderBoardIcon programmatically
-    func create() {
-        leaderboardIcon.center = CGPoint(x: updatedViewWithArc.frame.width/2.95,
-                 y: updatedViewWithArc.frame.height - 10)
-        let size = CGSize(width: 90.0, height: 90.0)
-        leaderboardIcon.sizeThatFits(size)
-    }
+    
     
     
     let gradientLayer = CAGradientLayer()
@@ -75,7 +74,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         iconGradient.frame = leaderboardIcon.frame
         iconGradient.contents = leaderIcon
         iconGradient.contentsGravity = kCAGravityCenter
-        iconGradient.isGeometryFlipped = false
+//        iconGradient.isGeometryFlipped = false
         iconGradient.cornerRadius = iconGradient.frame.width/2
 //        iconGradient.shadowOpacity = 0.7
 //        iconGradient.shadowRadius = 2.0
@@ -94,6 +93,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         
         iconGradient.frame = leaderboardIcon.frame
         leaderboardIcon.layer.insertSublayer(iconGradient, at: 0)
+        print(iconGradient.frame)
     }
     
     func degreesToRadians(_ degrees: Double) -> CGFloat {
@@ -104,7 +104,18 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.tabBarController?.delegate = self
+
+        setUpGradient()
+        
+        updatedViewWithArc.setUp()
+        updatedViewWithArc.configure()
+        
+        profileImage.layer.addSublayer(layer)
+        setUpImage()
+        
+
         
 
         //retrive core data
@@ -169,23 +180,22 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 //        CoreDataHelper.saveWordLearnt()
         
         //create leader board icon
-        create()
-        setUpIconGradient()
+//        create()
+//        setUpIconGradient()
 
         
         
-        // Do any additional setup after loading the view.
-        profileImage.layer.addSublayer(layer)
-//        leaderboardIcon.layer.addSublayer(iconGradient)
-        
-        
-        
-        
-        updatedViewWithArc.setUp()
-        updatedViewWithArc.configure()
+//        // Do any additional setup after loading the view.
+//        profileImage.layer.addSublayer(layer)
+////        leaderboardIcon.layer.addSublayer(iconGradient)
+//        
+//        
+//        
+//        
+//        updatedViewWithArc.setUp()
+//        updatedViewWithArc.configure()
 //        view.addSubview(updatedViewWithArc)
-        
-        setUpGradient()
+    
         //add shape object to view
 //        let arcView = Arc(origin: view.center)
 //        self.view.addSubview(arcView)
@@ -209,6 +219,13 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 //
 //    }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        create()
+//        setUpIconGradient()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -223,6 +240,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         
         wordsLearntLabel.center.x -= view.bounds.width
         numOfWordsLearntLabel.center.x -= view.bounds.width
+
         
         //ANIMATIONS
         UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut],
@@ -237,6 +255,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
                        animations: {
                         self.longestStreakLabel.center.x -= self.view.bounds.width
                         self.numOfDaysLabel.center.x -= self.view.bounds.width
+
         },
                        completion: nil
         )
@@ -271,7 +290,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 //        layer.borderWidth = 1
 //        layer.borderColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.7
-        layer.shadowRadius = 2.0
+        layer.shadowRadius = 1.0
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
     }
     
@@ -288,27 +307,19 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    //ANIMATIONS
-    
-
-
     @IBAction func unwindToUserProfileViewController(_ segue: UIStoryboardSegue) {
         self.viewDidLoad()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        //tap gesture identifier
+        let ReviewVC = segue.destination as! ReviewViewController
+        if segue.identifier == "wordslearnt" {
+            ReviewVC.navigationTitle = wordsLearntLabel.text
+        } else {
+            ReviewVC.navigationTitle = wordsToReviewLabel.text
+        }
     }
-    */
-
 }
 
 
