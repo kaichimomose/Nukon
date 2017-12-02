@@ -21,6 +21,9 @@ class ReviewViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.title = self.navigationTitle
+        // casting is required because UICollectionViewLayout doesn't offer header pin. Its feature of UICollectionViewFlowLayout
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
         self.calculateAccuracyRate()
     }
 
@@ -63,11 +66,14 @@ extension ReviewViewController: UICollectionViewDataSource {
         let section = indexPath.section
         let accuracyRate = self.sectionDataSort[section]
         
-        headerView.accuracyRateLabel.text = "\(accuracyRate)%"
+        headerView.accuracyRateLabel.text = "Accuracy Rate: \(accuracyRate)%"
         if accuracyRate > 50{
-            headerView.layer.backgroundColor = UIColor.green.cgColor
+            let float = 1.0 - CGFloat(accuracyRate)/100
+            headerView.layer.backgroundColor = UIColor(red: float*2, green: 1.0, blue: 0.0, alpha: 1).cgColor
+            
         } else {
-            headerView.layer.backgroundColor = UIColor.red.cgColor
+            let float = CGFloat(accuracyRate)/100
+            headerView.layer.backgroundColor = UIColor(red: 1.0, green: float*2, blue: 0.0, alpha: 1).cgColor
         }
         return headerView
     }
