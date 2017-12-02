@@ -292,7 +292,7 @@
                                         <constraint firstItem="Qqq-HH-1HW" firstAttribute="centerY" secondItem="PmE-nO-paw" secondAttribute="centerY" id="iDA-p4-eqv"/>
                                     </constraints>
                                     <connections>
-                                        <outlet property="accuracyRateLabel" destination="iDA-p4-eqv" id="18L-6k-ZNS"/>
+                                        <outlet property="accuracyRateLabel" destination="Qqq-HH-1HW" id="mrB-Y9-Lh7"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>

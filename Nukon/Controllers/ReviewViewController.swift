@@ -11,28 +11,48 @@ import UIKit
 class ReviewViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var navigationTitle: String!
+    var wordsLearnt: [WordLearnt]!
+    var sectionData = [Int32: [WordLearnt]]()
+    var sectionDataSort = [Int32]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = self.navigationTitle
         // Do any additional setup after loading the view.
+        self.title = self.navigationTitle
+        self.calculateAccuracyRate()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    //calculate accuracy rate
+    func calculateAccuracyRate() {
+        for wordLearnt in wordsLearnt {
+            let accuracyRate = wordLearnt.numberOfCorrect * 100 / (wordLearnt.numberOfCorrect + wordLearnt.numberOfWrong)
+            if self.sectionData[accuracyRate] != nil {
+                self.sectionData[accuracyRate]?.append(wordLearnt)
+            } else {
+                self.sectionData[accuracyRate] = [wordLearnt]
+                self.sectionDataSort.append(accuracyRate)
+            }
+            
+        }
+        self.sectionDataSort.sort()
+    }
 }
 
 extension ReviewViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return sectionData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        let accuracyRate = self.sectionDataSort[section]
+        return sectionData[accuracyRate]!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -40,17 +60,33 @@ extension ReviewViewController: UICollectionViewDataSource {
             fatalError("Unexpected element kind.")
         }
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Review", for: indexPath) as! ReviewCollectionReusableView
+        let section = indexPath.section
+        let accuracyRate = self.sectionDataSort[section]
         
+        headerView.accuracyRateLabel.text = "\(accuracyRate)%"
+        if accuracyRate > 50{
+            headerView.layer.backgroundColor = UIColor.green.cgColor
+        } else {
+            headerView.layer.backgroundColor = UIColor.red.cgColor
+        }
         return headerView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewJapaneseCharacterCell", for: indexPath) as! ReviewJapaneseCharactersCollectionViewCell
-//        let row = indexPath.row
+        let row = indexPath.row
+        let section = indexPath.section
+        let accuracyRate = self.sectionDataSort[section]
         
         cell.layer.cornerRadius = 6
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 1
+        
+        let wordLearnt = sectionData[accuracyRate]![row]
+        
+        cell.japaneseCharacterLabel.text = wordLearnt.word
+        cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(wordLearnt.numberOfCorrect)"
+        cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(wordLearnt.numberOfWrong)"
         
         return cell
     }

@@ -35,18 +35,15 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     @IBOutlet weak var wordsLearntLabel: UILabel!
     @IBOutlet weak var numOfWordsLearntLabel: UILabel!
 
-    
-    
-    
     let arclayer = CAShapeLayer()
     var userDatas = [UserData]()
     var userData: UserData!
     var wordsLearnt = [WordLearnt]()
     
+    var numberOfWordsLearnt = [WordLearnt]()
+    var numberOfWordsToReview = [WordLearnt]()
+    
     //create leaderBoardIcon programmatically
-    
-    
-    
     let gradientLayer = CAGradientLayer()
     let iconGradient = CAGradientLayer()
     let layer = CALayer()
@@ -100,8 +97,6 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         return CGFloat(degrees * .pi / 180.0)
     }
     
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -120,7 +115,6 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 
         //retrive core data
         wordsLearnt = CoreDataHelper.retrieveWordLearnt()
-
         userDatas = CoreDataHelper.retrieveUserData()
         
         //set up labels and images
@@ -163,14 +157,14 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
             numOfWordsLearntLabel.text = String(0)
         }
         else {
-            var numberOfWordsLearnt = [String]()
-            var numberOfWordsToReview = [String]()
+            self.numberOfWordsLearnt = [WordLearnt]()
+            self.numberOfWordsToReview = [WordLearnt]()
             for wordLearnt in wordsLearnt {
                 if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
-                    numberOfWordsLearnt.append(wordLearnt.word!)
+                    self.numberOfWordsLearnt.append(wordLearnt)
                 }
                 else {
-                    numberOfWordsToReview.append(wordLearnt.word!)
+                    self.numberOfWordsToReview.append(wordLearnt)
                 }
 //                CoreDataHelper.delete(wordLearnt: wordLearnt)
             }
@@ -316,8 +310,10 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         let ReviewVC = segue.destination as! ReviewViewController
         if segue.identifier == "wordslearnt" {
             ReviewVC.navigationTitle = wordsLearntLabel.text
+            ReviewVC.wordsLearnt = self.numberOfWordsLearnt
         } else {
             ReviewVC.navigationTitle = wordsToReviewLabel.text
+            ReviewVC.wordsLearnt = self.numberOfWordsToReview
         }
     }
 }
