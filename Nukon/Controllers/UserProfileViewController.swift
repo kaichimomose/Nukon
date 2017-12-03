@@ -293,6 +293,11 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         if tabBarIndex == 0 {
             //do your stuff
             self.viewDidLoad()
+        } else {
+            let navigationVC = tabBarController.viewControllers![1]
+            let practiceVC = navigationVC.childViewControllers.first as! PracticeViewController
+            practiceVC.japaneseType = nil
+            practiceVC.sound = nil
         }
     }
 
@@ -302,7 +307,6 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     }
     
     @IBAction func unwindToUserProfileViewController(_ segue: UIStoryboardSegue) {
-        self.viewDidLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

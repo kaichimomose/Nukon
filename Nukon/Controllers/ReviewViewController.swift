@@ -124,23 +124,16 @@ extension ReviewViewController: UICollectionViewDataSource {
         let row = indexPath.row
         let section = indexPath.section
         let accuracyRate = self.sectionDataSort[section]
-
         let wordLearnt = sectionData[accuracyRate]![row]
-//
-//        let japaneseCharacterTVC  = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharacterTVC") as! JapaneseCharactersTableViewController
-//        if wordLearnt.type == JapaneseType.hiragana.rawValue {
-//            tabBarVC.japaneseType = JapaneseType.hiragana
-//        } else {
-//            tabBarVC.japaneseType = JapaneseType.katakana
-//        }
-//        self.navigationController?.pushViewController(tabBarVC, animated: true)
-//        let japaneseCharacterTVC = self.tabBarController?.se as! JapaneseCharactersTableViewController
-//        if wordLearnt.type == JapaneseType.hiragana.rawValue {
-//            japaneseCharacterTVC.selectedType = JapaneseType.hiragana
-//        } else {
-//            japaneseCharacterTVC.selectedType = JapaneseType.katakana
-//        }
-//        self.navigationController?.pushViewController(japaneseCharacterTVC, animated: true)
+
+        let navigationVC = self.tabBarController?.viewControllers![1]
+        let practiceVC = navigationVC?.childViewControllers.first as! PracticeViewController
+        if wordLearnt.type == JapaneseType.hiragana.rawValue {
+            practiceVC.japaneseType = JapaneseType.hiragana
+        } else {
+            practiceVC.japaneseType = JapaneseType.katakana
+        }
+        practiceVC.sound = wordLearnt.sound
         self.tabBarController?.selectedIndex = 1
     }
 }

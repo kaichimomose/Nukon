@@ -38,8 +38,7 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="hiraganaButtonTapped:" destination="vNR-ge-zHm" eventType="touchUpInside" id="q7I-jX-Y54"/>
-                                                    <segue destination="kJm-oL-KB3" kind="show" identifier="hiragana" id="gA7-R8-5Nj"/>
+                                                    <action selector="hiraganaButtonTapped:" destination="vNR-ge-zHm" eventType="touchUpInside" id="mo6-yL-F6m"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufr-1q-xMJ">
@@ -49,8 +48,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="katakanaButtonTapped:" destination="vNR-ge-zHm" eventType="touchUpInside" id="HhU-Pp-r00"/>
-                                                    <segue destination="kJm-oL-KB3" kind="show" identifier="katakana" id="EgW-Kj-TXj"/>
+                                                    <action selector="katakanaButtonTapped:" destination="vNR-ge-zHm" eventType="touchUpInside" id="DMl-AT-96E"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -71,9 +69,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="vEJ-jX-ZJb"/>
                     <connections>
-                        <outlet property="haraganaButton" destination="OXj-8I-ajl" id="PIc-dh-JXV"/>
-                        <outlet property="katakanaButton" destination="Ufr-1q-xMJ" id="0bh-8Q-lOG"/>
+                        <outlet property="haraganaButton" destination="OXj-8I-ajl" id="FBp-Wc-Ztx"/>
+                        <outlet property="katakanaButton" destination="Ufr-1q-xMJ" id="ueg-NK-J1s"/>
                         <outlet property="printLabel" destination="nVL-Ws-Tw6" id="Gnp-aM-WzU"/>
+                        <segue destination="kJm-oL-KB3" kind="show" id="qjp-IY-Iol"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gL4-KQ-O0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,7 +217,7 @@
         <!--Show Characters View Controller-->
         <scene sceneID="iU1-vy-cwi">
             <objects>
-                <viewController id="271-uL-ivj" customClass="ShowCharactersViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="271-uL-ivj" customClass="ShowCharactersViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ga9-rs-NJz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -535,7 +534,4 @@
             <point key="canvasLocation" x="737" y="516"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="EgW-Kj-TXj"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -205,14 +205,6 @@
             </objects>
             <point key="canvasLocation" x="1243.4782608695652" y="146.73913043478262"/>
         </scene>
-        <!--main-->
-        <scene sceneID="h2o-m7-u2j">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="main" storyboardName="Main" referencedIdentifier="main" id="OxR-jO-Dtv" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="11x-n6-TbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2656" y="-36"/>
-        </scene>
         <!--Review-->
         <scene sceneID="1rO-on-fU1">
             <objects>
@@ -345,7 +337,6 @@
                     <navigationItem key="navigationItem" title="Review" id="sOM-i4-zYN"/>
                     <connections>
                         <outlet property="collectionView" destination="Ukc-Kw-Yk4" id="AHJ-3s-AUH"/>
-                        <segue destination="OxR-jO-Dtv" kind="show" id="TJw-3D-gZZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iuz-qz-p5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
