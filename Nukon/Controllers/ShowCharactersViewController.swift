@@ -33,6 +33,7 @@ class ShowCharactersViewController: UIViewController {
     //values to show characters
     var list = [Japanese]()
     var vowelSounds = [[String]]()
+    var japaneseType: JapaneseType!
     var shownCharacter = ""
     var soundType = ""
     var vowel = ""
@@ -150,8 +151,8 @@ class ShowCharactersViewController: UIViewController {
             let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
             // sends dictionaly of generated character by voice recognition to RecapViewController
             recapVC.generatedCharacters = self.bestString
-            print(self.buffers)
             recapVC.buffer = self.buffers
+            recapVC.japaneseType = self.japaneseType
             // goes to RecapViewController
             self.navigationController?.pushViewController(recapVC, animated: true)
         }
@@ -298,7 +299,8 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     for posibility in self.posibilities {
                         if theBestString == posibility {
                             self.judge = .correct
-                            self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, correctsound))
+                            //self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, correctsound)) //returns correctsound
+                            self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, self.soundType)) //returns soundType
 //                            self.judgeLabel.text = self.judge.rawValue
                             self.characterLabel.layer.backgroundColor = UIColor.green.cgColor
                             willAppend = false
@@ -310,7 +312,8 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 if willAppend == true {
                     // passes when a character has been already appended
                     self.judge = .wrong
-                    self.bestString[self.judge]!.append((self.shownCharacter, theBestString, correctsound))
+                    //self.bestString[self.judge]!.append((self.shownCharacter, theBestString, correctsound)) //returns correctsound
+                    self.bestString[self.judge]!.append((self.shownCharacter, theBestString, self.soundType)) //returns soundType
                     self.buffers.append(self.buffer)
 //                    self.judgeLabel.text = self.judge.rawValue
                     self.characterLabel.layer.backgroundColor = UIColor.red.cgColor

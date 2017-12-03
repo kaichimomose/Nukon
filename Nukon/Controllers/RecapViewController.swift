@@ -13,7 +13,8 @@ class RecapViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var generatedCharacters: [Judge: [(String, String, String)]]? //(shownword, beststring, correctsound)
+    var japaneseType: JapaneseType!
+    var generatedCharacters: [Judge: [(String, String, String)]]? //(shownword, beststring, sound)
     var correctWords = [(String, Int32, Int32, Int32)]() //(word, numberOfCorrect, numberOfWrong, point)
     var wrongWords = [(String, Int32, Int32)]() //(word, numberOfCorrect, numberOfWrong)
     var buffer: [AVAudioPCMBuffer]?
@@ -36,8 +37,9 @@ class RecapViewController: UIViewController, AVSpeechSynthesizerDelegate {
     func updateCoreData() {
         wordsLearnt = CoreDataHelper.retrieveWordLearnt()
         userData = CoreDataHelper.retrieveUserData()[0]
+        //find word in correctWord from coredata [WordLearnt], if found update number of correct and give point
         for correctWord in generatedCharacters![.correct]! {
-            var find = false
+            var find = false //flag to decide whether find or not
             var point = Int32(0)
             for wordLearnt in wordsLearnt {
                 if wordLearnt.word == correctWord.1 {
@@ -47,38 +49,52 @@ class RecapViewController: UIViewController, AVSpeechSynthesizerDelegate {
                     } else {
                         point = Int32(10)
                     }
+                    //append word to correctWords list
                     correctWords.append((correctWord.1, wordLearnt.numberOfCorrect, wordLearnt.numberOfWrong, point))
+                    //update flag
                     find = true
                     break
                 }
             }
+            //if not found, insert word to coredata and give points
             if find == false{
                 let newWordLearnt = CoreDataHelper.newWordLearnt()
                 newWordLearnt.word = correctWord.1
                 newWordLearnt.numberOfCorrect = 1
+                newWordLearnt.sound = correctWord.2
+                newWordLearnt.type = japaneseType.rawValue
                 point = Int32(20)
+                //append word to correctWords list
                 correctWords.append((correctWord.1, newWordLearnt.numberOfCorrect, newWordLearnt.numberOfWrong, point))
             }
             self.points += point
         }
+        //find word in correctWord from coredata [WordLearnt], if found update number of wrong
         for wrongWord in generatedCharacters![.wrong]! {
-            var find = false
+            var find = false //flag to decide whether find or not
             for wordLearnt in wordsLearnt {
                 if wordLearnt.word == wrongWord.0 {
                     wordLearnt.numberOfWrong += 1
+                    //append word to wrongWords list
                     wrongWords.append((wrongWord.0, wordLearnt.numberOfCorrect, wordLearnt.numberOfWrong))
                     find = true
                     break
                 }
             }
+            //if not found, insert word to coredata
             if find == false{
                 let newWordLearnt = CoreDataHelper.newWordLearnt()
                 newWordLearnt.word = wrongWord.0
                 newWordLearnt.numberOfWrong = 1
+                newWordLearnt.sound = wrongWord.2
+                newWordLearnt.type = japaneseType.rawValue
+                //append word to wrongWords list
                 wrongWords.append((wrongWord.0, newWordLearnt.numberOfCorrect, newWordLearnt.numberOfWrong))
             }
         }
+        // updates userData point
         self.userData.points += self.points
+        // saves core data
         CoreDataHelper.saveWordLearnt()
         CoreDataHelper.saveUserData()
     }

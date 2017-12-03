@@ -36,6 +36,7 @@ class ReviewViewController: UIViewController {
     func calculateAccuracyRate() {
         for wordLearnt in wordsLearnt {
             let accuracyRate = wordLearnt.numberOfCorrect * 100 / (wordLearnt.numberOfCorrect + wordLearnt.numberOfWrong)
+            // find key(accuracyRate) in sectionData, and append wordLearnt or insert key-value
             if self.sectionData[accuracyRate] != nil {
                 self.sectionData[accuracyRate]?.append(wordLearnt)
             } else {
@@ -44,7 +45,16 @@ class ReviewViewController: UIViewController {
             }
             
         }
+        //sort sectionData numerical order
         self.sectionDataSort.sort()
+        //sort [wordLearnt] japanese sounds order
+        for (key, value) in self.sectionData {
+            let sortedValue = value.sorted { a,b in
+                return a.word! < b.word!
+            }
+            //update sectionData dic
+            self.sectionData[key] = sortedValue
+        }
     }
 }
 
@@ -93,12 +103,45 @@ extension ReviewViewController: UICollectionViewDataSource {
         cell.japaneseCharacterLabel.text = wordLearnt.word
         cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(wordLearnt.numberOfCorrect)"
         cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(wordLearnt.numberOfWrong)"
+        cell.soundLabel.text = wordLearnt.sound
+        if wordLearnt.sound == "vowel" {
+            cell.soundLabel.font = cell.soundLabel.font.withSize(18.0)
+        }
+        else {
+            cell.soundLabel.font = cell.soundLabel.font.withSize(25.0)
+        }
+        if wordLearnt.type == JapaneseType.hiragana.rawValue {
+            cell.japaneseTypeLabel.text =  "hi"
+        } else {
+            cell.japaneseTypeLabel.text =  "ka"
+        }
+        
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let row = indexPath.row
+        let row = indexPath.row
+        let section = indexPath.section
+        let accuracyRate = self.sectionDataSort[section]
+
+        let wordLearnt = sectionData[accuracyRate]![row]
+//
+//        let japaneseCharacterTVC  = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharacterTVC") as! JapaneseCharactersTableViewController
+//        if wordLearnt.type == JapaneseType.hiragana.rawValue {
+//            tabBarVC.japaneseType = JapaneseType.hiragana
+//        } else {
+//            tabBarVC.japaneseType = JapaneseType.katakana
+//        }
+//        self.navigationController?.pushViewController(tabBarVC, animated: true)
+//        let japaneseCharacterTVC = self.tabBarController?.se as! JapaneseCharactersTableViewController
+//        if wordLearnt.type == JapaneseType.hiragana.rawValue {
+//            japaneseCharacterTVC.selectedType = JapaneseType.hiragana
+//        } else {
+//            japaneseCharacterTVC.selectedType = JapaneseType.katakana
+//        }
+//        self.navigationController?.pushViewController(japaneseCharacterTVC, animated: true)
+        self.tabBarController?.selectedIndex = 1
     }
 }
 

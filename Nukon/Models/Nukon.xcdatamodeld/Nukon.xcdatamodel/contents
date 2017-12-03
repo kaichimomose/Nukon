@@ -11,10 +11,12 @@
     <entity name="WordLearnt" representedClassName=".WordLearnt" syncable="YES" codeGenerationType="class">
         <attribute name="numberOfCorrect" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numberOfWrong" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sound" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="UserData" positionX="-74" positionY="-99" width="128" height="135"/>
-        <element name="WordLearnt" positionX="-380" positionY="63" width="128" height="90"/>
+        <element name="WordLearnt" positionX="-380" positionY="63" width="128" height="120"/>
     </elements>
 </model>

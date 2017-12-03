@@ -18,11 +18,13 @@ class PracticeViewController: UIViewController {
     @IBOutlet weak var haraganaButton: UIButton!
     @IBOutlet weak var katakanaButton: UIButton!
     
+    var japaneseType: JapaneseType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
