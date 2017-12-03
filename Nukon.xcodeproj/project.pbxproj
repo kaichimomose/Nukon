@@ -29,9 +29,11 @@
 		BFA65BB21FC9FF4200F426F0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */; };
 		BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */; };
 		BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB51FCB5AD100F426F0 /* UserData.swift */; };
+		F642740B1FD37F48008F61B5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642740A1FD37F48008F61B5 /* GradientView.swift */; };
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
 		F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */; };
-		F64CBD9E1FCAC830001E0E47 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD9D1FCAC830001E0E47 /* ArcView.swift */; };
+		F66D52F81FD3B88E009A6E93 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66D52F71FD3B88E009A6E93 /* CustomImageView.swift */; };
+		F66D52FC1FD3DB7A009A6E93 /* LevelTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66D52FB1FD3DB7A009A6E93 /* LevelTrackerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,9 +61,11 @@
 		BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		BFA65BB51FCB5AD100F426F0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F642740A1FD37F48008F61B5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
-		F64CBD9D1FCAC830001E0E47 /* ArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
+		F66D52F71FD3B88E009A6E93 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		F66D52FB1FD3DB7A009A6E93 /* LevelTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTrackerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 		BF5FF9511FA0D35D00A46DE0 /* Nukon */ = {
 			isa = PBXGroup;
 			children = (
+				F63B19591FD37AEB00C4B40E /* Custom View Classes */,
 				BF5FF9671FA0D56300A46DE0 /* Controllers */,
 				BF5FF96B1FA0D56300A46DE0 /* Storyboards */,
 				BF5FF96F1FA0D57200A46DE0 /* Views */,
@@ -117,6 +122,7 @@
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 				BF0A86961FB7C49E00B8305A /* RecapViewController.swift */,
 				BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */,
+				F66D52FB1FD3DB7A009A6E93 /* LevelTrackerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -162,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */,
-				F64CBD9D1FCAC830001E0E47 /* ArcView.swift */,
 				BF0A86981FB8C32B00B8305A /* AlertHelper.swift */,
 			);
 			path = Helpers;
@@ -178,6 +183,15 @@
 				BFA65BB51FCB5AD100F426F0 /* UserData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F63B19591FD37AEB00C4B40E /* Custom View Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F642740A1FD37F48008F61B5 /* GradientView.swift */,
+				F66D52F71FD3B88E009A6E93 /* CustomImageView.swift */,
+			);
+			path = "Custom View Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,15 +269,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */,
+				F642740B1FD37F48008F61B5 /* GradientView.swift in Sources */,
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
 				BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */,
 				BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */,
-				F64CBD9E1FCAC830001E0E47 /* ArcView.swift in Sources */,
 				BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */,
 				BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */,
 				BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */,
+				F66D52F81FD3B88E009A6E93 /* CustomImageView.swift in Sources */,
 				BFA65BB01FC8D35400F426F0 /* RecapCollectionReusableView.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
@@ -273,6 +288,7 @@
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF0A869D1FC50D8700B8305A /* AllPosibilities.swift in Sources */,
 				BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */,
+				F66D52FC1FD3DB7A009A6E93 /* LevelTrackerViewController.swift in Sources */,
 				BF5D5C401FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
