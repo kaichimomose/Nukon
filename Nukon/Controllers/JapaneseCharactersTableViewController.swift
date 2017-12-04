@@ -55,6 +55,10 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
             self.japaneseList = JapaneseCharacters().hiraganaList
         case .katakana:
             self.japaneseList = JapaneseCharacters().katakanaList
+        case .voicedHiragana:
+            self.japaneseList = JapaneseCharacters().voicedHiraganaList
+        case .voicedKatakana:
+            self.japaneseList = JapaneseCharacters().voicedKatakanaList
         }
     }
 
@@ -102,20 +106,17 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         cell.soundLabel.layer.cornerRadius = 20
         cell.soundLabel.layer.borderWidth = 1
         cell.soundLabel.layer.borderColor = UIColor.lightGray.cgColor
-        cell.soundLabel.text = japaneseList[row].sound
+        let showSound = japaneseList[row].sound
+        cell.soundLabel.text = showSound
         if japaneseList[row].select != true {
             // changes the background color from blue to white when returning from ShowCharactersView to here
             cell.backgroundColor = .white
         } else {
             //changes the background color of preselected sound row to blue
-//            if let selectedIndexPath = self.preSelectedIndexPath {
-//                if indexPath == selectedIndexPath {
             cell.backgroundColor = .blue
-//                }
-//            }
         }
         // adjusts font size based on rows
-        if row == 0 {
+        if showSound == "vowel" {
             cell.soundLabel.font = cell.soundLabel.font.withSize(14.0)
         }
         else{
@@ -136,7 +137,16 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         let cell = self.tableView.cellForRow(at: indexPath)
         let row = indexPath.row
         let selectedJapanese = japaneseList[row]
-        let posibilities = AllPosibilities().allPosibilitiesList[row]
+        var posibilities: Posibilities
+        switch self.selectedType {
+        case .hiragana, .katakana:
+            posibilities = AllPosibilities().allPosibilitiesList[row]
+        case .voicedHiragana, .voicedKatakana:
+            posibilities = AllPosibilities().allVoicedPosibilitiesList[row]
+        default:
+            posibilities = AllPosibilities().allPosibilitiesList[row]
+        }
+        
         if japaneseList[row].select != true {
             // once being selected, changes the background color to blue
             cell?.layer.backgroundColor = UIColor.blue.cgColor

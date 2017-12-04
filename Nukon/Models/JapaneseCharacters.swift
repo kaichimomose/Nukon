@@ -35,5 +35,22 @@ struct JapaneseCharacters {
         Japanese(select: false, sound: "W", letters: ["ワ", "　", "　", "　", "ヲ", "　"])
     ]
     
+    var voicedHiraganaList = [
+        Japanese(select: false, sound: "G", letters: ["が", "ぎ", "ぐ", "げ", "ご", "　"]),
+        Japanese(select: false, sound: "Z", letters: ["ざ", "じ", "ず", "ぜ", "ぞ", "　"]),
+        Japanese(select: false, sound: "D", letters: ["だ", "ぢ", "づ", "で", "ど", "　"]),
+        Japanese(select: false, sound: "B", letters: ["ば", "び", "ぶ", "べ", "ぼ", "　"]),
+        Japanese(select: false, sound: "P", letters: ["ぱ", "ぴ", "ぷ", "ぺ", "ぽ", "　"])
+    ]
+    
+    var voicedKatakanaList = [
+        Japanese(select: false, sound: "G", letters: ["ガ", "ギ", "グ", "ゲ", "ゴ", "　"]),
+        Japanese(select: false, sound: "Z", letters: ["ザ", "ジ", "ズ", "ゼ", "ゾ", "　"]),
+        Japanese(select: false, sound: "D", letters: ["ダ", "ヂ", "ヅ", "デ", "ド", "　"]),
+        Japanese(select: false, sound: "B", letters: ["バ", "ビ", "ブ", "ベ", "ボ", "　"]),
+        Japanese(select: false, sound: "P", letters: ["パ", "ピ", "プ", "ペ", "ポ", "　"])
+    ]
+    
+    
     var vowelSounds = ["a", "i", "u", "e", "o", " "]
 }

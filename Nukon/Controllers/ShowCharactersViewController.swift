@@ -176,6 +176,7 @@ class ShowCharactersViewController: UIViewController {
     func randomCharacter() -> String {
         // chooses a character randomly, returns it
         // generates random numbers
+        print(self.mutableList)
         let soundIndex = Int(arc4random()) % self.mutableList.count
         let vowelIndex = Int(arc4random()) % self.mutableList[soundIndex].1.count
         // picks a character with random numbers
@@ -189,8 +190,14 @@ class ShowCharactersViewController: UIViewController {
         self.mutableList[soundIndex].1.remove(at: vowelIndex)
         self.mutablePosibilitiesList[soundIndex].remove(at: vowelIndex)
         self.vowelSounds[soundIndex].remove(at: vowelIndex)
-        
         if showCharacter == "　" {
+            if self.mutableList[soundIndex].1 == [] {
+                // removes emply list
+                self.mutableList.remove(at: soundIndex)
+                self.mutablePosibilitiesList.remove(at: soundIndex)
+                self.vowelSounds.remove(at: soundIndex)
+            }
+            //chooses character again
             showCharacter = randomCharacter()
         }
         else {
@@ -203,6 +210,7 @@ class ShowCharactersViewController: UIViewController {
             // update counter
             self.counter += 1
         }
+        print(self.mutableList)
         return showCharacter
     }
     

@@ -112,10 +112,16 @@ extension ReviewViewController: UICollectionViewDataSource {
         }
         if wordLearnt.type == JapaneseType.hiragana.rawValue {
             cell.japaneseTypeLabel.text =  "hi"
-        } else {
+        }
+        else if wordLearnt.type == JapaneseType.katakana.rawValue {
             cell.japaneseTypeLabel.text =  "ka"
         }
-        
+        else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
+            cell.japaneseTypeLabel.text =  "hi"
+        }
+        else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
+            cell.japaneseTypeLabel.text =  "ka"
+        }
         
         return cell
     }
@@ -129,9 +135,16 @@ extension ReviewViewController: UICollectionViewDataSource {
         let navigationVC = self.tabBarController?.viewControllers![1]
         let practiceVC = navigationVC?.childViewControllers.first as! PracticeViewController
         if wordLearnt.type == JapaneseType.hiragana.rawValue {
-            practiceVC.japaneseType = JapaneseType.hiragana
-        } else {
-            practiceVC.japaneseType = JapaneseType.katakana
+            practiceVC.japaneseType = .hiragana
+        }
+        else if wordLearnt.type == JapaneseType.katakana.rawValue {
+            practiceVC.japaneseType = .katakana
+        }
+        else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
+            practiceVC.japaneseType = .voicedHiragana
+        }
+        else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
+            practiceVC.japaneseType = .voicedKatakana
         }
         practiceVC.sound = wordLearnt.sound
         self.tabBarController?.selectedIndex = 1

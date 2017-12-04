@@ -101,7 +101,9 @@ class RecapViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "done" {
-           
+            let practiceVC = segue.destination as! PracticeViewController
+            practiceVC.japaneseType = nil
+            practiceVC.sound = nil
         }
     }
 }

@@ -26,11 +26,11 @@ class PracticeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard japaneseType == self.japaneseType else {return}
-        if japaneseType == .hiragana {
+        guard let japaneseType = self.japaneseType else {return}
+        switch japaneseType {
+        case .hiragana, .voicedHiragana:
             self.hiraganaButtonTapped(self.haraganaButton)
-        }
-        else if japaneseType == .katakana {
+        case .katakana, .voicedKatakana:
             self.katakanaButtonTapped(self.katakanaButton)
         }
     }
@@ -42,7 +42,11 @@ class PracticeViewController: UIViewController {
     
     @IBAction func hiraganaButtonTapped(_ sender: UIButton) {
         let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
-        japaneseCharactersTVC.selectedType = .hiragana
+        if let japaneseType = self.japaneseType {
+            japaneseCharactersTVC.selectedType = japaneseType
+        } else {
+            japaneseCharactersTVC.selectedType = .hiragana
+        }
         if let sound = self.sound {
             japaneseCharactersTVC.preSelectedSound = sound
         }
@@ -52,7 +56,11 @@ class PracticeViewController: UIViewController {
     
     @IBAction func katakanaButtonTapped(_ sender: UIButton) {
         let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
-        japaneseCharactersTVC.selectedType = .katakana
+        if let japaneseType = self.japaneseType {
+            japaneseCharactersTVC.selectedType = japaneseType
+        } else {
+            japaneseCharactersTVC.selectedType = .katakana
+        }
         if let sound = self.sound {
             japaneseCharactersTVC.preSelectedSound = sound
         }
