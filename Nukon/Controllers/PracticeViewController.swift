@@ -28,9 +28,9 @@ class PracticeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         guard let japaneseType = self.japaneseType else {return}
         switch japaneseType {
-        case .hiragana, .voicedHiragana:
+        case .hiragana, .voicedHiragana, .yVowelHiragana:
             self.hiraganaButtonTapped(self.haraganaButton)
-        case .katakana, .voicedKatakana:
+        case .katakana, .voicedKatakana, .yVowelKatakana:
             self.katakanaButtonTapped(self.katakanaButton)
         }
     }
@@ -45,7 +45,7 @@ class PracticeViewController: UIViewController {
         if let japaneseType = self.japaneseType {
             japaneseCharactersTVC.selectedType = japaneseType
         } else {
-            japaneseCharactersTVC.selectedType = .hiragana
+            japaneseCharactersTVC.selectedType = .yVowelHiragana
         }
         if let sound = self.sound {
             japaneseCharactersTVC.preSelectedSound = sound
@@ -59,7 +59,7 @@ class PracticeViewController: UIViewController {
         if let japaneseType = self.japaneseType {
             japaneseCharactersTVC.selectedType = japaneseType
         } else {
-            japaneseCharactersTVC.selectedType = .katakana
+            japaneseCharactersTVC.selectedType = .yVowelKatakana
         }
         if let sound = self.sound {
             japaneseCharactersTVC.preSelectedSound = sound

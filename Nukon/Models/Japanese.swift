@@ -20,4 +20,6 @@ enum JapaneseType: String {
     case katakana = "katakana"
     case voicedHiragana = "voiced-hiragana"
     case voicedKatakana = "voiced-katakana"
+    case yVowelHiragana = "Y-vowel-hiragana"
+    case yVowelKatakana = "Y-vowel-katakana"
 }

@@ -51,6 +51,25 @@ struct JapaneseCharacters {
         Japanese(select: false, sound: "P", letters: ["パ", "ピ", "プ", "ペ", "ポ", "　"])
     ]
     
+    var yVowelHiraganaList = [
+        Japanese(select: false, sound: "Ky", letters: ["きゃ", "　", "きゅ", "　", "きょ", "　"]),
+        Japanese(select: false, sound: "Sy", letters: ["しゃ", "　", "しゅ", "　", "しょ", "　"]),
+        Japanese(select: false, sound: "Cy", letters: ["ちゃ", "　", "ちゅ", "　", "ちょ", "　"]),
+        Japanese(select: false, sound: "Ny", letters: ["にゃ", "　", "にゅ", "　", "にょ", "　"]),
+        Japanese(select: false, sound: "Hy", letters: ["ひゃ", "　", "ひゅ", "　", "ひょ", "　"]),
+        Japanese(select: false, sound: "My", letters: ["みゃ", "　", "みゅ", "　", "みょ", "　"]),
+        Japanese(select: false, sound: "Ry", letters: ["りゃ", "　", "りゅ", "　", "りょ", "　"])
+    ]
+    
+    var yVowelKatakanaList = [
+        Japanese(select: false, sound: "Ky", letters: ["キャ", "　", "キュ", "　", "キョ", "　"]),
+        Japanese(select: false, sound: "Sy", letters: ["シャ", "　", "シュ", "　", "ショ", "　"]),
+        Japanese(select: false, sound: "Cy", letters: ["チャ", "　", "チュ", "　", "チョ", "　"]),
+        Japanese(select: false, sound: "Ny", letters: ["ニャ", "　", "ニュ", "　", "ニョ", "　"]),
+        Japanese(select: false, sound: "Hy", letters: ["ヒャ", "　", "ヒュ", "　", "ヒョ", "　"]),
+        Japanese(select: false, sound: "My", letters: ["ミャ", "　", "ミュ", "　", "ミョ", "　"]),
+        Japanese(select: false, sound: "Ry", letters: ["リャ", "　", "リュ", "　", "リョ", "　"])
+    ]
     
     var vowelSounds = ["a", "i", "u", "e", "o", " "]
 }

@@ -59,6 +59,10 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
             self.japaneseList = JapaneseCharacters().voicedHiraganaList
         case .voicedKatakana:
             self.japaneseList = JapaneseCharacters().voicedKatakanaList
+        case .yVowelHiragana:
+            self.japaneseList = JapaneseCharacters().yVowelHiraganaList
+        case .yVowelKatakana:
+            self.japaneseList = JapaneseCharacters().yVowelKatakanaList
         }
     }
 
@@ -103,7 +107,7 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath) as! JapaneseCharactersTableViewCell
         let row = indexPath.row
         // sets layers
-        cell.soundLabel.layer.cornerRadius = 20
+        cell.soundLabel.layer.cornerRadius = 26.5
         cell.soundLabel.layer.borderWidth = 1
         cell.soundLabel.layer.borderColor = UIColor.lightGray.cgColor
         let showSound = japaneseList[row].sound

@@ -159,10 +159,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vowel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq1-J9-Rod">
-                                            <rect key="frame" x="8" y="19" width="40" height="40"/>
+                                            <rect key="frame" x="8" y="13" width="53" height="53"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="DPC-Sf-drh"/>
-                                                <constraint firstAttribute="width" constant="40" id="kPZ-Ja-CXu"/>
+                                                <constraint firstAttribute="width" secondItem="Nq1-J9-Rod" secondAttribute="height" multiplier="1:1" id="Wr7-hB-EYi"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
@@ -176,12 +175,12 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="aAD-KR-8aS" firstAttribute="leading" secondItem="Nq1-J9-Rod" secondAttribute="trailing" constant="34" id="PNd-4t-Ih7"/>
+                                        <constraint firstItem="aAD-KR-8aS" firstAttribute="leading" secondItem="Nq1-J9-Rod" secondAttribute="trailing" constant="21" id="PNd-4t-Ih7"/>
                                         <constraint firstItem="Nq1-J9-Rod" firstAttribute="centerY" secondItem="x0E-NL-qUP" secondAttribute="centerY" id="V5E-OH-Kp5"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aAD-KR-8aS" secondAttribute="trailing" constant="8" id="VA7-Aa-ogE"/>
                                         <constraint firstItem="aAD-KR-8aS" firstAttribute="centerY" secondItem="x0E-NL-qUP" secondAttribute="centerY" id="akl-Y0-KZs"/>
-                                        <constraint firstItem="Nq1-J9-Rod" firstAttribute="top" secondItem="x0E-NL-qUP" secondAttribute="topMargin" constant="11" id="okC-ai-TjP"/>
                                         <constraint firstItem="Nq1-J9-Rod" firstAttribute="leading" secondItem="x0E-NL-qUP" secondAttribute="leadingMargin" id="r0Q-0g-4FD"/>
+                                        <constraint firstItem="Nq1-J9-Rod" firstAttribute="width" secondItem="x0E-NL-qUP" secondAttribute="height" multiplier="1:1.5" id="t5H-qO-kwS"/>
                                         <constraint firstItem="aAD-KR-8aS" firstAttribute="top" secondItem="x0E-NL-qUP" secondAttribute="topMargin" constant="9" id="vj7-6H-COD"/>
                                     </constraints>
                                 </tableViewCellContentView>
