@@ -28,6 +28,8 @@
 		BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
 		BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97052B1FCBBDAD00A95E56 /* DateToString.swift */; };
+		BF9B20B61FD70C7B00776A67 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */; };
+		BF9B20B81FD70C9200776A67 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B71FD70C9200776A67 /* ReviewTableViewCell.swift */; };
 		BFA65BB01FC8D35400F426F0 /* RecapCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */; };
 		BFA65BB21FC9FF4200F426F0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */; };
 		BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */; };
@@ -61,6 +63,8 @@
 		BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
 		BF97052B1FCBBDAD00A95E56 /* DateToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
+		BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
+		BF9B20B71FD70C9200776A67 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapCollectionReusableView.swift; sourceTree = "<group>"; };
 		BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */,
+				BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */,
 				BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */,
 				BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */,
 				BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */,
@@ -163,6 +168,7 @@
 				BFA65BAF1FC8D35400F426F0 /* RecapCollectionReusableView.swift */,
 				BF51F0D01FD3171800DB6DB8 /* ReviewCollectionReusableView.swift */,
 				BF51F0D21FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift */,
+				BF9B20B71FD70C9200776A67 /* ReviewTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,8 +288,10 @@
 				F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */,
 				BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */,
 				BFA65BB21FC9FF4200F426F0 /* AnalysisViewController.swift in Sources */,
+				BF9B20B61FD70C7B00776A67 /* ReviewTableViewController.swift in Sources */,
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF0A869D1FC50D8700B8305A /* AllPosibilities.swift in Sources */,
+				BF9B20B81FD70C9200776A67 /* ReviewTableViewCell.swift in Sources */,
 				BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */,
 				BF5D5C401FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift in Sources */,
 			);

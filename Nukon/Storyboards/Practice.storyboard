@@ -82,7 +82,7 @@
         <!--ひらがな-->
         <scene sceneID="Dfo-ML-tUo">
             <objects>
-                <tableViewController storyboardIdentifier="JapaneseCharactersTVC" id="kJm-oL-KB3" customClass="JapaneseCharactersTableViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="JapaneseCharactersTVC" hidesBottomBarWhenPushed="YES" id="kJm-oL-KB3" customClass="JapaneseCharactersTableViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IYW-am-m92">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,7 +261,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="OYQ-Jw-ba4" firstAttribute="height" secondItem="5o5-tB-L1e" secondAttribute="height" id="N7K-Jf-bop"/>
+                                    <constraint firstItem="5o5-tB-L1e" firstAttribute="height" secondItem="JXl-VM-Vtm" secondAttribute="height" id="Wuu-3a-b4W"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vowel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="nKH-Zc-ZVF">

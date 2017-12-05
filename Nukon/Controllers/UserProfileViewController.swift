@@ -311,13 +311,11 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //tap gesture identifier
-        let ReviewVC = segue.destination as! ReviewViewController
+        let ReviewTVC = segue.destination as! ReviewTableViewController
         if segue.identifier == "wordslearnt" {
-            ReviewVC.navigationTitle = wordsLearntLabel.text
-            ReviewVC.wordsLearnt = self.numberOfWordsLearnt
+            ReviewTVC.wordsLearnt = self.numberOfWordsLearnt
         } else {
-            ReviewVC.navigationTitle = wordsToReviewLabel.text
-            ReviewVC.wordsLearnt = self.numberOfWordsToReview
+            ReviewTVC.wordsLearnt = self.numberOfWordsToReview
         }
     }
 }

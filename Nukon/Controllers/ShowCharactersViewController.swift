@@ -176,7 +176,6 @@ class ShowCharactersViewController: UIViewController {
     func randomCharacter() -> String {
         // chooses a character randomly, returns it
         // generates random numbers
-        print(self.mutableList)
         let soundIndex = Int(arc4random()) % self.mutableList.count
         let vowelIndex = Int(arc4random()) % self.mutableList[soundIndex].1.count
         // picks a character with random numbers
@@ -210,7 +209,6 @@ class ShowCharactersViewController: UIViewController {
             // update counter
             self.counter += 1
         }
-        print(self.mutableList)
         return showCharacter
     }
     
@@ -302,6 +300,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 self.commentLabel.text = correctsound
                 
                 let theBestString = result.bestTranscription.formattedString
+                print(self.shownCharacter + ": " + theBestString)
                 if willAppend == true {
                     // passes first result
                     for posibility in self.posibilities {

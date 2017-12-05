@@ -15,8 +15,9 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     var selectedJapaneseList = [Japanese]()
     var selectedPosibilitiesList = [Posibilities]()
     var sectionData = [Int: [Japanese]]()
-    var preSelectedIndexPath: IndexPath?
+    
     var preSelectedSound: String?
+    var preSelectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,11 +143,14 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         let row = indexPath.row
         let selectedJapanese = japaneseList[row]
         var posibilities: Posibilities
+        //switchs posibilituieslist depending on japanesetype
         switch self.selectedType {
         case .hiragana, .katakana:
             posibilities = AllPosibilities().allPosibilitiesList[row]
         case .voicedHiragana, .voicedKatakana:
             posibilities = AllPosibilities().allVoicedPosibilitiesList[row]
+        case .yVowelHiragana, .yVowelKatakana:
+            posibilities = AllPosibilities().allYVowelPosibilitiesList[row]
         default:
             posibilities = AllPosibilities().allPosibilitiesList[row]
         }
