@@ -59,10 +59,14 @@ class ReviewTableViewController: UITableViewController {
                 normalHiraganaWordsLearnt.append(wordLearnt)
             }
         }
+        self.sectionData = [0: [normalHiraganaWordsLearnt, voicedHiraganaWordsLearnt, yVowelHiraganaWordsLearnt], 1: [normalKatakanaWordsLearnt, voicedKatakanaWordsLearnt, yVowelKatakanaWordsLearnt]]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.categorizingWordsLearnt()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 80
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -82,57 +86,67 @@ class ReviewTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return self.sectionData.count
     }
-
+    
+    //////Header cell functions
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reviewHeaderTableViewCell") as! ReviewHeaderTableViewCell
+        if section == 0 {
+            // the header that shows what sound user select
+            cell.japaneseTypeLabel.text = "Hiragana"
+            return cell
+        }
+        else {
+            // the header that shows vowels (a, i, u, e, o)
+            cell.japaneseTypeLabel.text = "Katakana"
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // sets height of header cells
+        return 60
+    }
+    /////
+    
+    // cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return sectionData[section]!.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reviewTableViewCell", for: indexPath) as! ReviewTableViewCell
+        let row = indexPath.row
+        let section = indexPath.section
+        let numberOfWordsLearnt = sectionData[section]![row].count
         // Configure the cell...
-
+        if row == 0 {
+            cell.specificJapaneseTypeLabel.text = "nomal-sounds:"
+        }
+        else if row == 1 {
+            cell.specificJapaneseTypeLabel.text = "voiced-sounds:"
+        } else {
+            cell.specificJapaneseTypeLabel.text = "y-vowel-sounds:"
+        }
+        cell.numberOfWordsLabel.text = "\(numberOfWordsLearnt)"
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        let section = indexPath.section
+        let wordsLearnt = sectionData[section]![row]
+        let reviewVC = storyboard?.instantiateViewController(withIdentifier: "reviewViewController") as! ReviewViewController
+        reviewVC.wordsLearnt = wordsLearnt
+        reviewVC.normalWordsLearnt = sectionData[section]![0]
+        reviewVC.voicedWordsLearnt = sectionData[section]![1]
+        reviewVC.yVowelWordsLearnt = sectionData[section]![2]
+        self.navigationController?.pushViewController(reviewVC, animated: true)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    @IBAction func unwindToReviewTableViewController(_ segue: UIStoryboardSegue) {
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     /*
     // MARK: - Navigation
 

@@ -49,7 +49,7 @@ class ReviewViewController: UIViewController, AlertPresentable {
     
     @IBAction func normalSoundsButtonTapped(_ sender: Any) {
         self.setup()
-        self.wordsLearnt = Array(self.normalWordsLearnt.keys)
+        self.wordsLearnt = self.normalWordsLearnt
         self.calculateAccuracyRate()
         self.slideMenuInvisible()
         self.title = "normal-sounds"
@@ -57,7 +57,7 @@ class ReviewViewController: UIViewController, AlertPresentable {
     }
     @IBAction func voicedSoundsButtonTapped(_ sender: Any) {
         self.setup()
-        self.wordsLearnt = Array(self.voicedWordsLearnt.keys)
+        self.wordsLearnt = self.voicedWordsLearnt
         self.calculateAccuracyRate()
         self.slideMenuInvisible()
         self.title = "voiced-sounds"
@@ -65,7 +65,7 @@ class ReviewViewController: UIViewController, AlertPresentable {
     }
     @IBAction func YVowelSoundsButtonTapped(_ sender: Any) {
         self.setup()
-        self.wordsLearnt = Array(self.yVowelWordsLearnt.keys)
+        self.wordsLearnt = self.yVowelWordsLearnt
         self.calculateAccuracyRate()
         self.slideMenuInvisible()
         self.title = "y-vowel-sounds"
@@ -75,48 +75,54 @@ class ReviewViewController: UIViewController, AlertPresentable {
     var wordsLearnt: [WordLearnt]!
     var sectionData = [Int32: [WordLearnt]]()
     var sectionDataSort = [Int32]()
-    var normalWordsLearnt = [WordLearnt: Bool]() //wordlearnt instances whose japanese type is hiragana or katakana
-    var voicedWordsLearnt = [WordLearnt: Bool]() //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
-    var yVowelWordsLearnt = [WordLearnt: Bool]() //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
+    
+    var normalWordsLearnt: [WordLearnt]? //wordlearnt instances whose japanese type is hiragana or katakana
+    var voicedWordsLearnt: [WordLearnt]? //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
+    var yVowelWordsLearnt: [WordLearnt]? //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
+    
+//    var normalWordsLearnt = [WordLearnt: Bool]() //wordlearnt instances whose japanese type is hiragana or katakana
+//    var voicedWordsLearnt = [WordLearnt: Bool]() //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
+//    var yVowelWordsLearnt = [WordLearnt: Bool]() //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
+    
     var selectedSound: String?
     var selectedJapaneseType: JapaneseType?
     var isJumping = false
     
-    func categorizingWordsLearnt() {
-        for wordLearnt in self.wordsLearnt {
-            //distinguishs japanese type
-            var japaneseType: JapaneseType!
-            if wordLearnt.type == JapaneseType.hiragana.rawValue {
-                japaneseType = .hiragana
-            }
-            else if wordLearnt.type == JapaneseType.katakana.rawValue {
-                japaneseType = .katakana
-            }
-            else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
-                japaneseType = .voicedHiragana
-            }
-            else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
-                japaneseType = .voicedKatakana
-            }
-            else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
-                japaneseType = .yVowelHiragana
-            }
-            else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
-                japaneseType = .yVowelKatakana
-            }
-            //categorizes wordLearnt object among 3 types based on japaneseType
-            switch japaneseType {
-            case .hiragana, .katakana:
-                normalWordsLearnt[wordLearnt] = false
-            case .voicedHiragana, .voicedKatakana:
-                voicedWordsLearnt[wordLearnt] = false
-            case .yVowelHiragana, .yVowelKatakana:
-                yVowelWordsLearnt[wordLearnt] = false
-            default:
-                normalWordsLearnt[wordLearnt] = false
-            }
-        }
-    }
+//    func categorizingWordsLearnt() {
+//        for wordLearnt in self.wordsLearnt {
+//            //distinguishs japanese type
+//            var japaneseType: JapaneseType!
+//            if wordLearnt.type == JapaneseType.hiragana.rawValue {
+//                japaneseType = .hiragana
+//            }
+//            else if wordLearnt.type == JapaneseType.katakana.rawValue {
+//                japaneseType = .katakana
+//            }
+//            else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
+//                japaneseType = .voicedHiragana
+//            }
+//            else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
+//                japaneseType = .voicedKatakana
+//            }
+//            else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
+//                japaneseType = .yVowelHiragana
+//            }
+//            else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
+//                japaneseType = .yVowelKatakana
+//            }
+//            //categorizes wordLearnt object among 3 types based on japaneseType
+//            switch japaneseType {
+//            case .hiragana, .katakana:
+//                normalWordsLearnt[wordLearnt] = false
+//            case .voicedHiragana, .voicedKatakana:
+//                voicedWordsLearnt[wordLearnt] = false
+//            case .yVowelHiragana, .yVowelKatakana:
+//                yVowelWordsLearnt[wordLearnt] = false
+//            default:
+//                normalWordsLearnt[wordLearnt] = false
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,8 +131,7 @@ class ReviewViewController: UIViewController, AlertPresentable {
         // Its feature of UICollectionViewFlowLayout
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
-        self.categorizingWordsLearnt()
-        self.wordsLearnt = Array(self.normalWordsLearnt.keys)
+//        self.categorizingWordsLearnt()
         self.calculateAccuracyRate()
         self.title = "normal-sounds"
         self.normalSoundsButton.setTitle("normal-sounds", for: .normal)
@@ -184,6 +189,7 @@ extension ReviewViewController: UICollectionViewDataSource {
         return sectionData[accuracyRate]!.count
     }
     
+    // headers
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionElementKindSectionHeader else {
             fatalError("Unexpected element kind.")
@@ -205,6 +211,7 @@ extension ReviewViewController: UICollectionViewDataSource {
         return headerView
     }
     
+    // cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewJapaneseCharacterCell", for: indexPath) as! ReviewJapaneseCharactersCollectionViewCell
         let row = indexPath.row
