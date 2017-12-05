@@ -15,7 +15,7 @@
         <scene sceneID="vDb-Nj-Ssa">
             <objects>
                 <viewController id="vNR-ge-zHm" customClass="PracticeViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="V7V-mz-ev2">
+                    <view key="view" contentMode="scaleToFill" id="V7V-mz-ev2" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -68,6 +68,11 @@
                             <constraint firstItem="J7X-XX-4oz" firstAttribute="trailing" secondItem="nVL-Ws-Tw6" secondAttribute="trailing" constant="40" id="fIq-N4-Mbq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J7X-XX-4oz"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                <real key="value" value="-24"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="vEJ-jX-ZJb"/>
                     <connections>
