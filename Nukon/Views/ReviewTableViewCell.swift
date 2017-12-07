@@ -13,4 +13,5 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var specificJapaneseTypeLabel: UILabel!
     @IBOutlet weak var numberOfWordsLabel: UILabel!
     
+    var soundsType: JapaneseSoundsType!
 }

@@ -45,7 +45,7 @@ class PracticeViewController: UIViewController {
         if let japaneseType = self.japaneseType {
             japaneseCharactersTVC.selectedType = japaneseType
         } else {
-            japaneseCharactersTVC.selectedType = .yVowelHiragana
+            japaneseCharactersTVC.selectedType = .hiragana
         }
         if let sound = self.sound {
             japaneseCharactersTVC.preSelectedSound = sound
@@ -59,7 +59,7 @@ class PracticeViewController: UIViewController {
         if let japaneseType = self.japaneseType {
             japaneseCharactersTVC.selectedType = japaneseType
         } else {
-            japaneseCharactersTVC.selectedType = .yVowelKatakana
+            japaneseCharactersTVC.selectedType = .katakana
         }
         if let sound = self.sound {
             japaneseCharactersTVC.preSelectedSound = sound

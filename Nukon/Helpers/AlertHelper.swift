@@ -33,16 +33,16 @@ extension AlertPresentable where Self: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-    func jumpToJCTVCAlert(){
+    func jumpToJCTVCAlert(character: String, closure: @escaping () -> ()){
         let alertVC = UIAlertController(
             title: "Practice?",
-            message: "start practicing this character",
+            message: "start practicing '\(character)'",
             preferredStyle: .actionSheet
         )
         
         alertVC.addAction(
             UIAlertAction(
-                title: "No",
+                title: "Cancel",
                 style: .cancel,
                 handler: { (action) in
                     
@@ -54,7 +54,7 @@ extension AlertPresentable where Self: UIViewController {
                 title: "Yes",
                 style: .default,
                 handler: { (action) in
-                    
+                 closure()
             })
         )
         

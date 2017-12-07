@@ -68,6 +68,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <gestureRecognizers/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-3W-H6H">
                                                 <rect key="frame" x="0.0" y="60.333333333333343" width="100.66666666666669" height="40.333333333333314"/>
@@ -296,7 +297,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unC-ch-Ly7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1707" y="863"/>
+            <point key="canvasLocation" x="2078" y="147"/>
         </scene>
         <!--Review-->
         <scene sceneID="1rO-on-fU1">
@@ -311,21 +312,28 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jre-Zn-Zm3">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="normalSoundsButtonTapped:" destination="PEz-ef-5oQ" eventType="touchUpInside" id="3kx-59-7Nm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R79-c6-4Br">
                                         <rect key="frame" x="0.0" y="40" width="120" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="voicedSoundsButtonTapped:" destination="PEz-ef-5oQ" eventType="touchUpInside" id="cPR-kE-TkQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPs-zO-kuG">
                                         <rect key="frame" x="0.0" y="80" width="120" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="YVowelSoundsButtonTapped:" destination="PEz-ef-5oQ" eventType="touchUpInside" id="nth-tU-Qox"/>
                                         </connections>
@@ -385,13 +393,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tca-Sa-41I" secondAttribute="height" multiplier="1:1" id="5mw-2v-PrX"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EZh-nB-F8A">
-                                                    <rect key="frame" x="100" y="0.0" width="50" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -399,24 +401,19 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="YEa-u3-ah7" firstAttribute="centerX" secondItem="YOD-4j-mlu" secondAttribute="centerX" id="5aM-QN-Vjq"/>
-                                            <constraint firstItem="EZh-nB-F8A" firstAttribute="width" secondItem="tca-Sa-41I" secondAttribute="width" id="Dd0-XK-Ih3"/>
                                             <constraint firstAttribute="bottom" secondItem="YOD-4j-mlu" secondAttribute="bottom" id="QGT-vq-Wlj"/>
-                                            <constraint firstAttribute="trailing" secondItem="EZh-nB-F8A" secondAttribute="trailing" id="Szx-47-TQR"/>
                                             <constraint firstItem="tca-Sa-41I" firstAttribute="top" secondItem="BeM-Sl-bTd" secondAttribute="top" id="WpO-fa-Jzy"/>
                                             <constraint firstItem="tca-Sa-41I" firstAttribute="leading" secondItem="BeM-Sl-bTd" secondAttribute="leading" id="fuW-7f-3yh"/>
-                                            <constraint firstItem="EZh-nB-F8A" firstAttribute="height" secondItem="tca-Sa-41I" secondAttribute="height" id="j2n-nN-SXn"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="YEa-u3-ah7" secondAttribute="bottom" constant="5" id="lj8-0x-5De"/>
                                             <constraint firstAttribute="trailing" secondItem="YOD-4j-mlu" secondAttribute="trailing" id="n2f-bl-vpa"/>
                                             <constraint firstItem="YOD-4j-mlu" firstAttribute="top" secondItem="BeM-Sl-bTd" secondAttribute="top" id="nbM-DD-Ox4"/>
                                             <constraint firstItem="tca-Sa-41I" firstAttribute="width" secondItem="YOD-4j-mlu" secondAttribute="height" multiplier="1:3" id="oqi-7U-i4L"/>
                                             <constraint firstItem="YOD-4j-mlu" firstAttribute="leading" secondItem="BeM-Sl-bTd" secondAttribute="leading" id="vau-yP-TJM"/>
                                             <constraint firstAttribute="trailing" secondItem="YEa-u3-ah7" secondAttribute="trailing" constant="5" id="yB3-2v-Q3S"/>
-                                            <constraint firstItem="EZh-nB-F8A" firstAttribute="top" secondItem="BeM-Sl-bTd" secondAttribute="top" id="yQ0-mu-4Wk"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="150"/>
                                         <connections>
                                             <outlet property="japaneseCharacterLabel" destination="YOD-4j-mlu" id="19B-9h-Nzc"/>
-                                            <outlet property="japaneseTypeLabel" destination="EZh-nB-F8A" id="n7K-Az-fNf"/>
                                             <outlet property="numberOfCorrectLabel" destination="LVg-Da-XWm" id="0b6-gu-KbZ"/>
                                             <outlet property="numberOfWrongLabel" destination="8Zd-bo-x48" id="fvc-cy-tiY"/>
                                             <outlet property="soundLabel" destination="tca-Sa-41I" id="7Ct-Ri-WKh"/>
@@ -466,7 +463,8 @@
                                 <segue destination="0yg-wF-JqW" kind="unwind" unwindAction="unwindToReviewTableViewController:" id="zwA-Jj-3Cx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Slide" id="hqH-Ek-Wvw">
+                        <barButtonItem key="rightBarButtonItem" title="Slide" image="list ICON" id="hqH-Ek-Wvw">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="slideButtonTapped:" destination="PEz-ef-5oQ" id="8Q7-Ex-iLm"/>
                             </connections>
@@ -485,9 +483,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iuz-qz-p5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0yg-wF-JqW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2137.68115942029" y="148.36956521739131"/>
+            <point key="canvasLocation" x="2870" y="148"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list ICON" width="26" height="26"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="abe-Sx-5pI"/>
     </inferredMetricsTieBreakers>

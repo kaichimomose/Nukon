@@ -13,6 +13,6 @@ class ReviewJapaneseCharactersCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberOfCorrectLabel: UILabel!
     @IBOutlet weak var numberOfWrongLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
-    @IBOutlet weak var japaneseTypeLabel: UILabel!
+//    @IBOutlet weak var japaneseTypeLabel: UILabel!
     
 }

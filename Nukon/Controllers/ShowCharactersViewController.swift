@@ -76,6 +76,10 @@ class ShowCharactersViewController: UIViewController {
         self.characterLabel.layer.borderColor = UIColor.lightGray.cgColor
         self.characterLabel.layer.borderWidth = 1
         
+        self.nextCharacterButton.layer.cornerRadius = 7
+        self.nextCharacterButton.layer.borderColor = UIColor.black.cgColor
+        self.nextCharacterButton.layer.borderWidth = 1
+        
         for listOfCharacters in list{
             // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
             mutableList.append((listOfCharacters.sound, listOfCharacters.letters))
@@ -93,14 +97,8 @@ class ShowCharactersViewController: UIViewController {
     
     func updateLabels() {
         // updates all labels
-        if self.soundType == "vowel" {
-            self.soundLabel.font = self.soundLabel.font.withSize(20.0)
-         }
-        else {
-            self.soundLabel.font = self.soundLabel.font.withSize(40.0)
-        }
         self.commentLabel.text = self.comment.rawValue
-        self.soundLabel.text = self.soundType
+        self.soundLabel.text = ""
         self.characterLabel.text = self.shownCharacter
         self.countCharacters.text = "\(self.counter)/\(self.totalNumberOfCharacter)"
         self.judgeLabel.text = self.judge.rawValue
@@ -297,7 +295,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 } else {
                     correctsound = self.soundType.lowercased() + self.vowel
                 }
-                self.commentLabel.text = correctsound
+                self.soundLabel.text = correctsound
                 
                 let theBestString = result.bestTranscription.formattedString
                 print(self.shownCharacter + ": " + theBestString)

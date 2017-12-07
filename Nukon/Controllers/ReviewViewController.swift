@@ -50,25 +50,25 @@ class ReviewViewController: UIViewController, AlertPresentable {
     @IBAction func normalSoundsButtonTapped(_ sender: Any) {
         self.setup()
         self.wordsLearnt = self.normalWordsLearnt
-        self.calculateAccuracyRate()
+        self.categorizingWithUnmberOfCorrect()
         self.slideMenuInvisible()
-        self.title = "normal-sounds"
+        self.title = JapaneseSoundsType.regular.rawValue
         self.collectionView.reloadData()
     }
     @IBAction func voicedSoundsButtonTapped(_ sender: Any) {
         self.setup()
         self.wordsLearnt = self.voicedWordsLearnt
-        self.calculateAccuracyRate()
+        self.categorizingWithUnmberOfCorrect()
         self.slideMenuInvisible()
-        self.title = "voiced-sounds"
+        self.title = JapaneseSoundsType.voiced.rawValue
         self.collectionView.reloadData()
     }
     @IBAction func YVowelSoundsButtonTapped(_ sender: Any) {
         self.setup()
         self.wordsLearnt = self.yVowelWordsLearnt
-        self.calculateAccuracyRate()
+        self.categorizingWithUnmberOfCorrect()
         self.slideMenuInvisible()
-        self.title = "y-vowel-sounds"
+        self.title = JapaneseSoundsType.yVowel.rawValue
         self.collectionView.reloadData()
     }
 
@@ -86,43 +86,7 @@ class ReviewViewController: UIViewController, AlertPresentable {
     
     var selectedSound: String?
     var selectedJapaneseType: JapaneseType?
-    var isJumping = false
-    
-//    func categorizingWordsLearnt() {
-//        for wordLearnt in self.wordsLearnt {
-//            //distinguishs japanese type
-//            var japaneseType: JapaneseType!
-//            if wordLearnt.type == JapaneseType.hiragana.rawValue {
-//                japaneseType = .hiragana
-//            }
-//            else if wordLearnt.type == JapaneseType.katakana.rawValue {
-//                japaneseType = .katakana
-//            }
-//            else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
-//                japaneseType = .voicedHiragana
-//            }
-//            else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
-//                japaneseType = .voicedKatakana
-//            }
-//            else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
-//                japaneseType = .yVowelHiragana
-//            }
-//            else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
-//                japaneseType = .yVowelKatakana
-//            }
-//            //categorizes wordLearnt object among 3 types based on japaneseType
-//            switch japaneseType {
-//            case .hiragana, .katakana:
-//                normalWordsLearnt[wordLearnt] = false
-//            case .voicedHiragana, .voicedKatakana:
-//                voicedWordsLearnt[wordLearnt] = false
-//            case .yVowelHiragana, .yVowelKatakana:
-//                yVowelWordsLearnt[wordLearnt] = false
-//            default:
-//                normalWordsLearnt[wordLearnt] = false
-//            }
-//        }
-//    }
+    var navigationColor: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,11 +96,15 @@ class ReviewViewController: UIViewController, AlertPresentable {
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
 //        self.categorizingWordsLearnt()
-        self.calculateAccuracyRate()
-        self.title = "normal-sounds"
-        self.normalSoundsButton.setTitle("normal-sounds", for: .normal)
-        self.voicedSoundsButton.setTitle("voiced-sounds", for: .normal)
-        self.yVowelSoundsButton.setTitle("y-vowel-sounds", for: .normal)
+        self.categorizingWithUnmberOfCorrect()
+        self.normalSoundsButton.setTitle(JapaneseSoundsType.regular.rawValue, for: .normal)
+        self.voicedSoundsButton.setTitle(JapaneseSoundsType.voiced.rawValue, for: .normal)
+        self.yVowelSoundsButton.setTitle(JapaneseSoundsType.yVowel.rawValue, for: .normal)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = self.navigationColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,16 +112,41 @@ class ReviewViewController: UIViewController, AlertPresentable {
         // Dispose of any resources that can be recreated.
     }
     
+//    //calculate accuracy rate
+//    func calculateAccuracyRate() {
+//        for wordLearnt in wordsLearnt {
+//            let accuracyRate = wordLearnt.numberOfCorrect * 100 / (wordLearnt.numberOfCorrect + wordLearnt.numberOfWrong)
+//            // find key(accuracyRate) in sectionData, and append wordLearnt or insert key-value
+//            if self.sectionData[accuracyRate] != nil {
+//                self.sectionData[accuracyRate]?.append(wordLearnt)
+//            } else {
+//                self.sectionData[accuracyRate] = [wordLearnt]
+//                self.sectionDataSort.append(accuracyRate)
+//            }
+//
+//        }
+//        //sort sectionData numerical order
+//        self.sectionDataSort.sort()
+//        //sort [wordLearnt] japanese sounds order
+//        for (key, value) in self.sectionData {
+//            let sortedValue = value.sorted { a,b in
+//                return a.word! < b.word!
+//            }
+//            //update sectionData dic
+//            self.sectionData[key] = sortedValue
+//        }
+//    }
+    
     //calculate accuracy rate
-    func calculateAccuracyRate() {
+    func categorizingWithUnmberOfCorrect() {
         for wordLearnt in wordsLearnt {
-            let accuracyRate = wordLearnt.numberOfCorrect * 100 / (wordLearnt.numberOfCorrect + wordLearnt.numberOfWrong)
+            let numberOfCorrect = wordLearnt.numberOfCorrect
             // find key(accuracyRate) in sectionData, and append wordLearnt or insert key-value
-            if self.sectionData[accuracyRate] != nil {
-                self.sectionData[accuracyRate]?.append(wordLearnt)
+            if self.sectionData[numberOfCorrect] != nil {
+                self.sectionData[numberOfCorrect]?.append(wordLearnt)
             } else {
-                self.sectionData[accuracyRate] = [wordLearnt]
-                self.sectionDataSort.append(accuracyRate)
+                self.sectionData[numberOfCorrect] = [wordLearnt]
+                self.sectionDataSort.append(numberOfCorrect)
             }
             
         }
@@ -166,14 +159,6 @@ class ReviewViewController: UIViewController, AlertPresentable {
             }
             //update sectionData dic
             self.sectionData[key] = sortedValue
-        }
-    }
-    
-    @IBAction func doneButtonTapped(_ sender: Any) {
-        if self.selectedSound == nil {
-            
-        } else {
-             self.jumpToJCTVC()
         }
     }
     
@@ -234,24 +219,24 @@ extension ReviewViewController: UICollectionViewDataSource {
         else {
             cell.soundLabel.font = cell.soundLabel.font.withSize(25.0)
         }
-        if wordLearnt.type == JapaneseType.hiragana.rawValue {
-            cell.japaneseTypeLabel.text =  "hi"
-        }
-        else if wordLearnt.type == JapaneseType.katakana.rawValue {
-            cell.japaneseTypeLabel.text =  "ka"
-        }
-        else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
-            cell.japaneseTypeLabel.text =  "hi"
-        }
-        else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
-            cell.japaneseTypeLabel.text =  "ka"
-        }
-        else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
-            cell.japaneseTypeLabel.text =  "hi"
-        }
-        else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
-            cell.japaneseTypeLabel.text =  "ka"
-        }
+//        if wordLearnt.type == JapaneseType.hiragana.rawValue {
+//            cell.japaneseTypeLabel.text =  "hi"
+//        }
+//        else if wordLearnt.type == JapaneseType.katakana.rawValue {
+//            cell.japaneseTypeLabel.text =  "ka"
+//        }
+//        else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
+//            cell.japaneseTypeLabel.text =  "hi"
+//        }
+//        else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
+//            cell.japaneseTypeLabel.text =  "ka"
+//        }
+//        else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
+//            cell.japaneseTypeLabel.text =  "hi"
+//        }
+//        else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
+//            cell.japaneseTypeLabel.text =  "ka"
+//        }
         
         return cell
     }
@@ -280,14 +265,16 @@ extension ReviewViewController: UICollectionViewDataSource {
             self.selectedJapaneseType = .yVowelKatakana
         }
         self.selectedSound = wordLearnt.sound
+        jumpToJCTVCAlert(character: wordLearnt.word!, closure: jumpToJCTVC)
     }
    
-    func jumpToJCTVC() {
+    func jumpToJCTVC(){
         let navigationVC = self.tabBarController?.viewControllers![1]
         let practiceVC = navigationVC?.childViewControllers.first as! PracticeViewController
         practiceVC.japaneseType = self.selectedJapaneseType
         practiceVC.sound = self.selectedSound
         self.tabBarController?.selectedIndex = 1
+        return
     }
     
 }

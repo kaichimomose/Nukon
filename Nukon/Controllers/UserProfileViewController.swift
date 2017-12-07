@@ -160,7 +160,10 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
             self.numberOfWordsLearnt = [WordLearnt]()
             self.numberOfWordsToReview = [WordLearnt]()
             for wordLearnt in wordsLearnt {
-                if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
+//                if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
+//                    self.numberOfWordsLearnt.append(wordLearnt)
+//                }
+                if wordLearnt.numberOfCorrect > 5 {
                     self.numberOfWordsLearnt.append(wordLearnt)
                 }
                 else {
@@ -311,11 +314,13 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //tap gesture identifier
-        let ReviewTVC = segue.destination as! ReviewTableViewController
+        let reviewTVC = segue.destination as! ReviewTableViewController
         if segue.identifier == "wordslearnt" {
-            ReviewTVC.wordsLearnt = self.numberOfWordsLearnt
+            reviewTVC.title = self.wordsLearntLabel.text! + ": " + self.numOfWordsLearntLabel.text!
+            reviewTVC.wordsLearnt = self.numberOfWordsLearnt
         } else {
-            ReviewTVC.wordsLearnt = self.numberOfWordsToReview
+            reviewTVC.title = self.wordsToReviewLabel.text! + ": " + self.numOfWordsToReviewLabel.text!
+            reviewTVC.wordsLearnt = self.numberOfWordsToReview
         }
     }
 }

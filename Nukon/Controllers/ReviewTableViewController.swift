@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum JapaneseSoundsType: String {
+    case regular = "regular-sounds"
+    case voiced = "voiced-sounds"
+    case yVowel = "y-vowel-sounds"
+}
+
 class ReviewTableViewController: UITableViewController {
     
     var wordsLearnt: [WordLearnt]!
@@ -75,6 +81,12 @@ class ReviewTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.tintColor = .black
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -90,14 +102,20 @@ class ReviewTableViewController: UITableViewController {
     //////Header cell functions
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reviewHeaderTableViewCell") as! ReviewHeaderTableViewCell
+        var numberOfKana = 0
+        for wordsLearnt in sectionData[section]! {
+            numberOfKana += wordsLearnt.count
+        }
         if section == 0 {
-            // the header that shows what sound user select
-            cell.japaneseTypeLabel.text = "Hiragana"
+            // Hiragana Header
+            cell.japaneseTypeLabel.text = "Hiragana: \(numberOfKana)"
+            cell.backgroundColor = .orange
             return cell
         }
         else {
-            // the header that shows vowels (a, i, u, e, o)
-            cell.japaneseTypeLabel.text = "Katakana"
+            // Katakana Header
+            cell.japaneseTypeLabel.text = "Katakana: \(numberOfKana)"
+            cell.backgroundColor = UIColor(red: 0.25, green: 0.8, blue: 1.0, alpha: 1)
             return cell
         }
     }
@@ -119,24 +137,39 @@ class ReviewTableViewController: UITableViewController {
         let row = indexPath.row
         let section = indexPath.section
         let numberOfWordsLearnt = sectionData[section]![row].count
-        // Configure the cell...
         if row == 0 {
-            cell.specificJapaneseTypeLabel.text = "nomal-sounds:"
+            cell.soundsType = .regular
         }
         else if row == 1 {
-            cell.specificJapaneseTypeLabel.text = "voiced-sounds:"
+            cell.soundsType = .voiced
         } else {
-            cell.specificJapaneseTypeLabel.text = "y-vowel-sounds:"
+            cell.soundsType = .yVowel
         }
+        cell.specificJapaneseTypeLabel.text = cell.soundsType.rawValue + ":"
         cell.numberOfWordsLabel.text = "\(numberOfWordsLearnt)"
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reviewTableViewCell", for: indexPath) as! ReviewTableViewCell
         let row = indexPath.row
         let section = indexPath.section
         let wordsLearnt = sectionData[section]![row]
+        if row == 0 {
+            cell.soundsType = .regular
+        }
+        else if row == 1 {
+            cell.soundsType = .voiced
+        } else {
+            cell.soundsType = .yVowel
+        }
         let reviewVC = storyboard?.instantiateViewController(withIdentifier: "reviewViewController") as! ReviewViewController
+        if section == 0 {
+            reviewVC.navigationColor = .orange
+        } else {
+            reviewVC.navigationColor = UIColor(red: 0.25, green: 0.8, blue: 1.0, alpha: 1)
+        }
+        reviewVC.title = cell.soundsType.rawValue
         reviewVC.wordsLearnt = wordsLearnt
         reviewVC.normalWordsLearnt = sectionData[section]![0]
         reviewVC.voicedWordsLearnt = sectionData[section]![1]
