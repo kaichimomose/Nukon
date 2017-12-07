@@ -20,6 +20,8 @@ class PracticeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        haraganaButton.layer.shadowRadius = 3.5
+        katakanaButton.layer.shadowRadius = 2.5
         
     }
 
@@ -29,11 +31,11 @@ class PracticeViewController: UIViewController {
     }
     
     @IBAction func hiraganaButtonTapped(_ sender: UIButton) {
-        printLabel.text = "hiragana tapped"
+        print("hiragana tapped")
     }
     
     @IBAction func katakanaButtonTapped(_ sender: UIButton) {
-        printLabel.text = "katakana tapped"
+        print("katakana tapped")
     }
     
     
