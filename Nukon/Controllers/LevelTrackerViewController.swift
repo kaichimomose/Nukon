@@ -10,16 +10,45 @@ import UIKit
 
 @IBDesignable class LevelTrackerViewController: UIViewController {
     
-    let backgroundStageImageView: UIImageView = {
-        let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "samurai"))
+    
+    func degreesToRadians(_ degrees: Double) -> CGFloat {
+        return CGFloat(degrees * .pi / 180.0)
+    }
+    
+    let backgroundStageImageView: UIView = {
+//        let backgroundImageView = UIImageView(image: #imageLiteral(resourceName: "samurai"))
+        let backgroundImageView = UIView()
+        backgroundImageView.backgroundColor = UIColor(red: 236/255, green: 212/255, blue: 28, alpha: 1)
+//        backgroundImageView.middleColor = UIColor(red: 255/255, green: 144/255, blue: 34/255, alpha: 1)
+//        backgroundImageView.bottomColor = UIColor(red: 252/255, green: 69/255, blue: 127/255, alpha: 1)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImageView.contentMode = .scaleAspectFill
+        
+//        backgroundImageView.contentMode = .scaleAspectFill
         return backgroundImageView
     }()
     
-//    let stageOneImageView: UIImageView = {
+    
+    let stageOneImageView: UIImageView = {
+        let stageOneImage = CustomImageView(image: #imageLiteral(resourceName: "flower"))
 //        let stageOneImage = UIImageView()
-//    }()
+//        stageOneImage.backgroundColor = .green
+//        stageOneImage.cornerRadius = 50
+        
+        stageOneImage.translatesAutoresizingMaskIntoConstraints = false
+        stageOneImage.contentMode = .scaleAspectFit
+        return stageOneImage
+    }()
+    
+    var stageLabel: UITextView = {
+        var stage = UITextView()
+        var attributedText = NSMutableAttributedString(string: "Foundation",
+               attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)])
+        stage.attributedText = attributedText
+        stage.backgroundColor = .clear
+        stage.textAlignment = .center
+        stage.translatesAutoresizingMaskIntoConstraints = false
+        return stage
+    }()
     
 
     var levelNumber: UITextView = {
@@ -153,8 +182,8 @@ extension LevelTrackerViewController {
             middleContainerView.heightAnchor.constraint(equalTo: backgroundStageImageView.heightAnchor, multiplier: 0.35)
             ])
         //SET UP LEFT CONTAINER WITHIN THE MIDDLE CONTAINER
-        let leftContainer = UIView()
-        leftContainer.backgroundColor = .purple
+        let leftContainer = UIButton()
+        leftContainer.backgroundColor = .clear
         leftContainer.translatesAutoresizingMaskIntoConstraints = false
         middleContainerView.addSubview(leftContainer)
         NSLayoutConstraint.activate([
@@ -164,9 +193,27 @@ extension LevelTrackerViewController {
             leftContainer.bottomAnchor.constraint(equalTo: middleContainerView.bottomAnchor)
             ])
         
+        //---------------- Icon & Label within the left container -------------------//
+        leftContainer.addSubview(stageOneImageView)
+        NSLayoutConstraint.activate([
+            stageOneImageView.centerXAnchor.constraint(equalTo: leftContainer.centerXAnchor),
+            stageOneImageView.centerYAnchor.constraint(equalTo: leftContainer.centerYAnchor),
+            stageOneImageView.leadingAnchor.constraint(equalTo: leftContainer.leadingAnchor, constant: 10),
+            stageOneImageView.trailingAnchor.constraint(equalTo: leftContainer.trailingAnchor),
+            stageOneImageView.heightAnchor.constraint(equalTo: leftContainer.heightAnchor, multiplier: 0.65)
+            ])
+        leftContainer.addSubview(stageLabel)
+        NSLayoutConstraint.activate([
+            stageLabel.centerXAnchor.constraint(equalTo: leftContainer.centerXAnchor),
+            stageLabel.leadingAnchor.constraint(equalTo: leftContainer.leadingAnchor, constant: 10),
+            stageLabel.trailingAnchor.constraint(equalTo: leftContainer.trailingAnchor, constant: -10),
+            stageLabel.topAnchor.constraint(equalTo: stageOneImageView.bottomAnchor),
+            stageLabel.bottomAnchor.constraint(equalTo: leftContainer.bottomAnchor)
+            ])
+        
         //SET UP THE MIDDLE CONTAINER WITHIN THE MIDDLE CONTAINER
         let subMiddleContainer = UIView()
-        subMiddleContainer.backgroundColor = .gray
+        subMiddleContainer.backgroundColor = .clear
         subMiddleContainer.translatesAutoresizingMaskIntoConstraints = false
         middleContainerView.addSubview(subMiddleContainer)
         NSLayoutConstraint.activate([
@@ -178,7 +225,7 @@ extension LevelTrackerViewController {
         
         //SET UP RIGHT CONTAINER WITHIN THE MIDDLE CONTAINER
         let rightContainer = UIView()
-        rightContainer.backgroundColor = .red
+        rightContainer.backgroundColor = .clear
         rightContainer.translatesAutoresizingMaskIntoConstraints = false
         middleContainerView.addSubview(rightContainer)
         NSLayoutConstraint.activate([
@@ -209,7 +256,8 @@ extension LevelTrackerViewController {
 //
         //SET UP  CONTAINER VIEW THAT WILL HOLD ANIMATED STATUS BAR
         let bottomContainer = UIView()
-        bottomContainer.backgroundColor = .blue
+        bottomContainer.backgroundColor = .clear
+        
         bottomContainer.translatesAutoresizingMaskIntoConstraints = false
         backgroundStageImageView.addSubview(bottomContainer)
         //Constraints

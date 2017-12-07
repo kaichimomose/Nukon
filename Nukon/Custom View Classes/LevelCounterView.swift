@@ -32,6 +32,7 @@ import UIKit
     }
     
     override func draw(_ rect: CGRect) {
+        self.backgroundColor = .clear
         
         //CENTER OF ARC
         let center = CGPoint(x: bounds.width / 2, y: (bounds.height / 2) + 12)

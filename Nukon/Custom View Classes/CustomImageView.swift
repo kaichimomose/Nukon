@@ -41,6 +41,10 @@ import UIKit
         super.init(frame: frame)
     }
     
+    override init(image: UIImage?) {
+        super.init(image: image)
+    }
+    
     override func draw(_ rect: CGRect) {
         self.layer.cornerRadius = self.cornerRadius
         self.layer.borderWidth = self.borderWidth
