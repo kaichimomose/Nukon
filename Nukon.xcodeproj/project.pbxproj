@@ -28,12 +28,12 @@
 		BFA65BB21FC9FF4200F426F0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */; };
 		BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */; };
 		BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB51FCB5AD100F426F0 /* UserData.swift */; };
+		F631B7251FD9D27100063F5F /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F631B7231FD9D27100063F5F /* UserProfile.storyboard */; };
 		F642740B1FD37F48008F61B5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642740A1FD37F48008F61B5 /* GradientView.swift */; };
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
 		F660E82C1FD71CC3008F30B4 /* LevelTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660E82B1FD71CC3008F30B4 /* LevelTrackerViewController.swift */; };
 		F660E82E1FD71D5D008F30B4 /* LevelCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660E82D1FD71D5D008F30B4 /* LevelCounterView.swift */; };
 		F660E8321FD71EF1008F30B4 /* Practice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F660E8311FD71EF1008F30B4 /* Practice.storyboard */; };
-		F660E8341FD71F46008F30B4 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F660E8331FD71F46008F30B4 /* UserProfile.storyboard */; };
 		F660E8671FD77FDE008F30B4 /* icons8-bjp-india@3x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F660E8641FD77FDE008F30B4 /* icons8-bjp-india@3x.pdf */; };
 		F660E8681FD77FDE008F30B4 /* icons8-bjp-india@2x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F660E8651FD77FDE008F30B4 /* icons8-bjp-india@2x.pdf */; };
 		F660E8691FD77FDE008F30B4 /* icons8-bjp-india.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F660E8661FD77FDE008F30B4 /* icons8-bjp-india.pdf */; };
@@ -46,9 +46,6 @@
 		F660E8791FD7A527008F30B4 /* icons8-bjp-india@2x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F660E8731FD7A527008F30B4 /* icons8-bjp-india@2x.pdf */; };
 		F660E87A1FD7A527008F30B4 /* icons8-bjp-india.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F660E8741FD7A527008F30B4 /* icons8-bjp-india.pdf */; };
 		F660E87C1FD7A7EA008F30B4 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660E87B1FD7A7EA008F30B4 /* EditProfile.swift */; };
-		F660E8801FD84089008F30B4 /* icons8-torii-80.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F660E87D1FD84088008F30B4 /* icons8-torii-80.pdf */; };
-		F660E8811FD84089008F30B4 /* icons8-torii-80@2x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F660E87E1FD84088008F30B4 /* icons8-torii-80@2x.pdf */; };
-		F660E8821FD84089008F30B4 /* icons8-torii-80@3x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F660E87F1FD84088008F30B4 /* icons8-torii-80@3x.pdf */; };
 		F66D52F81FD3B88E009A6E93 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66D52F71FD3B88E009A6E93 /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,12 +73,12 @@
 		BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		BFA65BB51FCB5AD100F426F0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F631B7231FD9D27100063F5F /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		F642740A1FD37F48008F61B5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F660E82B1FD71CC3008F30B4 /* LevelTrackerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTrackerViewController.swift; sourceTree = "<group>"; };
 		F660E82D1FD71D5D008F30B4 /* LevelCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCounterView.swift; sourceTree = "<group>"; };
 		F660E8311FD71EF1008F30B4 /* Practice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Practice.storyboard; sourceTree = "<group>"; };
-		F660E8331FD71F46008F30B4 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		F660E8641FD77FDE008F30B4 /* icons8-bjp-india@3x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-bjp-india@3x.pdf"; sourceTree = "<group>"; };
 		F660E8651FD77FDE008F30B4 /* icons8-bjp-india@2x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-bjp-india@2x.pdf"; sourceTree = "<group>"; };
 		F660E8661FD77FDE008F30B4 /* icons8-bjp-india.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-bjp-india.pdf"; sourceTree = "<group>"; };
@@ -94,9 +91,6 @@
 		F660E8731FD7A527008F30B4 /* icons8-bjp-india@2x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-bjp-india@2x.pdf"; sourceTree = "<group>"; };
 		F660E8741FD7A527008F30B4 /* icons8-bjp-india.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-bjp-india.pdf"; sourceTree = "<group>"; };
 		F660E87B1FD7A7EA008F30B4 /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
-		F660E87D1FD84088008F30B4 /* icons8-torii-80.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-torii-80.pdf"; sourceTree = "<group>"; };
-		F660E87E1FD84088008F30B4 /* icons8-torii-80@2x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-torii-80@2x.pdf"; sourceTree = "<group>"; };
-		F660E87F1FD84088008F30B4 /* icons8-torii-80@3x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-torii-80@3x.pdf"; sourceTree = "<group>"; };
 		F66D52F71FD3B88E009A6E93 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,9 +134,6 @@
 				BF5FF96A1FA0D56300A46DE0 /* Supportings */,
 				BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */,
 				BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */,
-				F660E87D1FD84088008F30B4 /* icons8-torii-80.pdf */,
-				F660E87E1FD84088008F30B4 /* icons8-torii-80@2x.pdf */,
-				F660E87F1FD84088008F30B4 /* icons8-torii-80@3x.pdf */,
 				F660E8631FD77FDE008F30B4 /* foundation_icon */,
 				BF5FF9611FA0D35D00A46DE0 /* Info.plist */,
 			);
@@ -183,7 +174,7 @@
 		BF5FF96B1FA0D56300A46DE0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				F660E8331FD71F46008F30B4 /* UserProfile.storyboard */,
+				F631B7231FD9D27100063F5F /* UserProfile.storyboard */,
 				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
 				F660E8311FD71EF1008F30B4 /* Practice.storyboard */,
 			);
@@ -317,19 +308,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F660E8821FD84089008F30B4 /* icons8-torii-80@3x.pdf in Resources */,
+				F631B7251FD9D27100063F5F /* UserProfile.storyboard in Resources */,
 				F660E8781FD7A527008F30B4 /* icons8-diamond-80@2x.pdf in Resources */,
 				BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */,
 				BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */,
 				F660E8791FD7A527008F30B4 /* icons8-bjp-india@2x.pdf in Resources */,
 				F660E8751FD7A527008F30B4 /* icons8-diamond-80.pdf in Resources */,
-				F660E8811FD84089008F30B4 /* icons8-torii-80@2x.pdf in Resources */,
 				F660E8761FD7A527008F30B4 /* icons8-bjp-india@3x.pdf in Resources */,
 				BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */,
-				F660E8801FD84089008F30B4 /* icons8-torii-80.pdf in Resources */,
 				F660E8691FD77FDE008F30B4 /* icons8-bjp-india.pdf in Resources */,
 				F660E8321FD71EF1008F30B4 /* Practice.storyboard in Resources */,
-				F660E8341FD71F46008F30B4 /* UserProfile.storyboard in Resources */,
 				F660E8671FD77FDE008F30B4 /* icons8-bjp-india@3x.pdf in Resources */,
 				F660E87A1FD7A527008F30B4 /* icons8-bjp-india.pdf in Resources */,
 				F660E8771FD7A527008F30B4 /* icons8-diamond-80@3x.pdf in Resources */,

@@ -51,7 +51,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 
         self.tabBarController?.delegate = self
         
-        let arcMask = UIImageView(image: #imageLiteral(resourceName: "Rectangle.png"))
+        let arcMask = UIImageView(image: #imageLiteral(resourceName: "Rectangle"))
         updatedViewWithArc.mask = arcMask
         
         
