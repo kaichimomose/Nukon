@@ -20,8 +20,6 @@
 		BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */; };
 		BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */; };
 		BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF95E1FA0D35D00A46DE0 /* LaunchScreen.storyboard */; };
-		BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */; };
-		BF5FF9751FA0D91200A46DE0 /* Practice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */; };
 		BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */; };
 		BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */; };
 		BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */; };
@@ -36,7 +34,6 @@
 		BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */; };
 		BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB51FCB5AD100F426F0 /* UserData.swift */; };
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
-		F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */; };
 		F64CBD9E1FCAC830001E0E47 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD9D1FCAC830001E0E47 /* ArcView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +53,6 @@
 		BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5FF95F1FA0D35D00A46DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF5FF9611FA0D35D00A46DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Practice.storyboard; sourceTree = "<group>"; };
 		BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersTableViewController.swift; sourceTree = "<group>"; };
 		BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersTableViewCell.swift; sourceTree = "<group>"; };
@@ -72,7 +67,6 @@
 		BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		BFA65BB51FCB5AD100F426F0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		F64CBD9D1FCAC830001E0E47 /* ArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,9 +148,6 @@
 		BF5FF96B1FA0D56300A46DE0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */,
-				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
-				BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -257,11 +248,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF5FF9751FA0D91200A46DE0 /* Practice.storyboard in Resources */,
-				BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */,
 				BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */,
 				BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */,
-				F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

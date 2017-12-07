@@ -16,14 +16,14 @@ protocol AlertPresentable: class {
 extension AlertPresentable where Self: UIViewController {
     func selectAlert(){
         let alertVC = UIAlertController(
-            title: "Error",
+            title: "Oops!!",
             message: "Please choose at least one sound",
             preferredStyle: .alert
         )
         
         alertVC.addAction(
             UIAlertAction(
-                title: "Ok",
+                title: "OK",
                 style: .default,
                 handler: { (action) in
                     
@@ -42,7 +42,7 @@ extension AlertPresentable where Self: UIViewController {
         
         alertVC.addAction(
             UIAlertAction(
-                title: "Cancel",
+                title: "No",
                 style: .cancel,
                 handler: { (action) in
                     

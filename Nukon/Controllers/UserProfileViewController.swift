@@ -163,7 +163,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 //                if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
 //                    self.numberOfWordsLearnt.append(wordLearnt)
 //                }
-                if wordLearnt.numberOfCorrect > 5 {
+                if wordLearnt.numberOfCorrect >= 5 {
                     self.numberOfWordsLearnt.append(wordLearnt)
                 }
                 else {
