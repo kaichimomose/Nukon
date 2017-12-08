@@ -44,6 +44,7 @@
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
 		F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */; };
 		F677BB2B1FDAD81D008AE111 /* origami.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F677BB2A1FDAD81D008AE111 /* origami.pdf */; };
+		F677BB2D1FDB3B68008AE111 /* pagoda.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F677BB2C1FDB3B68008AE111 /* pagoda.pdf */; };
 		F689973A1FDACF4300E7880E /* katakanaChar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F68997381FDACF4200E7880E /* katakanaChar.pdf */; };
 		F689973B1FDACF4300E7880E /* hiraganaChar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F68997391FDACF4300E7880E /* hiraganaChar.pdf */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		F677BB2A1FDAD81D008AE111 /* origami.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = origami.pdf; sourceTree = "<group>"; };
+		F677BB2C1FDB3B68008AE111 /* pagoda.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pagoda.pdf; sourceTree = "<group>"; };
 		F68997381FDACF4200E7880E /* katakanaChar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = katakanaChar.pdf; sourceTree = "<group>"; };
 		F68997391FDACF4300E7880E /* hiraganaChar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = hiraganaChar.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 				BF5FF96A1FA0D56300A46DE0 /* Supportings */,
 				BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */,
 				BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */,
+				F677BB2C1FDB3B68008AE111 /* pagoda.pdf */,
 				F677BB2A1FDAD81D008AE111 /* origami.pdf */,
 				F68997391FDACF4300E7880E /* hiraganaChar.pdf */,
 				F68997381FDACF4200E7880E /* katakanaChar.pdf */,
@@ -297,6 +300,7 @@
 				F689973B1FDACF4300E7880E /* hiraganaChar.pdf in Resources */,
 				BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */,
 				F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */,
+				F677BB2D1FDB3B68008AE111 /* pagoda.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

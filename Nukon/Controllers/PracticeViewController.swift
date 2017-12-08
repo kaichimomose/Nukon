@@ -12,6 +12,11 @@ protocol JapaneseDelegate: class {
     func sendJapanese(selectedJapanese: [String])
 }
 
+enum SelectedType {
+    case hiragana
+    case katakana
+}
+
 class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDropInteractionDelegate {
     
     @IBOutlet weak var topSwerve: UIView!
@@ -21,9 +26,12 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
     
     @IBOutlet weak var katakanaCharacter: GradientView!
     
+//    @IBOutlet var katakanaButton: UITapGestureRecognizer!
+//    @IBOutlet var hiraganaButton: UITapGestureRecognizer!
+    
     @IBOutlet weak var baseViewForInteractableElements: UIView!
     @IBOutlet weak var origamiKraneImage: CustomImageView!
-    
+    var recongnizer = UIPanGestureRecognizer()
     
     var japaneseType: JapaneseType?
     var sound: String?
@@ -31,6 +39,9 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    
+        origamiKraneImage.addGestureRecognizer(recongnizer)
+
         let topSwerveMask = UIImageView(image: #imageLiteral(resourceName: "topSwerve3"))
         topSwerve.mask = topSwerveMask
         
@@ -44,46 +55,48 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
         katakanaCharacter.mask = katakanaCharacterMask
         
         
-        origamiKraneImage.addInteraction(UIDragInteraction(delegate: self))
+        view.addInteraction(UIDragInteraction(delegate: self))
         origamiKraneImage.isUserInteractionEnabled = true
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         guard let japaneseType = self.japaneseType else {return}
-//        switch japaneseType {
-//        case .hiragana, .voicedHiragana, .yVowelHiragana:
-////            self.hiraganaButtonTapped(self.haraganaButton)
-//        case .katakana, .voicedKatakana, .yVowelKatakana:
-////            self.katakanaButtonTapped(self.katakanaButton)
-//        }
+        switch japaneseType {
+        case .hiragana, .voicedHiragana, .yVowelHiragana:
+            self.tappedHiraganaButton(self.hiraganaCharacter)
+        case .katakana, .voicedKatakana, .yVowelKatakana:
+            self.tappedKatakanaButton(self.katakanaCharacter)
+        }
     }
     
-    
-    @IBAction func hiraganaButtonTapped(_ sender: UIButton) {
 
-        let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
+    @IBAction func tappedHiraganaButton(_ sender: Any) {
+        let newLevelVC = storyboard?.instantiateViewController(withIdentifier: "NewLevelVC") as! NewLevelViewController
         if let japaneseType = self.japaneseType {
-            japaneseCharactersTVC.selectedType = japaneseType
+            newLevelVC.japaneseType = japaneseType
         } else {
-            japaneseCharactersTVC.selectedType = .hiragana
+            newLevelVC.selectedType = SelectedType.hiragana
         }
         if let sound = self.sound {
-            japaneseCharactersTVC.preSelectedSound = sound
+            newLevelVC.sound = sound
         }
-        self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+        self.navigationController?.pushViewController(newLevelVC, animated: true)
     }
     
-    @IBAction func katakanaButtonTapped(_ sender: UIButton) {
-        let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
+    
+    @IBAction func tappedKatakanaButton(_ sender: Any) {
+        let newLevelVC = storyboard?.instantiateViewController(withIdentifier: "NewLevelVC") as! NewLevelViewController
         if let japaneseType = self.japaneseType {
-            japaneseCharactersTVC.selectedType = japaneseType
+            newLevelVC.japaneseType = japaneseType
         } else {
-            japaneseCharactersTVC.selectedType = .katakana
+            newLevelVC.selectedType = SelectedType.katakana
         }
         if let sound = self.sound {
-            japaneseCharactersTVC.preSelectedSound = sound
+            newLevelVC.sound = sound
         }
-        self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+        self.navigationController?.pushViewController(newLevelVC, animated: true)
     }
     
     
@@ -96,6 +109,20 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
 //            japaneseCharactersTVC.selectedType = JapaneseType.katakana
 //        }
 //    }
+    
+    
+    @IBAction func kranePan(_ sender: UIPanGestureRecognizer) {
+        
+        let translation = sender.translation(in: self.view)
+        if let view = sender.view {
+            view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
+        }
+        sender.setTranslation(CGPoint.zero, in: self.view)
+    }
+    
+    
+    
+
     
     @IBAction func unwindToPracticeViewController(_ segue: UIStoryboardSegue) {
     }
@@ -110,8 +137,8 @@ extension PracticeViewController {
     func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
         
 
-        let touchPoint = session.location(in: self.origamiKraneImage)
-        if let touchedKrane = self.origamiKraneImage.hitTest(touchPoint, with: nil) as? CustomImageView {
+        let touchPoint = session.location(in: self.view)
+        if let touchedKrane = self.view.hitTest(touchPoint, with: nil) as? CustomImageView {
             
             let touchedImage = touchedKrane.image
             

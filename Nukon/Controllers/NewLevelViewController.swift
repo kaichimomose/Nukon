@@ -10,7 +10,7 @@ import UIKit
 
 class NewLevelViewController: UIViewController {
 
-    @IBOutlet weak var foundationStage: UIImageView!
+//    @IBOutlet weak var foundationStage: UIImageView!
     @IBOutlet weak var levelTrackerView: UIView!
     
     
@@ -24,8 +24,6 @@ class NewLevelViewController: UIViewController {
     @IBOutlet var diamondOverlapOverBlur: UIImageView!
     @IBOutlet var BonusStagePopUp: UIView!
     
-    
-    
     @IBOutlet weak var visualEffectOne: UIVisualEffectView!
     
     var effect: UIVisualEffect!
@@ -33,6 +31,11 @@ class NewLevelViewController: UIViewController {
     func levelTrackerViewSetUp() {
         levelTrackerView.backgroundColor = .clear
     }
+    
+    var japaneseType: JapaneseType?
+    var selectedType: SelectedType?
+    var sound: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         levelTrackerViewSetUp()
@@ -48,6 +51,17 @@ class NewLevelViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        guard let japaneseType = self.japaneseType else {return}
+        switch japaneseType {
+        case .hiragana, .katakana:
+            self.toriPressed(self.toriPress)
+        case .voicedHiragana, .voicedKatakana:
+            self.pagodaPressed(self.pagodaPress)
+        case .yVowelHiragana, .yVowelKatakana:
+            self.diamondPressed(self.diamondPress)
+        }
+    }
 
     
    
@@ -59,6 +73,81 @@ class NewLevelViewController: UIViewController {
     @IBAction func dismissBonusStagePopUp(_ sender: Any) {
         animateOutBonusStageInfo()
     }
+    
+    @IBOutlet var toriPress: UITapGestureRecognizer!
+    @IBOutlet var diamondPress: UITapGestureRecognizer!
+    @IBOutlet var pagodaPress: UITapGestureRecognizer!
+    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
+    //        if segue.identifier == "hiragana"{
+    //            japaneseCharactersTVC.selectedType = JapaneseType.hiragana
+    //        }
+    //        else if segue.identifier == "katakana" {
+    //            japaneseCharactersTVC.selectedType = JapaneseType.katakana
+    //        }
+    //    }
+    
+    @IBAction func toriPressed(_ sender: UITapGestureRecognizer) {
+        let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
+        if let japaneseType = self.japaneseType {
+            japaneseCharactersTVC.selectedType = japaneseType
+        } else {
+            if let selectedType = self.selectedType {
+                switch selectedType {
+                case .hiragana:
+                    japaneseCharactersTVC.selectedType = .hiragana
+                case .katakana:
+                    japaneseCharactersTVC.selectedType = .katakana
+                }
+            }
+        }
+        if let sound = self.sound {
+            japaneseCharactersTVC.preSelectedSound = sound
+        }
+        self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+    }
+    
+    @IBAction func pagodaPressed(_ sender: UITapGestureRecognizer) {
+        let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
+        if let japaneseType = self.japaneseType {
+            japaneseCharactersTVC.selectedType = japaneseType
+        } else {
+            if let selectedType = self.selectedType {
+                switch selectedType {
+                case .hiragana:
+                    japaneseCharactersTVC.selectedType = .voicedHiragana
+                case .katakana:
+                    japaneseCharactersTVC.selectedType = .voicedKatakana
+                }
+            }
+        }
+        if let sound = self.sound {
+            japaneseCharactersTVC.preSelectedSound = sound
+        }
+        self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+    }
+    
+    @IBAction func diamondPressed(_ sender: UITapGestureRecognizer) {
+        let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
+        if let japaneseType = self.japaneseType {
+            japaneseCharactersTVC.selectedType = japaneseType
+        } else {
+            if let selectedType = self.selectedType {
+                switch selectedType {
+                case .hiragana:
+                    japaneseCharactersTVC.selectedType = .yVowelHiragana
+                case .katakana:
+                    japaneseCharactersTVC.selectedType = .yVowelKatakana
+                }
+            }
+        }
+        if let sound = self.sound {
+            japaneseCharactersTVC.preSelectedSound = sound
+        }
+        self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+    }
+    
     
     
 }
