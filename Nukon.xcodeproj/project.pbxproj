@@ -30,6 +30,8 @@
 		BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDDA1FD9EF490030F52B /* GradientView.swift */; };
 		BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */; };
 		BF76DDE21FD9F0E10030F52B /* NewLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */; };
+		BF76DDE51FDA2E5A0030F52B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF76DDE31FDA2E590030F52B /* Main.storyboard */; };
+		BF76DDE61FDA2E5A0030F52B /* Practice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF76DDE41FDA2E590030F52B /* Practice.storyboard */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
 		BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97052B1FCBBDAD00A95E56 /* DateToString.swift */; };
 		BF9B20B61FD70C7B00776A67 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */; };
@@ -40,9 +42,6 @@
 		BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */; };
 		BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB51FCB5AD100F426F0 /* UserData.swift */; };
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
-
-		F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +70,8 @@
 		BF76DDDA1FD9EF490030F52B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCounterView.swift; sourceTree = "<group>"; };
 		BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLevelViewController.swift; sourceTree = "<group>"; };
+		BF76DDE31FDA2E590030F52B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BF76DDE41FDA2E590030F52B /* Practice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Practice.storyboard; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
 		BF97052B1FCBBDAD00A95E56 /* DateToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
@@ -81,9 +82,7 @@
 		BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		BFA65BB51FCB5AD100F426F0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-
 		F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,11 +165,9 @@
 		BF5FF96B1FA0D56300A46DE0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-
-				BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */,
+				BF76DDE31FDA2E590030F52B /* Main.storyboard */,
+				BF76DDE41FDA2E590030F52B /* Practice.storyboard */,
 				F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */,
-				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
-
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -282,6 +279,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF76DDE51FDA2E5A0030F52B /* Main.storyboard in Resources */,
+				BF76DDE61FDA2E5A0030F52B /* Practice.storyboard in Resources */,
 				BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */,
 				BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */,
 			);
