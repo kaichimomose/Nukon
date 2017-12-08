@@ -105,22 +105,6 @@
             </objects>
             <point key="canvasLocation" x="1472.4637681159422" y="515.21739130434787"/>
         </scene>
-        <!--Level Tracker View Controller-->
-        <scene sceneID="IeF-t5-i7S">
-            <objects>
-                <viewController id="Ns6-LK-zyB" customClass="LevelTrackerViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fb1-7g-X3L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="aNr-Yc-UUQ"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="yOB-1g-2hC"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O9e-q1-iFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="80" y="1383"/>
-        </scene>
         <!--New Level View Controller-->
         <scene sceneID="QBi-ZH-AFW">
             <objects>
@@ -454,10 +438,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="82" height="76"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <tapGestureRecognizer id="7Jq-30-aAD" userLabel="foundationPress"/>
-                <tapGestureRecognizer id="vwZ-ZB-z8v" userLabel="bonusPress"/>
+                <tapGestureRecognizer id="7Jq-30-aAD" userLabel="foundationPress">
+                    <connections>
+                        <segue destination="vNR-ge-zHm" kind="show" identifier="foundation" id="KXO-BN-UVH"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="vwZ-ZB-z8v" userLabel="bonusPress">
+                    <connections>
+                        <segue destination="vNR-ge-zHm" kind="show" identifier="bonus" id="3kn-FD-KF4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2548" y="1640"/>
+            <point key="canvasLocation" x="509" y="514"/>
         </scene>
         <!--practice-->
         <scene sceneID="lFd-Ul-gz0">
@@ -471,12 +463,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vNR-ge-zHm" kind="relationship" relationship="rootViewController" id="UZA-xp-2qY"/>
+                        <segue destination="QXC-A8-LI7" kind="relationship" relationship="rootViewController" id="6G7-xx-Zsh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0d-Gg-3Cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603" y="527"/>
+            <point key="canvasLocation" x="-374" y="515"/>
         </scene>
         <!--ひらがな-->
         <scene sceneID="tMW-G1-Fe3">
@@ -921,4 +913,7 @@
         <image name="diamond" width="68" height="76"/>
         <image name="toriTwo" width="72" height="62"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3kn-FD-KF4"/>
+    </inferredMetricsTieBreakers>
 </document>
