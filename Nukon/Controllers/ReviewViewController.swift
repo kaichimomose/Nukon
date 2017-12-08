@@ -112,32 +112,34 @@ class ReviewViewController: UIViewController, AlertPresentable {
         // Dispose of any resources that can be recreated.
     }
     
-//    //calculate accuracy rate
-//    func calculateAccuracyRate() {
-//        for wordLearnt in wordsLearnt {
-//            let accuracyRate = wordLearnt.numberOfCorrect * 100 / (wordLearnt.numberOfCorrect + wordLearnt.numberOfWrong)
-//            // find key(accuracyRate) in sectionData, and append wordLearnt or insert key-value
-//            if self.sectionData[accuracyRate] != nil {
-//                self.sectionData[accuracyRate]?.append(wordLearnt)
-//            } else {
-//                self.sectionData[accuracyRate] = [wordLearnt]
-//                self.sectionDataSort.append(accuracyRate)
-//            }
-//
-//        }
-//        //sort sectionData numerical order
-//        self.sectionDataSort.sort()
-//        //sort [wordLearnt] japanese sounds order
-//        for (key, value) in self.sectionData {
-//            let sortedValue = value.sorted { a,b in
-//                return a.word! < b.word!
-//            }
-//            //update sectionData dic
-//            self.sectionData[key] = sortedValue
-//        }
-//    }
-    
+    /*
     //calculate accuracy rate
+    func calculateAccuracyRate() {
+        for wordLearnt in wordsLearnt {
+            let accuracyRate = wordLearnt.numberOfCorrect * 100 / (wordLearnt.numberOfCorrect + wordLearnt.numberOfWrong)
+            // find key(accuracyRate) in sectionData, and append wordLearnt or insert key-value
+            if self.sectionData[accuracyRate] != nil {
+                self.sectionData[accuracyRate]?.append(wordLearnt)
+            } else {
+                self.sectionData[accuracyRate] = [wordLearnt]
+                self.sectionDataSort.append(accuracyRate)
+            }
+
+        }
+        //sort sectionData numerical order
+        self.sectionDataSort.sort()
+        //sort [wordLearnt] japanese sounds order
+        for (key, value) in self.sectionData {
+            let sortedValue = value.sorted { a,b in
+                return a.word! < b.word!
+            }
+            //update sectionData dic
+            self.sectionData[key] = sortedValue
+        }
+    }
+     */
+    
+    //
     func categorizingWithUnmberOfCorrect() {
         for wordLearnt in wordsLearnt {
             let numberOfCorrect = wordLearnt.numberOfCorrect
@@ -181,6 +183,22 @@ extension ReviewViewController: UICollectionViewDataSource {
         }
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Review", for: indexPath) as! ReviewCollectionReusableView
         let section = indexPath.section
+        
+        //uses categorized section by the number of correct
+        let numberOfCorrect = self.sectionDataSort[section]
+        
+        headerView.accuracyRateLabel.text = "Number Of Correct: \(numberOfCorrect)"
+        // changes header color depending on accuracy rate
+        if numberOfCorrect >= 5{
+            headerView.layer.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1).cgColor
+            
+        } else {
+            let float = CGFloat(numberOfCorrect)/5
+            headerView.layer.backgroundColor = UIColor(red: 1.0, green: float*2, blue: 0.0, alpha: 1).cgColor
+        }
+
+        /*
+        //uses categorized section by the number of correct
         let accuracyRate = self.sectionDataSort[section]
         
         headerView.accuracyRateLabel.text = "Accuracy Rate: \(accuracyRate)%"
@@ -193,6 +211,8 @@ extension ReviewViewController: UICollectionViewDataSource {
             let float = CGFloat(accuracyRate)/100
             headerView.layer.backgroundColor = UIColor(red: 1.0, green: float*2, blue: 0.0, alpha: 1).cgColor
         }
+         */
+        
         return headerView
     }
     

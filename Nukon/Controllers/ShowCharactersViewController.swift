@@ -16,14 +16,15 @@ enum Judge: String {
 }
 
 enum Comment: String {
-    case start = "tap start button if you are ready"
+    case start = "hold button when you are ready"
     case recording = "recording your pronunciation, say just once"
+    case next = "tap next"
     case recap = "tap recap"
 }
 
 enum ButtonTitle: String {
-    case start = "Start Voice Recognition"
-    case stop = "Stop Voice Recognition"
+    case start = "Start recording"
+    case hold = ""
     case next = "Next Character"
     case recap = "See Recap"
 }
@@ -98,10 +99,8 @@ class ShowCharactersViewController: UIViewController {
     func updateLabels() {
         // updates all labels
         self.commentLabel.text = self.comment.rawValue
-        self.soundLabel.text = ""
         self.characterLabel.text = self.shownCharacter
         self.countCharacters.text = "\(self.counter)/\(self.totalNumberOfCharacter)"
-        self.judgeLabel.text = self.judge.rawValue
         switch self.judge {
         case .correct:
             self.characterLabel.layer.backgroundColor = UIColor.green.cgColor
@@ -122,6 +121,44 @@ class ShowCharactersViewController: UIViewController {
         self.nextCharacter()
     }
     
+    @IBAction func buttonDown(_ sender: UIButton) {
+        switch buttonTitle {
+        case .next:
+            self.soundLabel.text = ""
+            self.shownCharacter = randomCharacter()
+            self.buttonTitle = .start
+        case .start:
+            try! startRecording()
+            self.buttonTitle = .hold
+            self.comment = .recording
+        case .hold:
+            self.comment = .start
+            self.buttonTitle = .start
+        case .recap:
+            if audioEngine.isRunning {
+                audioEngine.stop()
+                recognitionRequest?.endAudio()
+            }
+            let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
+            // sends dictionaly of generated character by voice recognition to RecapViewController
+            recapVC.generatedCharacters = self.bestString
+            recapVC.buffer = self.buffers
+            recapVC.japaneseType = self.japaneseType
+            // goes to RecapViewController
+            self.navigationController?.pushViewController(recapVC, animated: true)
+        }
+        self.judge = .yet
+        self.updateLabels()
+    }
+    
+    @IBAction func buttonUp(_ sender: UIButton) {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+        }
+        self.updateLabels()
+    }
+    
     func nextCharacter() {
         // changes funtion based on button title
         switch buttonTitle {
@@ -130,9 +167,9 @@ class ShowCharactersViewController: UIViewController {
             self.buttonTitle = .start
         case .start:
             try! startRecording()
-            self.buttonTitle = .stop
+            self.buttonTitle = .hold
             self.comment = .recording
-        case .stop:
+        case .hold:
             if audioEngine.isRunning {
                 audioEngine.stop()
                 recognitionRequest?.endAudio()
@@ -355,10 +392,10 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     self.buttonTitle = .recap
                 }
                 else{
-                    self.comment = .start
+                    self.comment = .next
                     self.buttonTitle = .next
                 }
-                self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
+//                self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
             }
         }
         // give an buffer from microphone to the request

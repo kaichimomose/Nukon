@@ -14,7 +14,6 @@ protocol JapaneseDelegate: class {
 
 class PracticeViewController: UIViewController {
 
-    @IBOutlet weak var printLabel: UILabel!
     @IBOutlet weak var haraganaButton: UIButton!
     @IBOutlet weak var katakanaButton: UIButton!
     
@@ -41,6 +40,7 @@ class PracticeViewController: UIViewController {
     }
     
     @IBAction func hiraganaButtonTapped(_ sender: UIButton) {
+
         let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
         if let japaneseType = self.japaneseType {
             japaneseCharactersTVC.selectedType = japaneseType
@@ -51,7 +51,6 @@ class PracticeViewController: UIViewController {
             japaneseCharactersTVC.preSelectedSound = sound
         }
         self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
-        printLabel.text = "hiragana tapped"
     }
     
     @IBAction func katakanaButtonTapped(_ sender: UIButton) {
@@ -65,7 +64,6 @@ class PracticeViewController: UIViewController {
             japaneseCharactersTVC.preSelectedSound = sound
         }
         self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
-        printLabel.text = "katakana tapped"
     }
     
     

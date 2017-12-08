@@ -26,6 +26,12 @@
 		BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */; };
 		BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */; };
 		BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */; };
+		BF76DDDC1FD9EF4A0030F52B /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD71FD9EF490030F52B /* CustomImageView.swift */; };
+		BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD81FD9EF490030F52B /* EditProfile.swift */; };
+		BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD91FD9EF490030F52B /* FoundationButton.swift */; };
+		BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDDA1FD9EF490030F52B /* GradientView.swift */; };
+		BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */; };
+		BF76DDE21FD9F0E10030F52B /* NewLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
 		BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97052B1FCBBDAD00A95E56 /* DateToString.swift */; };
 		BF9B20B61FD70C7B00776A67 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */; };
@@ -37,7 +43,6 @@
 		BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB51FCB5AD100F426F0 /* UserData.swift */; };
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
 		F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */; };
-		F64CBD9E1FCAC830001E0E47 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD9D1FCAC830001E0E47 /* ArcView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +67,12 @@
 		BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersTableViewController.swift; sourceTree = "<group>"; };
 		BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersTableViewCell.swift; sourceTree = "<group>"; };
 		BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
+		BF76DDD71FD9EF490030F52B /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		BF76DDD81FD9EF490030F52B /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		BF76DDD91FD9EF490030F52B /* FoundationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationButton.swift; sourceTree = "<group>"; };
+		BF76DDDA1FD9EF490030F52B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCounterView.swift; sourceTree = "<group>"; };
+		BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLevelViewController.swift; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
 		BF97052B1FCBBDAD00A95E56 /* DateToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +84,6 @@
 		BFA65BB51FCB5AD100F426F0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
-		F64CBD9D1FCAC830001E0E47 /* ArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +116,7 @@
 		BF5FF9511FA0D35D00A46DE0 /* Nukon */ = {
 			isa = PBXGroup;
 			children = (
+				BF76DDD61FD9EF490030F52B /* Custom View Classes */,
 				BF5FF9671FA0D56300A46DE0 /* Controllers */,
 				BF5FF96B1FA0D56300A46DE0 /* Storyboards */,
 				BF5FF96F1FA0D57200A46DE0 /* Views */,
@@ -123,6 +134,7 @@
 		BF5FF9671FA0D56300A46DE0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */,
 				F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */,
 				BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */,
 				BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */,
@@ -154,9 +166,9 @@
 		BF5FF96B1FA0D56300A46DE0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */,
 				F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */,
 				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
-				BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -180,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */,
-				F64CBD9D1FCAC830001E0E47 /* ArcView.swift */,
 				BF0A86981FB8C32B00B8305A /* AlertHelper.swift */,
 			);
 			path = Helpers;
@@ -196,6 +207,18 @@
 				BFA65BB51FCB5AD100F426F0 /* UserData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BF76DDD61FD9EF490030F52B /* Custom View Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BF76DDD71FD9EF490030F52B /* CustomImageView.swift */,
+				BF76DDD81FD9EF490030F52B /* EditProfile.swift */,
+				BF76DDD91FD9EF490030F52B /* FoundationButton.swift */,
+				BF76DDDA1FD9EF490030F52B /* GradientView.swift */,
+				BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */,
+			);
+			path = "Custom View Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,13 +299,15 @@
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
 				BF51F0CF1FD315CA00DB6DB8 /* ReviewViewController.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
+				BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
 				BF51F0D31FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift in Sources */,
 				BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */,
 				BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */,
-				F64CBD9E1FCAC830001E0E47 /* ArcView.swift in Sources */,
+				BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */,
 				BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */,
 				BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */,
+				BF76DDE21FD9F0E10030F52B /* NewLevelViewController.swift in Sources */,
 				BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */,
 				BF51F0D11FD3171800DB6DB8 /* ReviewCollectionReusableView.swift in Sources */,
 				BFA65BB01FC8D35400F426F0 /* RecapCollectionReusableView.swift in Sources */,
@@ -291,13 +316,16 @@
 				F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */,
 				BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */,
 				BF9B20BA1FD7262800776A67 /* ReviewHeaderTableViewCell.swift in Sources */,
+				BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */,
 				BFA65BB21FC9FF4200F426F0 /* AnalysisViewController.swift in Sources */,
 				BF9B20B61FD70C7B00776A67 /* ReviewTableViewController.swift in Sources */,
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF0A869D1FC50D8700B8305A /* AllPosibilities.swift in Sources */,
 				BF9B20B81FD70C9200776A67 /* ReviewTableViewCell.swift in Sources */,
 				BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */,
+				BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */,
 				BF5D5C401FC8B967002F988F /* JapaneseCharactersCollectionViewCell.swift in Sources */,
+				BF76DDDC1FD9EF4A0030F52B /* CustomImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
