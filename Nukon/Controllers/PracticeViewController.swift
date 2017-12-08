@@ -12,32 +12,52 @@ protocol JapaneseDelegate: class {
     func sendJapanese(selectedJapanese: [String])
 }
 
-class PracticeViewController: UIViewController {
-
-    @IBOutlet weak var haraganaButton: UIButton!
-    @IBOutlet weak var katakanaButton: UIButton!
+class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDropInteractionDelegate {
+    
+    @IBOutlet weak var topSwerve: UIView!
+    @IBOutlet weak var bottomSwerve: GradientView!
+    
+    @IBOutlet weak var hiraganaCharacter: GradientView!
+    
+    @IBOutlet weak var katakanaCharacter: GradientView!
+    
+    @IBOutlet weak var baseViewForInteractableElements: UIView!
+    @IBOutlet weak var origamiKraneImage: CustomImageView!
+    
     
     var japaneseType: JapaneseType?
     var sound: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let topSwerveMask = UIImageView(image: #imageLiteral(resourceName: "topSwerve3"))
+        topSwerve.mask = topSwerveMask
+        
+        let bottomSwerveMask = UIImageView(image: #imageLiteral(resourceName: "bottomSwerve2"))
+        bottomSwerve.mask = bottomSwerveMask
+        
+        let hiraganaCharacterMask = UIImageView(image: #imageLiteral(resourceName: "hiraganaChar"))
+        hiraganaCharacter.mask = hiraganaCharacterMask
+        
+        let katakanaCharacterMask = UIImageView(image: #imageLiteral(resourceName: "katakanaChar"))
+        katakanaCharacter.mask = katakanaCharacterMask
+        
+        
+        origamiKraneImage.addInteraction(UIDragInteraction(delegate: self))
+        origamiKraneImage.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         guard let japaneseType = self.japaneseType else {return}
-        switch japaneseType {
-        case .hiragana, .voicedHiragana, .yVowelHiragana:
-            self.hiraganaButtonTapped(self.haraganaButton)
-        case .katakana, .voicedKatakana, .yVowelKatakana:
-            self.katakanaButtonTapped(self.katakanaButton)
-        }
+//        switch japaneseType {
+//        case .hiragana, .voicedHiragana, .yVowelHiragana:
+////            self.hiraganaButtonTapped(self.haraganaButton)
+//        case .katakana, .voicedKatakana, .yVowelKatakana:
+////            self.katakanaButtonTapped(self.katakanaButton)
+//        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func hiraganaButtonTapped(_ sender: UIButton) {
 
@@ -80,3 +100,55 @@ class PracticeViewController: UIViewController {
     @IBAction func unwindToPracticeViewController(_ segue: UIStoryboardSegue) {
     }
 }
+
+
+
+extension PracticeViewController {
+    
+    
+    
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+        
+
+        let touchPoint = session.location(in: self.origamiKraneImage)
+        if let touchedKrane = self.origamiKraneImage.hitTest(touchPoint, with: nil) as? CustomImageView {
+            
+            let touchedImage = touchedKrane.image
+            
+            let itemProvider = NSItemProvider(object: touchedImage!)
+            let dragItem = UIDragItem(itemProvider: itemProvider)
+            
+            return [dragItem]
+        }
+        
+        return []
+    }
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
