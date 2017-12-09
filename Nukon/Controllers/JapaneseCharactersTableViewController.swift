@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ShowingStyle {
+    case order
+    case random
+}
+
 class JapaneseCharactersTableViewController: UITableViewController, AlertPresentable {
     
     var japaneseList = [Japanese]()
@@ -181,25 +186,35 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         self.tableView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "done"{
-            // show alert message if users do not choose any cells
-            if selectedJapaneseList.count == 0 {
-                selectAlert()
+    
+    @IBAction func practiceButtonTapped(_ sender: Any) {
+        // show alert message if users do not choose any cells
+        if selectedJapaneseList.count == 0 {
+            selectAlert()
+        }
+        else {
+            //
+            for i in 0...japaneseList.count - 1 {
+                japaneseList[i].select = false
             }
-            else {
-                //
-                for i in 0...japaneseList.count - 1 {
-                    japaneseList[i].select = false
-                }
-                // sends lists to ShowCharactersViewController
-                let showCharactersVC = segue.destination as! ShowCharactersViewController
+            // sends lists to ShowCharactersViewController
+            func goToShowCharactersVC(_ showingStyle: ShowingStyle) {
+                let showCharactersVC = storyboard?.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
                 showCharactersVC.list = selectedJapaneseList
                 showCharactersVC.posibilitiesList = selectedPosibilitiesList
                 showCharactersVC.japaneseType = selectedType
+                showCharactersVC.showingStyle = showingStyle
+                self.navigationController?.pushViewController(showCharactersVC, animated: true)
             }
+            
+            goToShowCharactersVCAlert(closure: goToShowCharactersVC(_:))
+            
+            
         }
-        else if segue.identifier == "cancel" {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cancel" {
             let practiceVC = segue.destination as! PracticeViewController
             practiceVC.japaneseType = nil
             practiceVC.sound = nil

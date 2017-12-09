@@ -743,12 +743,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Practice＞" style="done" id="dpZ-8e-3b6">
                             <connections>
-                                <segue destination="Eeb-5E-bxQ" kind="show" identifier="done" id="EBl-wf-r3a">
-                                    <nil key="action"/>
-                                </segue>
+                                <action selector="practiceButtonTapped:" destination="Fmh-Fo-bOh" id="JwA-CA-U3d"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Eeb-5E-bxQ" kind="show" id="M7Z-oW-4V9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNp-Vx-MYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Pkn-Wl-c0k" userLabel="Exit" sceneMemberID="exit"/>
@@ -758,7 +759,7 @@
         <!--Show Characters View Controller-->
         <scene sceneID="T32-7o-3J4">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Eeb-5E-bxQ" customClass="ShowCharactersViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showCharactersVC" hidesBottomBarWhenPushed="YES" id="Eeb-5E-bxQ" customClass="ShowCharactersViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sQ-dN-cpX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
