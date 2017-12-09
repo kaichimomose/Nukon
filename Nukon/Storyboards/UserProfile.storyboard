@@ -31,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="348" y="148"/>
         </scene>
-        <!--User Profile View Controller-->
+        <!--Nukon-->
         <scene sceneID="xeK-Yf-5Ek">
             <objects>
                 <viewController id="K4F-Qj-cYn" customClass="UserProfileViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
@@ -201,7 +201,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="I5M-qV-PW0"/>
+                    <navigationItem key="navigationItem" title="Nukon" id="ZkM-ye-bfm"/>
                     <connections>
                         <outlet property="longestStreakLabel" destination="TCz-7m-cyx" id="cdx-6U-WIb"/>
                         <outlet property="numOfDaysLabel" destination="ZZ5-Eg-nih" id="bKx-jd-zrB"/>

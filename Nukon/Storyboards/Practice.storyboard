@@ -17,7 +17,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Practice View Controller-->
+        <!--Practice-->
         <scene sceneID="vDb-Nj-Ssa">
             <objects>
                 <viewController id="vNR-ge-zHm" customClass="PracticeViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,6 +77,22 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6i-vs-jlg" userLabel="base">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Katakana" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrn-sE-ePC">
+                                        <rect key="frame" x="93" y="344" width="71" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hiragana" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKm-Ws-2nI">
+                                        <rect key="frame" x="265" y="246" width="69" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wai-Mi-MP4" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
                                 <rect key="frame" x="259" y="224" width="100" height="100"/>
@@ -147,7 +163,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="vEJ-jX-ZJb"/>
+                    <navigationItem key="navigationItem" title="Practice" id="xes-Sg-gfi"/>
                     <connections>
                         <outlet property="baseViewForInteractableElements" destination="d6i-vs-jlg" id="Rt1-eB-1sg"/>
                         <outlet property="bottomSwerve" destination="ihY-rb-8VP" id="1pf-vS-kVg"/>
@@ -177,7 +193,7 @@
             </objects>
             <point key="canvasLocation" x="228.98550724637684" y="412.50000000000006"/>
         </scene>
-        <!--New Level View Controller-->
+        <!--Title-->
         <scene sceneID="QBi-ZH-AFW">
             <objects>
                 <viewController storyboardIdentifier="NewLevelVC" id="QXC-A8-LI7" customClass="NewLevelViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
@@ -248,6 +264,13 @@
                                                     <constraint firstAttribute="width" constant="82" id="mmH-Zr-Aax"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="easy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiV-Er-TEm">
+                                                <rect key="frame" x="51" y="187" width="36" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="pGa-FV-aKI" firstAttribute="centerY" secondItem="lp7-FP-Ay4" secondAttribute="centerY" constant="24.5" id="Q1R-BW-Mjl"/>
@@ -266,6 +289,13 @@
                                                     <constraint firstAttribute="width" secondItem="FcL-Lk-lVi" secondAttribute="height" multiplier="1:1" constant="6" id="cIn-8Y-A1g"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4F-59-qQx">
+                                                <rect key="frame" x="44" y="189" width="35" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="FcL-Lk-lVi" firstAttribute="centerX" secondItem="hK3-lY-XSg" secondAttribute="centerX" id="7Bx-IU-wPD"/>
@@ -286,6 +316,20 @@
                                                     <constraint firstAttribute="height" constant="76" id="vtx-vO-kzs"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nt2-ov-SNv">
+                                                <rect key="frame" x="51" y="191" width="0.0" height="0.0"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="intermidiate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swA-t4-11T">
+                                                <rect key="frame" x="8" y="190" width="91" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="tcr-3w-qUO" firstAttribute="centerX" secondItem="H2s-SO-0WY" secondAttribute="centerX" id="5Vt-pw-fMe"/>
@@ -396,7 +440,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="aOF-Jc-iXz"/>
+                    <navigationItem key="navigationItem" title="Title" id="MuF-bn-Jp6"/>
                     <connections>
                         <outlet property="BonusStagePopUp" destination="q2c-q0-YwL" id="4k6-b0-Itj"/>
                         <outlet property="diamondOverlapOverBlur" destination="FPe-fg-iYc" id="OqB-ae-Ne5"/>
@@ -573,7 +617,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0d-Gg-3Cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1028" y="381"/>
+            <point key="canvasLocation" x="-617" y="413"/>
         </scene>
         <!--ひらがな-->
         <scene sceneID="tMW-G1-Fe3">

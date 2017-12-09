@@ -48,7 +48,7 @@ class NewLevelViewController: UIViewController {
         foundationStagePopUp.layer.cornerRadius = 10
         BonusStagePopUp.layer.cornerRadius = 10
         
-        
+        self.title = selectedType?.rawValue
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -12,9 +12,9 @@ protocol JapaneseDelegate: class {
     func sendJapanese(selectedJapanese: [String])
 }
 
-enum SelectedType {
-    case hiragana
-    case katakana
+enum SelectedType: String {
+    case hiragana = "Hiragana"
+    case katakana = "Katakana"
 }
 
 class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDropInteractionDelegate {
