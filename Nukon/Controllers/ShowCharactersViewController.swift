@@ -35,6 +35,7 @@ class ShowCharactersViewController: UIViewController {
     var list = [Japanese]()
     var vowelSounds = [[String]]()
     var japaneseType: JapaneseType!
+    var showingStyle: ShowingStyle!
     var shownCharacter = ""
     var soundType = ""
     var vowel = ""
@@ -84,6 +85,7 @@ class ShowCharactersViewController: UIViewController {
         for listOfCharacters in list{
             // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
             mutableList.append((listOfCharacters.sound, listOfCharacters.letters))
+            // for ramdom character
             vowelSounds.append(JapaneseCharacters().vowelSounds)
         }
         for listOfPosibilities in posibilitiesList{
@@ -92,7 +94,14 @@ class ShowCharactersViewController: UIViewController {
         }
         self.totalNumberOfCharacter = numberOfCharacters()
         // choose first chracter
-        self.shownCharacter = randomCharacter()
+        switch self.showingStyle {
+        case .order:
+            self.shownCharacter = orderCharacter()
+        case .random:
+            self.shownCharacter = randomCharacter()
+        default:
+            self.shownCharacter = orderCharacter()
+        }
         self.updateLabels()
     }
     
@@ -117,15 +126,25 @@ class ShowCharactersViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /*
     @IBAction func nextCharacterButtonTapped(_ sender: UIButton) {
         self.nextCharacter()
     }
+     */
     
     @IBAction func buttonDown(_ sender: UIButton) {
         switch buttonTitle {
         case .next:
             self.soundLabel.text = ""
-            self.shownCharacter = randomCharacter()
+            switch self.showingStyle {
+            case .order:
+                self.shownCharacter = orderCharacter()
+            case .random:
+                self.shownCharacter = randomCharacter()
+            default:
+                self.shownCharacter = orderCharacter()
+            }
+            self.comment = .start
             self.buttonTitle = .start
         case .start:
             try! startRecording()
@@ -159,6 +178,7 @@ class ShowCharactersViewController: UIViewController {
         self.updateLabels()
     }
     
+    /*
     func nextCharacter() {
         // changes funtion based on button title
         switch buttonTitle {
@@ -194,6 +214,7 @@ class ShowCharactersViewController: UIViewController {
         self.judge = .yet
         self.updateLabels()
     }
+     */
     
     func numberOfCharacters() -> Int {
         // return total number of characters that are in the list
@@ -259,6 +280,7 @@ class ShowCharactersViewController: UIViewController {
         }
         var showCharacter = list[self.soundIndexCounter].letters[self.vowelIndexCounter]
         self.soundType = list[self.soundIndexCounter].sound
+        self.vowel = self.vowelSounds[self.soundIndexCounter][self.vowelIndexCounter]
         self.posibilities = self.posibilitiesList[self.soundIndexCounter].posibilitiesList[self.vowelIndexCounter]
         self.vowelIndexCounter += 1
         if showCharacter == "　" {
@@ -371,8 +393,11 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 recognitionRequest.endAudio()
                 self.nextCharacterButton.isEnabled = false
                 self.nextCharacterButton.setTitle("Stopping", for: .disabled)
+            } else {
+                self.comment = .start
+                self.buttonTitle = .start
+                self.updateLabels()
             }
-            
             
             // error handle and the handle after getting final result
             if error != nil || isFinal {

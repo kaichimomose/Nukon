@@ -33,6 +33,34 @@ extension AlertPresentable where Self: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    func goToShowCharactersVCAlert(closure: @escaping (_ showingStyle: ShowingStyle) -> ()){
+        let alertVC = UIAlertController(
+            title: "Challenge Selections",
+            message: "start practicing",
+            preferredStyle: .alert
+        )
+        
+        alertVC.addAction(
+            UIAlertAction(
+                title: "following the order",
+                style: .default,
+                handler: { (action) in
+                    closure(.order)
+            })
+        )
+        
+        alertVC.addAction(
+            UIAlertAction(
+                title: "random order",
+                style: .default,
+                handler: { (action) in
+                    closure(.random)
+            })
+        )
+        
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
     func jumpToJCTVCAlert(character: String, closure: @escaping () -> ()){
         let alertVC = UIAlertController(
             title: "Practice?",
