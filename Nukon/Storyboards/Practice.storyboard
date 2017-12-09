@@ -990,9 +990,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="aZ5-7F-ogR" id="w4v-9V-gDO"/>
-                        <segue destination="P6u-6p-lDV" kind="show" id="Xpe-PR-Wsw">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="P6u-6p-lDV" kind="show" id="EYi-rZ-UWI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nwJ-52-2r1" userLabel="First Responder" sceneMemberID="firstResponder"/>
