@@ -24,7 +24,7 @@ import UIKit
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
-            layer.cornerRadius = self.cornerRadius
+            layer.cornerRadius = self.frame.height / 2
             layer.masksToBounds = self.cornerRadius > 0
         }
     }
@@ -46,7 +46,7 @@ import UIKit
     }
     
     override func draw(_ rect: CGRect) {
-        self.layer.cornerRadius = self.cornerRadius
+        self.layer.cornerRadius = self.frame.height / 2
         self.layer.borderWidth = self.borderWidth
         self.layer.borderColor = self.borderColor?.cgColor
     }

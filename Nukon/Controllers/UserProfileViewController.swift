@@ -49,6 +49,10 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.profileIcon.layer.cornerRadius = self.profileIcon.frame.size.width / 2
+        self.profileIcon.layer.borderColor = UIColor.cyan.cgColor
+        self.profileIcon.layer.borderWidth = 2
+        
         self.tabBarController?.delegate = self
         
         let arcMask = UIImageView(image: #imageLiteral(resourceName: "Rectangle"))
