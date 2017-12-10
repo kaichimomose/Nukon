@@ -17,21 +17,25 @@ enum SelectedType: String {
     case katakana = "Katakana"
 }
 
-class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDropInteractionDelegate {
+class PracticeViewController: UIViewController {
     
-    @IBOutlet weak var topSwerve: UIView!
-    @IBOutlet weak var bottomSwerve: GradientView!
+    @IBOutlet weak var hiraganaTab: UIButton!
+    @IBOutlet weak var katakanaTab: tabGradientButton!
+    @IBOutlet weak var kanjiTab: tabGradientButton!
     
-    @IBOutlet weak var hiraganaCharacter: GradientView!
     
-    @IBOutlet weak var katakanaCharacter: GradientView!
+    @IBOutlet var hiraganaPopUpView: UIView!
+    @IBOutlet var katakanaPopUpView: UIView!
+    @IBOutlet var kanjiPopUpView: UIView!
+
     
-//    @IBOutlet var katakanaButton: UITapGestureRecognizer!
-//    @IBOutlet var hiraganaButton: UITapGestureRecognizer!
+    @IBOutlet weak var backgroundBlurView: UIView!
     
-    @IBOutlet weak var baseViewForInteractableElements: UIView!
-    @IBOutlet weak var origamiKraneImage: CustomImageView!
-    var recongnizer = UIPanGestureRecognizer()
+    @IBOutlet weak var hiraganaButton: CustomButton!
+    @IBOutlet weak var katakanaButton: CustomButton!
+    
+    
+
     
     var japaneseType: JapaneseType?
     var sound: String?
@@ -39,24 +43,20 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-        origamiKraneImage.addGestureRecognizer(recongnizer)
+        let hiraganaTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
+        hiraganaTab.mask = hiraganaTabMask
+        
+        let katakanaTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
+        katakanaTab.mask = katakanaTabMask
 
-        let topSwerveMask = UIImageView(image: #imageLiteral(resourceName: "topSwerve3"))
-        topSwerve.mask = topSwerveMask
+        let kanjiTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
+        kanjiTab.mask = kanjiTabMask
         
-        let bottomSwerveMask = UIImageView(image: #imageLiteral(resourceName: "bottomSwerve2"))
-        bottomSwerve.mask = bottomSwerveMask
+        hiraganaPopUpView.layer.cornerRadius = 10
+        katakanaPopUpView.layer.cornerRadius = 10
+        kanjiPopUpView.layer.cornerRadius = 10
+
         
-        let hiraganaCharacterMask = UIImageView(image: #imageLiteral(resourceName: "hiraganaChar"))
-        hiraganaCharacter.mask = hiraganaCharacterMask
-        
-        let katakanaCharacterMask = UIImageView(image: #imageLiteral(resourceName: "katakanaChar"))
-        katakanaCharacter.mask = katakanaCharacterMask
-        
-        
-        view.addInteraction(UIDragInteraction(delegate: self))
-        origamiKraneImage.isUserInteractionEnabled = true
     }
     
     
@@ -65,9 +65,9 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
         guard let japaneseType = self.japaneseType else {return}
         switch japaneseType {
         case .hiragana, .voicedHiragana, .yVowelHiragana:
-            self.tappedHiraganaButton(self.hiraganaCharacter)
+            self.tappedHiraganaButton(self.hiraganaButton)
         case .katakana, .voicedKatakana, .yVowelKatakana:
-            self.tappedKatakanaButton(self.katakanaCharacter)
+            self.tappedKatakanaButton(self.katakanaButton)
         }
     }
     
@@ -82,6 +82,7 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
         if let sound = self.sound {
             newLevelVC.sound = sound
         }
+        animateOutHiraganaPopUp()
         self.navigationController?.pushViewController(newLevelVC, animated: true)
     }
     
@@ -96,9 +97,13 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
         if let sound = self.sound {
             newLevelVC.sound = sound
         }
+        animateOutKatakanaPopUp()
         self.navigationController?.pushViewController(newLevelVC, animated: true)
     }
     
+    @IBAction func tappedKanjiButton(_ sender: Any) {
+        animateOutKanjiPopUp()
+    }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
@@ -111,15 +116,24 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
 //    }
     
     
-    @IBAction func kranePan(_ sender: UIPanGestureRecognizer) {
-        
-        let translation = sender.translation(in: self.view)
-        if let view = sender.view {
-            view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
-        }
-        sender.setTranslation(CGPoint.zero, in: self.view)
+    @IBAction func hiraganaTabPulled(_ sender: Any) {
+        animateOutKanjiPopUp()
+        animateOutKatakanaPopUp()
+        animateInHiraganaPopUp()
     }
     
+    @IBAction func katakanaTabPulled(_ sender: Any) {
+        animateOutKanjiPopUp()
+        animateOutHiraganaPopUp()
+        animateInKatakanaPopUp()
+    }
+    
+    
+    @IBAction func kanjiTabPulled(_ sender: Any) {
+        animateOutHiraganaPopUp()
+        animateOutKatakanaPopUp()
+        animateInKanjiPopUp()
+    }
     
     
 
@@ -131,32 +145,117 @@ class PracticeViewController: UIViewController, UIDragInteractionDelegate, UIDro
 
 
 extension PracticeViewController {
+    //ANIMATIONS-------
     
     
     
-    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+    //HIRAGANA POP UP ANIMATION------
+    func animateInHiraganaPopUp() {
         
-
-        let touchPoint = session.location(in: self.view)
-        if let touchedKrane = self.view.hitTest(touchPoint, with: nil) as? CustomImageView {
+        self.backgroundBlurView.addSubview(hiraganaPopUpView)
+        
+        
+        hiraganaPopUpView.center.x = self.backgroundBlurView.center.x
+        hiraganaPopUpView.center.y = self.backgroundBlurView.center.y * 1.575
+        
+        hiraganaPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        hiraganaPopUpView.alpha = 0
+        
+        
+        
+        UIView.animate(withDuration: 0.7) {
             
-            let touchedImage = touchedKrane.image
+            self.hiraganaPopUpView.alpha = 1
+            self.hiraganaPopUpView.transform = CGAffineTransform.identity
             
-            let itemProvider = NSItemProvider(object: touchedImage!)
-            let dragItem = UIDragItem(itemProvider: itemProvider)
-            
-            return [dragItem]
         }
-        
-        return []
+    }
+    
+    
+    func animateOutHiraganaPopUp() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.hiraganaPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.hiraganaPopUpView.alpha = 0
+            
+        }) { (success: Bool) in
+            self.hiraganaPopUpView.removeFromSuperview()
+        }
     }
     
     
     
+    //KATAKANA POP UP ANIMATION------
+    func animateInKatakanaPopUp() {
+        
+        self.backgroundBlurView.addSubview(katakanaPopUpView)
+        
+        
+        katakanaPopUpView.center.x = self.backgroundBlurView.center.x
+        katakanaPopUpView.center.y = self.backgroundBlurView.center.y * 1.575
+        
+        katakanaPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        katakanaPopUpView.alpha = 0
+        
+        
+        
+        UIView.animate(withDuration: 0.7) {
+            
+            self.katakanaPopUpView.alpha = 1
+            self.katakanaPopUpView.transform = CGAffineTransform.identity
+            
+        }
+    }
+    
+    func animateOutKatakanaPopUp() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.katakanaPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.katakanaPopUpView.alpha = 0
+            
+        }) { (success: Bool) in
+            self.katakanaPopUpView.removeFromSuperview()
+        }
+    }
     
     
+    
+    //KANJI POP UP ANIMATION------
+    func animateInKanjiPopUp() {
+        
+        self.backgroundBlurView.addSubview(kanjiPopUpView)
+        
+        
+        kanjiPopUpView.center.x = self.backgroundBlurView.center.x
+        kanjiPopUpView.center.y = self.backgroundBlurView.center.y * 1.575
+        
+        kanjiPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        kanjiPopUpView.alpha = 0
+        
+        
+        
+        UIView.animate(withDuration: 0.7) {
+            
+            self.kanjiPopUpView.alpha = 1
+            self.kanjiPopUpView.transform = CGAffineTransform.identity
+            
+        }
+    }
+    
+    
+    
+    func animateOutKanjiPopUp() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.kanjiPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.kanjiPopUpView.alpha = 0
+            
+        }) { (success: Bool) in
+            self.kanjiPopUpView.removeFromSuperview()
+        }
+    }
     
 }
+
+
+
 
 
 

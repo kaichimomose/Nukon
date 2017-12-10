@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class EditProfile: UIButton {
+@IBDesignable class CustomButton: UIButton {
         
         @IBInspectable var borderColor: UIColor? = UIColor.clear {
             didSet {
@@ -22,12 +22,9 @@ import UIKit
             }
         }
         
-        @IBInspectable var cornerRadius: CGFloat = 0 {
-            didSet {
-                layer.cornerRadius = self.cornerRadius
-                layer.masksToBounds = self.cornerRadius > 0
-            }
-        }
+    
+    
+    
         
         required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
@@ -40,7 +37,7 @@ import UIKit
         }
         
         override func draw(_ rect: CGRect) {
-            self.layer.cornerRadius = self.cornerRadius
+            self.layer.cornerRadius = self.frame.height / 2
             self.layer.borderWidth = self.borderWidth
             self.layer.borderColor = self.borderColor?.cgColor
         }

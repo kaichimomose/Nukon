@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class RecapViewController: UIViewController, AVSpeechSynthesizerDelegate {
+class RecapViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -179,13 +179,10 @@ extension RecapViewController: UICollectionViewDataSource {
         
         if indexPath.section == 0 {
             let textToSpeak = AVSpeechUtterance(string: generatedCharacters![.wrong]![row].0)
-            textToSpeak.rate = 0.2
-            let numberOfSeconds = 10.0
-            textToSpeak.preUtteranceDelay = numberOfSeconds
+            textToSpeak.rate = 0.03
             let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
             let speak = AVSpeechSynthesizer()
             textToSpeak.voice = speakerVoice
-            speak.delegate = self
             speak.speak(textToSpeak)
             
             let analysisVC  = storyboard?.instantiateViewController(withIdentifier: "AnalysisViewController") as! AnalysisViewController

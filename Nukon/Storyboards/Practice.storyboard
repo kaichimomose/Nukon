@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sAD-rc-aIt">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,131 +22,111 @@
             <objects>
                 <viewController id="vNR-ge-zHm" customClass="PracticeViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7V-mz-ev2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6d3-6A-pLY" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="414" height="324"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99903446435928345" green="0.25171390175819397" blue="0.0057087764143943787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                        <color key="value" red="0.98823529409999999" green="0.27058823529999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
-                                        <color key="value" red="1" green="0.56382279329999996" blue="0.1324017861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                        <color key="value" red="0.92506853759999996" green="0.8324417851" blue="0.11012081949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="305"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihY-rb-8VP" userLabel="bottomSwerve" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="411" width="414" height="325"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99903446439999999" green="0.25171390179999997" blue="0.0057087764139999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                        <color key="value" red="0.98823529409999999" green="0.27058823529999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
-                                        <color key="value" red="1" green="0.56382279329999996" blue="0.1324017861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                        <color key="value" red="0.92506853759999996" green="0.8324417851" blue="0.11012081949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="125"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAV-qT-xg3">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="XES-HB-D4V">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <vibrancyEffect>
-                                    <blurEffect style="light"/>
-                                </vibrancyEffect>
-                            </visualEffectView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6i-vs-jlg" userLabel="base">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Katakana" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrn-sE-ePC">
-                                        <rect key="frame" x="93" y="344" width="71" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hiragana" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKm-Ws-2nI">
-                                        <rect key="frame" x="265" y="246" width="69" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wai-Mi-MP4" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="259" y="224" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                        <color key="value" red="0.98823529409999999" green="0.27058823529999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
-                                        <color key="value" red="1" green="0.56382279329999996" blue="0.1324017861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                        <color key="value" red="0.92549019610000005" green="0.83137254900000002" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="125"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="EM0-kv-49l" appends="YES" id="Z6S-WO-5Of"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-7Q-hS8" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="77" y="433" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                        <color key="value" red="0.98823529409999999" green="0.27058823529999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
-                                        <color key="value" red="1" green="0.56382279329999996" blue="0.1324017861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                        <color key="value" red="0.92549019610000005" green="0.83137254900000002" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="305"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="YUo-4h-OLD" appends="YES" id="7hX-je-Ydu"/>
-                                </connections>
-                            </view>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="origami" translatesAutoresizingMaskIntoConstraints="NO" id="7gS-nY-S0c" customClass="CustomImageView" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="167" y="344" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Xmf-js-tUG" appends="YES" id="xtr-Og-fZv"/>
-                                </connections>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coral" translatesAutoresizingMaskIntoConstraints="NO" id="bnM-bz-Ncb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbk-t4-2On" userLabel="backgroundBlur">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lVg-yt-a2z">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCi-k2-bhe" customClass="tabGradientButton" customModule="Nukon" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="20" width="244" height="85"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="JCi-k2-bhe" secondAttribute="height" multiplier="244:85" id="0bh-Fa-dMh"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="tabShape"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                                    <color key="value" red="0.98942476509999999" green="0.79652839900000005" blue="0.78853076700000002" alpha="0.53207940924657537" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
+                                                    <color key="value" red="0.98942476509999999" green="0.79652839900000005" blue="0.78853076700000002" alpha="0.82569028253424659" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                                    <color key="value" red="0.98942476511001587" green="0.7965283989906311" blue="0.78853076696395874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="hiraganaTabPulled:" destination="vNR-ge-zHm" eventType="touchUpInside" id="6wb-uR-zdW"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5K2-qm-wtc" customClass="tabGradientButton" customModule="Nukon" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="125" width="245" height="85"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                            </accessibility>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                                    <color key="value" red="0.38431372549019605" green="0.60784313725490191" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
+                                                    <color key="value" red="0.38431372549019605" green="0.60784313725490191" blue="0.76862745098039209" alpha="0.82999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                                    <color key="value" red="0.38431372549999998" green="0.60784313729999995" blue="0.76862745099999996" alpha="0.42636986301369861" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="katakanaTabPulled:" destination="vNR-ge-zHm" eventType="touchUpInside" id="rIL-8s-sgj"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlE-8e-C0n" customClass="tabGradientButton" customModule="Nukon" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="229" width="244" height="85"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                            </accessibility>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                                    <color key="value" red="0.33333333333333331" green="0.52549019607843139" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
+                                                    <color key="value" red="0.33333333333333331" green="0.52549019607843139" blue="0.5490196078431373" alpha="0.74301690924657537" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                                    <color key="value" red="0.33333333329999998" green="0.52549019610000003" blue="0.54901960780000003" alpha="0.4725759845890411" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="kanjiTabPulled:" destination="vNR-ge-zHm" eventType="touchUpInside" id="vJt-aE-kLM"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="JCi-k2-bhe" firstAttribute="leading" secondItem="lVg-yt-a2z" secondAttribute="leading" id="4bI-8a-5BR"/>
+                                        <constraint firstItem="JCi-k2-bhe" firstAttribute="width" secondItem="5K2-qm-wtc" secondAttribute="width" constant="-1" id="73u-mK-dmR"/>
+                                        <constraint firstItem="vlE-8e-C0n" firstAttribute="leading" secondItem="lVg-yt-a2z" secondAttribute="leading" id="Fe9-Eb-SZQ"/>
+                                        <constraint firstItem="JCi-k2-bhe" firstAttribute="height" secondItem="5K2-qm-wtc" secondAttribute="height" id="GLR-FP-6TI"/>
+                                        <constraint firstItem="JCi-k2-bhe" firstAttribute="top" secondItem="lVg-yt-a2z" secondAttribute="top" constant="20" id="TKh-Q8-tuP"/>
+                                        <constraint firstItem="5K2-qm-wtc" firstAttribute="height" secondItem="vlE-8e-C0n" secondAttribute="height" id="VJI-IC-sTa"/>
+                                        <constraint firstItem="5K2-qm-wtc" firstAttribute="top" secondItem="JCi-k2-bhe" secondAttribute="bottom" constant="20" id="bVc-Mb-C9c"/>
+                                        <constraint firstItem="vlE-8e-C0n" firstAttribute="top" secondItem="5K2-qm-wtc" secondAttribute="bottom" constant="19.333333333333286" id="edX-B2-DjB"/>
+                                        <constraint firstItem="5K2-qm-wtc" firstAttribute="width" secondItem="vlE-8e-C0n" secondAttribute="width" constant="1" id="hVv-Cs-A5G"/>
+                                        <constraint firstItem="vlE-8e-C0n" firstAttribute="leading" secondItem="lVg-yt-a2z" secondAttribute="leading" id="msZ-XA-lMz"/>
+                                        <constraint firstItem="5K2-qm-wtc" firstAttribute="leading" secondItem="lVg-yt-a2z" secondAttribute="leading" id="sfm-cW-Ezw"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gbk-t4-2On" firstAttribute="trailing" secondItem="J7X-XX-4oz" secondAttribute="trailing" id="1jU-SG-DAw"/>
+                            <constraint firstItem="bnM-bz-Ncb" firstAttribute="bottom" secondItem="J7X-XX-4oz" secondAttribute="bottom" id="Ba6-tH-TC3"/>
+                            <constraint firstItem="gbk-t4-2On" firstAttribute="top" secondItem="J7X-XX-4oz" secondAttribute="top" id="OVm-yX-Qj1"/>
+                            <constraint firstItem="bnM-bz-Ncb" firstAttribute="leading" secondItem="J7X-XX-4oz" secondAttribute="leading" id="QJq-Jv-OrO"/>
+                            <constraint firstItem="bnM-bz-Ncb" firstAttribute="top" secondItem="J7X-XX-4oz" secondAttribute="top" id="TIg-ak-MaE"/>
+                            <constraint firstItem="bnM-bz-Ncb" firstAttribute="trailing" secondItem="J7X-XX-4oz" secondAttribute="trailing" id="TmH-VJ-QtO"/>
+                            <constraint firstItem="gbk-t4-2On" firstAttribute="bottom" secondItem="J7X-XX-4oz" secondAttribute="bottom" id="afM-50-xWC"/>
+                            <constraint firstItem="gbk-t4-2On" firstAttribute="leading" secondItem="J7X-XX-4oz" secondAttribute="leading" id="hw9-oo-QYy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="J7X-XX-4oz"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="angle">
@@ -165,54 +145,184 @@
                     </view>
                     <navigationItem key="navigationItem" title="Practice" id="xes-Sg-gfi"/>
                     <connections>
-                        <outlet property="baseViewForInteractableElements" destination="d6i-vs-jlg" id="Rt1-eB-1sg"/>
-                        <outlet property="bottomSwerve" destination="ihY-rb-8VP" id="1pf-vS-kVg"/>
-                        <outlet property="hiraganaCharacter" destination="Wai-Mi-MP4" id="4N9-bX-Jx5"/>
-                        <outlet property="katakanaCharacter" destination="oJF-7Q-hS8" id="suJ-PE-ZAf"/>
-                        <outlet property="origamiKraneImage" destination="7gS-nY-S0c" id="Y2d-kd-Cnn"/>
-                        <outlet property="topSwerve" destination="6d3-6A-pLY" id="iu2-cO-pWY"/>
-                        <segue destination="QXC-A8-LI7" kind="show" id="iWd-sM-iuA"/>
+                        <outlet property="backgroundBlurView" destination="lVg-yt-a2z" id="Dnb-hS-CN0"/>
+                        <outlet property="hiraganaButton" destination="LE9-Ez-fQW" id="1yb-6t-uOh"/>
+                        <outlet property="hiraganaPopUpView" destination="frr-j4-tCK" id="6AK-Hd-Nj1"/>
+                        <outlet property="hiraganaTab" destination="JCi-k2-bhe" id="sk1-F0-W2G"/>
+                        <outlet property="kanjiPopUpView" destination="mQ3-pp-AyK" id="QEx-Mm-Fvm"/>
+                        <outlet property="kanjiTab" destination="vlE-8e-C0n" id="4wx-FK-jAw"/>
+                        <outlet property="katakanaButton" destination="CTB-IZ-JVn" id="ch4-05-hgp"/>
+                        <outlet property="katakanaPopUpView" destination="6U4-sv-CC0" id="5lK-Si-4vM"/>
+                        <outlet property="katakanaTab" destination="5K2-qm-wtc" id="W7P-Qd-yrI"/>
+                        <segue destination="QXC-A8-LI7" kind="show" id="y4M-Ul-UzC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gL4-KQ-O0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="YUo-4h-OLD" userLabel="katakanaButton">
-                    <connections>
-                        <action selector="tappedKatakanaButton:" destination="vNR-ge-zHm" id="KGg-3s-GLu"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="EM0-kv-49l" userLabel="hiraganaButton">
-                    <connections>
-                        <action selector="tappedHiraganaButton:" destination="vNR-ge-zHm" id="Gmk-DJ-0lZ"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="Xmf-js-tUG" userLabel="origamiKranePan">
-                    <connections>
-                        <action selector="kranePan:" destination="vNR-ge-zHm" id="hWP-bF-OCU"/>
-                    </connections>
-                </panGestureRecognizer>
+                <view contentMode="scaleToFill" id="frr-j4-tCK" userLabel="hiraganaPopUpView">
+                    <rect key="frame" x="0.0" y="0.0" width="359" height="221"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UUX-rg-VqW">
+                            <rect key="frame" x="16" y="39" width="327" height="128"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <attributes>
+                                        <font key="NSFont" size="14" name="Baskerville"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiragana (ひらがな)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBS-1o-44P">
+                            <rect key="frame" x="16" y="10" width="327" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LE9-Ez-fQW" customClass="CustomButton" customModule="Nukon" customModuleProvider="target">
+                            <rect key="frame" x="15.5" y="177" width="327" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="tappedHiraganaButton:" destination="vNR-ge-zHm" eventType="touchUpInside" id="Ttz-iS-Pgq"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="mBS-1o-44P" firstAttribute="centerX" secondItem="frr-j4-tCK" secondAttribute="centerX" id="APo-x4-8y8"/>
+                        <constraint firstItem="Kph-ls-d6c" firstAttribute="trailing" secondItem="UUX-rg-VqW" secondAttribute="trailing" constant="16" id="D1o-y9-hmn"/>
+                        <constraint firstItem="UUX-rg-VqW" firstAttribute="top" secondItem="mBS-1o-44P" secondAttribute="bottom" constant="8" id="DSp-Ak-TGy"/>
+                        <constraint firstItem="mBS-1o-44P" firstAttribute="top" secondItem="Kph-ls-d6c" secondAttribute="top" constant="10" id="EJb-jV-zCI"/>
+                        <constraint firstItem="LE9-Ez-fQW" firstAttribute="top" secondItem="UUX-rg-VqW" secondAttribute="bottom" constant="10" id="Emw-jR-SYi"/>
+                        <constraint firstItem="UUX-rg-VqW" firstAttribute="leading" secondItem="Kph-ls-d6c" secondAttribute="leading" constant="16" id="N3D-zW-0LH"/>
+                        <constraint firstItem="mBS-1o-44P" firstAttribute="width" secondItem="UUX-rg-VqW" secondAttribute="width" id="QBe-de-w0u"/>
+                        <constraint firstItem="mBS-1o-44P" firstAttribute="centerX" secondItem="Kph-ls-d6c" secondAttribute="centerX" id="Ufr-ab-8wI"/>
+                        <constraint firstItem="Kph-ls-d6c" firstAttribute="bottom" secondItem="LE9-Ez-fQW" secondAttribute="bottom" constant="14" id="ZnJ-gg-l73"/>
+                        <constraint firstItem="UUX-rg-VqW" firstAttribute="width" secondItem="LE9-Ez-fQW" secondAttribute="width" id="bL2-y4-Lyo"/>
+                        <constraint firstItem="LE9-Ez-fQW" firstAttribute="centerX" secondItem="frr-j4-tCK" secondAttribute="centerX" id="ed8-yE-3Yz"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Kph-ls-d6c"/>
+                </view>
+                <view contentMode="scaleToFill" id="6U4-sv-CC0" userLabel="katakanaPopUpView">
+                    <rect key="frame" x="0.0" y="0.0" width="359" height="221"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katakana (カタカナ)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUQ-eA-EI4">
+                            <rect key="frame" x="101.5" y="10" width="156.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MeK-j0-aB5">
+                            <rect key="frame" x="16" y="39" width="327" height="128"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <attributes>
+                                        <font key="NSFont" size="14" name="Baskerville"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTB-IZ-JVn" customClass="CustomButton" customModule="Nukon" customModuleProvider="target">
+                            <rect key="frame" x="16" y="177" width="327" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="tappedKatakanaButton:" destination="vNR-ge-zHm" eventType="touchUpInside" id="Mq5-Nv-O4s"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="WUQ-eA-EI4" firstAttribute="top" secondItem="Ct3-bn-1cx" secondAttribute="top" constant="10" id="Fhn-dc-Lf1"/>
+                        <constraint firstItem="Ct3-bn-1cx" firstAttribute="bottom" secondItem="CTB-IZ-JVn" secondAttribute="bottom" constant="14" id="Lrc-IW-Z5O"/>
+                        <constraint firstItem="CTB-IZ-JVn" firstAttribute="top" secondItem="MeK-j0-aB5" secondAttribute="bottom" constant="10" id="NHH-kV-kzV"/>
+                        <constraint firstItem="Ct3-bn-1cx" firstAttribute="trailing" secondItem="MeK-j0-aB5" secondAttribute="trailing" constant="16" id="P9K-cT-BsX"/>
+                        <constraint firstItem="MeK-j0-aB5" firstAttribute="top" secondItem="WUQ-eA-EI4" secondAttribute="bottom" constant="8" id="Yw3-Rh-yfi"/>
+                        <constraint firstItem="WUQ-eA-EI4" firstAttribute="centerX" secondItem="Ct3-bn-1cx" secondAttribute="centerX" id="faM-cx-2S0"/>
+                        <constraint firstItem="MeK-j0-aB5" firstAttribute="leading" secondItem="Ct3-bn-1cx" secondAttribute="leading" constant="16" id="m7B-nq-HHU"/>
+                        <constraint firstItem="CTB-IZ-JVn" firstAttribute="centerX" secondItem="6U4-sv-CC0" secondAttribute="centerX" id="mv4-6b-dDX"/>
+                        <constraint firstItem="WUQ-eA-EI4" firstAttribute="centerX" secondItem="6U4-sv-CC0" secondAttribute="centerX" id="t7c-Bi-HZs"/>
+                        <constraint firstItem="MeK-j0-aB5" firstAttribute="width" secondItem="CTB-IZ-JVn" secondAttribute="width" id="xQV-NS-ZYK"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Ct3-bn-1cx"/>
+                </view>
+                <view contentMode="scaleToFill" id="mQ3-pp-AyK" userLabel="kanjiPopUpView">
+                    <rect key="frame" x="0.0" y="0.0" width="359" height="221"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kanji (漢字)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCZ-t2-RRN">
+                            <rect key="frame" x="135.5" y="10" width="88.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXx-oi-IbV">
+                            <rect key="frame" x="16" y="39" width="327" height="128"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <attributes>
+                                        <font key="NSFont" size="14" name="Baskerville"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZs-EZ-1E2" customClass="CustomButton" customModule="Nukon" customModuleProvider="target">
+                            <rect key="frame" x="16" y="177" width="327" height="30"/>
+                            <state key="normal" title="Got it!!"/>
+                            <connections>
+                                <action selector="tappedKanjiButton:" destination="vNR-ge-zHm" eventType="touchUpInside" id="cNq-2v-Qbo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="XXx-oi-IbV" firstAttribute="top" secondItem="uCZ-t2-RRN" secondAttribute="bottom" constant="8" id="DwU-6N-hTn"/>
+                        <constraint firstItem="zZs-EZ-1E2" firstAttribute="centerX" secondItem="mQ3-pp-AyK" secondAttribute="centerX" id="Jxg-aa-g1s"/>
+                        <constraint firstItem="djj-zs-W5X" firstAttribute="trailing" secondItem="XXx-oi-IbV" secondAttribute="trailing" constant="16" id="LMV-gu-M8b"/>
+                        <constraint firstItem="XXx-oi-IbV" firstAttribute="width" secondItem="zZs-EZ-1E2" secondAttribute="width" id="PD7-6f-UNJ"/>
+                        <constraint firstItem="XXx-oi-IbV" firstAttribute="leading" secondItem="djj-zs-W5X" secondAttribute="leading" constant="16" id="TGT-Rb-GO1"/>
+                        <constraint firstItem="djj-zs-W5X" firstAttribute="bottom" secondItem="zZs-EZ-1E2" secondAttribute="bottom" constant="14" id="Uoo-Ns-hJk"/>
+                        <constraint firstItem="uCZ-t2-RRN" firstAttribute="centerX" secondItem="djj-zs-W5X" secondAttribute="centerX" id="cYD-us-zhb"/>
+                        <constraint firstItem="uCZ-t2-RRN" firstAttribute="top" secondItem="djj-zs-W5X" secondAttribute="top" constant="10" id="cZi-aq-NKk"/>
+                        <constraint firstItem="zZs-EZ-1E2" firstAttribute="top" secondItem="XXx-oi-IbV" secondAttribute="bottom" constant="10" id="chl-Zp-wow"/>
+                        <constraint firstItem="uCZ-t2-RRN" firstAttribute="centerX" secondItem="mQ3-pp-AyK" secondAttribute="centerX" id="kZd-Pg-mZx"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="djj-zs-W5X"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="228.98550724637684" y="412.50000000000006"/>
+            <point key="canvasLocation" x="279.19999999999999" y="412.44377811094455"/>
         </scene>
         <!--Title-->
         <scene sceneID="QBi-ZH-AFW">
             <objects>
                 <viewController storyboardIdentifier="NewLevelVC" id="QXC-A8-LI7" customClass="NewLevelViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fks-dv-umq" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edf-tj-rMN" userLabel="background blur">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="9xO-9f-8n7">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-VY-KEJ">
-                                            <rect key="frame" x="0.0" y="22" width="414" height="736"/>
+                                            <rect key="frame" x="0.0" y="22" width="375" height="667"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="R1I-Rk-GG6">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <blurEffect style="light"/>
@@ -222,10 +332,10 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFN-DN-K6R">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="148.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUv-uW-aVX" customClass="LevelCounterView" customModule="Nukon" customModuleProvider="target">
-                                        <rect key="frame" x="100" y="84" width="214" height="163"/>
+                                        <rect key="frame" x="100" y="-14.5" width="175" height="163"/>
                                         <color key="backgroundColor" red="0.98988849317966987" green="0.26889990669522951" blue="0.49683382894950329" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="163" id="HgY-Te-EG6"/>
@@ -250,13 +360,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-zM-uBS">
-                                <rect key="frame" x="0.0" y="248" width="414" height="220"/>
+                                <rect key="frame" x="0.0" y="149.5" width="375" height="226.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lp7-FP-Ay4" userLabel="toriView">
-                                        <rect key="frame" x="0.0" y="0.0" width="144" height="233"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="239.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toriTwo" translatesAutoresizingMaskIntoConstraints="NO" id="pGa-FV-aKI">
-                                                <rect key="frame" x="31" y="103" width="82" height="76"/>
+                                                <rect key="frame" x="31" y="106" width="82" height="76"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pGa-FV-aKI" secondAttribute="height" multiplier="1:1" constant="6" id="HJ4-Y4-2nX"/>
@@ -281,10 +391,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hK3-lY-XSg" userLabel="diamondView">
-                                        <rect key="frame" x="284" y="0.0" width="130" height="233"/>
+                                        <rect key="frame" x="245" y="0.0" width="130" height="239.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diamond" translatesAutoresizingMaskIntoConstraints="NO" id="FcL-Lk-lVi">
-                                                <rect key="frame" x="24" y="105" width="82" height="76"/>
+                                                <rect key="frame" x="24" y="108" width="82" height="76"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="FcL-Lk-lVi" secondAttribute="height" multiplier="1:1" constant="6" id="cIn-8Y-A1g"/>
                                                 </constraints>
@@ -306,10 +416,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2s-SO-0WY" userLabel="pagodaView">
-                                        <rect key="frame" x="132" y="0.0" width="144" height="220"/>
+                                        <rect key="frame" x="132" y="0.0" width="105" height="226.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pagoda" translatesAutoresizingMaskIntoConstraints="NO" id="tcr-3w-qUO">
-                                                <rect key="frame" x="31" y="94" width="82" height="76"/>
+                                                <rect key="frame" x="11.5" y="97" width="82" height="76"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="82" id="ukH-H0-e90"/>
@@ -367,10 +477,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cr4-eg-ASW">
-                                <rect key="frame" x="0.0" y="469" width="414" height="267"/>
+                                <rect key="frame" x="0.0" y="377" width="375" height="290"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1d-6S-1Iq" customClass="EditProfile" customModule="Nukon" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="130" width="200" height="40"/>
+                                        <rect key="frame" x="87.5" y="130" width="200" height="40"/>
                                         <color key="backgroundColor" red="0.9882352941176471" green="0.27058823529411763" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="AYF-VO-9OA"/>
@@ -607,7 +717,7 @@
                     <tabBarItem key="tabBarItem" title="practice" id="Q9V-WR-Qak"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KpW-re-UZ2">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -624,15 +734,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="JapaneseCharactersTVC" hidesBottomBarWhenPushed="YES" id="Fmh-Fo-bOh" customClass="JapaneseCharactersTableViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LSA-xN-vru">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectedSoundsHeaderTableViewCell" rowHeight="60" id="lDS-7H-G9Y" customClass="SelectedSoundsHeaderTableViewCell" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lDS-7H-G9Y" id="8Uy-II-d3K">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Sounds" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOD-d2-qLa">
@@ -646,7 +756,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select sounds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="XLU-fB-bgo">
-                                            <rect key="frame" x="57.999999999999986" y="16.666666666666671" width="140.66666666666663" height="27.333333333333329"/>
+                                            <rect key="frame" x="58" y="16.5" width="140.5" height="27.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -667,14 +777,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderTableViewCell" rowHeight="60" id="lAU-lG-1VZ" customClass="JapaneseCharactersTableViewCell" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lAU-lG-1VZ" id="ydZ-OW-9AE">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ａ ｉ ｕ ｅ ｏ 　" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="vJw-eX-vhP">
-                                            <rect key="frame" x="82" y="7.6666666666666679" width="271.66666666666669" height="45"/>
+                                            <rect key="frame" x="82" y="7.5" width="271.5" height="45"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -692,10 +802,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JapaneseCharactersTableViewCell" rowHeight="80" id="taC-Qj-jz2" customClass="JapaneseCharactersTableViewCell" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="148" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="148" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="taC-Qj-jz2" id="SvL-jb-lAb">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vowel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tc6-2O-l42">
@@ -708,7 +818,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あ  い  う  え  お 　" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="pfp-5O-vOI">
-                                            <rect key="frame" x="82" y="17" width="295.33333333333331" height="45"/>
+                                            <rect key="frame" x="82" y="17" width="285" height="45"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -761,27 +871,27 @@
             <objects>
                 <viewController storyboardIdentifier="showCharactersVC" hidesBottomBarWhenPushed="YES" id="Eeb-5E-bxQ" customClass="ShowCharactersViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sQ-dN-cpX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="SMm-NL-LFK">
-                                <rect key="frame" x="178" y="74" width="58" height="52.333333333333329"/>
+                                <rect key="frame" x="158.5" y="74" width="58" height="46"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xkn-P8-Kbj">
-                                <rect key="frame" x="50" y="593.66666666666652" width="314" height="92.333333333333371"/>
+                                <rect key="frame" x="50" y="531" width="275" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="cg2-Sc-ilT">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Itv-7m-zqA">
-                                        <rect key="frame" x="0.0" y="40" width="314" height="52.333333333333371"/>
+                                        <rect key="frame" x="0.0" y="40" width="275" height="46"/>
                                         <color key="backgroundColor" red="1" green="0.2487644514" blue="0.20555129220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Next Character">
@@ -796,7 +906,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="90" translatesAutoresizingMaskIntoConstraints="NO" id="vHt-eu-iGa">
-                                <rect key="frame" x="50" y="136.33333333333337" width="314" height="314"/>
+                                <rect key="frame" x="50" y="130" width="275" height="275"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vHt-eu-iGa" secondAttribute="height" multiplier="1:1" id="vtT-VK-k9h"/>
                                 </constraints>
@@ -805,13 +915,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="90" translatesAutoresizingMaskIntoConstraints="NO" id="b6c-Zg-3Gt">
-                                <rect key="frame" x="50" y="136.33333333333337" width="314" height="314"/>
+                                <rect key="frame" x="50" y="130" width="275" height="275"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="200"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="a35-um-jHB">
-                                <rect key="frame" x="50" y="440.33333333333331" width="314" height="0.0"/>
+                                <rect key="frame" x="50" y="395" width="275" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -871,11 +981,11 @@
             <objects>
                 <viewController storyboardIdentifier="RecapViewController" id="P4B-v9-Scj" customClass="RecapViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ei2-we-iqP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aZ5-7F-ogR">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rcC-ga-k9j">
                                     <size key="itemSize" width="50" height="50"/>
@@ -918,7 +1028,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Correct Bonus +20p" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="cia-UH-obB">
-                                                    <rect key="frame" x="5" y="5" width="90" height="28.666666666666664"/>
+                                                    <rect key="frame" x="5" y="5" width="90" height="29"/>
                                                     <color key="backgroundColor" red="0.97482125399999997" green="1" blue="0.34306032240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -948,11 +1058,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Recap" id="ZuJ-m3-o04" customClass="RecapCollectionReusableView" customModule="Nukon" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6A-9Y-kIR">
-                                            <rect key="frame" x="0.0" y="13.666666666666664" width="414" height="24"/>
+                                            <rect key="frame" x="0.0" y="13.5" width="375" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1004,11 +1114,11 @@
             <objects>
                 <viewController storyboardIdentifier="AnalysisViewController" id="P6u-6p-lDV" customClass="AnalysisViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hkI-oc-nht">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-wS-Fte">
-                                <rect key="frame" x="10" y="74" width="73.666666666666671" height="73.666666666666657"/>
+                                <rect key="frame" x="10" y="74" width="66.5" height="66.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gnU-wS-Fte" secondAttribute="height" multiplier="1:1" id="94L-Mf-NzZ"/>
                                 </constraints>
@@ -1017,13 +1127,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="generated character based on your pronunciation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck1-x5-bjI">
-                                <rect key="frame" x="50" y="157.66666666666666" width="314" height="40.666666666666686"/>
+                                <rect key="frame" x="50" y="150.5" width="275" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="い" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="75" translatesAutoresizingMaskIntoConstraints="NO" id="ejp-3n-gmW">
-                                <rect key="frame" x="50" y="227.66666666666663" width="314" height="314"/>
+                                <rect key="frame" x="50" y="221.5" width="275" height="275"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ejp-3n-gmW" secondAttribute="height" multiplier="1:1" id="onQ-O4-gUI"/>
                                 </constraints>
@@ -1058,9 +1168,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="coral" width="3648" height="5472"/>
         <image name="diamond" width="68" height="76"/>
-        <image name="origami" width="60" height="60"/>
         <image name="pagoda" width="64" height="64"/>
+        <image name="tabShape" width="244" height="85"/>
         <image name="toriTwo" width="72" height="62"/>
     </resources>
 </document>
