@@ -109,13 +109,13 @@ class ReviewTableViewController: UITableViewController {
         if section == 0 {
             // Hiragana Header
             cell.japaneseTypeLabel.text = "Hiragana: \(numberOfKana)"
-            cell.backgroundColor = .orange
+            cell.backgroundColor = UIColor(red: 252/255, green: 203/255, blue: 201/255, alpha: 1)
             return cell
         }
         else {
             // Katakana Header
             cell.japaneseTypeLabel.text = "Katakana: \(numberOfKana)"
-            cell.backgroundColor = UIColor(red: 0.25, green: 0.8, blue: 1.0, alpha: 1)
+            cell.backgroundColor = UIColor(red: 98/255, green: 155/255, blue: 196/255, alpha: 1)
             return cell
         }
     }
@@ -165,9 +165,9 @@ class ReviewTableViewController: UITableViewController {
         }
         let reviewVC = storyboard?.instantiateViewController(withIdentifier: "reviewViewController") as! ReviewViewController
         if section == 0 {
-            reviewVC.navigationColor = .orange
+            reviewVC.navigationColor = UIColor(red: 252/255, green: 203/255, blue: 201/255, alpha: 1)
         } else {
-            reviewVC.navigationColor = UIColor(red: 0.25, green: 0.8, blue: 1.0, alpha: 1)
+            reviewVC.navigationColor = UIColor(red: 98/255, green: 155/255, blue: 196/255, alpha: 1)
         }
         reviewVC.title = cell.soundsType.rawValue
         reviewVC.wordsLearnt = wordsLearnt

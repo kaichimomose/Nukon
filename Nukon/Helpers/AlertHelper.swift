@@ -61,7 +61,7 @@ extension AlertPresentable where Self: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-    func jumpToJCTVCAlert(character: String, closure: @escaping () -> ()){
+    func jumpToJCTVCAlert(character: String, closure: @escaping () -> (), sound: @escaping (_ string: String) -> ()){
         let alertVC = UIAlertController(
             title: "Practice?",
             message: "start practicing '\(character)'",
@@ -70,7 +70,7 @@ extension AlertPresentable where Self: UIViewController {
         
         alertVC.addAction(
             UIAlertAction(
-                title: "No",
+                title: "Cancel",
                 style: .cancel,
                 handler: { (action) in
                     
@@ -83,6 +83,15 @@ extension AlertPresentable where Self: UIViewController {
                 style: .default,
                 handler: { (action) in
                  closure()
+            })
+        )
+        
+        alertVC.addAction(
+            UIAlertAction(
+                title: "Check Sound",
+                style: .default,
+                handler: { (action) in
+                    sound(character)
             })
         )
         

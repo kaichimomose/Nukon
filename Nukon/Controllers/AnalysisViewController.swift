@@ -13,7 +13,7 @@ class AnalysisViewController: UIViewController {
 
     @IBOutlet weak var shownCharacterLabel: UILabel!
     @IBOutlet weak var generatedCharacterLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var soundButton: UIButton!
     
     var audioEngine: AVAudioEngine!
     var audioInputNode : AVAudioInputNode!
@@ -39,12 +39,34 @@ class AnalysisViewController: UIViewController {
         self.generatedCharacterLabel.layer.borderColor = UIColor.lightGray.cgColor
         self.generatedCharacterLabel.layer.borderWidth = 1
         
+        self.soundButton.layer.cornerRadius = self.soundButton.frame.size.height/2
+        self.soundButton.layer.borderColor = UIColor.black.cgColor
+        self.soundButton.layer.borderWidth = 1
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func soundButtonTapped(_ sender: Any) {
+        self.speakJapanese(string: shownCharacterLabel.text!)
+    }
+    
+    func speakJapanese(string: String) {
+        let textToSpeak = AVSpeechUtterance(string: string)
+        textToSpeak.rate = 0.01
+        textToSpeak.volume = 1.0
+        //        let numberOfSeconds = 10.0
+        //        textToSpeak.preUtteranceDelay = numberOfSeconds
+        let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
+        let speak = AVSpeechSynthesizer()
+        textToSpeak.voice = speakerVoice
+        //        speak.delegate = self
+        speak.speak(textToSpeak)
+    }
+    
+    /*
     @IBAction func playButtonTapped(_ sender: UIButton) {
         // setup audio engine
         if tapped == false {
@@ -76,7 +98,8 @@ class AnalysisViewController: UIViewController {
         try audioEngine?.start()
         
     }
-
+    */
+    
     /*
     // MARK: - Navigation
 
