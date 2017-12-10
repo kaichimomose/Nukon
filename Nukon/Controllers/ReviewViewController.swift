@@ -290,11 +290,11 @@ extension ReviewViewController: UICollectionViewDataSource {
     }
    
     func jumpToJCTVC(){
-        let navigationVC = self.tabBarController?.viewControllers![1]
+        let navigationVC = self.tabBarController?.viewControllers![0]
         let practiceVC = navigationVC?.childViewControllers.first as! PracticeViewController
         practiceVC.japaneseType = self.selectedJapaneseType
         practiceVC.sound = self.selectedSound
-        self.tabBarController?.selectedIndex = 1
+        self.tabBarController?.selectedIndex = 0
         return
     }
     

@@ -9,8 +9,8 @@
 import UIKit
 import AVFoundation
 
-class RecapViewController: UIViewController /*, AVSpeechSynthesizerDelegate */{
-    
+class RecapViewController: UIViewController {
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     var japaneseType: JapaneseType!
