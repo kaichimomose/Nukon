@@ -28,20 +28,20 @@
             </objects>
             <point key="canvasLocation" x="198" y="146"/>
         </scene>
-        <!--UserProfile-->
+        <!--Practice-->
         <scene sceneID="4W3-uB-G03">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserProfile" id="QbT-WE-yha" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Practice" id="QbT-WE-yha" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="AAo-j2-7n6"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pV0-bU-Ubx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="-142"/>
         </scene>
-        <!--Practice-->
+        <!--UserProfile-->
         <scene sceneID="2oF-5I-MPA">
             <objects>
-                <viewControllerPlaceholder storyboardName="Practice" id="3tt-kU-oAV" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="UserProfile" id="3tt-kU-oAV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="WO9-yD-20K"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnc-Ue-Gtt" userLabel="First Responder" sceneMemberID="firstResponder"/>

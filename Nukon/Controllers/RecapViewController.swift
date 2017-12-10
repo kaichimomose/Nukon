@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class RecapViewController: UIViewController {
-    
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     var japaneseType: JapaneseType!
@@ -178,13 +178,6 @@ extension RecapViewController: UICollectionViewDataSource {
         let row = indexPath.row
         
         if indexPath.section == 0 {
-            let textToSpeak = AVSpeechUtterance(string: generatedCharacters![.wrong]![row].0)
-            textToSpeak.rate = 0.03
-            let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
-            let speak = AVSpeechSynthesizer()
-            textToSpeak.voice = speakerVoice
-            speak.speak(textToSpeak)
-            
             let analysisVC  = storyboard?.instantiateViewController(withIdentifier: "AnalysisViewController") as! AnalysisViewController
             // sends dictionaly of generated character by voice recognition to RecapViewController
             analysisVC.generatedCharacter = self.generatedCharacters![.wrong]![row]

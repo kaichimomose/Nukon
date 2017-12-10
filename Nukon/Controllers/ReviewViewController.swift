@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ReviewViewController: UIViewController, AlertPresentable {
 
@@ -285,16 +286,29 @@ extension ReviewViewController: UICollectionViewDataSource {
             self.selectedJapaneseType = .yVowelKatakana
         }
         self.selectedSound = wordLearnt.sound
-        jumpToJCTVCAlert(character: wordLearnt.word!, closure: jumpToJCTVC)
+        jumpToJCTVCAlert(character: wordLearnt.word!, closure: jumpToJCTVC, sound: speakJapanese(_:))
     }
    
     func jumpToJCTVC(){
-        let navigationVC = self.tabBarController?.viewControllers![1]
+        let navigationVC = self.tabBarController?.viewControllers![0]
         let practiceVC = navigationVC?.childViewControllers.first as! PracticeViewController
         practiceVC.japaneseType = self.selectedJapaneseType
         practiceVC.sound = self.selectedSound
-        self.tabBarController?.selectedIndex = 1
+        self.tabBarController?.selectedIndex = 0
         return
+    }
+    
+    func speakJapanese(_ string: String) {
+        let textToSpeak = AVSpeechUtterance(string: string)
+        textToSpeak.rate = 0.01
+        textToSpeak.volume = 1.0
+        //        let numberOfSeconds = 10.0
+        //        textToSpeak.preUtteranceDelay = numberOfSeconds
+        let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
+        let speak = AVSpeechSynthesizer()
+        textToSpeak.voice = speakerVoice
+        //        speak.delegate = self
+        speak.speak(textToSpeak)
     }
     
 }

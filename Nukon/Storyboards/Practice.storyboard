@@ -1118,7 +1118,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-wS-Fte">
-                                <rect key="frame" x="10" y="74" width="66.5" height="66.5"/>
+                                <rect key="frame" x="10" y="74" width="111" height="111"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gnU-wS-Fte" secondAttribute="height" multiplier="1:1" id="94L-Mf-NzZ"/>
                                 </constraints>
@@ -1127,13 +1127,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="generated character based on your pronunciation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck1-x5-bjI">
-                                <rect key="frame" x="50" y="150.5" width="275" height="41"/>
+                                <rect key="frame" x="50" y="195" width="275" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="い" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="75" translatesAutoresizingMaskIntoConstraints="NO" id="ejp-3n-gmW">
-                                <rect key="frame" x="50" y="221.5" width="275" height="275"/>
+                                <rect key="frame" x="50" y="265.5" width="275" height="275"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ejp-3n-gmW" secondAttribute="height" multiplier="1:1" id="onQ-O4-gUI"/>
                                 </constraints>
@@ -1141,18 +1141,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOR-ZS-qln">
+                                <rect key="frame" x="141" y="102" width="224" height="55.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Check Sound">
+                                    <color key="titleColor" red="0.023893559639999999" green="0.023893559639999999" blue="0.023893559639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="soundButtonTapped:" destination="P6u-6p-lDV" eventType="touchUpInside" id="2KS-bL-iTt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ck1-x5-bjI" firstAttribute="centerX" secondItem="hkI-oc-nht" secondAttribute="centerX" id="7dj-wf-kqW"/>
                             <constraint firstItem="Ck1-x5-bjI" firstAttribute="top" secondItem="gnU-wS-Fte" secondAttribute="bottom" constant="10" id="CTF-Uw-CtM"/>
+                            <constraint firstItem="pOR-ZS-qln" firstAttribute="centerY" secondItem="gnU-wS-Fte" secondAttribute="centerY" id="E3C-ze-btm"/>
+                            <constraint firstItem="fIl-9W-IYA" firstAttribute="trailing" secondItem="pOR-ZS-qln" secondAttribute="trailing" constant="10" id="LEK-ii-3O2"/>
                             <constraint firstItem="gnU-wS-Fte" firstAttribute="leading" secondItem="fIl-9W-IYA" secondAttribute="leading" constant="10" id="OKK-wf-LW0"/>
+                            <constraint firstItem="gnU-wS-Fte" firstAttribute="width" secondItem="pOR-ZS-qln" secondAttribute="height" multiplier="2:1" id="Wxt-BN-N8r"/>
                             <constraint firstItem="ejp-3n-gmW" firstAttribute="centerX" secondItem="hkI-oc-nht" secondAttribute="centerX" id="YGa-X7-5GI"/>
                             <constraint firstItem="Ck1-x5-bjI" firstAttribute="leading" secondItem="fIl-9W-IYA" secondAttribute="leading" constant="50" id="fao-zX-ORd"/>
                             <constraint firstItem="ejp-3n-gmW" firstAttribute="width" secondItem="Ck1-x5-bjI" secondAttribute="width" id="fz1-5U-IyQ"/>
                             <constraint firstItem="gnU-wS-Fte" firstAttribute="top" secondItem="fIl-9W-IYA" secondAttribute="top" constant="10" id="naF-P3-adh"/>
-                            <constraint firstItem="gnU-wS-Fte" firstAttribute="width" secondItem="hkI-oc-nht" secondAttribute="height" multiplier="1:10" id="qAz-Lq-aF0"/>
+                            <constraint firstItem="gnU-wS-Fte" firstAttribute="width" secondItem="hkI-oc-nht" secondAttribute="height" multiplier="1:6" id="qAz-Lq-aF0"/>
                             <constraint firstItem="ejp-3n-gmW" firstAttribute="top" secondItem="Ck1-x5-bjI" secondAttribute="bottom" constant="30" id="r4Z-x7-hyB"/>
+                            <constraint firstItem="pOR-ZS-qln" firstAttribute="leading" secondItem="gnU-wS-Fte" secondAttribute="trailing" constant="20" id="vBa-3G-v5h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fIl-9W-IYA"/>
                     </view>
@@ -1160,6 +1175,7 @@
                     <connections>
                         <outlet property="generatedCharacterLabel" destination="ejp-3n-gmW" id="yUM-wH-HsY"/>
                         <outlet property="shownCharacterLabel" destination="gnU-wS-Fte" id="rQV-AD-6pn"/>
+                        <outlet property="soundButton" destination="pOR-ZS-qln" id="eZf-Oj-Bo7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JgN-c9-04l" userLabel="First Responder" sceneMemberID="firstResponder"/>
