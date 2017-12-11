@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable class LevelCounterView: UIView {
 
     private struct Constants {
-        static let numberOfLevels = 24
+        static let numberOfLevels = 0
         static let lineWidth: CGFloat = 10
         static let arcWidth: CGFloat = 15
         

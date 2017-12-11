@@ -24,6 +24,9 @@ class NewLevelViewController: UIViewController {
     @IBOutlet var diamondOverlapOverBlur: UIImageView!
     @IBOutlet var BonusStagePopUp: UIView!
     
+    @IBOutlet var pagodaOverlapOverBlur: UIImageView!
+    @IBOutlet var intermediateStagePopUp: UIView!
+    
     @IBOutlet weak var visualEffectOne: UIVisualEffectView!
     
     var effect: UIVisualEffect!
@@ -65,10 +68,13 @@ class NewLevelViewController: UIViewController {
 
     
    
+    @IBAction func dismissIntermediatePopUp(_ sender: Any) {
+        animateOutIntermediateStageInfo()
+    }
+    
     @IBAction func dismissFoundationPopUp(_ sender: Any) {
         animateOutFoundationStageInfo()
     }
-    
     
     @IBAction func dismissBonusStagePopUp(_ sender: Any) {
         animateOutBonusStageInfo()
@@ -78,6 +84,7 @@ class NewLevelViewController: UIViewController {
     @IBOutlet var diamondPress: UITapGestureRecognizer!
     @IBOutlet var pagodaPress: UITapGestureRecognizer!
     
+    @IBOutlet weak var leveltrakerView: LevelCounterView!
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //        let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
     //        if segue.identifier == "hiragana"{
@@ -163,14 +170,14 @@ extension NewLevelViewController {
     func animateInLeveltrackerInfo() {
         self.view.bringSubview(toFront: visualEffectOne)
         
-        
         self.view.addSubview(levelCounterPopUp)
         self.view.addSubview(levelCounterForOverlap)
         
-        
-        levelCounterPopUp.center = self.view.center
         levelCounterForOverlap.center.x = self.view.center.x
-        levelCounterForOverlap.center.y = self.view.center.y - 270
+        levelCounterForOverlap.center.y = self.view.center.y * 0.75
+        
+        levelCounterPopUp.center.x = self.view.center.x
+        levelCounterPopUp.center.y = self.view.center.y * 1.25
         
         levelCounterPopUp.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         levelCounterPopUp.alpha = 0
@@ -224,16 +231,16 @@ extension NewLevelViewController {
     //FOUNDATION STAGE ANIMATIONS ------------------------------------------//
     func animateInFoundationStageInfo() {
         //WILL UNCOMMENT THIS WHEN I SEPARATE CONCERNS FOR EACH BUTTON
-//        self.view.bringSubview(toFront: visualEffectOne)
+        self.view.bringSubview(toFront: visualEffectOne)
         
         self.view.addSubview(foundationStagePopUp)
         self.view.addSubview(toriTwoOverlapOfBlur)
         
-        self.foundationStagePopUp.center.x = self.view.center.x + 95
-        self.foundationStagePopUp.center.y = self.view.center.y
+        self.toriTwoOverlapOfBlur.center.x = self.view.center.x
+        self.toriTwoOverlapOfBlur.center.y = self.view.center.y * 0.75
         
-        self.toriTwoOverlapOfBlur.center.x = self.view.center.x - 140
-        self.toriTwoOverlapOfBlur.center.y = self.view.center.y - 25
+        self.foundationStagePopUp.center.x = self.view.center.x
+        self.foundationStagePopUp.center.y = self.view.center.y * 1.25
         
         foundationStagePopUp.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         foundationStagePopUp.alpha = 0
@@ -270,6 +277,59 @@ extension NewLevelViewController {
             self.foundationStagePopUp.removeFromSuperview()
             self.toriTwoOverlapOfBlur.removeFromSuperview()
             
+            self.animateInIntermediateStageInfo()
+        }
+    }
+    
+    //Intermediate STAGE ANIMATIONS ------------------------------------------//
+    func animateInIntermediateStageInfo() {
+        //WILL UNCOMMENT THIS WHEN I SEPARATE CONCERNS FOR EACH BUTTON
+        self.view.bringSubview(toFront: visualEffectOne)
+        
+        self.view.addSubview(intermediateStagePopUp)
+        self.view.addSubview(pagodaOverlapOverBlur)
+        
+        self.pagodaOverlapOverBlur.center.x = self.view.center.x
+        self.pagodaOverlapOverBlur.center.y = self.view.center.y * 0.75
+        
+        self.intermediateStagePopUp.center.x = self.view.center.x
+        self.intermediateStagePopUp.center.y = self.view.center.y * 1.25
+        
+        intermediateStagePopUp.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        intermediateStagePopUp.alpha = 0
+        
+        pagodaOverlapOverBlur.transform = CGAffineTransform.init(scaleX: 2.0, y: 2.0)
+        pagodaOverlapOverBlur.alpha = 0
+        
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectOne.effect = self.effect
+            
+            self.intermediateStagePopUp.alpha = 0.95
+            self.intermediateStagePopUp.transform = CGAffineTransform.identity
+            
+            self.pagodaOverlapOverBlur.transform = CGAffineTransform.identity
+            self.pagodaOverlapOverBlur.alpha = 1
+        }
+        
+        
+    }
+    
+    
+    func animateOutIntermediateStageInfo() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.intermediateStagePopUp.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.intermediateStagePopUp.alpha = 0
+            
+            self.pagodaOverlapOverBlur.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)
+            self.pagodaOverlapOverBlur.alpha = 0
+            
+            self.visualEffectOne.effect = nil
+        }) { (success: Bool) in
+            //            self.view.sendSubview(toBack: self.visualEffectOne)
+            
+            self.intermediateStagePopUp.removeFromSuperview()
+            self.pagodaOverlapOverBlur.removeFromSuperview()
+            
             self.animateInBonusStageInfo()
         }
     }
@@ -280,11 +340,11 @@ extension NewLevelViewController {
         self.view.addSubview(BonusStagePopUp)
         self.view.addSubview(diamondOverlapOverBlur)
         
-        self.BonusStagePopUp.center.x = self.view.center.x - 95
-        self.BonusStagePopUp.center.y = self.view.center.y - 10
+        self.diamondOverlapOverBlur.center.x = self.view.center.x
+        self.diamondOverlapOverBlur.center.y = self.view.center.y * 0.75
         
-        self.diamondOverlapOverBlur.center.x = self.view.center.x + 125
-        self.diamondOverlapOverBlur.center.y = self.view.center.y - 25
+        self.BonusStagePopUp.center.x = self.view.center.x
+        self.BonusStagePopUp.center.y = self.view.center.y * 1.25
         
         BonusStagePopUp.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         BonusStagePopUp.alpha = 0

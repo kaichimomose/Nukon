@@ -19,6 +19,7 @@ class RecapViewController: UIViewController {
     var wrongWords = [(String, Int32, Int32)]() //(word, numberOfCorrect, numberOfWrong)
     var buffer: [AVAudioPCMBuffer]?
     var wordsLearnt = [WordLearnt]()
+    var userDatas = [UserData]()
     var userData: UserData!
     var points = Int32()
     
@@ -36,7 +37,14 @@ class RecapViewController: UIViewController {
     
     func updateCoreData() {
         wordsLearnt = CoreDataHelper.retrieveWordLearnt()
-        userData = CoreDataHelper.retrieveUserData()[0]
+        userDatas = CoreDataHelper.retrieveUserData()
+        
+        if userDatas == [] {
+            userData = CoreDataHelper.newUserData()
+        }
+        else {
+            userData = userDatas[0]
+        }
         //find word in correctWord from coredata [WordLearnt], if found update number of correct and give point
         for correctWord in generatedCharacters![.correct]! {
             var find = false //flag to decide whether find or not
@@ -156,13 +164,13 @@ extension RecapViewController: UICollectionViewDataSource {
         cell.numberOfWrongLabel.layer.backgroundColor = UIColor.red.cgColor
         
         if indexPath.section == 0 {
-            cell.characterLabel.text = wrongWords[row].0 + " (" + generatedCharacters![.wrong]![row].2 + ")"//generatedCharacters![.wrong]![row].0
+            cell.characterLabel.text = wrongWords[row].0 // + " (" + generatedCharacters![.wrong]![row].2 + ")"//generatedCharacters![.wrong]![row].0
             cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(wrongWords[row].1)"
             cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(wrongWords[row].2)"
             cell.bonusLabel.isHidden = true
         }
         else {
-            cell.characterLabel.text = correctWords[row].0 + " (" + generatedCharacters![.correct]![row].2 + ")"//generatedCharacters![.correct]![row].0
+            cell.characterLabel.text = correctWords[row].0 // + " (" + generatedCharacters![.correct]![row].2 + ")"//generatedCharacters![.correct]![row].0
             cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(correctWords[row].1)"
             cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(correctWords[row].2)"
             cell.bonusLabel.isHidden = true

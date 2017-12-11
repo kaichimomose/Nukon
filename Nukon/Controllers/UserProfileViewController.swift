@@ -11,11 +11,9 @@ import UIKit
 
 class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 
-
-
     @IBOutlet weak var updatedViewWithArc: UIView!
     @IBOutlet weak var profileIcon: CustomImageView!
-    
+    @IBOutlet weak var userIcon: CustomImageView!
     //LABELS
     
     @IBOutlet weak var pointsLabel: UILabel!
@@ -60,7 +58,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 
         
         if userDatas == [] {
-            userData =  CoreDataHelper.newUserData()
+            userData = CoreDataHelper.newUserData()
             userData.loginDate = Date().convertToString().components(separatedBy: ",")[0]
             userData.nextDateofLoginDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())?.convertToString().components(separatedBy: ",")[0]
             userData.streak = 1

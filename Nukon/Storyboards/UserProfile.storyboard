@@ -49,9 +49,6 @@
                                             <constraint firstAttribute="width" secondItem="gci-K0-MGS" secondAttribute="height" multiplier="1:1" id="eQm-np-ayy"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="45"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" red="0.98988849320000005" green="0.26889990670000002" blue="0.4968338289" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -211,6 +208,7 @@
                         <outlet property="pointsLabel" destination="Tk4-8D-Wxn" id="yie-Bq-Jlw"/>
                         <outlet property="profileIcon" destination="gci-K0-MGS" id="F1a-i0-oBM"/>
                         <outlet property="updatedViewWithArc" destination="JbO-kc-3hN" id="L01-rI-zcm"/>
+                        <outlet property="userIcon" destination="gci-K0-MGS" id="4iO-2f-ZoN"/>
                         <outlet property="wordsLearntLabel" destination="5gd-gI-bzt" id="1V3-wd-QjN"/>
                         <outlet property="wordsToReviewLabel" destination="dW1-rp-xSi" id="wnd-3L-TJw"/>
                     </connections>

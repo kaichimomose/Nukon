@@ -75,6 +75,7 @@ class ShowCharactersViewController: UIViewController {
         speechRecognizer.delegate = self
         
         self.characterLabel.layer.cornerRadius = 6
+        self.characterLabel.layer.masksToBounds = true
         self.characterLabel.layer.borderColor = UIColor.lightGray.cgColor
         self.characterLabel.layer.borderWidth = 1
         
@@ -112,11 +113,11 @@ class ShowCharactersViewController: UIViewController {
         self.countCharacters.text = "\(self.counter)/\(self.totalNumberOfCharacter)"
         switch self.judge {
         case .correct:
-            self.characterLabel.layer.backgroundColor = UIColor.green.cgColor
+            self.characterLabel.backgroundColor = .green
         case .wrong:
-            self.characterLabel.layer.backgroundColor = UIColor.red.cgColor
+            self.characterLabel.backgroundColor = .red
         case .yet:
-            self.characterLabel.layer.backgroundColor = UIColor.clear.cgColor
+            self.characterLabel.backgroundColor = .white
         }
         self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: .normal)
     }
@@ -366,7 +367,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                             //self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, correctsound)) //returns correctsound
                             self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, self.soundType)) //returns soundType
 //                            self.judgeLabel.text = self.judge.rawValue
-                            self.characterLabel.layer.backgroundColor = UIColor.green.cgColor
+                            self.characterLabel.backgroundColor = .green
                             willAppend = false
                             break
                         }
@@ -380,7 +381,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     self.bestString[self.judge]!.append((self.shownCharacter, theBestString, self.soundType)) //returns soundType
                     self.buffers.append(self.buffer)
 //                    self.judgeLabel.text = self.judge.rawValue
-                    self.characterLabel.layer.backgroundColor = UIColor.red.cgColor
+                    self.characterLabel.backgroundColor = .red
                     willAppend = false
                 }
                 

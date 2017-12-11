@@ -72,7 +72,7 @@ class ReviewTableViewController: UITableViewController {
         super.viewDidLoad()
         self.categorizingWordsLearnt()
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 80
+        self.tableView.estimatedRowHeight = 70
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
