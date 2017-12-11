@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Rectangle02.pdf",
+      "filename" : "icons8-treasure-chest-80.png",
       "scale" : "1x"
     },
     {
@@ -11,7 +11,6 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Rectangle@3x.png",
       "scale" : "3x"
     }
   ],

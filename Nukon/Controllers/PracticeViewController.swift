@@ -24,6 +24,15 @@ class PracticeViewController: UIViewController {
     @IBOutlet weak var kanjiTab: tabGradientButton!
     
     
+    
+    //------------------------------------------------------- 
+    @IBOutlet weak var hiraganaTabView: GradientView!
+    @IBOutlet weak var katakanaTabView: GradientView!
+    @IBOutlet weak var kanjiTabView: GradientView!
+    
+    
+    
+    //-------------------------------------------------------
     @IBOutlet var hiraganaPopUpView: UIView!
     @IBOutlet var katakanaPopUpView: UIView!
     @IBOutlet var kanjiPopUpView: UIView!
@@ -34,8 +43,14 @@ class PracticeViewController: UIViewController {
     @IBOutlet weak var hiraganaButton: CustomButton!
     @IBOutlet weak var katakanaButton: CustomButton!
     
+    @IBOutlet weak var hiraganaTabViewLeadingConstraints: NSLayoutConstraint!
+    @IBOutlet weak var katakanaTabViewLeadingConstraints: NSLayoutConstraint!
+    @IBOutlet weak var kanjiTabViewLeadingConstraints: NSLayoutConstraint!
     
-
+    @IBOutlet weak var kanjiTextView: UITextView!
+    @IBOutlet weak var katakanaTextView: UITextView!
+    
+    @IBOutlet weak var hiraganaTextView: UITextView!
     
     var japaneseType: JapaneseType?
     var sound: String?
@@ -43,18 +58,33 @@ class PracticeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let hiraganaTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
-        hiraganaTab.mask = hiraganaTabMask
+        let tabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
+        hiraganaTabView.mask = tabMask
         
         let katakanaTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
-        katakanaTab.mask = katakanaTabMask
-
-        let kanjiTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
-        kanjiTab.mask = kanjiTabMask
+        katakanaTabView.mask = katakanaTabMask
         
-        hiraganaPopUpView.layer.cornerRadius = 10
-        katakanaPopUpView.layer.cornerRadius = 10
-        kanjiPopUpView.layer.cornerRadius = 10
+        let kanjiTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
+        kanjiTabView.mask = kanjiTabMask
+        
+        
+        kanjiTextView.isEditable = false
+        katakanaTextView.isEditable = false
+        hiraganaTextView.isEditable = false
+        
+        kanjiTextView.isScrollEnabled = false
+        katakanaTextView.isScrollEnabled = false
+        hiraganaTextView.isScrollEnabled = false
+        
+        
+//        hiraganaTabView.center.x -= (view.bounds.width)
+//        katakanaTabView.center.x -= (view.bounds.width)
+//        kanjiTabView.center.x -= (view.bounds.width)
+        
+        
+        hiraganaPopUpView.layer.cornerRadius = 20
+        katakanaPopUpView.layer.cornerRadius = 20
+        kanjiPopUpView.layer.cornerRadius = 20
 
         
     }
@@ -62,6 +92,17 @@ class PracticeViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        hiraganaTabView.center.x -= (view.bounds.width)
+//        katakanaTabView.center.x -= (view.bounds.width)
+//        kanjiTabView.center.x -= (view.bounds.width)
+        
+        hiraganaTabViewLeadingConstraints.constant = -122
+        katakanaTabViewLeadingConstraints.constant = -122
+        kanjiTabViewLeadingConstraints.constant = -122
+        
+        
         guard let japaneseType = self.japaneseType else {return}
         switch japaneseType {
         case .hiragana, .voicedHiragana, .yVowelHiragana:
@@ -103,6 +144,7 @@ class PracticeViewController: UIViewController {
     
     @IBAction func tappedKanjiButton(_ sender: Any) {
         animateOutKanjiPopUp()
+        animateOutTab(tabViewConstraints: kanjiTabViewLeadingConstraints)
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,12 +162,18 @@ class PracticeViewController: UIViewController {
         animateOutKanjiPopUp()
         animateOutKatakanaPopUp()
         animateInHiraganaPopUp()
+        animateInTab(tabViewConstraints: hiraganaTabViewLeadingConstraints)
+        animateOutTab(tabViewConstraints: katakanaTabViewLeadingConstraints)
+        animateOutTab(tabViewConstraints: kanjiTabViewLeadingConstraints)
     }
     
     @IBAction func katakanaTabPulled(_ sender: Any) {
         animateOutKanjiPopUp()
         animateOutHiraganaPopUp()
         animateInKatakanaPopUp()
+        animateInTab(tabViewConstraints: katakanaTabViewLeadingConstraints)
+        animateOutTab(tabViewConstraints: hiraganaTabViewLeadingConstraints)
+        animateOutTab(tabViewConstraints: kanjiTabViewLeadingConstraints)
     }
     
     
@@ -133,8 +181,10 @@ class PracticeViewController: UIViewController {
         animateOutHiraganaPopUp()
         animateOutKatakanaPopUp()
         animateInKanjiPopUp()
+        animateInTab(tabViewConstraints: kanjiTabViewLeadingConstraints)
+        animateOutTab(tabViewConstraints: hiraganaTabViewLeadingConstraints)
+        animateOutTab(tabViewConstraints: katakanaTabViewLeadingConstraints)
     }
-    
     
 
     
@@ -148,7 +198,7 @@ class PracticeViewController: UIViewController {
 
 
 extension PracticeViewController {
-    //ANIMATIONS-------
+    //ANIMATIONS FOR DESCRIPTION POP UPS-------
     
     
     
@@ -254,6 +304,35 @@ extension PracticeViewController {
             self.kanjiPopUpView.removeFromSuperview()
         }
     }
+    
+}
+
+
+extension PracticeViewController {
+    //ANIMATIONS FOR EACH TAB VIEW
+    
+    func animateInTab(tabViewConstraints: NSLayoutConstraint) {
+//        tabViewConstraints.constant += 61
+        UIView.animate(withDuration: 0.3) {
+            if tabViewConstraints.constant == -122 {
+                tabViewConstraints.constant += 61
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    func animateOutTab(tabViewConstraints: NSLayoutConstraint) {
+//        tabViewConstraints.constant -= 61
+        UIView.animate(withDuration: 0.5) {
+            if tabViewConstraints.constant == -61 {
+                tabViewConstraints.constant -= 61
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+    }
+    
+    
     
 }
 

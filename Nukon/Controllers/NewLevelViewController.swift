@@ -41,7 +41,7 @@ class NewLevelViewController: UIViewController {
         levelTrackerViewSetUp()
         
         effect = visualEffectOne.effect
-        visualEffectOne.effect = nil
+//        visualEffectOne.effect = nil
         self.view.sendSubview(toBack: visualEffectOne)
         
         levelCounterPopUp.layer.cornerRadius = 10
@@ -224,7 +224,7 @@ extension NewLevelViewController {
     //FOUNDATION STAGE ANIMATIONS ------------------------------------------//
     func animateInFoundationStageInfo() {
         //WILL UNCOMMENT THIS WHEN I SEPARATE CONCERNS FOR EACH BUTTON
-//        self.view.bringSubview(toFront: visualEffectOne)
+        self.view.bringSubview(toFront: visualEffectOne)
         
         self.view.addSubview(foundationStagePopUp)
         self.view.addSubview(toriTwoOverlapOfBlur)

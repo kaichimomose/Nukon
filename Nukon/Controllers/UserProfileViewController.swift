@@ -50,8 +50,8 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         super.viewDidLoad()
 
         self.profileIcon.layer.cornerRadius = self.profileIcon.frame.size.width / 2
-        self.profileIcon.layer.borderColor = UIColor.cyan.cgColor
-        self.profileIcon.layer.borderWidth = 2
+//        self.profileIcon.layer.borderColor = UIColor.cyan.cgColor
+//        self.profileIcon.layer.borderWidth = 2
         
         self.tabBarController?.delegate = self
         
