@@ -28,7 +28,6 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     @IBOutlet weak var wordsToReviewLabel: UILabel!
     @IBOutlet weak var numOfWordsToReviewLabel: UILabel!
     
-    
     @IBOutlet weak var wordsLearntLabel: UILabel!
     @IBOutlet weak var numOfWordsLearntLabel: UILabel!
 
@@ -54,6 +53,26 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         self.profileIcon.layer.cornerRadius = self.profileIcon.frame.size.width / 2
 //        self.profileIcon.layer.borderColor = UIColor.cyan.cgColor
 //        self.profileIcon.layer.borderWidth = 2
+        
+        self.numOfWordsLearntLabel.layer.cornerRadius = 5
+        self.numOfWordsLearntLabel.layer.masksToBounds = true
+        self.numOfWordsLearntLabel.layer.borderColor = UIColor.darkGray.cgColor
+        self.numOfWordsLearntLabel.layer.borderWidth = 2
+        
+        self.numOfPointsLabel.layer.cornerRadius = 5
+        self.numOfPointsLabel.layer.masksToBounds = true
+        self.numOfPointsLabel.layer.borderColor = UIColor.darkGray.cgColor
+        self.numOfPointsLabel.layer.borderWidth = 2
+        
+        self.numOfDaysLabel.layer.cornerRadius = 5
+        self.numOfDaysLabel.layer.masksToBounds = true
+        self.numOfDaysLabel.layer.borderColor = UIColor.darkGray.cgColor
+        self.numOfDaysLabel.layer.borderWidth = 2
+        
+        self.numOfWordsToReviewLabel.layer.cornerRadius = 5
+        self.numOfWordsToReviewLabel.layer.masksToBounds = true
+        self.numOfWordsToReviewLabel.layer.borderColor = UIColor.darkGray.cgColor
+        self.numOfWordsToReviewLabel.layer.borderWidth = 2
         
         self.tabBarController?.delegate = self
         
