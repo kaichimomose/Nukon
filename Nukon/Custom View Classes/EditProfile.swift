@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable class CustomButton: UIButton {
+//@IBDesignable
+class CustomButton: UIButton {
         
         @IBInspectable var borderColor: UIColor? = UIColor.clear {
             didSet {
@@ -21,10 +22,6 @@ import UIKit
                 layer.borderWidth = self.borderWidth
             }
         }
-        
-    
-    
-    
         
         required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)

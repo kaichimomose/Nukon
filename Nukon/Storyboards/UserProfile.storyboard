@@ -214,6 +214,7 @@
                         <outlet property="pointsLabel" destination="Tk4-8D-Wxn" id="yie-Bq-Jlw"/>
                         <outlet property="profileIcon" destination="gci-K0-MGS" id="F1a-i0-oBM"/>
                         <outlet property="updatedViewWithArc" destination="JbO-kc-3hN" id="L01-rI-zcm"/>
+                        <outlet property="userIcon" destination="gci-K0-MGS" id="4iO-2f-ZoN"/>
                         <outlet property="wordsLearntLabel" destination="5gd-gI-bzt" id="1V3-wd-QjN"/>
                         <outlet property="wordsToReviewLabel" destination="dW1-rp-xSi" id="wnd-3L-TJw"/>
                     </connections>
@@ -484,6 +485,11 @@
                         <viewLayoutGuide key="safeArea" id="5rf-uW-ces"/>
                     </view>
                     <navigationItem key="navigationItem" title="Review" id="sOM-i4-zYN">
+                        <barButtonItem key="leftBarButtonItem" title="＜Back" id="BKP-Zr-48H">
+                            <connections>
+                                <segue destination="pi2-ar-EbG" kind="unwind" unwindAction="unwindToReviewTableViewController:" id="1Vh-pU-csW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Slide" image="list ICON" id="hqH-Ek-Wvw">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -502,6 +508,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iuz-qz-p5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pi2-ar-EbG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2870" y="148"/>
         </scene>

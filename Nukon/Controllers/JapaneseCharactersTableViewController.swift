@@ -26,9 +26,18 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = self.selectedType?.rawValue
+        switch self.selectedType {
+        case .hiragana, .katakana:
+            self.title = "regular-sounds"
+        case .voicedHiragana, .voicedKatakana:
+            self.title = "voiced-sounds"
+        case .yVowelHiragana, .yVowelKatakana:
+            self.title = "y-vowel-sounds"
+        default:
+            self.title = ""
+        }
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 80
+        self.tableView.estimatedRowHeight = 70
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,15 +100,42 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         }
         else {
             // the header that shows vowels (a, i, u, e, o)
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell")
-            cell?.layer.backgroundColor = UIColor.gray.cgColor
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as! JapaneseCharactersTableViewCell
+            cell.layer.backgroundColor = UIColor(red: 0/255, green: 166/255, blue: 237/255, alpha: 1).cgColor
+            let width = self.tableView.frame.width / 8
+            cell.vowelALabel.frame.size.width = width
+            
+            cell.vowelALabel.layer.cornerRadius = width / 2
+            cell.vowelALabel.layer.borderWidth = 1
+            cell.vowelALabel.layer.borderColor = UIColor.black.cgColor
+            
+            cell.vowelILabel.layer.cornerRadius = width / 2
+            cell.vowelILabel.layer.borderWidth = 1
+            cell.vowelILabel.layer.borderColor = UIColor.black.cgColor
+            
+            cell.vowelULabel.layer.cornerRadius = width / 2
+            cell.vowelULabel.layer.borderWidth = 1
+            cell.vowelULabel.layer.borderColor = UIColor.black.cgColor
+            
+            cell.vowelELabel.layer.cornerRadius = width / 2
+            cell.vowelELabel.layer.borderWidth = 1
+            cell.vowelELabel.layer.borderColor = UIColor.black.cgColor
+            
+            cell.vowelOLabel.layer.cornerRadius = width / 2
+            cell.vowelOLabel.layer.borderWidth = 1
+            cell.vowelOLabel.layer.borderColor = UIColor.black.cgColor
+            
+            cell.vowelVoidLabel.layer.cornerRadius = width / 2
+            cell.vowelVoidLabel.layer.borderWidth = 1
+            cell.vowelVoidLabel.layer.borderColor = UIColor.black.cgColor
+            
             return cell
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // sets height of header cells
-        return 60
+        return 70
     }
     /////
     
@@ -113,9 +149,9 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         let cell = tableView.dequeueReusableCell(withIdentifier: "JapaneseCharactersTableViewCell", for: indexPath) as! JapaneseCharactersTableViewCell
         let row = indexPath.row
         // sets layers
-        cell.soundLabel.layer.cornerRadius = 26.5
+        cell.soundLabel.layer.cornerRadius = cell.soundLabel.frame.width / 2
         cell.soundLabel.layer.borderWidth = 1
-        cell.soundLabel.layer.borderColor = UIColor.lightGray.cgColor
+        cell.soundLabel.layer.borderColor = UIColor.black.cgColor
         let showSound = japaneseList[row].sound
         cell.soundLabel.text = showSound
         if japaneseList[row].select != true {
@@ -123,7 +159,7 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
             cell.backgroundColor = .white
         } else {
             //changes the background color of preselected sound row to blue
-            cell.backgroundColor = .blue
+            cell.backgroundColor = UIColor(red: 127/255, green: 170/255, blue: 116/255, alpha: 1)
         }
         // adjusts font size based on rows
         if showSound == "vowel" {
@@ -133,8 +169,46 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
             cell.soundLabel.font = cell.soundLabel.font.withSize(30.0)
         }
         // makes one string from character letters lists
-        let words = japaneseList[row].letters.joined(separator: " ")
-        cell.japaneseCharactersLabel.text = words
+        cell.letters = japaneseList[row].letters
+        let width = self.tableView.frame.width / 8
+        cell.vowelALabel.frame.size.width = width
+        cell.consonantView.frame.size.width = width
+        
+        if cell.vowelALabel.text != "　" {
+            cell.vowelALabel.layer.cornerRadius = 2
+            cell.vowelALabel.layer.borderWidth = 1
+            cell.vowelALabel.layer.borderColor = UIColor.black.cgColor
+        }
+        
+        if cell.vowelILabel.text != "　" {
+            cell.vowelILabel.layer.cornerRadius = 2
+            cell.vowelILabel.layer.borderWidth = 1
+            cell.vowelILabel.layer.borderColor = UIColor.black.cgColor
+        }
+        
+        if cell.vowelULabel.text != "　" {
+            cell.vowelULabel.layer.cornerRadius = 2
+            cell.vowelULabel.layer.borderWidth = 1
+            cell.vowelULabel.layer.borderColor = UIColor.black.cgColor
+        }
+        
+        if cell.vowelELabel.text != "　" {
+            cell.vowelELabel.layer.cornerRadius = 2
+            cell.vowelELabel.layer.borderWidth = 1
+            cell.vowelELabel.layer.borderColor = UIColor.black.cgColor
+        }
+        if cell.vowelOLabel.text != "　" {
+            cell.vowelOLabel.layer.cornerRadius = 2
+            cell.vowelOLabel.layer.borderWidth = 1
+            cell.vowelOLabel.layer.borderColor = UIColor.black.cgColor
+        }
+        
+        if cell.vowelVoidLabel.text != "　" {
+            cell.vowelVoidLabel.layer.cornerRadius = 2
+            cell.vowelVoidLabel.layer.borderWidth = 1
+            cell.vowelVoidLabel.layer.borderColor = UIColor.black.cgColor
+        }
+        
         return cell
     }
     

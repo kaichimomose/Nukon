@@ -42,7 +42,6 @@
 		BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */; };
 		BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB51FCB5AD100F426F0 /* UserData.swift */; };
 		F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */; };
-		F629E0D31FDE6625004D1E79 /* icons8-gold-pot-80.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F629E0D21FDE6625004D1E79 /* icons8-gold-pot-80.pdf */; };
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
 		F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */; };
 /* End PBXBuildFile section */
@@ -85,7 +84,6 @@
 		BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		BFA65BB51FCB5AD100F426F0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabGradientButton.swift; sourceTree = "<group>"; };
-		F629E0D21FDE6625004D1E79 /* icons8-gold-pot-80.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icons8-gold-pot-80.pdf"; sourceTree = "<group>"; };
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,7 +128,6 @@
 				BF5FF96A1FA0D56300A46DE0 /* Supportings */,
 				BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */,
 				BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */,
-				F629E0D21FDE6625004D1E79 /* icons8-gold-pot-80.pdf */,
 				BF5FF9611FA0D35D00A46DE0 /* Info.plist */,
 			);
 			path = Nukon;
@@ -288,7 +285,6 @@
 			files = (
 				BF5FF9751FA0D91200A46DE0 /* Practice.storyboard in Resources */,
 				BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */,
-				F629E0D31FDE6625004D1E79 /* icons8-gold-pot-80.pdf in Resources */,
 				BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */,
 				BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */,
 				F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */,

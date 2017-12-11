@@ -32,10 +32,12 @@ class AnalysisViewController: UIViewController {
         generatedCharacterLabel.text = generatedCharacter?.1 ?? ""
         
         self.shownCharacterLabel.layer.cornerRadius = 6
+        self.shownCharacterLabel.layer.masksToBounds = true
         self.shownCharacterLabel.layer.borderColor = UIColor.lightGray.cgColor
         self.shownCharacterLabel.layer.borderWidth = 1
 
         self.generatedCharacterLabel.layer.cornerRadius = 6
+        self.generatedCharacterLabel.layer.masksToBounds = true
         self.generatedCharacterLabel.layer.borderColor = UIColor.lightGray.cgColor
         self.generatedCharacterLabel.layer.borderWidth = 1
         

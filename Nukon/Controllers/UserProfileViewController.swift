@@ -11,11 +11,9 @@ import UIKit
 
 class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 
-
-
     @IBOutlet weak var updatedViewWithArc: UIView!
     @IBOutlet weak var profileIcon: CustomImageView!
-    
+    @IBOutlet weak var userIcon: CustomImageView!
     //LABELS
     
     @IBOutlet weak var pointsLabel: UILabel!
@@ -48,6 +46,10 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set navigation bar color and text color
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.tintColor = .black
 
         self.profileIcon.layer.cornerRadius = self.profileIcon.frame.size.width / 2
 //        self.profileIcon.layer.borderColor = UIColor.cyan.cgColor
@@ -64,7 +66,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
 
         
         if userDatas == [] {
-            userData =  CoreDataHelper.newUserData()
+            userData = CoreDataHelper.newUserData()
             userData.loginDate = Date().convertToString().components(separatedBy: ",")[0]
             userData.nextDateofLoginDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())?.convertToString().components(separatedBy: ",")[0]
             userData.streak = 1
@@ -175,12 +177,10 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 0 {
             //do your stuff
-            self.viewDidLoad()
+            self.navigationController?.navigationBar.barTintColor = .white
         } else {
-//            let navigationVC = tabBarController.viewControllers![1]
-//            let practiceVC = navigationVC.childViewControllers.first as! PracticeViewController
-//            practiceVC.japaneseType = nil
-//            practiceVC.sound = nil
+            self.viewDidLoad()
+            self.navigationController?.navigationBar.barTintColor = .white
         }
     }
 
