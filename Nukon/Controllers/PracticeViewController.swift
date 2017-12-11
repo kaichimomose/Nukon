@@ -72,7 +72,7 @@ class PracticeViewController: UIViewController {
         katakanaTextView.isEditable = false
         hiraganaTextView.isEditable = false
         
-        kanjiTextView.isScrollEnabled = false
+        kanjiTextView.isScrollEnabled = true
         katakanaTextView.isScrollEnabled = false
         hiraganaTextView.isScrollEnabled = false
         

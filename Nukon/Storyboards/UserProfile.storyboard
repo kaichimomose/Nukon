@@ -42,7 +42,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbO-kc-3hN" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="278"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gci-K0-MGS">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_2456" translatesAutoresizingMaskIntoConstraints="NO" id="gci-K0-MGS">
                                         <rect key="frame" x="137.5" y="15" width="100" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -165,7 +165,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-treasure-chest-80" translatesAutoresizingMaskIntoConstraints="NO" id="gEv-fY-ZjT">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-gold-pot-80" translatesAutoresizingMaskIntoConstraints="NO" id="gEv-fY-ZjT">
                                 <rect key="frame" x="142.5" y="297" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="57f-bj-GJX"/>
@@ -507,7 +507,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-treasure-chest-80" width="66" height="66"/>
+        <image name="IMG_2456" width="2320" height="3088"/>
+        <image name="icons8-gold-pot-80" width="68" height="68"/>
         <image name="list ICON" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
