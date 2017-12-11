@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable class LevelCounterView: UIView {
+//@IBDesignable
+class LevelCounterView: UIView {
 
     private struct Constants {
         static let numberOfLevels = 0

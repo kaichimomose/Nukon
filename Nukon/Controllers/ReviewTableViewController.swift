@@ -73,7 +73,6 @@ class ReviewTableViewController: UITableViewController {
         self.categorizingWordsLearnt()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 70
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -83,8 +82,7 @@ class ReviewTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationController?.navigationBar.tintColor = .black
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -178,6 +176,7 @@ class ReviewTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToReviewTableViewController(_ segue: UIStoryboardSegue) {
+        self.navigationController?.navigationBar.barTintColor = .white
     }
     
     /*

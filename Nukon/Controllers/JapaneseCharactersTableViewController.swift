@@ -26,7 +26,16 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = self.selectedType?.rawValue
+        switch self.selectedType {
+        case .hiragana, .katakana:
+            self.title = "regular-sounds"
+        case .voicedHiragana, .voicedKatakana:
+            self.title = "voiced-sounds"
+        case .yVowelHiragana, .yVowelKatakana:
+            self.title = "y-vowel-sounds"
+        default:
+            self.title = ""
+        }
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 70
     }

@@ -72,7 +72,7 @@ class PracticeViewController: UIViewController {
         katakanaTextView.isEditable = false
         hiraganaTextView.isEditable = false
         
-        kanjiTextView.isScrollEnabled = false
+        kanjiTextView.isScrollEnabled = true
         katakanaTextView.isScrollEnabled = false
         hiraganaTextView.isScrollEnabled = false
         
@@ -85,8 +85,10 @@ class PracticeViewController: UIViewController {
         hiraganaPopUpView.layer.cornerRadius = 20
         katakanaPopUpView.layer.cornerRadius = 20
         kanjiPopUpView.layer.cornerRadius = 20
-
         
+        //ser navigation bar color and text color
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.tintColor = .black
     }
     
     
@@ -189,9 +191,7 @@ class PracticeViewController: UIViewController {
 
     
     @IBAction func unwindToPracticeViewController(_ segue: UIStoryboardSegue) {
-        
-        
-        
+        self.navigationController?.navigationBar.barTintColor = .white
     }
 }
 

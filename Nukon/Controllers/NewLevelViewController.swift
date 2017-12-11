@@ -51,7 +51,14 @@ class NewLevelViewController: UIViewController {
         foundationStagePopUp.layer.cornerRadius = 10
         BonusStagePopUp.layer.cornerRadius = 10
         
-        self.title = selectedType?.rawValue
+        guard let selectedType = self.selectedType else {return}
+        self.title = selectedType.rawValue
+        switch selectedType {
+        case .hiragana:
+            self.navigationController?.navigationBar.barTintColor = UIColor(red: 252/255, green: 203/255, blue: 201/255, alpha: 1)
+        case .katakana:
+            self.navigationController?.navigationBar.barTintColor = UIColor(red: 98/255, green: 155/255, blue: 196/255, alpha: 1)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

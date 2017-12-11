@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable class tabGradientButton: UIButton {
+//@IBDesignable
+class tabGradientButton: UIButton {
 
     @IBInspectable var topColor: UIColor = UIColor.white {
         didSet {

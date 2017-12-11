@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable class CustomImageView: UIImageView {
+//@IBDesignable
+class CustomImageView: UIImageView {
     
     @IBInspectable var borderColor: UIColor? = UIColor.clear {
         didSet {

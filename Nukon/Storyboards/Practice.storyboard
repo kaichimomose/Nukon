@@ -244,7 +244,7 @@
                                 <fragment>
                                     <string key="content">Essentially, Hiragana is the base of the Japanese writing system and should be first priority when learning.  Hiragana is used for all native words, and is often used to write suffixes for kanji verb stems. </string>
                                     <attributes>
-                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="NSColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="15" name="ArialRoundedMTBold"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="7" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
@@ -257,21 +257,21 @@
                             <attributedString key="attributedText">
                                 <fragment content="Hiragana (">
                                     <attributes>
-                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="NSColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="20" name="ArialRoundedMTBold"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
                                 </fragment>
                                 <fragment content="ひらがな">
                                     <attributes>
-                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="NSColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="20" name="HiraginoSans-W3"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
                                 </fragment>
                                 <fragment content=")">
                                     <attributes>
-                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="NSColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="20" name="ArialRoundedMTBold"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
@@ -437,7 +437,7 @@
                                     <string key="content">Kanji is the last of the three character systems.  This is arguably the most difficult character system to learn. These characters are not only more complicated visually but the total number of kanji is in the thousands. It's purpose is to represent nouns adjective inflections and verb stems. Fortunately, once you can recognize the first </string>
                                     <attributes>
                                         <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="13" name="ArialRoundedMTBold"/>
+                                        <font key="NSFont" size="15" name="ArialRoundedMTBold"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
                                 </fragment>
@@ -503,6 +503,14 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-VY-KEP">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="R1I-Rk-GG1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edf-tj-rMN" userLabel="background blur">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9xO-9f-8n7">
@@ -518,7 +526,7 @@
                                         <rect key="frame" x="112" y="50" width="150" height="150"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUv-uW-aVX" customClass="LevelCounterView" customModule="Nukon" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="10" width="150" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                 <color key="backgroundColor" red="0.98988849317966987" green="0.26889990669522951" blue="0.49683382894950329" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="counter">
@@ -541,14 +549,14 @@
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="JUv-uW-aVX" firstAttribute="centerY" secondItem="lp7-FP-Ay4" secondAttribute="centerY" constant="10" id="2kx-UF-KfZ"/>
-                                            <constraint firstItem="JUv-uW-aVX" firstAttribute="centerX" secondItem="lp7-FP-Ay4" secondAttribute="centerX" id="3HL-SI-Htm"/>
                                             <constraint firstItem="pGa-FV-aKI" firstAttribute="centerX" secondItem="lp7-FP-Ay4" secondAttribute="centerX" id="VN1-Yi-Jvy"/>
                                             <constraint firstItem="JUv-uW-aVX" firstAttribute="height" secondItem="lp7-FP-Ay4" secondAttribute="height" id="Y0W-rQ-YW4"/>
                                             <constraint firstAttribute="width" constant="150" id="YE9-Oe-ojO"/>
                                             <constraint firstItem="pGa-FV-aKI" firstAttribute="centerY" secondItem="lp7-FP-Ay4" secondAttribute="centerY" constant="30" id="edR-Jh-f5w"/>
                                             <constraint firstAttribute="width" secondItem="lp7-FP-Ay4" secondAttribute="height" multiplier="1:1" id="fNc-kP-8W1"/>
+                                            <constraint firstItem="JUv-uW-aVX" firstAttribute="centerY" secondItem="lp7-FP-Ay4" secondAttribute="centerY" id="fhV-mk-Lur"/>
                                             <constraint firstItem="pGa-FV-aKI" firstAttribute="width" secondItem="JUv-uW-aVX" secondAttribute="height" multiplier="1:2" id="fuO-mk-zg0"/>
+                                            <constraint firstItem="JUv-uW-aVX" firstAttribute="centerX" secondItem="lp7-FP-Ay4" secondAttribute="centerX" id="ryD-0j-wtA"/>
                                             <constraint firstItem="JUv-uW-aVX" firstAttribute="width" secondItem="lp7-FP-Ay4" secondAttribute="width" id="xbT-TP-1Fe"/>
                                         </constraints>
                                         <connections>
@@ -561,7 +569,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beginner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owZ-Eg-r1J">
                                                 <rect key="frame" x="0.0" y="0.0" width="125.5" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.72520616319444442" green="1" blue="0.099663628472222224" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="regular-sounds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75z-6M-gKj">
@@ -617,7 +625,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intermediate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbB-uW-y6Z">
                                                 <rect key="frame" x="0.0" y="0.0" width="124" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.22322591145833334" green="0.5859375" blue="0.83742947048611116" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="voiced-sounds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6R-Sa-f3p">
@@ -672,7 +680,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advanced" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kph-VW-mQE">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.97365993923611116" green="0.27973090277777779" blue="0.13582356770833334" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="y-vowel-sounds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dt2-Yw-C9z">
@@ -738,14 +746,6 @@
                                     <constraint firstItem="H2s-SO-0WY" firstAttribute="top" secondItem="lp7-FP-Ay4" secondAttribute="bottom" constant="50" id="z8C-0Q-giB"/>
                                 </constraints>
                             </view>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-VY-KEP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="R1I-Rk-GG1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -785,7 +785,13 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Level" id="MuF-bn-Jp6"/>
+                    <navigationItem key="navigationItem" title="Level" id="MuF-bn-Jp6">
+                        <barButtonItem key="leftBarButtonItem" title="＜Back" id="dJ0-ci-8Ve">
+                            <connections>
+                                <segue destination="iK8-FS-s42" kind="unwind" unwindAction="unwindToPracticeViewController:" id="8cW-JK-jlq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="BonusStagePopUp" destination="q2c-q0-YwL" id="4k6-b0-Itj"/>
                         <outlet property="diamondOverlapOverBlur" destination="FPe-fg-iYc" id="OqB-ae-Ne5"/>
@@ -805,6 +811,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfL-pV-gK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="iK8-FS-s42" userLabel="Exit" sceneMemberID="exit"/>
                 <view alpha="0.40000000000000002" contentMode="scaleToFill" id="pm6-Za-Fft" userLabel="LevelCounterPopUp">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1606,13 +1613,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="generated character based on your pronunciation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck1-x5-bjI">
-                                <rect key="frame" x="50" y="195" width="275" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="50" y="195" width="275" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="い" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="75" translatesAutoresizingMaskIntoConstraints="NO" id="ejp-3n-gmW">
-                                <rect key="frame" x="50" y="265.5" width="275" height="275"/>
+                                <rect key="frame" x="50" y="272.5" width="275" height="275"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ejp-3n-gmW" secondAttribute="height" multiplier="1:1" id="onQ-O4-gUI"/>
