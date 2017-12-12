@@ -12,7 +12,7 @@ import UIKit
 class LevelCounterView: UIView {
 
     private struct Constants {
-        static let numberOfLevels = 0
+        static let numberOfLevels = 46
         static let lineWidth: CGFloat = 10
         static let arcWidth: CGFloat = 15
         
@@ -23,7 +23,7 @@ class LevelCounterView: UIView {
     
     
     
-    @IBInspectable var counter: Int = 5
+    @IBInspectable var counter: Int = 0
     @IBInspectable var outlineColor: UIColor = UIColor.red
     @IBInspectable var counterColor: UIColor = UIColor.lightGray
     
@@ -62,7 +62,7 @@ class LevelCounterView: UIView {
         path.stroke()
         
         //ANGLE BETWEEN BOTH ARCS
-        let angleDifference: CGFloat = 2 * .pi - (startAngle + endAngle)
+        let angleDifference: CGFloat = 2 * .pi - (startAngle - endAngle)
         
         //ARC LENGTH PER LEVEL
         let arcLengthPerLevel = angleDifference / CGFloat(Constants.numberOfLevels)

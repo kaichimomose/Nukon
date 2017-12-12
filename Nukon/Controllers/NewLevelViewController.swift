@@ -11,7 +11,9 @@ import UIKit
 class NewLevelViewController: UIViewController {
 
 //    @IBOutlet weak var foundationStage: UIImageView!
-    @IBOutlet weak var levelTrackerView: UIView!
+    @IBOutlet weak var beginnerLevelTrackerView: UIView!
+    @IBOutlet weak var intermediateLevelTrackerView: UIView!
+    @IBOutlet weak var advancedLevelTrackerView: UIView!
     
     
     //OBJECTS USED FOR THE BLUR OVERLAP
@@ -31,17 +33,29 @@ class NewLevelViewController: UIViewController {
     
     var effect: UIVisualEffect!
     
-    func levelTrackerViewSetUp() {
-        levelTrackerView.backgroundColor = .clear
+    func LevelTrackerViewSetUp() {
+        beginnerLevelTrackerView.backgroundColor = .clear
+        intermediateLevelTrackerView.backgroundColor = .clear
+        advancedLevelTrackerView.backgroundColor = .clear
+        
+        guard let numberOfRegular = self.numberOfRegular else {return}
+        beginnerLevelCounterView.counter = numberOfRegular
+        guard let numberOfVoiced = self.numberOfVoiced else {return}
+        intermediateLevelCounterView.counter = numberOfVoiced
+        guard let numberOfYVowel = self.numberOfYVowel else {return}
+        advancedLevelCounterView.counter = numberOfYVowel
     }
     
     var japaneseType: JapaneseType?
     var selectedType: SelectedType?
     var sound: String?
+    var numberOfRegular: Int? //wordlearnt instances whose japanese type is hiragana or katakana
+    var numberOfVoiced: Int? //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
+    var numberOfYVowel: Int? //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        levelTrackerViewSetUp()
+        LevelTrackerViewSetUp()
         
         effect = visualEffectOne.effect
         visualEffectOne.effect = nil
@@ -91,16 +105,9 @@ class NewLevelViewController: UIViewController {
     @IBOutlet var diamondPress: UITapGestureRecognizer!
     @IBOutlet var pagodaPress: UITapGestureRecognizer!
     
-    @IBOutlet weak var leveltrakerView: LevelCounterView!
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
-    //        if segue.identifier == "hiragana"{
-    //            japaneseCharactersTVC.selectedType = JapaneseType.hiragana
-    //        }
-    //        else if segue.identifier == "katakana" {
-    //            japaneseCharactersTVC.selectedType = JapaneseType.katakana
-    //        }
-    //    }
+    @IBOutlet weak var beginnerLevelCounterView: LevelCounterView!
+    @IBOutlet weak var intermediateLevelCounterView: LevelCounterView!
+    @IBOutlet weak var advancedLevelCounterView: LevelCounterView!
     
     @IBAction func toriPressed(_ sender: UITapGestureRecognizer) {
         let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController

@@ -81,7 +81,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         wordsLearnt = CoreDataHelper.retrieveWordLearnt()
         userDatas = CoreDataHelper.retrieveUserData()
 
-        
+        //user data
         if userDatas == [] {
             userData = CoreDataHelper.newUserData()
             userData.loginDate = Date().convertToString().components(separatedBy: ",")[0]
@@ -119,6 +119,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
             profileIcon.image = nil
         }
         
+        //words data
         if wordsLearnt == [] {
             numOfWordsLearntLabel.text = String(0)
         }
