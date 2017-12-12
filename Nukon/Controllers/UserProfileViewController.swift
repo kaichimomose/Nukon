@@ -19,12 +19,9 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var numOfPointsLabel: UILabel!
     
-    
     @IBOutlet weak var longestStreakLabel: UILabel!
     @IBOutlet weak var numOfDaysLabel: UILabel!
 
-    
-    
     @IBOutlet weak var wordsToReviewLabel: UILabel!
     @IBOutlet weak var numOfWordsToReviewLabel: UILabel!
     
@@ -35,9 +32,10 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     var userData: UserData!
     var wordsLearnt = [WordLearnt]()
     
-
     var numberOfWordsLearnt = [WordLearnt]()
     var numberOfWordsToReview = [WordLearnt]()
+    
+    let photoHelper = MGPhotoHelper()
     
     func degreesToRadians(_ degrees: Double) -> CGFloat {
         return CGFloat(degrees * .pi / 180.0)
@@ -114,6 +112,12 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         CoreDataHelper.saveUserData()
         numOfPointsLabel.text = String(userData.points)
         numOfDaysLabel.text = String(userData.longestStreak)
+        let imageData = userData.userImage
+        if let imageData = imageData {
+            profileIcon.image = UIImage(data: imageData as Data)
+        } else {
+            profileIcon.image = nil
+        }
         
         if wordsLearnt == [] {
             numOfWordsLearntLabel.text = String(0)
@@ -211,6 +215,23 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     @IBAction func unwindToUserProfileViewController(_ segue: UIStoryboardSegue) {
     }
     
+    @IBAction func settingButtonTapped(_ sender: Any) {
+        photoHelper.completionHandler = setImage(_:)
+        photoHelper.deleteFunc = deleteImage
+        photoHelper.presentActionSheet(from: self)
+    }
+    
+    func setImage(_ selectedImage: UIImage) {
+        let imageData = UIImagePNGRepresentation(selectedImage) as Data?
+        userData.userImage = imageData
+        self.viewDidLoad()
+    }
+    
+    func deleteImage() {
+        userData.userImage = nil
+        self.viewDidLoad()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //tap gesture identifier
         let reviewTVC = segue.destination as! ReviewTableViewController
@@ -223,6 +244,7 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         }
     }
 
+    
 }
 
 
