@@ -420,6 +420,8 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 else{
                     self.comment = .next
                     self.buttonTitle = .next
+                    self.commentLabel.text = self.comment.rawValue
+                    self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: .normal)
                 }
 //                self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
             }

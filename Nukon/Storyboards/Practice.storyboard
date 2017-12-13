@@ -794,14 +794,18 @@
                     </navigationItem>
                     <connections>
                         <outlet property="BonusStagePopUp" destination="q2c-q0-YwL" id="4k6-b0-Itj"/>
+                        <outlet property="advancedLevelCounterView" destination="VC7-F8-F9o" id="A2c-k2-WJe"/>
+                        <outlet property="advancedLevelTrackerView" destination="VC7-F8-F9o" id="Bah-pt-4Da"/>
+                        <outlet property="beginnerLevelCounterView" destination="JUv-uW-aVX" id="e4i-fv-Ue6"/>
+                        <outlet property="beginnerLevelTrackerView" destination="JUv-uW-aVX" id="lkj-Ub-JNH"/>
                         <outlet property="diamondOverlapOverBlur" destination="FPe-fg-iYc" id="OqB-ae-Ne5"/>
                         <outlet property="diamondPress" destination="vwZ-ZB-z8v" id="rRM-fS-TWQ"/>
                         <outlet property="foundationStagePopUp" destination="ALZ-Kw-0vW" id="bJt-ZP-ORU"/>
+                        <outlet property="intermediateLevelCounterView" destination="UU8-Na-V8w" id="aZV-dH-JvF"/>
+                        <outlet property="intermediateLevelTrackerView" destination="UU8-Na-V8w" id="429-vH-j8B"/>
                         <outlet property="intermediateStagePopUp" destination="9QL-lQ-ZLP" id="hbk-v6-MAi"/>
                         <outlet property="levelCounterForOverlap" destination="Lag-a9-018" id="YrN-o4-hfP"/>
                         <outlet property="levelCounterPopUp" destination="pm6-Za-Fft" id="Ern-Lr-3Qq"/>
-                        <outlet property="levelTrackerView" destination="JUv-uW-aVX" id="W6v-Yg-4Hs"/>
-                        <outlet property="leveltrakerView" destination="JUv-uW-aVX" id="fJ6-82-f9p"/>
                         <outlet property="pagodaOverlapOverBlur" destination="3B7-B9-giv" id="Vrn-d5-1YA"/>
                         <outlet property="pagodaPress" destination="Dc0-sd-HU8" id="etQ-Q2-gdc"/>
                         <outlet property="toriPress" destination="7Jq-30-aAD" id="q3s-bW-ATh"/>

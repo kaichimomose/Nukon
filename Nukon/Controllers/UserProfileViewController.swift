@@ -19,25 +19,24 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var numOfPointsLabel: UILabel!
     
-    
     @IBOutlet weak var longestStreakLabel: UILabel!
     @IBOutlet weak var numOfDaysLabel: UILabel!
 
-    
-    
     @IBOutlet weak var wordsToReviewLabel: UILabel!
-    @IBOutlet weak var numOfWordsToReviewLabel: UILabel!
+    @IBOutlet weak var numOfWordsToReviewLabel: UIButton!
     
     @IBOutlet weak var wordsLearntLabel: UILabel!
-    @IBOutlet weak var numOfWordsLearntLabel: UILabel!
-
+    @IBOutlet weak var numOfWordsLearntLabel: UIButton!
+    
+    
     var userDatas = [UserData]()
     var userData: UserData!
     var wordsLearnt = [WordLearnt]()
     
-
     var numberOfWordsLearnt = [WordLearnt]()
     var numberOfWordsToReview = [WordLearnt]()
+    
+    let photoHelper = MGPhotoHelper()
     
     func degreesToRadians(_ degrees: Double) -> CGFloat {
         return CGFloat(degrees * .pi / 180.0)
@@ -79,10 +78,15 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         let arcMask = UIImageView(image: #imageLiteral(resourceName: "Rectangle"))
         updatedViewWithArc.mask = arcMask
         
-        //RETRIEVE CORE DATA
-        wordsLearnt = CoreDataHelper.retrieveWordLearnt()
+    }
+    
+    func dataUpdate() {
+        userDataUpdate()
+        wordLearntUpdate()
+    }
+    
+    func userDataUpdate() {
         userDatas = CoreDataHelper.retrieveUserData()
-
         
         if userDatas == [] {
             userData = CoreDataHelper.newUserData()
@@ -94,6 +98,13 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
         }
         else {
             userData = userDatas[0]
+            numOfPointsLabel.text = String(userData.points)
+            let imageData = userData.userImage
+            if let imageData = imageData {
+                profileIcon.image = UIImage(data: imageData as Data)
+            } else {
+                profileIcon.image = nil
+            }
             let userLastLoginDate = userData.loginDate
             let correntDate = Date().convertToString().components(separatedBy: ",")[0]
             if userLastLoginDate != correntDate {
@@ -112,83 +123,95 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
             userData.nextDateofLoginDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())?.convertToString().components(separatedBy: ",")[0]
         }
         CoreDataHelper.saveUserData()
-        numOfPointsLabel.text = String(userData.points)
         numOfDaysLabel.text = String(userData.longestStreak)
+    }
+    
+    func wordLearntUpdate() {
+        wordsLearnt = CoreDataHelper.retrieveWordLearnt()
         
-        if wordsLearnt == [] {
-            numOfWordsLearntLabel.text = String(0)
-        }
-        else {
+        //words data
+        if wordsLearnt != [] {
             self.numberOfWordsLearnt = [WordLearnt]()
             self.numberOfWordsToReview = [WordLearnt]()
             for wordLearnt in wordsLearnt {
-//                if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
-//                    self.numberOfWordsLearnt.append(wordLearnt)
-//                }
+                //                if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
+                //                    self.numberOfWordsLearnt.append(wordLearnt)
+                //                }
                 if wordLearnt.numberOfCorrect >= 5 {
                     self.numberOfWordsLearnt.append(wordLearnt)
                 }
                 else {
                     self.numberOfWordsToReview.append(wordLearnt)
                 }
-//                CoreDataHelper.delete(wordLearnt: wordLearnt)
+                //                CoreDataHelper.delete(wordLearnt: wordLearnt)
             }
-            numOfWordsToReviewLabel.text = String(numberOfWordsToReview.count)
-            numOfWordsLearntLabel.text = String(numberOfWordsLearnt.count)
+            numOfWordsToReviewLabel.setTitle(String(numberOfWordsToReview.count), for: .normal)
+            numOfWordsLearntLabel.setTitle(String(numberOfWordsLearnt.count), for: .normal)
         }
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         self.pointsLabel.center.x += self.view.bounds.width
-        numOfPointsLabel.center.x += view.bounds.width
+        self.numOfPointsLabel.center.x += self.view.bounds.width
         
-        longestStreakLabel.center.x += view.bounds.width
-        numOfDaysLabel.center.x += view.bounds.width
+        self.longestStreakLabel.center.x += self.view.bounds.width
+        self.numOfDaysLabel.center.x += self.view.bounds.width
         
-        wordsToReviewLabel.center.x -= view.bounds.width
-        numOfWordsToReviewLabel.center.x -= view.bounds.width
+        self.wordsToReviewLabel.center.x -= self.view.bounds.width
+        self.numOfWordsToReviewLabel.center.x -= self.view.bounds.width
         
-        wordsLearntLabel.center.x -= view.bounds.width
-        numOfWordsLearntLabel.center.x -= view.bounds.width
-
+        self.wordsLearntLabel.center.x -= self.view.bounds.width
+        self.numOfWordsLearntLabel.center.x -= self.view.bounds.width
         
-        //ANIMATIONS
-        UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut],
-                       animations: {
-                        self.pointsLabel.center.x -= self.view.bounds.width
-                        self.numOfPointsLabel.center.x -= self.view.bounds.width
-                        },
-                       completion: nil
-        )
+        DispatchQueue.main.async {
+            self.userDataUpdate()
+        }
+        
+        //RETRIEVE CORE DATA
+        DispatchQueue.main.async {
+            
+            self.wordLearntUpdate()
+            
+            //ANIMATIONS
+            UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut],
+                           animations: {
+                            self.pointsLabel.center.x -= self.view.bounds.width
+                            self.numOfPointsLabel.center.x -= self.view.bounds.width
+            },
+                           completion: nil
+            )
+            
+            UIView.animate(withDuration: 0.6, delay: 0.4, options: [.curveEaseIn],
+                           animations: {
+                            self.longestStreakLabel.center.x -= self.view.bounds.width
+                            self.numOfDaysLabel.center.x -= self.view.bounds.width
+                            
+            },
+                           completion: nil
+            )
+            
+            
+            UIView.animate(withDuration: 0.7, delay: 0.6, options: [.curveEaseIn],
+                           animations: {
+                            self.wordsToReviewLabel.center.x += self.view.bounds.width
+                            self.numOfWordsToReviewLabel.center.x += self.view.bounds.width
+//                            self.wordsToReviewTapGesture.isEnabled = true
+            },
+                           completion: nil)
+            
+            
+            UIView.animate(withDuration: 0.8, delay: 0.8, options: [.curveEaseIn],
+                           animations: {
+                            self.wordsLearntLabel.center.x += self.view.bounds.width
+                            self.numOfWordsLearntLabel.center.x += self.view.bounds.width
+//                            self.wordsLearntTapGesture.isEnabled = true
+            },
+                           completion: nil)
 
-        UIView.animate(withDuration: 0.6, delay: 0.4, options: [.curveEaseIn],
-                       animations: {
-                        self.longestStreakLabel.center.x -= self.view.bounds.width
-                        self.numOfDaysLabel.center.x -= self.view.bounds.width
 
-        },
-                       completion: nil
-        )
-
-
-        UIView.animate(withDuration: 0.7, delay: 0.6, options: [.curveEaseIn],
-                       animations: {
-                        self.wordsToReviewLabel.center.x += self.view.bounds.width
-                        self.numOfWordsToReviewLabel.center.x += self.view.bounds.width
-        },
-                       completion: nil)
-
-
-        UIView.animate(withDuration: 0.8, delay: 0.8, options: [.curveEaseIn],
-                       animations: {
-                        self.wordsLearntLabel.center.x += self.view.bounds.width
-                        self.numOfWordsLearntLabel.center.x += self.view.bounds.width
-        },
-                       completion: nil)
-
+        }
     }
     
     
@@ -198,7 +221,9 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
             //do your stuff
             self.navigationController?.navigationBar.barTintColor = .white
         } else {
-            self.viewDidLoad()
+//            self.viewDidLoad()
+//            userDataUpdate()
+//            wordLearntUpdate()
             self.navigationController?.navigationBar.barTintColor = .white
         }
     }
@@ -211,18 +236,38 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
     @IBAction func unwindToUserProfileViewController(_ segue: UIStoryboardSegue) {
     }
     
+    @IBAction func settingButtonTapped(_ sender: Any) {
+        photoHelper.completionHandler = setImage(_:)
+        photoHelper.deleteFunc = deleteImage
+        photoHelper.presentActionSheet(from: self)
+    }
+    
+    func setImage(_ selectedImage: UIImage) {
+        let imageData = UIImagePNGRepresentation(selectedImage) as Data?
+        userData.userImage = imageData
+        CoreDataHelper.saveUserData()
+        profileIcon.image = UIImage(data: imageData!)
+    }
+    
+    func deleteImage() {
+        userData.userImage = nil
+        CoreDataHelper.saveUserData()
+        profileIcon.image = nil
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //tap gesture identifier
         let reviewTVC = segue.destination as! ReviewTableViewController
         if segue.identifier == "wordslearnt" {
-            reviewTVC.title = self.wordsLearntLabel.text! + ": " + self.numOfWordsLearntLabel.text!
+            reviewTVC.title = self.wordsLearntLabel.text! + ": " + String(numberOfWordsLearnt.count)
             reviewTVC.wordsLearnt = self.numberOfWordsLearnt
         } else {
-            reviewTVC.title = self.wordsToReviewLabel.text! + ": " + self.numOfWordsToReviewLabel.text!
+            reviewTVC.title = self.wordsToReviewLabel.text! + ": " + String(numberOfWordsToReview.count)
             reviewTVC.wordsLearnt = self.numberOfWordsToReview
         }
     }
 
+    
 }
 
 

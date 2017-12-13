@@ -11,7 +11,9 @@ import UIKit
 class NewLevelViewController: UIViewController {
 
 //    @IBOutlet weak var foundationStage: UIImageView!
-    @IBOutlet weak var levelTrackerView: UIView!
+    @IBOutlet weak var beginnerLevelTrackerView: UIView!
+    @IBOutlet weak var intermediateLevelTrackerView: UIView!
+    @IBOutlet weak var advancedLevelTrackerView: UIView!
     
     
     //OBJECTS USED FOR THE BLUR OVERLAP
@@ -31,25 +33,16 @@ class NewLevelViewController: UIViewController {
     
     var effect: UIVisualEffect!
     
-    func levelTrackerViewSetUp() {
-        levelTrackerView.backgroundColor = .clear
-    }
-    
     var japaneseType: JapaneseType?
     var selectedType: SelectedType?
     var sound: String?
+    var wordsLearnt = [WordLearnt]()
+    var numberOfRegular: Int = 0 //wordlearnt instances whose japanese type is hiragana or katakana
+    var numberOfVoiced: Int = 0 //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
+    var numberOfYVowel: Int = 0 //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        levelTrackerViewSetUp()
-        
-        effect = visualEffectOne.effect
-        visualEffectOne.effect = nil
-        self.view.sendSubview(toBack: visualEffectOne)
-        
-        levelCounterPopUp.layer.cornerRadius = 10
-        foundationStagePopUp.layer.cornerRadius = 10
-        BonusStagePopUp.layer.cornerRadius = 10
         
         guard let selectedType = self.selectedType else {return}
         self.title = selectedType.rawValue
@@ -59,6 +52,19 @@ class NewLevelViewController: UIViewController {
         case .katakana:
             self.navigationController?.navigationBar.barTintColor = UIColor(red: 98/255, green: 155/255, blue: 196/255, alpha: 1)
         }
+        
+        wordsLearnt = CoreDataHelper.retrieveWordLearnt()
+        categorizingWordsLearnt()
+        
+        LevelTrackerViewSetUp()
+        
+        effect = visualEffectOne.effect
+        visualEffectOne.effect = nil
+        self.view.sendSubview(toBack: visualEffectOne)
+        
+        levelCounterPopUp.layer.cornerRadius = 10
+        foundationStagePopUp.layer.cornerRadius = 10
+        BonusStagePopUp.layer.cornerRadius = 10
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +79,71 @@ class NewLevelViewController: UIViewController {
         }
     }
 
+    func categorizingWordsLearnt() {
+        for wordLearnt in self.wordsLearnt {
+            if wordLearnt.numberOfCorrect >= 5 {
+                //distinguishs japanese type
+                var japaneseType: JapaneseType!
+                if wordLearnt.type == JapaneseType.hiragana.rawValue {
+                    japaneseType = .hiragana
+                }
+                else if wordLearnt.type == JapaneseType.katakana.rawValue {
+                    japaneseType = .katakana
+                }
+                else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
+                    japaneseType = .voicedHiragana
+                }
+                else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
+                    japaneseType = .voicedKatakana
+                }
+                else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
+                    japaneseType = .yVowelHiragana
+                }
+                else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
+                    japaneseType = .yVowelKatakana
+                }
+                //categorizes wordLearnt object among 3 types based on japaneseType
+                guard let selectedType = self.selectedType else {return}
+                switch selectedType {
+                case .hiragana:
+                    switch japaneseType {
+                    case .hiragana:
+                        numberOfRegular += 1
+                    case .voicedHiragana:
+                        numberOfVoiced += 1
+                    case .yVowelHiragana:
+                        numberOfYVowel += 1
+                    default:
+                        numberOfRegular += 0
+                    }
+                case .katakana:
+                    switch japaneseType {
+                    case .katakana:
+                        numberOfRegular += 1
+                    case .voicedKatakana:
+                        numberOfVoiced += 1
+                    case .yVowelKatakana:
+                        numberOfYVowel += 1
+                    default:
+                        numberOfRegular += 0
+                    }
+                }
+            }
+        }
+    }
     
+    func LevelTrackerViewSetUp() {
+        beginnerLevelTrackerView.backgroundColor = .clear
+        intermediateLevelTrackerView.backgroundColor = .clear
+        advancedLevelTrackerView.backgroundColor = .clear
+        
+        beginnerLevelCounterView.numberOfLevels = 46
+        beginnerLevelCounterView.counter = numberOfRegular
+        intermediateLevelCounterView.numberOfLevels = 25
+        intermediateLevelCounterView.counter = numberOfVoiced
+        advancedLevelCounterView.numberOfLevels = 21
+        advancedLevelCounterView.counter = numberOfYVowel
+    }
    
     @IBAction func dismissIntermediatePopUp(_ sender: Any) {
         animateOutIntermediateStageInfo()
@@ -91,16 +161,9 @@ class NewLevelViewController: UIViewController {
     @IBOutlet var diamondPress: UITapGestureRecognizer!
     @IBOutlet var pagodaPress: UITapGestureRecognizer!
     
-    @IBOutlet weak var leveltrakerView: LevelCounterView!
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
-    //        if segue.identifier == "hiragana"{
-    //            japaneseCharactersTVC.selectedType = JapaneseType.hiragana
-    //        }
-    //        else if segue.identifier == "katakana" {
-    //            japaneseCharactersTVC.selectedType = JapaneseType.katakana
-    //        }
-    //    }
+    @IBOutlet weak var beginnerLevelCounterView: LevelCounterView!
+    @IBOutlet weak var intermediateLevelCounterView: LevelCounterView!
+    @IBOutlet weak var advancedLevelCounterView: LevelCounterView!
     
     @IBAction func toriPressed(_ sender: UITapGestureRecognizer) {
         let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
