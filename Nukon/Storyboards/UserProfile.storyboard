@@ -12,11 +12,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User-->
+        <!--Profile-->
         <scene sceneID="GDh-RS-HuH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="phu-Mw-XV1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User" id="myX-LQ-ADJ"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="myX-LQ-ADJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xtE-MV-SpI">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -530,6 +530,7 @@
     <resources>
         <image name="icons8-treasure-chest-80" width="66" height="66"/>
         <image name="list ICON" width="26" height="26"/>
+        <image name="profile" width="18" height="20"/>
         <image name="settings ICON" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>

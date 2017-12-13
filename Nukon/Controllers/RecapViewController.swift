@@ -14,6 +14,7 @@ class RecapViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var japaneseType: JapaneseType!
+    var showingStyle: ShowingStyle!
     var generatedCharacters: [Judge: [(String, String, String)]]? //(shownword, beststring, sound)
     var correctWords = [(String, Int32, Int32, Int32)]() //(word, numberOfCorrect, numberOfWrong, point)
     var wrongWords = [(String, Int32, Int32)]() //(word, numberOfCorrect, numberOfWrong)
@@ -53,9 +54,15 @@ class RecapViewController: UIViewController {
                 if wordLearnt.word == correctWord.1 {
                     wordLearnt.numberOfCorrect += 1
                     if wordLearnt.numberOfCorrect == 1 {
-                        point = Int32(20)
+                        point = Int32(25)
                     } else {
                         point = Int32(10)
+                    }
+                    switch self.showingStyle {
+                    case .random:
+                        point = point * 2
+                    default:
+                        return
                     }
                     //append word to correctWords list
                     correctWords.append((correctWord.1, wordLearnt.numberOfCorrect, wordLearnt.numberOfWrong, point))
@@ -71,7 +78,13 @@ class RecapViewController: UIViewController {
                 newWordLearnt.numberOfCorrect = 1
                 newWordLearnt.sound = correctWord.2
                 newWordLearnt.type = japaneseType.rawValue
-                point = Int32(20)
+                point = Int32(25)
+                switch self.showingStyle {
+                case .random:
+                    point = point * 2
+                default:
+                    return
+                }
                 //append word to correctWords list
                 correctWords.append((correctWord.1, newWordLearnt.numberOfCorrect, newWordLearnt.numberOfWrong, point))
             }
@@ -176,7 +189,8 @@ extension RecapViewController: UICollectionViewDataSource {
             cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(correctWords[row].1)"
             cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(correctWords[row].2)"
             cell.bonusLabel.isHidden = true
-            if correctWords[row].3 == 20 {
+            if correctWords[row].3 == 25 || correctWords[row].3 == 50 {
+                cell.bonusLabel.text = "First Correct Bonus +\(correctWords[row].3)p"
                 cell.bonusLabel.isHidden = false
             }
         }

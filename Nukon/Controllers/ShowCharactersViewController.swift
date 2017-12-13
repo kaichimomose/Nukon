@@ -164,6 +164,7 @@ class ShowCharactersViewController: UIViewController {
             recapVC.generatedCharacters = self.bestString
             recapVC.buffer = self.buffers
             recapVC.japaneseType = self.japaneseType
+            recapVC.showingStyle = self.showingStyle
             // goes to RecapViewController
             self.navigationController?.pushViewController(recapVC, animated: true)
         }
