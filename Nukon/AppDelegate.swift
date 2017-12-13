@@ -8,15 +8,36 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    var audio = AVAudioPlayer()
+    
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions:
+        [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        // Override point for customization after app launch,
+        //  but before state restoration.
+        do {
+            audio = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Metal_Gong", ofType: "mp3")!))
+            audio.prepareToPlay()
+            audio.enableRate = true
+            audio.rate = 1.8
+        } catch {
+            print(error)
+        }
+        // Do any additional setup after loading the view.
+        
+        audio.play()
+        
+        return true
+    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
 

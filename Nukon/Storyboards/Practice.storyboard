@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sAD-rc-aIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sAD-rc-aIt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -434,7 +434,7 @@
                             <color key="backgroundColor" red="0.33333333329999998" green="0.52549019610000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <attributedString key="attributedText">
                                 <fragment>
-                                    <string key="content">Kanji is the last of the three character systems.  This is arguably the most difficult character system to learn. These characters are not only more complicated visually but the total number of kanji is in the thousands. It's purpose is to represent nouns adjective inflections and verb stems. Fortunately, once you can recognize the first </string>
+                                    <string key="content">Kanji is the last of the three character systems.  This is arguably the most difficult character system to learn. These characters are not only more complicated visually but the total number of kanji is in the thousands. It's purpose is to represent nouns adjective inflections and verb stems. Fortunately, once you can recognize the Hiragana, learning Kanji becomes an easier process.</string>
                                     <attributes>
                                         <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <font key="NSFont" size="15" name="ArialRoundedMTBold"/>
@@ -1063,7 +1063,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Sounds" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOD-d2-qLa">
-                                            <rect key="frame" x="8" y="10" width="40" height="40"/>
+                                            <rect key="frame" x="16" y="10" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="8kK-Ij-48K"/>
                                                 <constraint firstAttribute="height" constant="40" id="kfj-pM-ruA"/>
@@ -1073,7 +1073,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select sounds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="XLU-fB-bgo">
-                                            <rect key="frame" x="58" y="16.5" width="140.5" height="27.5"/>
+                                            <rect key="frame" x="66" y="19.5" width="140.5" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

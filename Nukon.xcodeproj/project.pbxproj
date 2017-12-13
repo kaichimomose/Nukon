@@ -47,6 +47,7 @@
 		F66783711FDF2E640064CAD3 /* nukon_logo@3x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F667836E1FDF2E630064CAD3 /* nukon_logo@3x.pdf */; };
 		F66783721FDF2E640064CAD3 /* nukon_logo@2x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F667836F1FDF2E630064CAD3 /* nukon_logo@2x.pdf */; };
 		F66783731FDF2E640064CAD3 /* nukon_logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F66783701FDF2E640064CAD3 /* nukon_logo.pdf */; };
+		F6866C031FE084EB003506AF /* Metal_Gong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6866C021FE084EB003506AF /* Metal_Gong.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		F667836E1FDF2E630064CAD3 /* nukon_logo@3x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "nukon_logo@3x.pdf"; sourceTree = "<group>"; };
 		F667836F1FDF2E630064CAD3 /* nukon_logo@2x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "nukon_logo@2x.pdf"; sourceTree = "<group>"; };
 		F66783701FDF2E640064CAD3 /* nukon_logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = nukon_logo.pdf; sourceTree = "<group>"; };
+		F6866C021FE084EB003506AF /* Metal_Gong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Metal_Gong.mp3; path = ../../../../../Downloads/Metal_Gong.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 		BF5FF96A1FA0D56300A46DE0 /* Supportings */ = {
 			isa = PBXGroup;
 			children = (
+				F6866C011FE084A3003506AF /* LaunchScreenSound */,
 				BF97052B1FCBBDAD00A95E56 /* DateToString.swift */,
 				BF5FF95E1FA0D35D00A46DE0 /* LaunchScreen.storyboard */,
 			);
@@ -233,6 +236,14 @@
 			path = "Custom View Classes";
 			sourceTree = "<group>";
 		};
+		F6866C011FE084A3003506AF /* LaunchScreenSound */ = {
+			isa = PBXGroup;
+			children = (
+				F6866C021FE084EB003506AF /* Metal_Gong.mp3 */,
+			);
+			path = LaunchScreenSound;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,6 +276,7 @@
 				TargetAttributes = {
 					BF5FF94E1FA0D35D00A46DE0 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -295,6 +307,7 @@
 				BF5FF9751FA0D91200A46DE0 /* Practice.storyboard in Resources */,
 				F66783731FDF2E640064CAD3 /* nukon_logo.pdf in Resources */,
 				F66783711FDF2E640064CAD3 /* nukon_logo@3x.pdf in Resources */,
+				F6866C031FE084EB003506AF /* Metal_Gong.mp3 in Resources */,
 				BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */,
 				F66783721FDF2E640064CAD3 /* nukon_logo@2x.pdf in Resources */,
 				BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */,
@@ -470,12 +483,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CGUE68EN3T;
 				INFOPLIST_FILE = Nukon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kaichi-momoseNukon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -485,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CGUE68EN3T;
 				INFOPLIST_FILE = Nukon/Info.plist;

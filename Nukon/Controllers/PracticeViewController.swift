@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol JapaneseDelegate: class {
     func sendJapanese(selectedJapanese: [String])
@@ -18,6 +19,8 @@ enum SelectedType: String {
 }
 
 class PracticeViewController: UIViewController {
+
+    
     
     @IBOutlet weak var hiraganaTab: UIButton!
     @IBOutlet weak var katakanaTab: tabGradientButton!
@@ -58,6 +61,7 @@ class PracticeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let tabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
         hiraganaTabView.mask = tabMask
         
@@ -89,6 +93,10 @@ class PracticeViewController: UIViewController {
         //ser navigation bar color and text color
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.tintColor = .black
+        
+        
+        
+        
     }
     
     
