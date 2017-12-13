@@ -150,15 +150,15 @@
 		BF5FF9671FA0D56300A46DE0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */,
-				BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */,
-				BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */,
 				BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */,
 				BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */,
 				BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 				BF0A86961FB7C49E00B8305A /* RecapViewController.swift */,
 				BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */,
+				F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */,
+				BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */,
+				BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

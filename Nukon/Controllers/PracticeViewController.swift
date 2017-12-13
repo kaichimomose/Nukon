@@ -55,13 +55,13 @@ class PracticeViewController: UIViewController {
     var japaneseType: JapaneseType?
     var sound: String?
     
-    var wordsLearnt = [WordLearnt]()
-    var regularHiraganaWordsLearnt = [WordLearnt]() //wordlearnt instances whose japanese type is hiragana or katakana
-    var voicedHiraganaWordsLearnt = [WordLearnt]() //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
-    var yVowelHiraganaWordsLearnt = [WordLearnt]() //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
-    var regularKatakanaWordsLearnt = [WordLearnt]() //wordlearnt instances whose japanese type is hiragana or katakana
-    var voicedKatakanaWordsLearnt = [WordLearnt]() //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
-    var yVowelKatakanaWordsLearnt = [WordLearnt]() //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
+//    var wordsLearnt = [WordLearnt]()
+//    var regularHiraganaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is hiragana or katakana
+//    var voicedHiraganaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
+//    var yVowelHiraganaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
+//    var regularKatakanaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is hiragana or katakana
+//    var voicedKatakanaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
+//    var yVowelKatakanaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,8 +98,8 @@ class PracticeViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.tintColor = .black
         
-        wordsLearnt = CoreDataHelper.retrieveWordLearnt()
-        categorizingWordsLearnt()
+//        wordsLearnt = CoreDataHelper.retrieveWordLearnt()
+//        categorizingWordsLearnt()
     }
     
     
@@ -132,9 +132,9 @@ class PracticeViewController: UIViewController {
             newLevelVC.japaneseType = japaneseType
         } else {
             newLevelVC.selectedType = SelectedType.hiragana
-            newLevelVC.numberOfRegular = regularHiraganaWordsLearnt.count
-            newLevelVC.numberOfVoiced = voicedHiraganaWordsLearnt.count
-            newLevelVC.numberOfYVowel = yVowelHiraganaWordsLearnt.count
+//            newLevelVC.numberOfRegular = regularHiraganaWordsLearnt
+//            newLevelVC.numberOfVoiced = voicedHiraganaWordsLearnt
+//            newLevelVC.numberOfYVowel = yVowelHiraganaWordsLearnt
         }
         if let sound = self.sound {
             newLevelVC.sound = sound
@@ -150,9 +150,9 @@ class PracticeViewController: UIViewController {
             newLevelVC.japaneseType = japaneseType
         } else {
             newLevelVC.selectedType = SelectedType.katakana
-            newLevelVC.numberOfRegular = regularKatakanaWordsLearnt.count
-            newLevelVC.numberOfVoiced = voicedKatakanaWordsLearnt.count
-            newLevelVC.numberOfYVowel = yVowelKatakanaWordsLearnt.count
+//            newLevelVC.numberOfRegular = regularKatakanaWordsLearnt
+//            newLevelVC.numberOfVoiced = voicedKatakanaWordsLearnt
+//            newLevelVC.numberOfYVowel = yVowelKatakanaWordsLearnt
         }
         if let sound = self.sound {
             newLevelVC.sound = sound
@@ -205,49 +205,49 @@ class PracticeViewController: UIViewController {
         animateOutTab(tabViewConstraints: katakanaTabViewLeadingConstraints)
     }
     
-    func categorizingWordsLearnt() {
-        for wordLearnt in self.wordsLearnt {
-            if wordLearnt.numberOfCorrect >= 5 {
-                //distinguishs japanese type
-                var japaneseType: JapaneseType!
-                if wordLearnt.type == JapaneseType.hiragana.rawValue {
-                    japaneseType = .hiragana
-                }
-                else if wordLearnt.type == JapaneseType.katakana.rawValue {
-                    japaneseType = .katakana
-                }
-                else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
-                    japaneseType = .voicedHiragana
-                }
-                else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
-                    japaneseType = .voicedKatakana
-                }
-                else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
-                    japaneseType = .yVowelHiragana
-                }
-                else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
-                    japaneseType = .yVowelKatakana
-                }
-                //categorizes wordLearnt object among 3 types based on japaneseType
-                switch japaneseType {
-                case .hiragana:
-                    regularHiraganaWordsLearnt.append(wordLearnt)
-                case .voicedHiragana:
-                    voicedHiraganaWordsLearnt.append(wordLearnt)
-                case .yVowelHiragana:
-                    yVowelHiraganaWordsLearnt.append(wordLearnt)
-                case .katakana:
-                    regularKatakanaWordsLearnt.append(wordLearnt)
-                case .voicedKatakana:
-                    voicedKatakanaWordsLearnt.append(wordLearnt)
-                case .yVowelKatakana:
-                    yVowelKatakanaWordsLearnt.append(wordLearnt)
-                default:
-                    regularHiraganaWordsLearnt.append(wordLearnt)
-                }
-            }
-        }
-    }
+//    func categorizingWordsLearnt() {
+//        for wordLearnt in self.wordsLearnt {
+//            if wordLearnt.numberOfCorrect >= 5 {
+//                //distinguishs japanese type
+//                var japaneseType: JapaneseType!
+//                if wordLearnt.type == JapaneseType.hiragana.rawValue {
+//                    japaneseType = .hiragana
+//                }
+//                else if wordLearnt.type == JapaneseType.katakana.rawValue {
+//                    japaneseType = .katakana
+//                }
+//                else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
+//                    japaneseType = .voicedHiragana
+//                }
+//                else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
+//                    japaneseType = .voicedKatakana
+//                }
+//                else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
+//                    japaneseType = .yVowelHiragana
+//                }
+//                else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
+//                    japaneseType = .yVowelKatakana
+//                }
+//                //categorizes wordLearnt object among 3 types based on japaneseType
+//                switch japaneseType {
+//                case .hiragana:
+//                    regularHiraganaWordsLearnt += 1
+//                case .voicedHiragana:
+//                    voicedHiraganaWordsLearnt += 1
+//                case .yVowelHiragana:
+//                    yVowelHiraganaWordsLearnt += 1
+//                case .katakana:
+//                    regularKatakanaWordsLearnt += 1
+//                case .voicedKatakana:
+//                    voicedKatakanaWordsLearnt += 1
+//                case .yVowelKatakana:
+//                    yVowelKatakanaWordsLearnt += 1
+//                default:
+//                    regularHiraganaWordsLearnt += 1
+//                }
+//            }
+//        }
+//    }
     
     @IBAction func unwindToPracticeViewController(_ segue: UIStoryboardSegue) {
         self.navigationController?.navigationBar.barTintColor = .white
