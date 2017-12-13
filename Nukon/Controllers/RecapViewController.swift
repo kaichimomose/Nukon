@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class RecapViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var japaneseType: JapaneseType!
@@ -30,7 +30,7 @@ class RecapViewController: UIViewController {
         //retrieve core data
         self.updateCoreData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,7 +62,7 @@ class RecapViewController: UIViewController {
                     case .random:
                         point = point * 2
                     default:
-                        return
+                        point = point * 1
                     }
                     //append word to correctWords list
                     correctWords.append((correctWord.1, wordLearnt.numberOfCorrect, wordLearnt.numberOfWrong, point))
@@ -83,7 +83,7 @@ class RecapViewController: UIViewController {
                 case .random:
                     point = point * 2
                 default:
-                    return
+                    point = point * 1
                 }
                 //append word to correctWords list
                 correctWords.append((correctWord.1, newWordLearnt.numberOfCorrect, newWordLearnt.numberOfWrong, point))
@@ -234,4 +234,3 @@ extension RecapViewController: UICollectionViewDelegateFlowLayout {
         return 1.5
     }
 }
-

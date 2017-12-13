@@ -304,6 +304,17 @@ class ShowCharactersViewController: UIViewController {
         }
     }
     
+    func isAlpha(char: Character) -> Bool {
+        switch char {
+        case "a"..."z":
+            return true
+        case "A"..."Z":
+            return true
+        default:
+            return false
+        }
+    }
+    
 }
 
 extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
@@ -339,15 +350,15 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         recognitionRequest.shouldReportPartialResults = true
         
         var willAppend = false
-
+        
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
             guard let `self` = self else { return }
             
             var isFinal = false
             
             if let result = result {
-//                let posibilities = result.transcriptions
-//                print(posibilities)
+                //                let posibilities = result.transcriptions
+                //                print(posibilities)
                 
                 //show correctsound
                 var correctsound = ""
@@ -367,7 +378,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                             self.judge = .correct
                             //self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, correctsound)) //returns correctsound
                             self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, self.soundType)) //returns soundType
-//                            self.judgeLabel.text = self.judge.rawValue
+                            //                            self.judgeLabel.text = self.judge.rawValue
                             self.characterLabel.backgroundColor = .green
                             willAppend = false
                             break
@@ -381,7 +392,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     //self.bestString[self.judge]!.append((self.shownCharacter, theBestString, correctsound)) //returns correctsound
                     self.bestString[self.judge]!.append((self.shownCharacter, theBestString, self.soundType)) //returns soundType
                     self.buffers.append(self.buffer)
-//                    self.judgeLabel.text = self.judge.rawValue
+                    //                    self.judgeLabel.text = self.judge.rawValue
                     self.characterLabel.backgroundColor = .red
                     willAppend = false
                 }
@@ -424,7 +435,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     self.commentLabel.text = self.comment.rawValue
                     self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: .normal)
                 }
-//                self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
+                //                self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
             }
         }
         // give an buffer from microphone to the request
@@ -452,4 +463,3 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         try audioEngine.start()
     }
 }
-
