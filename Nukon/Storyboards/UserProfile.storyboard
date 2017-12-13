@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="phu-Mw-XV1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="phu-Mw-XV1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -12,11 +12,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User-->
+        <!--Profile-->
         <scene sceneID="GDh-RS-HuH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="phu-Mw-XV1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User" id="myX-LQ-ADJ"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="myX-LQ-ADJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xtE-MV-SpI">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -256,7 +256,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiragana" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIh-E6-HCW">
-                                            <rect key="frame" x="129" y="8" width="117" height="44"/>
+                                            <rect key="frame" x="129" y="11" width="117" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -280,10 +280,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KzX-VK-48y">
-                                            <rect key="frame" x="8" y="8" width="129" height="63.5"/>
+                                            <rect key="frame" x="16" y="11" width="129" height="58"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k68-SJ-WrM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="59.5" height="63.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="59.5" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="63.670000000000002" id="fry-Sk-kyw"/>
                                                     </constraints>
@@ -292,7 +292,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWn-To-jIL">
-                                                    <rect key="frame" x="69.5" y="0.0" width="59.5" height="63.5"/>
+                                                    <rect key="frame" x="69.5" y="0.0" width="59.5" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -410,7 +410,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YEa-u3-ah7">
-                                                    <rect key="frame" x="6" y="128" width="139" height="17"/>
+                                                    <rect key="frame" x="6" y="120" width="139" height="17"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔️: 10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="LVg-Da-XWm">
                                                             <rect key="frame" x="0.0" y="0.0" width="67" height="17"/>
@@ -466,7 +466,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accuracy Rate 100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqq-HH-1HW">
-                                            <rect key="frame" x="0.0" y="15" width="375" height="21"/>
+                                            <rect key="frame" x="8" y="15" width="359" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -530,6 +530,7 @@
     <resources>
         <image name="icons8-treasure-chest-80" width="66" height="66"/>
         <image name="list ICON" width="26" height="26"/>
+        <image name="profile" width="18" height="20"/>
         <image name="settings ICON" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
