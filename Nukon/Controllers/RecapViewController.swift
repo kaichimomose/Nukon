@@ -134,6 +134,7 @@ extension RecapViewController: UICollectionViewDataSource {
         guard kind == UICollectionElementKindSectionHeader else {
             fatalError("Unexpected element kind.")
         }
+        
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Recap", for: indexPath) as! RecapCollectionReusableView
         
         if indexPath.section == 0 {
@@ -156,6 +157,7 @@ extension RecapViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JapaneseCharacterCell", for: indexPath) as! JapaneseCharactersCollectionViewCell
         let row = indexPath.row
         
+        //cell layout
         cell.layer.cornerRadius = 6
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 1
