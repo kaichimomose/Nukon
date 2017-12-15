@@ -16,9 +16,9 @@ struct Posibilities {
 struct AllPosibilities {
     let allPosibilitiesList = [Posibilities(sound: "vowel",
                                             posibilitiesList: [["あ", "あー", "ああ"],
-                                                               ["1", "い", "いー", "飯", "いい"],
-                                                               ["Phi","雨", "うー", "う", "うん"],
-                                                               ["笑", "へ", "Ai"],
+                                                               ["い", "1", "いー", "飯", "いい"],
+                                                               ["う", "Phi","雨", "うー", "うん"],
+                                                               ["え", "笑", "へ", "Ai"],
                                                                ["お", "を", "おお", "おー"],
                                                                [" "]]),
                                Posibilities(sound: "K",

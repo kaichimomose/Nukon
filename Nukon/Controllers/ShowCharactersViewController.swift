@@ -12,12 +12,14 @@ import Speech
 enum Judge: String {
     case correct = "✔️"
     case wrong = "✖️"
+    case wait = "w"
     case yet = ""
 }
 
 enum Comment: String {
-    case start = "hold button when you are ready"
-    case recording = "recording your pronunciation, say just once"
+    case start = "Hold red button to record"
+    case recording = "Recording, say just once"
+    case again = "Record again"
     case next = "tap next"
     case recap = "tap recap"
 }
@@ -37,8 +39,7 @@ class ShowCharactersViewController: UIViewController {
     var japaneseType: JapaneseType!
     var showingStyle: ShowingStyle!
     var shownCharacter = ""
-    var soundType = ""
-    var vowel = ""
+    var sound = ""
     var vowelIndexCounter: Int = 0
     var soundIndexCounter: Int = 0
     var counter: Int = 0
@@ -50,6 +51,11 @@ class ShowCharactersViewController: UIViewController {
     var bestString = [Judge.correct: [(String, String, String)](), Judge.wrong: [(String, String, String)]()]
     var buffers = [AVAudioPCMBuffer]()
     var buffer: AVAudioPCMBuffer!
+    
+    var shownCharacters = [(String, String, [String])]()
+    var judgedShownCharacters = [String: Judge]()
+    var currentNumber: Int = 1
+    var recognitionIsEnd: Bool = true
     
     var posibilitiesList = [Posibilities]()
     var posibilities = [String]()
@@ -68,6 +74,10 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
     @IBOutlet weak var judgeLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,14 +89,14 @@ class ShowCharactersViewController: UIViewController {
         self.characterLabel.layer.borderColor = UIColor.lightGray.cgColor
         self.characterLabel.layer.borderWidth = 1
         
-        self.nextCharacterButton.layer.cornerRadius = 7
+        self.nextCharacterButton.layer.cornerRadius = self.nextCharacterButton.frame.width / 2
         self.nextCharacterButton.layer.borderColor = UIColor.black.cgColor
         self.nextCharacterButton.layer.borderWidth = 1
         
         for listOfCharacters in list{
             // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
             mutableList.append((listOfCharacters.sound, listOfCharacters.letters))
-            // for ramdom character
+            // for random character
             vowelSounds.append(JapaneseCharacters().vowelSounds)
         }
         for listOfPosibilities in posibilitiesList{
@@ -110,16 +120,33 @@ class ShowCharactersViewController: UIViewController {
         // updates all labels
         self.commentLabel.text = self.comment.rawValue
         self.characterLabel.text = self.shownCharacter
-        self.countCharacters.text = "\(self.counter)/\(self.totalNumberOfCharacter)"
+        self.countCharacters.text = "\(self.currentNumber)/\(self.totalNumberOfCharacter)"
         switch self.judge {
         case .correct:
+            self.soundLabel.text = self.sound
             self.characterLabel.backgroundColor = .green
         case .wrong:
+            self.soundLabel.text = self.sound
             self.characterLabel.backgroundColor = .red
+        case .wait:
+            self.characterLabel.backgroundColor = .yellow
         case .yet:
+            self.soundLabel.text = ""
             self.characterLabel.backgroundColor = .white
         }
-        self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: .normal)
+//        self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: .normal)
+        if self.currentNumber == 1 {
+            self.nextButton.isEnabled = true
+            self.backButton.isEnabled = false
+        }
+        else if self.currentNumber == self.totalNumberOfCharacter {
+            self.nextButton.isEnabled = false
+            self.backButton.isEnabled = true
+        }
+        else {
+            self.nextButton.isEnabled = true
+            self.backButton.isEnabled = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -132,23 +159,65 @@ class ShowCharactersViewController: UIViewController {
         self.nextCharacter()
     }
      */
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        
+        refreshTask()
+        
+        if self.currentNumber < self.totalNumberOfCharacter {
+            if self.counter == self.currentNumber {
+                self.soundLabel.text = ""
+                switch self.showingStyle {
+                case .order:
+                    self.shownCharacter = orderCharacter()
+                case .random:
+                    self.shownCharacter = randomCharacter()
+                default:
+                    self.shownCharacter = orderCharacter()
+                }
+                self.judgedShownCharacters[self.shownCharacter] = .yet
+            } else {
+                let nextNumber = self.currentNumber + 1
+                self.sound = self.shownCharacters[nextNumber - 1].0
+                self.shownCharacter = self.shownCharacters[nextNumber - 1].1
+                self.posibilities = self.shownCharacters[nextNumber - 1].2
+                self.currentNumber = nextNumber
+            }
+            self.judge = self.judgedShownCharacters[self.shownCharacter]!
+            self.comment = .start
+            self.buttonTitle = .start
+            self.updateLabels()
+        }
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        
+        refreshTask()
+        
+        if self.currentNumber > 1 {
+            let backNumber = self.currentNumber - 1
+            self.sound = self.shownCharacters[backNumber - 1].0
+            self.shownCharacter = self.shownCharacters[backNumber - 1].1
+            self.posibilities = self.shownCharacters[backNumber - 1].2
+            self.currentNumber = backNumber
+            self.comment = .start
+            self.buttonTitle = .start
+            self.judge = self.judgedShownCharacters[self.shownCharacter]!
+            self.updateLabels()
+        }
+    }
     
     @IBAction func buttonDown(_ sender: UIButton) {
         switch buttonTitle {
         case .next:
-            self.soundLabel.text = ""
-            switch self.showingStyle {
-            case .order:
-                self.shownCharacter = orderCharacter()
-            case .random:
-                self.shownCharacter = randomCharacter()
-            default:
-                self.shownCharacter = orderCharacter()
-            }
-            self.comment = .start
-            self.buttonTitle = .start
+            return
         case .start:
-            try! startRecording()
+            if !audioEngine.isRunning {
+                if recognitionIsEnd {
+                    try! startRecording()
+                    recognitionIsEnd = false
+                }
+                try! startAudioEngine()
+            }
             self.buttonTitle = .hold
             self.comment = .recording
         case .hold:
@@ -173,50 +242,20 @@ class ShowCharactersViewController: UIViewController {
     }
     
     @IBAction func buttonUp(_ sender: UIButton) {
-        if audioEngine.isRunning {
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-        }
-        self.updateLabels()
-    }
-    
-    /*
-    func nextCharacter() {
-        // changes funtion based on button title
-        switch buttonTitle {
-        case .next:
-            self.shownCharacter = randomCharacter()
-            self.buttonTitle = .start
-        case .start:
-            try! startRecording()
-            self.buttonTitle = .hold
-            self.comment = .recording
-        case .hold:
-            if audioEngine.isRunning {
-                audioEngine.stop()
-                recognitionRequest?.endAudio()
-                nextCharacterButton.isEnabled = false
-                nextCharacterButton.setTitle("Stopping", for: .disabled)
+        if self.audioEngine.isRunning {
+            let when = DispatchTime.now() + 1 // delay for the number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                // Your code with delay
+                self.audioEngine.stop()
+                self.updateLabels()
             }
+        }
+        self.buttonTitle = .start
+        if self.comment != .again {
             self.comment = .start
-            self.buttonTitle = .start
-        case .recap:
-            if audioEngine.isRunning {
-                audioEngine.stop()
-                recognitionRequest?.endAudio()
-            }
-            let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
-            // sends dictionaly of generated character by voice recognition to RecapViewController
-            recapVC.generatedCharacters = self.bestString
-            recapVC.buffer = self.buffers
-            recapVC.japaneseType = self.japaneseType
-            // goes to RecapViewController
-            self.navigationController?.pushViewController(recapVC, animated: true)
         }
-        self.judge = .yet
         self.updateLabels()
     }
-     */
     
     func numberOfCharacters() -> Int {
         // return total number of characters that are in the list
@@ -241,8 +280,8 @@ class ShowCharactersViewController: UIViewController {
         // picks a list of possible characters of the picked character
         self.posibilities = self.mutablePosibilitiesList[soundIndex][vowelIndex]
         
-        self.soundType = self.mutableList[soundIndex].0
-        self.vowel = self.vowelSounds[soundIndex][vowelIndex]
+        let soundType = self.mutableList[soundIndex].0
+        let vowel = self.vowelSounds[soundIndex][vowelIndex]
         // removes picked characters and list to avoid choosing again
         self.mutableList[soundIndex].1.remove(at: vowelIndex)
         self.mutablePosibilitiesList[soundIndex].remove(at: vowelIndex)
@@ -264,8 +303,19 @@ class ShowCharactersViewController: UIViewController {
                 self.mutablePosibilitiesList.remove(at: soundIndex)
                 self.vowelSounds.remove(at: soundIndex)
             }
-            // update counter
+            // updates counter
             self.counter += 1
+            //make correctsound
+            var correctsound = ""
+            if soundType == "vowel" {
+                correctsound = vowel
+            } else {
+                correctsound = soundType.lowercased() + vowel
+            }
+            self.sound = correctsound
+            self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
+            //updates currentNumber
+            self.currentNumber = self.counter
         }
         return showCharacter
     }
@@ -281,8 +331,8 @@ class ShowCharactersViewController: UIViewController {
             }
         }
         var showCharacter = list[self.soundIndexCounter].letters[self.vowelIndexCounter]
-        self.soundType = list[self.soundIndexCounter].sound
-        self.vowel = self.vowelSounds[self.soundIndexCounter][self.vowelIndexCounter]
+        let soundType = list[self.soundIndexCounter].sound
+        let vowel = self.vowelSounds[self.soundIndexCounter][self.vowelIndexCounter]
         self.posibilities = self.posibilitiesList[self.soundIndexCounter].posibilitiesList[self.vowelIndexCounter]
         self.vowelIndexCounter += 1
         if showCharacter == "　" {
@@ -290,6 +340,17 @@ class ShowCharactersViewController: UIViewController {
         }
         else {
             self.counter += 1
+            //makes correctsound
+            var correctsound = ""
+            if soundType == "vowel" {
+                correctsound = vowel
+            } else {
+                correctsound = soundType.lowercased() + vowel
+            }
+            self.sound = correctsound
+            self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
+            //updates currentNumber
+            self.currentNumber = self.counter
         }
         return showCharacter
     }
@@ -323,10 +384,8 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         if available {
             nextCharacterButton.isEnabled = true
             self.buttonTitle = .start
-            nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
         } else {
             nextCharacterButton.isEnabled = false
-            nextCharacterButton.setTitle("voice recognition is unavailable", for: .disabled)
         }
     }
     
@@ -349,7 +408,8 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         // false: shows a result of the final request (ボタンをオフにしたときに音声認識の結果が返ってくる)
         recognitionRequest.shouldReportPartialResults = true
         
-        var willAppend = false
+        var willAppend = true
+        var theBestString = ""
         
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
             guard let `self` = self else { return }
@@ -358,55 +418,58 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
             
             if let result = result {
                 //                let posibilities = result.transcriptions
-                //                print(posibilities)
+                //                print(posibilities)//show correctsound
                 
-                //show correctsound
-                var correctsound = ""
-                if self.soundType == "vowel" {
-                    correctsound = self.vowel
-                } else {
-                    correctsound = self.soundType.lowercased() + self.vowel
-                }
-                self.soundLabel.text = correctsound
-                
-                let theBestString = result.bestTranscription.formattedString
-                print(self.shownCharacter + ": " + theBestString)
-                if willAppend == true {
+                theBestString = result.bestTranscription.formattedString
+//                print(self.shownCharacter + ": " + theBestString)
+                if willAppend {
                     // passes first result
                     for posibility in self.posibilities {
                         if theBestString == posibility {
+                            print("the appended chara..." + self.shownCharacter + ": " + theBestString)
                             self.judge = .correct
                             //self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, correctsound)) //returns correctsound
-                            self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, self.soundType)) //returns soundType
+                            self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, self.soundLabel.text!)) //returns soundType
                             //                            self.judgeLabel.text = self.judge.rawValue
+                            self.judgedShownCharacters[self.shownCharacter] = self.judge
                             self.characterLabel.backgroundColor = .green
                             willAppend = false
+                            recognitionRequest.shouldReportPartialResults = false
+                            recognitionRequest.endAudio()
+                            self.recognitionIsEnd = true
                             break
                         }
                     }
                     
+                    if willAppend {
+                        self.judge = .wait
+                        self.comment = .again
+//                        self.audioEngine.stop()
+                    }
                 }
-                if willAppend == true {
-                    // passes when a character has been already appended
-                    self.judge = .wrong
-                    //self.bestString[self.judge]!.append((self.shownCharacter, theBestString, correctsound)) //returns correctsound
-                    self.bestString[self.judge]!.append((self.shownCharacter, theBestString, self.soundType)) //returns soundType
-                    self.buffers.append(self.buffer)
-                    //                    self.judgeLabel.text = self.judge.rawValue
-                    self.characterLabel.backgroundColor = .red
-                    willAppend = false
-                }
+//                if willAppend == true {
+//                    // passes when a character has been already appended
+//                    self.judge = .wrong
+//                    //self.bestString[self.judge]!.append((self.shownCharacter, theBestString, correctsound)) //returns correctsound
+//                    self.bestString[self.judge]!.append((self.shownCharacter, theBestString, self.soundLabel.text!)) //returns soundType
+//                    self.buffers.append(self.buffer)
+//                    //                    self.judgeLabel.text = self.judge.rawValue
+//                    self.characterLabel.backgroundColor = .red
+//                    willAppend = false
+//                }
                 
                 isFinal = result.isFinal
-                // change true to false to get final result quickly
-                recognitionRequest.shouldReportPartialResults = false
-                willAppend = true
+                print(isFinal)
+                
+                // stop recording
+//                self.audioEngine.stop()
+//                recognitionRequest.endAudio()
+                print(theBestString)
+            } else {
                 // stop recording
                 self.audioEngine.stop()
                 recognitionRequest.endAudio()
-                self.nextCharacterButton.isEnabled = false
-                self.nextCharacterButton.setTitle("Stopping", for: .disabled)
-            } else {
+                self.recognitionIsEnd = true
                 self.comment = .start
                 self.buttonTitle = .start
                 self.updateLabels()
@@ -419,25 +482,37 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
+                self.recognitionIsEnd = true
                 
-                self.nextCharacterButton.isEnabled = true
                 if error != nil {
-                    self.comment = .start
-                    self.buttonTitle = .start
+                    //show correctsound
+                    if self.judge == .wait {
+                        self.judge = .yet
+                    }
                 }
-                else if self.counter == self.totalNumberOfCharacter{
-                    self.comment = .recap
-                    self.buttonTitle = .recap
-                }
-                else{
-                    self.comment = .next
-                    self.buttonTitle = .next
-                    self.commentLabel.text = self.comment.rawValue
-                    self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: .normal)
-                }
-                //                self.nextCharacterButton.setTitle(self.buttonTitle.rawValue, for: [])
+                
+                self.comment = .start
+                self.buttonTitle = .start
+                self.updateLabels()
+                
+//                if error != nil {
+//                    self.comment = .start
+//                    self.buttonTitle = .start
+//                }
+//                else if self.counter == self.totalNumberOfCharacter{
+//                    self.comment = .recap
+//                    self.buttonTitle = .recap
+//                    self.updateLabels()
+//                }
+//                else {
+//                    self.comment = .next
+//                    self.buttonTitle = .next
+//                    self.updateLabels()
+//                }
+                
             }
         }
+        
         // give an buffer from microphone to the request
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
@@ -446,7 +521,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         }
         
         
-        try startAudioEngine()
+//        try startAudioEngine()
     }
     
     private func refreshTask() {
