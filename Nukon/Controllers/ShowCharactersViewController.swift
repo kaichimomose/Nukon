@@ -174,7 +174,6 @@ class ShowCharactersViewController: UIViewController {
                 default:
                     self.shownCharacter = orderCharacter()
                 }
-                self.judgedShownCharacters[self.shownCharacter] = .yet
             } else {
                 let nextNumber = self.currentNumber + 1
                 self.sound = self.shownCharacters[nextNumber - 1].0
@@ -314,6 +313,7 @@ class ShowCharactersViewController: UIViewController {
             }
             self.sound = correctsound
             self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
+            self.judgedShownCharacters[showCharacter] = .yet
             //updates currentNumber
             self.currentNumber = self.counter
         }
@@ -348,6 +348,7 @@ class ShowCharactersViewController: UIViewController {
                 correctsound = soundType.lowercased() + vowel
             }
             self.sound = correctsound
+            self.judgedShownCharacters[showCharacter] = .yet
             self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
             //updates currentNumber
             self.currentNumber = self.counter
@@ -428,11 +429,11 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                         if theBestString == posibility {
                             print("the appended chara..." + self.shownCharacter + ": " + theBestString)
                             self.judge = .correct
-                            //self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, correctsound)) //returns correctsound
+                            
                             self.bestString[self.judge]!.append((self.shownCharacter, self.shownCharacter, self.soundLabel.text!)) //returns soundType
-                            //                            self.judgeLabel.text = self.judge.rawValue
+                            
                             self.judgedShownCharacters[self.shownCharacter] = self.judge
-                            self.characterLabel.backgroundColor = .green
+                            
                             willAppend = false
                             recognitionRequest.shouldReportPartialResults = false
                             recognitionRequest.endAudio()
@@ -444,8 +445,20 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     if willAppend {
                         self.judge = .wait
                         self.comment = .again
-//                        self.audioEngine.stop()
+                        if theBestString.count > 3 {
+                        self.judge = .wrong
+                        
+                        self.bestString[self.judge]!.append((self.shownCharacter, theBestString, self.soundLabel.text!)) //returns soundType
+                        
+                        self.judgedShownCharacters[self.shownCharacter] = self.judge
+                            
+                        willAppend = false
+                        recognitionRequest.shouldReportPartialResults = false
+                        recognitionRequest.endAudio()
+                        self.recognitionIsEnd = true
+                        }
                     }
+                    
                 }
 //                if willAppend == true {
 //                    // passes when a character has been already appended

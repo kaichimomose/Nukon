@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "535067124.829555"
+            timestampString = "535077433.092005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "randomCharacter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "535067124.831956"
+            timestampString = "535077433.092103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "randomCharacter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "535067124.833014"
+            timestampString = "535077433.092326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "backButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "535067124.833902"
+            timestampString = "535077433.092397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
             landmarkName = "startRecording()"
             landmarkType = "7">
             <Locations>
