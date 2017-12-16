@@ -15,10 +15,10 @@ class RecapViewController: UIViewController {
     
     var japaneseType: JapaneseType!
     var showingStyle: ShowingStyle!
-    var generatedCharacters: [Judge: [(String, String, String)]]? //(shownword, beststring, sound)
-    var correctWords = [(String, Int32, Int32, Int32)]() //(word, numberOfCorrect, numberOfWrong, point)
-    var wrongWords = [(String, Int32, Int32)]() //(word, numberOfCorrect, numberOfWrong)
+    var correctWords = [(String, Int32)]() //(character, point)
+    var wrongWords = [String]() //
     var buffer: [AVAudioPCMBuffer]?
+    var judgedCharacters: [Judge: [(String, String)]]? //(sound, character)
     var wordsLearnt = [WordLearnt]()
     var userDatas = [UserData]()
     var userData: UserData!
@@ -29,6 +29,11 @@ class RecapViewController: UIViewController {
         // Do any additional setup after loading the view.
         //retrieve core data
         self.updateCoreData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,11 +52,11 @@ class RecapViewController: UIViewController {
             userData = userDatas[0]
         }
         //find word in correctWord from coredata [WordLearnt], if found update number of correct and give point
-        for correctWord in generatedCharacters![.correct]! {
+        for (sound, character) in judgedCharacters![.correct]! {
             var find = false //flag to decide whether find or not
             var point = Int32(0)
             for wordLearnt in wordsLearnt {
-                if wordLearnt.word == correctWord.1 {
+                if wordLearnt.word == character {
                     wordLearnt.numberOfCorrect += 1
                     if wordLearnt.numberOfCorrect == 1 {
                         point = Int32(25)
@@ -64,8 +69,8 @@ class RecapViewController: UIViewController {
                     default:
                         point = point * 1
                     }
-                    //append word to correctWords list
-                    correctWords.append((correctWord.1, wordLearnt.numberOfCorrect, wordLearnt.numberOfWrong, point))
+                    //append
+                    correctWords.append((character, point))
                     //update flag
                     find = true
                     break
@@ -74,9 +79,9 @@ class RecapViewController: UIViewController {
             //if not found, insert word to coredata and give points
             if find == false{
                 let newWordLearnt = CoreDataHelper.newWordLearnt()
-                newWordLearnt.word = correctWord.1
+                newWordLearnt.word = character
                 newWordLearnt.numberOfCorrect = 1
-                newWordLearnt.sound = correctWord.2
+                newWordLearnt.sound = sound
                 newWordLearnt.type = japaneseType.rawValue
                 point = Int32(25)
                 switch self.showingStyle {
@@ -85,19 +90,18 @@ class RecapViewController: UIViewController {
                 default:
                     point = point * 1
                 }
-                //append word to correctWords list
-                correctWords.append((correctWord.1, newWordLearnt.numberOfCorrect, newWordLearnt.numberOfWrong, point))
+                //append
+                correctWords.append((character, point))
             }
             self.points += point
         }
         //find word in correctWord from coredata [WordLearnt], if found update number of wrong
-        for wrongWord in generatedCharacters![.wrong]! {
+        for (sound, character) in judgedCharacters![.wrong]! {
             var find = false //flag to decide whether find or not
             for wordLearnt in wordsLearnt {
-                if wordLearnt.word == wrongWord.0 {
+                if wordLearnt.word == character {
                     wordLearnt.numberOfWrong += 1
-                    //append word to wrongWords list
-                    wrongWords.append((wrongWord.0, wordLearnt.numberOfCorrect, wordLearnt.numberOfWrong))
+                    wrongWords.append(character)
                     find = true
                     break
                 }
@@ -105,12 +109,11 @@ class RecapViewController: UIViewController {
             //if not found, insert word to coredata
             if find == false{
                 let newWordLearnt = CoreDataHelper.newWordLearnt()
-                newWordLearnt.word = wrongWord.0
+                newWordLearnt.word = character
                 newWordLearnt.numberOfWrong = 1
-                newWordLearnt.sound = wrongWord.2
+                newWordLearnt.sound = sound
                 newWordLearnt.type = japaneseType.rawValue
-                //append word to wrongWords list
-                wrongWords.append((wrongWord.0, newWordLearnt.numberOfCorrect, newWordLearnt.numberOfWrong))
+                wrongWords.append(character)
             }
         }
         // updates userData point
@@ -136,10 +139,10 @@ extension RecapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return generatedCharacters![.wrong]!.count
+            return judgedCharacters![.wrong]!.count
         }
         else {
-            return generatedCharacters![.correct]!.count
+            return judgedCharacters![.correct]!.count
         }
     }
     
@@ -175,22 +178,15 @@ extension RecapViewController: UICollectionViewDataSource {
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 1
         
-        cell.numberOfCorrectLabel.layer.backgroundColor = UIColor.green.cgColor
-        cell.numberOfWrongLabel.layer.backgroundColor = UIColor.red.cgColor
-        
         if indexPath.section == 0 {
-            cell.characterLabel.text = wrongWords[row].0 // + " (" + generatedCharacters![.wrong]![row].2 + ")"//generatedCharacters![.wrong]![row].0
-            cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(wrongWords[row].1)"
-            cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(wrongWords[row].2)"
+            cell.characterLabel.text = wrongWords[row] // + " (" + generatedCharacters![.wrong]![row].2 + ")"//generatedCharacters![.wrong]![row].0
             cell.bonusLabel.isHidden = true
         }
         else {
             cell.characterLabel.text = correctWords[row].0 // + " (" + generatedCharacters![.correct]![row].2 + ")"//generatedCharacters![.correct]![row].0
-            cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(correctWords[row].1)"
-            cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(correctWords[row].2)"
             cell.bonusLabel.isHidden = true
-            if correctWords[row].3 == 25 || correctWords[row].3 == 50 {
-                cell.bonusLabel.text = "First Correct Bonus +\(correctWords[row].3)p"
+            if correctWords[row].1 == 25 || correctWords[row].1 == 50 {
+                cell.bonusLabel.text = "First Correct Bonus +\(correctWords[row].1)p"
                 cell.bonusLabel.isHidden = false
             }
         }
@@ -202,13 +198,24 @@ extension RecapViewController: UICollectionViewDataSource {
         let row = indexPath.row
         
         if indexPath.section == 0 {
-            let analysisVC  = storyboard?.instantiateViewController(withIdentifier: "AnalysisViewController") as! AnalysisViewController
-            // sends dictionaly of generated character by voice recognition to RecapViewController
-            analysisVC.generatedCharacter = self.generatedCharacters![.wrong]![row]
-            analysisVC.buffer = self.buffer![row]
-            // goes to RecapViewController
-            self.navigationController?.pushViewController(analysisVC, animated: true)
+            speakJapanese(string: wrongWords[row])
         }
+        else {
+            speakJapanese(string: correctWords[row].0)
+        }
+    }
+    
+    func speakJapanese(string: String) {
+        let textToSpeak = AVSpeechUtterance(string: string)
+        textToSpeak.rate = 0.01
+        textToSpeak.volume = 1.0
+        //        let numberOfSeconds = 10.0
+        //        textToSpeak.preUtteranceDelay = numberOfSeconds
+        let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
+        let speak = AVSpeechSynthesizer()
+        textToSpeak.voice = speakerVoice
+        //        speak.delegate = self
+        speak.speak(textToSpeak)
     }
 }
 

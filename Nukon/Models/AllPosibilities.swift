@@ -25,7 +25,7 @@ struct AllPosibilities {
                                             posibilitiesList: [["家", "か", "Cars"],
                                                                ["き", "キー"],
                                                                ["9", "く", "空空"],
-                                                               ["けー", "け", "けーけー", "Kate", "家家", "兄兄"],
+                                                               ["けー", "け", "けーけー", "Kate", "家家", "兄兄", "恵恵"],
                                                                ["こ", "子", "神神"],
                                                                [" "]]),
                                Posibilities(sound: "S",

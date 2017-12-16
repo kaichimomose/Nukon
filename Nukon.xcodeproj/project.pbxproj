@@ -44,6 +44,7 @@
 		BFB83CEA1FE19CF30017D0E7 /* Metal_Gong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFB83CE91FE19CF30017D0E7 /* Metal_Gong.mp3 */; };
 		BFD0D7D21FDF6379000D6F1C /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD0D7D11FDF6378000D6F1C /* MGPhotoHelper.swift */; };
 		BFFEABFA1FE30E4700EF313E /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFEABF91FE30E4700EF313E /* microphone.png */; };
+		BFFEABFC1FE50BF900EF313E /* speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFEABFB1FE50BF800EF313E /* speaker.png */; };
 		F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */; };
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
 		F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */; };
@@ -92,6 +93,7 @@
 		BFB83CE91FE19CF30017D0E7 /* Metal_Gong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Metal_Gong.mp3; sourceTree = "<group>"; };
 		BFD0D7D11FDF6378000D6F1C /* MGPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
 		BFFEABF91FE30E4700EF313E /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = microphone.png; path = Assets.xcassets/microphone.png; sourceTree = "<group>"; };
+		BFFEABFB1FE50BF800EF313E /* speaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speaker.png; path = Assets.xcassets/speaker.png; sourceTree = "<group>"; };
 		F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabGradientButton.swift; sourceTree = "<group>"; };
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				BF5FF96A1FA0D56300A46DE0 /* Supportings */,
 				BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */,
 				BF5FF95C1FA0D35D00A46DE0 /* Assets.xcassets */,
+				BFFEABFB1FE50BF800EF313E /* speaker.png */,
 				BFFEABF91FE30E4700EF313E /* microphone.png */,
 				F66783701FDF2E640064CAD3 /* nukon_logo.pdf */,
 				F667836F1FDF2E630064CAD3 /* nukon_logo@2x.pdf */,
@@ -320,6 +323,7 @@
 				BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */,
 				F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */,
 				BFFEABFA1FE30E4700EF313E /* microphone.png in Resources */,
+				BFFEABFC1FE50BF900EF313E /* speaker.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
