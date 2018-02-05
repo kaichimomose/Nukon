@@ -161,7 +161,8 @@ class PracticeViewController: UIViewController {
             newLevelVC.sound = sound
         }
         animateOutKatakanaPopUp()
-        self.navigationController?.pushViewController(newLevelVC, animated: true)
+//        self.navigationController?.pushViewController(newLevelVC, animated: true)
+        present(newLevelVC, animated: true, completion: nil)
     }
     
     @IBAction func tappedKanjiButton(_ sender: Any) {

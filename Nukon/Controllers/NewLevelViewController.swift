@@ -183,6 +183,7 @@ class NewLevelViewController: UIViewController {
             japaneseCharactersTVC.preSelectedSound = sound
         }
         self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+//        show(japaneseCharactersTVC, sender: (Any).self)
     }
     
     @IBAction func pagodaPressed(_ sender: UITapGestureRecognizer) {
