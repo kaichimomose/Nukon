@@ -42,6 +42,7 @@
 		BF9ADFE3202B96830024A71C /* OneSoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9ADFE1202B96830024A71C /* OneSoundCell.xib */; };
 		BF9ADFEA202BF1290024A71C /* FirstCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9ADFE8202BF1290024A71C /* FirstCharacterCell.swift */; };
 		BF9ADFEB202BF1290024A71C /* FirstCharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9ADFE9202BF1290024A71C /* FirstCharacterCell.xib */; };
+		BF9ADFED202D72BB0024A71C /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9ADFEC202D72BA0024A71C /* UPCarouselFlowLayout.swift */; };
 		BF9B20B61FD70C7B00776A67 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */; };
 		BF9B20B81FD70C9200776A67 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B71FD70C9200776A67 /* ReviewTableViewCell.swift */; };
 		BF9B20BA1FD7262800776A67 /* ReviewHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B91FD7262800776A67 /* ReviewHeaderTableViewCell.swift */; };
@@ -99,6 +100,7 @@
 		BF9ADFE1202B96830024A71C /* OneSoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneSoundCell.xib; sourceTree = "<group>"; };
 		BF9ADFE8202BF1290024A71C /* FirstCharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCharacterCell.swift; sourceTree = "<group>"; };
 		BF9ADFE9202BF1290024A71C /* FirstCharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstCharacterCell.xib; sourceTree = "<group>"; };
+		BF9ADFEC202D72BA0024A71C /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
 		BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		BF9B20B71FD70C9200776A67 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		BF9B20B91FD7262800776A67 /* ReviewHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		BF5FF9701FA0D57200A46DE0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BF9ADFEC202D72BA0024A71C /* UPCarouselFlowLayout.swift */,
 				BFD0D7D11FDF6378000D6F1C /* MGPhotoHelper.swift */,
 				BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */,
 				BF0A86981FB8C32B00B8305A /* AlertHelper.swift */,
@@ -384,6 +387,7 @@
 				BFD0D7D21FDF6379000D6F1C /* MGPhotoHelper.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
+				BF9ADFED202D72BB0024A71C /* UPCarouselFlowLayout.swift in Sources */,
 				BF9ADFD1202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift in Sources */,
 				F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */,
 				F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */,

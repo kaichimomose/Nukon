@@ -21,17 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after app launch,
         //  but before state restoration.
-        do {
-            audio = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Metal_Gong", ofType: "mp3")!))
-            audio.prepareToPlay()
-            audio.enableRate = true
-            audio.rate = 1.8
-        } catch {
-            print(error)
-        }
+//        do {
+//            audio = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Metal_Gong", ofType: "mp3")!))
+//            audio.prepareToPlay()
+//            audio.enableRate = true
+//            audio.rate = 1.8
+//        } catch {
+//            print(error)
+//        }
         // Do any additional setup after loading the view.
         
-        audio.play()
+//        audio.play()
         
         let initialViewController: UIViewController
         let tempStoryboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        Thread.sleep(forTimeInterval: 3.0)
+//        Thread.sleep(forTimeInterval: 3.0)
 
         return true
     }

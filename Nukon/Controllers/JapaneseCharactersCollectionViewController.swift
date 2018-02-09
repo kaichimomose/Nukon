@@ -26,12 +26,10 @@ class JapaneseCharactersCollectionViewController: UIViewController {
     @IBOutlet weak var olabel: UILabel!
     @IBOutlet weak var nLabel: UILabel!
     
-    
-    
-    
+    var labels = [UILabel]()
     
     let layout = UICollectionViewFlowLayout()
-    let inset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+    let inset = UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 50)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,21 +39,24 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         collectionView.register(UINib(nibName: "SoundsCell", bundle: .main), forCellWithReuseIdentifier: "SoundsCell")
         collectionView.register(UINib.init(nibName: "FirstCharacterCell", bundle: .main), forCellWithReuseIdentifier: "FirstCharacterCell")
 
+        let length = UIScreen.main.bounds.width - (inset.left+inset.right)
+        
         // Do any additional setup after loading the view.
         layout.scrollDirection = .horizontal
-        self.collectionView.isScrollEnabled = false
         layout.sectionInset = inset
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
-        layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width - (inset.left+inset.right), height: UIScreen.main.bounds.width - (inset.left+inset.right))
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - (inset.left+inset.right), height: UIScreen.main.bounds.width - (inset.left+inset.right))
+        layout.estimatedItemSize = CGSize(width: length, height: length)
+        layout.itemSize = CGSize(width: length, height: length)
         
         collectionView.collectionViewLayout = layout
         collectionView.alwaysBounceHorizontal = true
         
         exitButton.isHidden = true
         childrenStackView.isHidden = true
-        childrenStackView.arrangedSubviews[5].isHidden = true
+//        childrenStackView.arrangedSubviews[5].isHidden = true
+        
+        labels = [aLabel, ilabel, ulabel, elabel, olabel, nLabel]
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +68,9 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         exitButton.isHidden = true
         childrenStackView.isHidden = true
         collectionView.isScrollEnabled = true
+        for stackView in childrenStackView.arrangedSubviews {
+            stackView.isHidden = false
+        }
     }
     
     
@@ -98,25 +102,22 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let row = indexPath.row
+        let characterList = japanese[row].letters
         
-//        for letter in japanese[row].letters
-//            if lett
+        for i in 0..<characterList.count {
+            if characterList[i] != "　" {
+                labels[i].text = characterList[i]
+            } else {
+                childrenStackView.arrangedSubviews[i].isHidden = true
+            }
+        }
+        
+        
         exitButton.isHidden = false
         childrenStackView.isHidden = false
         collectionView.isScrollEnabled = false
     }
     
-    func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        if (context.nextFocusedIndexPath != nil) && !collectionView.isScrollEnabled {
-            collectionView.scrollToItem(at: context.nextFocusedIndexPath!, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-    }
-//        if (context.nextFocusedIndexPath && !collectionView.scrollEnabled) {
-//
-//            [collectionView scrollToItemAtIndexPath:context.nextFocusedIndexPath
-//                atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-//                animated:YES];
-//        }
-    }
 }
 
 
