@@ -34,6 +34,14 @@
 		BF76DDE21FD9F0E10030F52B /* NewLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
 		BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97052B1FCBBDAD00A95E56 /* DateToString.swift */; };
+		BF9ADFCF202AC01A0024A71C /* CharactersSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */; };
+		BF9ADFD1202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */; };
+		BF9ADFDE202B96370024A71C /* SoundsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9ADFDC202B96370024A71C /* SoundsCell.swift */; };
+		BF9ADFDF202B96370024A71C /* SoundsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9ADFDD202B96370024A71C /* SoundsCell.xib */; };
+		BF9ADFE2202B96830024A71C /* OneSoundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9ADFE0202B96830024A71C /* OneSoundCell.swift */; };
+		BF9ADFE3202B96830024A71C /* OneSoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9ADFE1202B96830024A71C /* OneSoundCell.xib */; };
+		BF9ADFEA202BF1290024A71C /* FirstCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9ADFE8202BF1290024A71C /* FirstCharacterCell.swift */; };
+		BF9ADFEB202BF1290024A71C /* FirstCharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9ADFE9202BF1290024A71C /* FirstCharacterCell.xib */; };
 		BF9B20B61FD70C7B00776A67 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */; };
 		BF9B20B81FD70C9200776A67 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B71FD70C9200776A67 /* ReviewTableViewCell.swift */; };
 		BF9B20BA1FD7262800776A67 /* ReviewHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B20B91FD7262800776A67 /* ReviewHeaderTableViewCell.swift */; };
@@ -83,6 +91,14 @@
 		BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLevelViewController.swift; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
 		BF97052B1FCBBDAD00A95E56 /* DateToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
+		BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharactersSelection.storyboard; sourceTree = "<group>"; };
+		BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersCollectionViewController.swift; sourceTree = "<group>"; };
+		BF9ADFDC202B96370024A71C /* SoundsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsCell.swift; sourceTree = "<group>"; };
+		BF9ADFDD202B96370024A71C /* SoundsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundsCell.xib; sourceTree = "<group>"; };
+		BF9ADFE0202B96830024A71C /* OneSoundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSoundCell.swift; sourceTree = "<group>"; };
+		BF9ADFE1202B96830024A71C /* OneSoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneSoundCell.xib; sourceTree = "<group>"; };
+		BF9ADFE8202BF1290024A71C /* FirstCharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCharacterCell.swift; sourceTree = "<group>"; };
+		BF9ADFE9202BF1290024A71C /* FirstCharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstCharacterCell.xib; sourceTree = "<group>"; };
 		BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		BF9B20B71FD70C9200776A67 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		BF9B20B91FD7262800776A67 /* ReviewHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -164,6 +180,7 @@
 				F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */,
 				BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */,
 				BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */,
+				BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +208,7 @@
 				BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */,
 				F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */,
 				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
+				BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -206,6 +224,12 @@
 				BF51F0D21FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift */,
 				BF9B20B71FD70C9200776A67 /* ReviewTableViewCell.swift */,
 				BF9B20B91FD7262800776A67 /* ReviewHeaderTableViewCell.swift */,
+				BF9ADFDC202B96370024A71C /* SoundsCell.swift */,
+				BF9ADFDD202B96370024A71C /* SoundsCell.xib */,
+				BF9ADFE0202B96830024A71C /* OneSoundCell.swift */,
+				BF9ADFE1202B96830024A71C /* OneSoundCell.xib */,
+				BF9ADFE8202BF1290024A71C /* FirstCharacterCell.swift */,
+				BF9ADFE9202BF1290024A71C /* FirstCharacterCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,10 +341,14 @@
 				F66783731FDF2E640064CAD3 /* nukon_logo.pdf in Resources */,
 				F66783711FDF2E640064CAD3 /* nukon_logo@3x.pdf in Resources */,
 				BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */,
+				BF9ADFDF202B96370024A71C /* SoundsCell.xib in Resources */,
 				F66783721FDF2E640064CAD3 /* nukon_logo@2x.pdf in Resources */,
 				BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */,
 				BFB83CEA1FE19CF30017D0E7 /* Metal_Gong.mp3 in Resources */,
+				BF9ADFCF202AC01A0024A71C /* CharactersSelection.storyboard in Resources */,
 				BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */,
+				BF9ADFE3202B96830024A71C /* OneSoundCell.xib in Resources */,
+				BF9ADFEB202BF1290024A71C /* FirstCharacterCell.xib in Resources */,
 				F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */,
 				BFFEABFA1FE30E4700EF313E /* microphone.png in Resources */,
 				BFFEABFC1FE50BF900EF313E /* speaker.png in Resources */,
@@ -335,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */,
+				BF9ADFDE202B96370024A71C /* SoundsCell.swift in Sources */,
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
 				BF51F0CF1FD315CA00DB6DB8 /* ReviewViewController.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
@@ -345,14 +374,17 @@
 				BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */,
 				BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */,
 				BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */,
+				BF9ADFE2202B96830024A71C /* OneSoundCell.swift in Sources */,
 				BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */,
 				BF76DDE21FD9F0E10030F52B /* NewLevelViewController.swift in Sources */,
 				BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */,
 				BF51F0D11FD3171800DB6DB8 /* ReviewCollectionReusableView.swift in Sources */,
+				BF9ADFEA202BF1290024A71C /* FirstCharacterCell.swift in Sources */,
 				BFA65BB01FC8D35400F426F0 /* RecapCollectionReusableView.swift in Sources */,
 				BFD0D7D21FDF6379000D6F1C /* MGPhotoHelper.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
+				BF9ADFD1202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift in Sources */,
 				F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */,
 				F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */,
 				BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */,

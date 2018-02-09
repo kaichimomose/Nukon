@@ -33,6 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         audio.play()
         
+        let initialViewController: UIViewController
+        let tempStoryboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+        initialViewController = tempStoryboard.instantiateInitialViewController()!
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
