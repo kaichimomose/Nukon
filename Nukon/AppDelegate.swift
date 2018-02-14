@@ -33,11 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        audio.play()
         
-        let initialViewController: UIViewController
-        let tempStoryboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
-        initialViewController = tempStoryboard.instantiateInitialViewController()!
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
+//        let initialViewController: UIViewController
+//        let tempStoryboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+//        initialViewController = tempStoryboard.instantiateInitialViewController()!
+//        self.window?.rootViewController = initialViewController
+//        self.window?.makeKeyAndVisible()
         
         return true
     }

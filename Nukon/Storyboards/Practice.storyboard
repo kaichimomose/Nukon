@@ -22,16 +22,16 @@
             <objects>
                 <viewController id="vNR-ge-zHm" customClass="PracticeViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7V-mz-ev2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coral" translatesAutoresizingMaskIntoConstraints="NO" id="bnM-bz-Ncb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbk-t4-2On" userLabel="backgroundBlur">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lVg-yt-a2z">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IC7-vg-7X7" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
@@ -485,11 +485,11 @@
             <objects>
                 <viewController storyboardIdentifier="NewLevelVC" id="QXC-A8-LI7" customClass="NewLevelViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fks-dv-umq" customClass="GradientView" customModule="Nukon" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coral" translatesAutoresizingMaskIntoConstraints="NO" id="Gf0-vy-59z">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="5472"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-VY-KEA">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
@@ -501,23 +501,23 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-VY-KEP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="5472"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="R1I-Rk-GG1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="5472"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edf-tj-rMN" userLabel="background blur">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="5472"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9xO-9f-8n7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="5472"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-zM-uBS">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="5472"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lp7-FP-Ay4" userLabel="toriView">
                                         <rect key="frame" x="112" y="50" width="150" height="150"/>
@@ -799,7 +799,7 @@
                         <outlet property="toriPress" destination="7Jq-30-aAD" id="q3s-bW-ATh"/>
                         <outlet property="toriTwoOverlapOfBlur" destination="0yZ-ih-ebx" id="Rfz-Nl-fXp"/>
                         <outlet property="visualEffectOne" destination="DRy-VY-KEP" id="Mnc-yh-OSX"/>
-                        <segue destination="Fmh-Fo-bOh" kind="show" id="kzk-F9-8FH"/>
+                        <segue destination="LrX-8A-ZzI" kind="show" id="nVD-KZ-3IF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfL-pV-gK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1025,8 +1025,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sAD-rc-aIt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Practice" image="study" id="Q9V-WR-Qak"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KpW-re-UZ2">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="KpW-re-UZ2">
+                        <rect key="frame" x="0.0" y="20" width="375" height="93"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1331,6 +1331,14 @@
                 <exit id="Pkn-Wl-c0k" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1927.2" y="412.44377811094455"/>
+        </scene>
+        <!--CharactersSelection-->
+        <scene sceneID="GVD-sP-MdL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CharactersSelection" id="LrX-8A-ZzI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sZx-Kv-xn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1926" y="-16"/>
         </scene>
         <!--Show Characters View Controller-->
         <scene sceneID="T32-7o-3J4">

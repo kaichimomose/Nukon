@@ -28,11 +28,11 @@ class JapaneseCharactersTableViewController: UITableViewController, AlertPresent
         super.viewDidLoad()
         switch self.selectedType {
         case .hiragana, .katakana:
-            self.title = "regular-sounds"
+            self.title = "Regular-sounds"
         case .voicedHiragana, .voicedKatakana:
-            self.title = "voiced-sounds"
+            self.title = "Voiced-sounds"
         case .yVowelHiragana, .yVowelKatakana:
-            self.title = "y-vowel-sounds"
+            self.title = "Y-vowel-sounds"
         default:
             self.title = ""
         }

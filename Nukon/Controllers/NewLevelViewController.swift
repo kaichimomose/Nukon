@@ -166,64 +166,67 @@ class NewLevelViewController: UIViewController {
     @IBOutlet weak var advancedLevelCounterView: LevelCounterView!
     
     @IBAction func toriPressed(_ sender: UITapGestureRecognizer) {
-        let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
+        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
         if let japaneseType = self.japaneseType {
-            japaneseCharactersTVC.selectedType = japaneseType
+            japaneseCharactersCVC.selectedType = japaneseType
         } else {
             if let selectedType = self.selectedType {
                 switch selectedType {
                 case .hiragana:
-                    japaneseCharactersTVC.selectedType = .hiragana
+                    japaneseCharactersCVC.selectedType = .hiragana
                 case .katakana:
-                    japaneseCharactersTVC.selectedType = .katakana
+                    japaneseCharactersCVC.selectedType = .katakana
                 }
             }
         }
-        if let sound = self.sound {
-            japaneseCharactersTVC.preSelectedSound = sound
-        }
-        self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+//        if let sound = self.sound {
+//            japaneseCharactersCVC.preSelectedSound = sound
+//        }
+        self.navigationController?.pushViewController(japaneseCharactersCVC, animated: true)
 //        show(japaneseCharactersTVC, sender: (Any).self)
     }
     
     @IBAction func pagodaPressed(_ sender: UITapGestureRecognizer) {
-        let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
+        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
         if let japaneseType = self.japaneseType {
-            japaneseCharactersTVC.selectedType = japaneseType
+            japaneseCharactersCVC.selectedType = japaneseType
         } else {
             if let selectedType = self.selectedType {
                 switch selectedType {
                 case .hiragana:
-                    japaneseCharactersTVC.selectedType = .voicedHiragana
+                    japaneseCharactersCVC.selectedType = .voicedHiragana
                 case .katakana:
-                    japaneseCharactersTVC.selectedType = .voicedKatakana
+                    japaneseCharactersCVC.selectedType = .voicedKatakana
                 }
             }
         }
-        if let sound = self.sound {
-            japaneseCharactersTVC.preSelectedSound = sound
-        }
-        self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+//        if let sound = self.sound {
+//            japaneseCharactersTVC.preSelectedSound = sound
+//        }
+        self.navigationController?.pushViewController(japaneseCharactersCVC, animated: true)
     }
     
     @IBAction func diamondPressed(_ sender: UITapGestureRecognizer) {
-        let japaneseCharactersTVC = storyboard?.instantiateViewController(withIdentifier: "JapaneseCharactersTVC") as! JapaneseCharactersTableViewController
+        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
         if let japaneseType = self.japaneseType {
-            japaneseCharactersTVC.selectedType = japaneseType
+            japaneseCharactersCVC.selectedType = japaneseType
         } else {
             if let selectedType = self.selectedType {
                 switch selectedType {
                 case .hiragana:
-                    japaneseCharactersTVC.selectedType = .yVowelHiragana
+                    japaneseCharactersCVC.selectedType = .yVowelHiragana
                 case .katakana:
-                    japaneseCharactersTVC.selectedType = .yVowelKatakana
+                    japaneseCharactersCVC.selectedType = .yVowelKatakana
                 }
             }
         }
-        if let sound = self.sound {
-            japaneseCharactersTVC.preSelectedSound = sound
-        }
-        self.navigationController?.pushViewController(japaneseCharactersTVC, animated: true)
+//        if let sound = self.sound {
+//            japaneseCharactersTVC.preSelectedSound = sound
+//        }
+        self.navigationController?.pushViewController(japaneseCharactersCVC, animated: true)
     }
     
     

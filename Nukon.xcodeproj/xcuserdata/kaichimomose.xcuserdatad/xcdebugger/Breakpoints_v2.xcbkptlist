@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/JapaneseCharactersTableViewController.swift"
-            timestampString = "534715658.09559"
+            timestampString = "540332371.272017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/JapaneseCharactersTableViewController.swift"
-            timestampString = "534715658.096088"
+            timestampString = "540332371.272112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/JapaneseCharactersTableViewController.swift"
-            timestampString = "534715658.096459"
+            timestampString = "540332371.272173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/JapaneseCharactersTableViewController.swift"
-            timestampString = "534715658.096706"
+            timestampString = "540332371.272226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/JapaneseCharactersTableViewController.swift"
-            timestampString = "534715658.096964"
+            timestampString = "540332371.2722811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/JapaneseCharactersTableViewController.swift"
-            timestampString = "534715658.099045"
+            timestampString = "540332371.272382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/NewLevelViewController.swift"
-            timestampString = "539487037.139055"
+            timestampString = "540332371.272629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "NewLevelViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -447,54 +447,6 @@
                   startingLineNumber = "393"
                   endingLineNumber = "393"
                   offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Nukon/Controllers/NewLevelViewController.swift"
-            timestampString = "539487037.139766"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "toriPressed(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Nukon.NewLevelViewController.toriPressed(__ObjC.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "Nukon"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/NewLevelViewController.swift"
-                  timestampString = "539811947.433975"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Nukon.NewLevelViewController.toriPressed(__ObjC.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "Nukon"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/NewLevelViewController.swift"
-                  timestampString = "539811947.436484"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "1084">
                </Location>
             </Locations>
          </BreakpointContent>
