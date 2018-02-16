@@ -114,6 +114,7 @@
                                                                         <rect key="frame" x="31.5" y="0.0" width="18.5" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="CAo-Jg-aqg"/>
+                                                                            <constraint firstAttribute="width" constant="18.5" id="lfc-IM-l8u"/>
                                                                         </constraints>
                                                                         <state key="normal" image="speaker"/>
                                                                         <connections>
@@ -183,6 +184,7 @@
                                                                         <rect key="frame" x="31.5" y="0.0" width="18.5" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="7ul-T8-sMd"/>
+                                                                            <constraint firstAttribute="width" constant="18.5" id="i3P-fb-Xtz"/>
                                                                         </constraints>
                                                                         <state key="normal" image="speaker"/>
                                                                         <connections>
@@ -251,6 +253,7 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFc-pm-llM">
                                                                         <rect key="frame" x="31.5" y="0.0" width="18.5" height="20"/>
                                                                         <constraints>
+                                                                            <constraint firstAttribute="width" constant="18.5" id="A2Z-ng-q2U"/>
                                                                             <constraint firstAttribute="height" constant="20" id="ktf-08-kyx"/>
                                                                         </constraints>
                                                                         <state key="normal" image="speaker"/>
@@ -321,6 +324,7 @@
                                                                         <rect key="frame" x="31.5" y="0.0" width="18.5" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="FGi-S7-FMl"/>
+                                                                            <constraint firstAttribute="width" constant="18.5" id="PtA-hB-5WG"/>
                                                                         </constraints>
                                                                         <state key="normal" image="speaker"/>
                                                                         <connections>
@@ -389,6 +393,7 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofb-1C-9TH">
                                                                         <rect key="frame" x="31" y="0.0" width="19" height="20"/>
                                                                         <constraints>
+                                                                            <constraint firstAttribute="width" constant="19" id="O95-6Z-bRY"/>
                                                                             <constraint firstAttribute="height" constant="20" id="SU1-YM-DCu"/>
                                                                         </constraints>
                                                                         <state key="normal" image="speaker"/>
@@ -458,6 +463,7 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kA-6f-xIp">
                                                                         <rect key="frame" x="31.5" y="0.0" width="18.5" height="20"/>
                                                                         <constraints>
+                                                                            <constraint firstAttribute="width" constant="18.5" id="8jj-64-Ml1"/>
                                                                             <constraint firstAttribute="height" constant="20" id="m5E-Wa-S3Y"/>
                                                                         </constraints>
                                                                         <state key="normal" image="speaker"/>

@@ -10,14 +10,20 @@ import UIKit
 import AVFoundation
 
 class JapaneseCharactersCollectionViewController: UIViewController {
-
+    //MARK: - Properties
     let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
     let speak = AVSpeechSynthesizer()
     
     var japaneseList = [Japanese]()
     var selectedType: JapaneseType!
     let vowels = JapaneseCharacters().vowelSounds
+    var consonant: String!
+    var selectedJapanese = [String: [String]]()
     
+    //delegation
+    var delegate: CellDelegate?
+    
+    //MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var parentsStackView: UIStackView!
@@ -31,8 +37,6 @@ class JapaneseCharactersCollectionViewController: UIViewController {
     @IBOutlet weak var elabel: UILabel!
     @IBOutlet weak var olabel: UILabel!
     @IBOutlet weak var nLabel: UILabel!
-    
-    
     
     var labels = [UILabel]()
     @IBOutlet var soundButtons: [UIButton]!
@@ -134,6 +138,15 @@ class JapaneseCharactersCollectionViewController: UIViewController {
             button.isEnabled = false
         }
         
+        for i in 0..<self.selectedJapanese[self.consonant]!.count {
+            if self.selectedJapanese[self.consonant]![i] != "" {
+                self.checkboxes[i].image = #imageLiteral(resourceName: "checkedcheckbox")
+            } else {
+                self.checkboxes[i].image = #imageLiteral(resourceName: "emptycheckbox")
+            }
+            self.checkboxes[i].alpha = 0
+        }
+        
         
         let animations = {
 //            self.childrenStackView.axis = .horizontal
@@ -160,6 +173,10 @@ class JapaneseCharactersCollectionViewController: UIViewController {
                 self.soundButtons.forEach({ button in
                     button.alpha = 1
                     button.isEnabled = true
+                })
+                
+                self.checkboxes.forEach({ imageView in
+                    imageView.alpha = 1
                 })
             }
             
@@ -197,43 +214,49 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         }
     }
     
-    @IBAction func aLabelSoundTappped(_ sender: Any) {
-        let character = aLabel.text
-        speakJapanese(string: character!)
-    }
-    
     @IBAction func firstChracterTapped(_ sender: Any) {
-        checkUncheckBox(imageView: checkboxes[0])
+        checkUncheckBox(index: 0)
     }
     
     @IBAction func secondCharacterTapped(_ sender: Any) {
-        checkUncheckBox(imageView: checkboxes[1])
+        checkUncheckBox(index: 1)
     }
     
     @IBAction func thirdChracterTapped(_ sender: Any) {
-        checkUncheckBox(imageView: checkboxes[2])
+        checkUncheckBox(index: 2)
     }
     
     @IBAction func fourthChracterTapped(_ sender: Any) {
-        checkUncheckBox(imageView: checkboxes[3])
+        checkUncheckBox(index: 3)
     }
     
     @IBAction func fifthChracterTapped(_ sender: Any) {
-        checkUncheckBox(imageView: checkboxes[4])
+        checkUncheckBox(index: 4)
     }
     
     @IBAction func sixthChracterTapped(_ sender: Any) {
-        checkUncheckBox(imageView: checkboxes[5])
+        checkUncheckBox(index: 5)
     }
     
     
     
-    func checkUncheckBox(imageView: UIImageView) {
+    func checkUncheckBox(index: Int) {
+        let imageView: UIImageView = self.checkboxes[index]
+        let label: UILabel = self.labels[index]
         if imageView.image == #imageLiteral(resourceName: "checkedcheckbox") {
             imageView.image = #imageLiteral(resourceName: "emptycheckbox")
+            self.selectedJapanese[self.consonant]![index] = ""
+            self.delegate?.stopFlashingAnimation(Index: index)
         } else {
             imageView.image = #imageLiteral(resourceName: "checkedcheckbox")
+            self.selectedJapanese[self.consonant]![index] = label.text!
+            self.delegate?.flashingAnimation(Index: index)
         }
+    }
+    
+    @IBAction func aLabelSoundTappped(_ sender: Any) {
+        let character = aLabel.text
+        speakJapanese(string: character!)
     }
     
     @IBAction func iLabelSoundTappped(_ sender: Any) {
@@ -274,18 +297,42 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
         
         let row = indexPath.row
         
+        //TODO: Uncomment if doesn't work
+//        firstCharacterCell.japaneseCharactersCVC = self
         firstCharacterCell.layer.cornerRadius = 5
-        
         firstCharacterCell.characterLabel.text = japaneseList[row].sound
+        
+        
+        
+        let characterList = japaneseList[row].letters
+        
+        for i in 0..<characterList.count {
+            firstCharacterCell.characterLabels[i].text = nil
+            firstCharacterCell.characterLabels[i].alpha = 1
+            if characterList[i] != "　" {
+                firstCharacterCell.characterLabels[i].text = characterList[i]
+            }
+            else {
+                firstCharacterCell.characterLabels[i].alpha = 0
+            }
+            
+        }
         
         return firstCharacterCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        
         let row = indexPath.row
         let characterList = japaneseList[row].letters
         let consonant = japaneseList[row].sound.lowercased()
+        
+        self.consonant = consonant
+        
+        if (selectedJapanese[consonant] == nil) {
+            selectedJapanese[consonant] = ["", "" ,"" , "" , "", ""]
+        }
         
         for stackView in childrenStackView.arrangedSubviews {
             stackView.isHidden = false
@@ -308,6 +355,8 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
         parentsStackView.isHidden = false
         
         collectionView.isUserInteractionEnabled = false
+        let cell = collectionView.cellForItem(at: indexPath) as! FirstCharacterCell
+        cell.japaneseCharactersCVC = self
         
         animateView()
         

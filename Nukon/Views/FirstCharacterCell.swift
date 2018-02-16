@@ -8,14 +8,32 @@
 
 import UIKit
 
-class FirstCharacterCell: UICollectionViewCell {
+protocol CellDelegate {
+    func flashingAnimation(Index: Int)
+    func stopFlashingAnimation(Index: Int)
+}
+
+class FirstCharacterCell: UICollectionViewCell, CellDelegate {
 
     @IBOutlet weak var characterLabel: UILabel!
+    @IBOutlet var characterLabels: [UILabel]!
     
+    var japaneseCharactersCVC: JapaneseCharactersCollectionViewController? {
+        didSet {
+            japaneseCharactersCVC?.delegate = self
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        characterLabels.forEach { label in
+            label.layer.borderColor = UIColor.black.cgColor
+            label.layer.borderWidth = 0.5
+            label.layer.cornerRadius = 22.5
+            label.layer.masksToBounds = true
+        }
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
@@ -28,5 +46,19 @@ class FirstCharacterCell: UICollectionViewCell {
         //        attributes.size.width = self.contentView.frame.size.width
         return attributes
     }
-
+    
+    func flashingAnimation(Index: Int) {
+        self.characterLabels[Index].alpha = 0.3
+        
+        let flashing = {
+            self.characterLabels[Index].alpha = 1
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .curveEaseInOut], animations: flashing, completion: nil)
+    }
+    
+    func stopFlashingAnimation(Index: Int) {
+        self.characterLabels[Index].layer.removeAllAnimations()
+    }
+    
 }
