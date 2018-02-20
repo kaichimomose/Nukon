@@ -19,7 +19,7 @@ class JapaneseCharactersCollectionViewController: UIViewController {
     let vowels = JapaneseCharacters().vowelSounds
     
     var consonant: String!
-    var selectedJapanese = [String: [String]]()
+    var selectedJapanese = [String: [String?]]()
     
     var labels = [UILabel]()
     
@@ -139,13 +139,20 @@ class JapaneseCharactersCollectionViewController: UIViewController {
             button.isEnabled = false
         }
         
-        for i in 0..<self.selectedJapanese[self.consonant]!.count {
-            if self.selectedJapanese[self.consonant]![i] != "" {
-                self.checkboxes[i].image = #imageLiteral(resourceName: "checkedcheckbox")
-            } else {
-                self.checkboxes[i].image = #imageLiteral(resourceName: "emptycheckbox")
+        if let characterList = self.selectedJapanese[self.consonant] {
+            for i in 0..<characterList.count {
+                if characterList[i] != nil {
+                    self.checkboxes[i].image = #imageLiteral(resourceName: "checkedcheckbox")
+                } else {
+                    self.checkboxes[i].image = #imageLiteral(resourceName: "emptycheckbox")
+                }
+                self.checkboxes[i].alpha = 0
             }
-            self.checkboxes[i].alpha = 0
+        } else {
+            self.checkboxes.forEach({ imageView in
+                imageView.image = #imageLiteral(resourceName: "emptycheckbox")
+                imageView.alpha = 0
+            })
         }
         
         
@@ -200,17 +207,18 @@ class JapaneseCharactersCollectionViewController: UIViewController {
     }
     
     //speak japanese characters orderly
+    var index: Int = 0
     func speakOrderly(list: [String]) {
-        var index: Int = 0
         if index < list.count {
             speakJapanese(string: list[index])
             //delay 0.5s
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                index += 1
+                self.index += 1
                 self.speakOrderly(list: list)
             })
         } else {
             //user can use collection view after specking finish
+            index = 0
             collectionView.isUserInteractionEnabled = true
             return
         }
@@ -221,12 +229,24 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         let label: UILabel = self.labels[index]
         if imageView.image == #imageLiteral(resourceName: "checkedcheckbox") {
             imageView.image = #imageLiteral(resourceName: "emptycheckbox")
-            self.selectedJapanese[self.consonant]![index] = ""
+            self.selectedJapanese[self.consonant]![index] = nil
             self.delegate?.stopFlashingAnimation(Index: index)
         } else {
             imageView.image = #imageLiteral(resourceName: "checkedcheckbox")
+            if (self.selectedJapanese[self.consonant] == nil) {
+                self.selectedJapanese[self.consonant] = [nil, nil, nil, nil, nil, nil]
+            }
             self.selectedJapanese[self.consonant]![index] = label.text!
             self.delegate?.flashingAnimation(Index: index)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "practice" {
+            let showCharacterVC = segue.destination.storyboard?.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
+            showCharacterVC.japaneseList = self.japaneseList
+            showCharacterVC.japaneseDict = self.selectedJapanese
+            showCharacterVC.japaneseType = self.selectedType
         }
     }
 
@@ -330,16 +350,11 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         let row = indexPath.row
         let characterList = japaneseList[row].letters
         let consonant = japaneseList[row].sound.lowercased()
         
         self.consonant = consonant
-        
-        if (selectedJapanese[consonant] == nil) {
-            selectedJapanese[consonant] = ["", "" ,"" , "" , "", ""]
-        }
         
         for stackView in childrenStackView.arrangedSubviews {
             stackView.isHidden = false

@@ -510,6 +510,9 @@
                                         <state key="normal" title="PRACTICE">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="B0b-20-m2f" kind="show" identifier="practice" id="vke-Oj-dQn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -588,6 +591,14 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="669.375" y="197.53521126760563"/>
+        </scene>
+        <!--Speaking-->
+        <scene sceneID="qMm-Hl-kHk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Speaking" id="B0b-20-m2f" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Nm-Cv-Jk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1475" y="198"/>
         </scene>
     </scenes>
     <resources>

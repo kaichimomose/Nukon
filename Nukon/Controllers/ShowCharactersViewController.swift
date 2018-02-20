@@ -35,9 +35,15 @@ enum ButtonTitle: String {
 class ShowCharactersViewController: UIViewController {
     
     //values to show characters
+    var japaneseList: [Japanese]!
+    var japaneseDict: [String: [String?]]!
+    var posibilitiesDict = [String: [String]]()
+    var japaneseType: JapaneseType!
+    var soundAndLettersList = [(String, [String?])]()
+    let vowels = JapaneseCharacters().vowelSounds
+    
     var list = [Japanese]()
     var vowelSounds = [[String]]()
-    var japaneseType: JapaneseType!
     var showingStyle: ShowingStyle!
     var shownCharacter = ""
     var soundType = ""
@@ -96,16 +102,38 @@ class ShowCharactersViewController: UIViewController {
         
 //        self.finishButton.isEnabled = false
         
-        for listOfCharacters in list{
-            // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
-            mutableList.append((listOfCharacters.sound, listOfCharacters.letters))
-            // for random character
-            vowelSounds.append(JapaneseCharacters().vowelSounds)
+//        for listOfCharacters in list{
+//            // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
+//            mutableList.append((listOfCharacters.sound, listOfCharacters.letters))
+//            // for random character
+//            vowelSounds.append(JapaneseCharacters().vowelSounds)
+//        }
+//        for listOfPosibilities in posibilitiesList{
+//            // create list of posibilitiesList of each sound
+//            mutablePosibilitiesList.append(listOfPosibilities.posibilitiesList)
+//        }
+        
+        guard let japaneseDict = self.japaneseDict, let japaneseList = self.japaneseList, let japaneseType = self.japaneseType else {return}
+        for japanese in japaneseList{
+            if let letters = japaneseDict[japanese.sound] {
+                // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
+                self.soundAndLettersList.append((japanese.sound, letters))
+                // for random character
+                vowelSounds.append(JapaneseCharacters().vowelSounds)
+            }
         }
-        for listOfPosibilities in posibilitiesList{
-            // create list of posibilitiesList of each sound
-            mutablePosibilitiesList.append(listOfPosibilities.posibilitiesList)
+        
+        switch japaneseType {
+        case .hiragana, .katakana:
+            self.posibilitiesDict = PosibilitiesDict().regularPosibilitiesDict
+        case .voicedHiragana, .voicedKatakana:
+            self.posibilitiesDict = [:]
+        case .yVowelHiragana, .yVowelKatakana:
+            self.posibilitiesDict = [:]
+        default:
+            self.posibilitiesDict = [:]
         }
+        
         self.totalNumberOfCharacter = numberOfCharacters()
         // choose first chracter
         switch self.showingStyle {
@@ -280,9 +308,17 @@ class ShowCharactersViewController: UIViewController {
     func numberOfCharacters() -> Int {
         // return total number of characters that are in the list
         var numberOfCharacters = 0
-        for i in 0...list.count - 1 {
-            for j in 0...list[i].letters.count - 1 {
-                if list[i].letters[j] != "　" {
+//        for i in 0...list.count - 1 {
+//            for j in 0...list[i].letters.count - 1 {
+//                if list[i].letters[j] != "　" {
+//                    numberOfCharacters += 1
+//                }
+//            }
+//        }
+        
+        for (_, value) in self.japaneseDict {
+            for character in value {
+                if character != nil {
                     numberOfCharacters += 1
                 }
             }
@@ -343,7 +379,38 @@ class ShowCharactersViewController: UIViewController {
     
     func orderCharacter() -> String {
         // shows a character orderly
-        if self.vowelIndexCounter == list[self.soundIndexCounter].letters.count {
+//        if self.vowelIndexCounter == list[self.soundIndexCounter].letters.count {
+//            self.vowelIndexCounter = 0
+//            self.soundIndexCounter += 1
+//            if self.soundIndexCounter == list.count {
+//                self.vowelIndexCounter = 0
+//                self.soundIndexCounter = 0
+//            }
+//        }
+//        var showCharacter = list[self.soundIndexCounter].letters[self.vowelIndexCounter]
+//        self.soundType = list[self.soundIndexCounter].sound
+//        let vowel = self.vowelSounds[self.soundIndexCounter][self.vowelIndexCounter]
+//        self.posibilities = self.posibilitiesList[self.soundIndexCounter].posibilitiesList[self.vowelIndexCounter]
+//        self.vowelIndexCounter += 1
+//        if showCharacter == "　" {
+//            showCharacter = orderCharacter()
+//        }
+//        else {
+//            self.counter += 1
+//            //makes correctsound
+//            var correctsound = ""
+//            if self.soundType == "vowel" {
+//                correctsound = vowel
+//            } else {
+//                correctsound = soundType.lowercased() + vowel
+//            }
+//            self.sound = correctsound
+//            self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
+//            self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
+//            //updates currentNumber
+//            self.currentNumber = self.counter
+//        }
+        if self.vowelIndexCounter == soundAndLettersList[self.soundIndexCounter].0.count {
             self.vowelIndexCounter = 0
             self.soundIndexCounter += 1
             if self.soundIndexCounter == list.count {
@@ -351,29 +418,27 @@ class ShowCharactersViewController: UIViewController {
                 self.soundIndexCounter = 0
             }
         }
-        var showCharacter = list[self.soundIndexCounter].letters[self.vowelIndexCounter]
-        self.soundType = list[self.soundIndexCounter].sound
-        let vowel = self.vowelSounds[self.soundIndexCounter][self.vowelIndexCounter]
-        self.posibilities = self.posibilitiesList[self.soundIndexCounter].posibilitiesList[self.vowelIndexCounter]
+        let character = soundAndLettersList[self.soundIndexCounter].1[self.vowelIndexCounter]
+        guard let showCharacter = character else {
+            return orderCharacter()
+        }
+        self.soundType = soundAndLettersList[self.soundIndexCounter].0
+        let vowel = self.vowels[self.vowelIndexCounter]
+        self.posibilities = self.posibilitiesDict[showCharacter]!
         self.vowelIndexCounter += 1
-        if showCharacter == "　" {
-            showCharacter = orderCharacter()
+        self.counter += 1
+        //makes correctsound
+        var correctsound = ""
+        if self.soundType == "vowel" {
+            correctsound = vowel
+        } else {
+            correctsound = soundType.lowercased() + vowel
         }
-        else {
-            self.counter += 1
-            //makes correctsound
-            var correctsound = ""
-            if self.soundType == "vowel" {
-                correctsound = vowel
-            } else {
-                correctsound = soundType.lowercased() + vowel
-            }
-            self.sound = correctsound
-            self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
-            self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
-            //updates currentNumber
-            self.currentNumber = self.counter
-        }
+        self.sound = correctsound
+        self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
+        self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
+        //updates currentNumber
+        self.currentNumber = self.counter
         return showCharacter
     }
     

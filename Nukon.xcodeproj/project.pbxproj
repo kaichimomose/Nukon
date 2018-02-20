@@ -26,6 +26,8 @@
 		BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */; };
 		BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */; };
 		BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */; };
+		BF7199122038F46100E3A03D /* Speaking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7199112038F46000E3A03D /* Speaking.storyboard */; };
+		BF719914203BBEC100E3A03D /* Posibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF719913203BBEC100E3A03D /* Posibilities.swift */; };
 		BF76DDDC1FD9EF4A0030F52B /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD71FD9EF490030F52B /* CustomImageView.swift */; };
 		BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD81FD9EF490030F52B /* EditProfile.swift */; };
 		BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD91FD9EF490030F52B /* FoundationButton.swift */; };
@@ -80,6 +82,8 @@
 		BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersTableViewController.swift; sourceTree = "<group>"; };
 		BF5FF97E1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseCharactersTableViewCell.swift; sourceTree = "<group>"; };
 		BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
+		BF7199112038F46000E3A03D /* Speaking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Speaking.storyboard; sourceTree = "<group>"; };
+		BF719913203BBEC100E3A03D /* Posibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posibilities.swift; sourceTree = "<group>"; };
 		BF76DDD71FD9EF490030F52B /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		BF76DDD81FD9EF490030F52B /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		BF76DDD91FD9EF490030F52B /* FoundationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationButton.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */,
+				BF7199112038F46000E3A03D /* Speaking.storyboard */,
 				F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */,
 				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
 				BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */,
@@ -242,6 +247,7 @@
 				BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */,
 				BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */,
 				BF0A869C1FC50D8600B8305A /* AllPosibilities.swift */,
+				BF719913203BBEC100E3A03D /* Posibilities.swift */,
 				BFA65BB51FCB5AD100F426F0 /* UserData.swift */,
 			);
 			path = Models;
@@ -336,6 +342,7 @@
 				BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */,
 				BFB83CEA1FE19CF30017D0E7 /* Metal_Gong.mp3 in Resources */,
 				BF9ADFCF202AC01A0024A71C /* CharactersSelection.storyboard in Resources */,
+				BF7199122038F46100E3A03D /* Speaking.storyboard in Resources */,
 				BF5FF95D1FA0D35D00A46DE0 /* Assets.xcassets in Resources */,
 				BF9ADFEB202BF1290024A71C /* FirstCharacterCell.xib in Resources */,
 				F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */,
@@ -358,6 +365,7 @@
 				BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
 				BF51F0D31FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift in Sources */,
+				BF719914203BBEC100E3A03D /* Posibilities.swift in Sources */,
 				BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */,
 				BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */,
 				BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */,
