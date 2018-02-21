@@ -130,20 +130,19 @@ class ShowCharactersViewController: UIViewController {
             self.posibilitiesDict = [:]
         case .yVowelHiragana, .yVowelKatakana:
             self.posibilitiesDict = [:]
-        default:
-            self.posibilitiesDict = [:]
         }
         
         self.totalNumberOfCharacter = numberOfCharacters()
         // choose first chracter
-        switch self.showingStyle {
-        case .order:
-            self.shownCharacter = orderCharacter()
-        case .random:
-            self.shownCharacter = randomCharacter()
-        default:
-            self.shownCharacter = orderCharacter()
-        }
+        self.shownCharacter = orderCharacter()
+//        switch self.showingStyle {
+//        case .order:
+//            self.shownCharacter = orderCharacter()
+//        case .random:
+//            self.shownCharacter = randomCharacter()
+//        default:
+//            self.shownCharacter = orderCharacter()
+//        }
         self.updateLabels()
     }
     

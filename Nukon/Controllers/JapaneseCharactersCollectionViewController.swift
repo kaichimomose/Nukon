@@ -247,6 +247,7 @@ class JapaneseCharactersCollectionViewController: UIViewController {
             showCharacterVC.japaneseList = self.japaneseList
             showCharacterVC.japaneseDict = self.selectedJapanese
             showCharacterVC.japaneseType = self.selectedType
+            present(showCharacterVC, animated: true, completion: nil)
         }
     }
 
