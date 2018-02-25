@@ -50,6 +50,7 @@
 		BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB51FCB5AD100F426F0 /* UserData.swift */; };
 		BFB83CEA1FE19CF30017D0E7 /* Metal_Gong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFB83CE91FE19CF30017D0E7 /* Metal_Gong.mp3 */; };
 		BFD0D7D21FDF6379000D6F1C /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD0D7D11FDF6378000D6F1C /* MGPhotoHelper.swift */; };
+		BFE76F1B20425A4C005E9F0C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE76F1A20425A4C005E9F0C /* CoreDataStack.swift */; };
 		BFFEABFA1FE30E4700EF313E /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFEABF91FE30E4700EF313E /* microphone.png */; };
 		BFFEABFC1FE50BF900EF313E /* speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = BFFEABFB1FE50BF800EF313E /* speaker.png */; };
 		F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */; };
@@ -106,6 +107,7 @@
 		BFA65BB51FCB5AD100F426F0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BFB83CE91FE19CF30017D0E7 /* Metal_Gong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Metal_Gong.mp3; sourceTree = "<group>"; };
 		BFD0D7D11FDF6378000D6F1C /* MGPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
+		BFE76F1A20425A4C005E9F0C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		BFFEABF91FE30E4700EF313E /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = microphone.png; path = Assets.xcassets/microphone.png; sourceTree = "<group>"; };
 		BFFEABFB1FE50BF800EF313E /* speaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speaker.png; path = Assets.xcassets/speaker.png; sourceTree = "<group>"; };
 		F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabGradientButton.swift; sourceTree = "<group>"; };
@@ -172,13 +174,13 @@
 				BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */,
 				BF76DDE11FD9F0E10030F52B /* NewLevelViewController.swift */,
 				BF5FF97C1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift */,
-				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 				BF0A86961FB7C49E00B8305A /* RecapViewController.swift */,
 				BFA65BB11FC9FF4100F426F0 /* AnalysisViewController.swift */,
 				F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */,
 				BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */,
 				BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */,
 				BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */,
+				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -236,6 +238,7 @@
 				BFD0D7D11FDF6378000D6F1C /* MGPhotoHelper.swift */,
 				BFA65BB31FCB4DDB00F426F0 /* CoreDataHelper.swift */,
 				BF0A86981FB8C32B00B8305A /* AlertHelper.swift */,
+				BFE76F1A20425A4C005E9F0C /* CoreDataStack.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */,
 				BF0A86971FB7C49E00B8305A /* RecapViewController.swift in Sources */,
 				BF9B20BA1FD7262800776A67 /* ReviewHeaderTableViewCell.swift in Sources */,
+				BFE76F1B20425A4C005E9F0C /* CoreDataStack.swift in Sources */,
 				BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */,
 				BFA65BB21FC9FF4200F426F0 /* AnalysisViewController.swift in Sources */,
 				BF9B20B61FD70C7B00776A67 /* ReviewTableViewController.swift in Sources */,

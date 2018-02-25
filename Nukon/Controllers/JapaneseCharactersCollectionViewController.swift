@@ -241,16 +241,6 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "practice" {
-            let showCharacterVC = segue.destination.storyboard?.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
-            showCharacterVC.japaneseList = self.japaneseList
-            showCharacterVC.japaneseDict = self.selectedJapanese
-            showCharacterVC.japaneseType = self.selectedType
-            present(showCharacterVC, animated: true, completion: nil)
-        }
-    }
-
     //MARK: - TapGesture Action
     @IBAction func firstChracterTapped(_ sender: Any) {
         checkUncheckBox(index: 0)
@@ -312,6 +302,15 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         }
     }
     
+    @IBAction func practiceButtonTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
+        let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
+        showCharacterVC.japaneseList = self.japaneseList
+        showCharacterVC.japaneseDict = self.selectedJapanese
+        showCharacterVC.japaneseType = self.selectedType
+        present(showCharacterVC, animated: true, completion: nil)
+    }
+    
 }
 
 extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -353,7 +352,7 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
         
         let row = indexPath.row
         let characterList = japaneseList[row].letters
-        let consonant = japaneseList[row].sound.lowercased()
+        let consonant = japaneseList[row].sound
         
         self.consonant = consonant
         
@@ -366,7 +365,7 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
             if characterList[i] != "　" {
                 labels[i].text = characterList[i]
                 if consonant != "vowel" {
-                    soundsLabels[i].text = consonant + vowels[i]
+                    soundsLabels[i].text = consonant.lowercased() + vowels[i]
                 } else {
                     soundsLabels[i].text = vowels[i]
                 }

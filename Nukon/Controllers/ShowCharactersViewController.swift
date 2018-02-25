@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData.NSFetchedResultsController
 import Speech
 
 enum Judge: String {
@@ -32,7 +33,7 @@ enum ButtonTitle: String {
     case recap = "See Recap"
 }
 
-class ShowCharactersViewController: UIViewController {
+class ShowCharactersViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     //values to show characters
     var japaneseList: [Japanese]!
@@ -41,6 +42,39 @@ class ShowCharactersViewController: UIViewController {
     var japaneseType: JapaneseType!
     var soundAndLettersList = [(String, [String?])]()
     let vowels = JapaneseCharacters().vowelSounds
+    
+    var notOkJapaneseList = [String]()
+    var goodJapaneseList = [String]()
+    
+    //coredata management
+    let coreDataStack = CoredataStack.instance
+    
+    lazy var fetchedResultController: NSFetchedResultsController<WordLearnt> = {
+        // Remember to specify type: *CoreData Bug*
+        // Initialize Fetch Request\
+        let fetchRequest: NSFetchRequest<WordLearnt> = WordLearnt.fetchRequest()
+        
+        // Add any SortDescriptors
+        let sortDescriptor = NSSortDescriptor(key: "word", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Add Specific type Descriptors
+        fetchRequest.predicate = NSPredicate(format: "type == %@", japaneseType.rawValue)
+        
+        // Initialize Fetched Results Controller
+        let fetchedResultController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: self.coreDataStack.viewContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        
+        // Configure Fetched Results Controller
+        fetchedResultController.delegate = self
+        
+        return fetchedResultController
+        
+    }()
     
     var list = [Japanese]()
     var vowelSounds = [[String]]()
@@ -84,6 +118,8 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var judgeLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var notOkButton: UIButton!
+    @IBOutlet weak var goodButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
     
     override func viewDidLoad() {
@@ -100,18 +136,7 @@ class ShowCharactersViewController: UIViewController {
         self.nextCharacterButton.layer.borderColor = UIColor.black.cgColor
         self.nextCharacterButton.layer.borderWidth = 1
         
-//        self.finishButton.isEnabled = false
-        
-//        for listOfCharacters in list{
-//            // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
-//            mutableList.append((listOfCharacters.sound, listOfCharacters.letters))
-//            // for random character
-//            vowelSounds.append(JapaneseCharacters().vowelSounds)
-//        }
-//        for listOfPosibilities in posibilitiesList{
-//            // create list of posibilitiesList of each sound
-//            mutablePosibilitiesList.append(listOfPosibilities.posibilitiesList)
-//        }
+        self.finishButton.isHidden = true
         
         guard let japaneseDict = self.japaneseDict, let japaneseList = self.japaneseList, let japaneseType = self.japaneseType else {return}
         for japanese in japaneseList{
@@ -148,7 +173,7 @@ class ShowCharactersViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        try! fetchedResultController.performFetch()
     }
     
     func updateLabels() {
@@ -194,6 +219,182 @@ class ShowCharactersViewController: UIViewController {
         self.nextCharacter()
     }
      */
+    
+    func numberOfCharacters() -> Int {
+        // return total number of characters that are in the list
+        var numberOfCharacters = 0
+        
+        for (_, value) in self.japaneseDict {
+            for character in value {
+                if character != nil {
+                    numberOfCharacters += 1
+                }
+            }
+        }
+        return numberOfCharacters
+    }
+    
+    func randomCharacter() -> String {
+        // chooses a character randomly, returns it
+        // generates random numbers
+        let soundIndex = Int(arc4random()) % self.mutableList.count
+        let vowelIndex = Int(arc4random()) % self.mutableList[soundIndex].1.count
+        // picks a character with random numbers
+        var showCharacter = self.mutableList[soundIndex].1[vowelIndex]
+        // picks a list of possible characters of the picked character
+        self.posibilities = self.mutablePosibilitiesList[soundIndex][vowelIndex]
+        
+        self.soundType = self.mutableList[soundIndex].0
+        let vowel = self.vowelSounds[soundIndex][vowelIndex]
+        // removes picked characters and list to avoid choosing again
+        self.mutableList[soundIndex].1.remove(at: vowelIndex)
+        self.mutablePosibilitiesList[soundIndex].remove(at: vowelIndex)
+        self.vowelSounds[soundIndex].remove(at: vowelIndex)
+        if showCharacter == "　" {
+            if self.mutableList[soundIndex].1 == [] {
+                // removes emply list
+                self.mutableList.remove(at: soundIndex)
+                self.mutablePosibilitiesList.remove(at: soundIndex)
+                self.vowelSounds.remove(at: soundIndex)
+            }
+            //chooses character again
+            showCharacter = randomCharacter()
+        }
+        else {
+            if self.mutableList[soundIndex].1 == [] {
+                // removes emply list
+                self.mutableList.remove(at: soundIndex)
+                self.mutablePosibilitiesList.remove(at: soundIndex)
+                self.vowelSounds.remove(at: soundIndex)
+            }
+            // updates counter
+            self.counter += 1
+            //make correctsound
+            var correctsound = ""
+            if self.soundType == "vowel" {
+                correctsound = vowel
+            } else {
+                correctsound = soundType.lowercased() + vowel
+            }
+            self.sound = correctsound
+            self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
+            self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
+            //updates currentNumber
+            self.currentNumber = self.counter
+        }
+        return showCharacter
+    }
+    
+    func orderCharacter() -> String {
+        // shows a character orderly
+        if self.vowelIndexCounter == soundAndLettersList[self.soundIndexCounter].1.count {
+            self.vowelIndexCounter = 0
+            self.soundIndexCounter += 1
+            if self.soundIndexCounter == soundAndLettersList.count {
+                self.vowelIndexCounter = 0
+                self.soundIndexCounter = 0
+            }
+        }
+        let character = soundAndLettersList[self.soundIndexCounter].1[self.vowelIndexCounter]
+        guard let showCharacter = character else {
+            self.vowelIndexCounter += 1
+            return orderCharacter()
+        }
+        self.soundType = soundAndLettersList[self.soundIndexCounter].0
+        let vowel = self.vowels[self.vowelIndexCounter]
+        self.posibilities = self.posibilitiesDict[showCharacter]!
+        self.vowelIndexCounter += 1
+        self.counter += 1
+        //makes correctsound
+        var correctsound = ""
+        if self.soundType == "vowel" {
+            correctsound = vowel
+        } else {
+            correctsound = soundType.lowercased() + vowel
+        }
+        self.sound = correctsound
+        self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
+        self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
+        //updates currentNumber
+        self.currentNumber = self.counter
+        return showCharacter
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cancel" {
+            let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
+            // makes lists emply lists
+            japaneseCharactersTVC.selectedJapaneseList = [Japanese]()
+            japaneseCharactersTVC.selectedPosibilitiesList = [Posibilities]()
+            japaneseCharactersTVC.tableView.reloadData()
+        }
+    }
+    
+    func isAlpha(char: Character) -> Bool {
+        switch char {
+        case "a"..."z":
+            return true
+        case "A"..."Z":
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func updateCoreData() {
+        //find word in correctWord from coredata [WordLearnt], if found update number of correct and give point
+        let saveContext = coreDataStack.privateContext
+        guard let wordLearnts = fetchedResultController.fetchedObjects else {return}
+        for character in goodJapaneseList {
+            var find = false //flag to decide whether find or not
+            for wordLearnt in wordLearnts {
+                if wordLearnt.word == character {
+                    let backendEntity = coreDataStack.privateContext.object(with: wordLearnt.objectID) as! WordLearnt
+                    if backendEntity.confidenceCounter < 5 {
+                        backendEntity.confidenceCounter += 1
+                    }
+                    //update flag
+                    find = true
+                    break
+                }
+            }
+            //if not found, insert word to coredata and give points
+            if !find {
+                let newWordLearnt = WordLearnt(
+                    context: saveContext
+                )
+                newWordLearnt.word = character
+                newWordLearnt.confidenceCounter = 1
+                newWordLearnt.type = japaneseType.rawValue
+            }
+        }
+        //find word in correctWord from coredata [WordLearnt], if found update number of wrong
+        for character in notOkJapaneseList {
+            var find = false //flag to decide whether find or not
+            for wordLearnt in wordLearnts {
+                if wordLearnt.word == character {
+                    let backendEntity = coreDataStack.privateContext.object(with: wordLearnt.objectID) as! WordLearnt
+                    if backendEntity.confidenceCounter > 0 {
+                        backendEntity.confidenceCounter -= 1
+                    }
+                    find = true
+                    break
+                }
+            }
+            //if not found, insert word to coredata
+            if find == false{
+                let newWordLearnt = WordLearnt(
+                    context: saveContext
+                )
+                newWordLearnt.word = character
+                newWordLearnt.confidenceCounter = 0
+                newWordLearnt.type = japaneseType.rawValue
+            }
+        }
+        // saves core data
+        coreDataStack.saveTo(context: coreDataStack.privateContext)
+    }
+    
     @IBAction func nextButtonTapped(_ sender: Any) {
         
         refreshTask()
@@ -201,14 +402,15 @@ class ShowCharactersViewController: UIViewController {
         if self.currentNumber < self.totalNumberOfCharacter {
             if self.counter == self.currentNumber {
                 self.soundLabel.text = ""
-                switch self.showingStyle {
-                case .order:
-                    self.shownCharacter = orderCharacter()
-                case .random:
-                    self.shownCharacter = randomCharacter()
-                default:
-                    self.shownCharacter = orderCharacter()
-                }
+                self.shownCharacter = orderCharacter()
+//                switch self.showingStyle {
+//                case .order:
+//                    self.shownCharacter = orderCharacter()
+//                case .random:
+//                    self.shownCharacter = randomCharacter()
+//                default:
+//                    self.shownCharacter = orderCharacter()
+//                }
             } else {
                 let nextNumber = self.currentNumber + 1
                 self.sound = self.shownCharacters[nextNumber - 1].0
@@ -285,181 +487,50 @@ class ShowCharactersViewController: UIViewController {
             audioEngine.stop()
             recognitionRequest?.endAudio()
         }
-        let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
-        // sends dictionaly of generated character by voice recognition to RecapViewController
-        var judgedCharacters = [Judge.correct: [(String, String)](), Judge.wrong: [(String, String)]()]
-        for (key, value) in judgedShownCharacters {
-            switch value.0 {
-            case .correct:
-                judgedCharacters[.correct]?.append((value.1, key))
-            default:
-                judgedCharacters[.wrong]?.append((value.1, key))
-            }
-        }
-        recapVC.judgedCharacters = judgedCharacters
-        recapVC.buffer = self.buffers
-        recapVC.japaneseType = self.japaneseType
-        recapVC.showingStyle = self.showingStyle
-        // goes to RecapViewController
-        self.navigationController?.pushViewController(recapVC, animated: true)
-    }
-    
-    func numberOfCharacters() -> Int {
-        // return total number of characters that are in the list
-        var numberOfCharacters = 0
-//        for i in 0...list.count - 1 {
-//            for j in 0...list[i].letters.count - 1 {
-//                if list[i].letters[j] != "　" {
-//                    numberOfCharacters += 1
-//                }
+//        let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
+//        // sends dictionaly of generated character by voice recognition to RecapViewController
+//        var judgedCharacters = [Judge.correct: [(String, String)](), Judge.wrong: [(String, String)]()]
+//        for (key, value) in judgedShownCharacters {
+//            switch value.0 {
+//            case .correct:
+//                judgedCharacters[.correct]?.append((value.1, key))
+//            default:
+//                judgedCharacters[.wrong]?.append((value.1, key))
 //            }
 //        }
-        
-        for (_, value) in self.japaneseDict {
-            for character in value {
-                if character != nil {
-                    numberOfCharacters += 1
-                }
-            }
-        }
-        return numberOfCharacters
+//        recapVC.judgedCharacters = judgedCharacters
+//        recapVC.buffer = self.buffers
+//        recapVC.japaneseType = self.japaneseType
+//        recapVC.showingStyle = self.showingStyle
+//        // goes to RecapViewController
+//        self.present(recapVC, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func randomCharacter() -> String {
-        // chooses a character randomly, returns it
-        // generates random numbers
-        let soundIndex = Int(arc4random()) % self.mutableList.count
-        let vowelIndex = Int(arc4random()) % self.mutableList[soundIndex].1.count
-        // picks a character with random numbers
-        var showCharacter = self.mutableList[soundIndex].1[vowelIndex]
-        // picks a list of possible characters of the picked character
-        self.posibilities = self.mutablePosibilitiesList[soundIndex][vowelIndex]
-        
-        self.soundType = self.mutableList[soundIndex].0
-        let vowel = self.vowelSounds[soundIndex][vowelIndex]
-        // removes picked characters and list to avoid choosing again
-        self.mutableList[soundIndex].1.remove(at: vowelIndex)
-        self.mutablePosibilitiesList[soundIndex].remove(at: vowelIndex)
-        self.vowelSounds[soundIndex].remove(at: vowelIndex)
-        if showCharacter == "　" {
-            if self.mutableList[soundIndex].1 == [] {
-                // removes emply list
-                self.mutableList.remove(at: soundIndex)
-                self.mutablePosibilitiesList.remove(at: soundIndex)
-                self.vowelSounds.remove(at: soundIndex)
-            }
-            //chooses character again
-            showCharacter = randomCharacter()
-        }
-        else {
-            if self.mutableList[soundIndex].1 == [] {
-                // removes emply list
-                self.mutableList.remove(at: soundIndex)
-                self.mutablePosibilitiesList.remove(at: soundIndex)
-                self.vowelSounds.remove(at: soundIndex)
-            }
-            // updates counter
-            self.counter += 1
-            //make correctsound
-            var correctsound = ""
-            if self.soundType == "vowel" {
-                correctsound = vowel
-            } else {
-                correctsound = soundType.lowercased() + vowel
-            }
-            self.sound = correctsound
-            self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
-            self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
-            //updates currentNumber
-            self.currentNumber = self.counter
-        }
-        return showCharacter
-    }
-    
-    func orderCharacter() -> String {
-        // shows a character orderly
-//        if self.vowelIndexCounter == list[self.soundIndexCounter].letters.count {
-//            self.vowelIndexCounter = 0
-//            self.soundIndexCounter += 1
-//            if self.soundIndexCounter == list.count {
-//                self.vowelIndexCounter = 0
-//                self.soundIndexCounter = 0
-//            }
-//        }
-//        var showCharacter = list[self.soundIndexCounter].letters[self.vowelIndexCounter]
-//        self.soundType = list[self.soundIndexCounter].sound
-//        let vowel = self.vowelSounds[self.soundIndexCounter][self.vowelIndexCounter]
-//        self.posibilities = self.posibilitiesList[self.soundIndexCounter].posibilitiesList[self.vowelIndexCounter]
-//        self.vowelIndexCounter += 1
-//        if showCharacter == "　" {
-//            showCharacter = orderCharacter()
-//        }
-//        else {
-//            self.counter += 1
-//            //makes correctsound
-//            var correctsound = ""
-//            if self.soundType == "vowel" {
-//                correctsound = vowel
-//            } else {
-//                correctsound = soundType.lowercased() + vowel
-//            }
-//            self.sound = correctsound
-//            self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
-//            self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
-//            //updates currentNumber
-//            self.currentNumber = self.counter
-//        }
-        if self.vowelIndexCounter == soundAndLettersList[self.soundIndexCounter].0.count {
-            self.vowelIndexCounter = 0
-            self.soundIndexCounter += 1
-            if self.soundIndexCounter == list.count {
-                self.vowelIndexCounter = 0
-                self.soundIndexCounter = 0
-            }
-        }
-        let character = soundAndLettersList[self.soundIndexCounter].1[self.vowelIndexCounter]
-        guard let showCharacter = character else {
-            return orderCharacter()
-        }
-        self.soundType = soundAndLettersList[self.soundIndexCounter].0
-        let vowel = self.vowels[self.vowelIndexCounter]
-        self.posibilities = self.posibilitiesDict[showCharacter]!
-        self.vowelIndexCounter += 1
-        self.counter += 1
-        //makes correctsound
-        var correctsound = ""
-        if self.soundType == "vowel" {
-            correctsound = vowel
+    @IBAction func notOkButtonTapped(_ sender: Any) {
+        self.notOkJapaneseList.append(self.shownCharacter)
+        if counter == totalNumberOfCharacter {
+            notOkButton.isHidden = true
+            goodButton.isHidden = true
+            finishButton.isHidden = false
         } else {
-            correctsound = soundType.lowercased() + vowel
+            self.shownCharacter = orderCharacter()
+            self.updateLabels()
         }
-        self.sound = correctsound
-        self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
-        self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
-        //updates currentNumber
-        self.currentNumber = self.counter
-        return showCharacter
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "cancel" {
-            let japaneseCharactersTVC = segue.destination as! JapaneseCharactersTableViewController
-            // makes lists emply lists
-            japaneseCharactersTVC.selectedJapaneseList = [Japanese]()
-            japaneseCharactersTVC.selectedPosibilitiesList = [Posibilities]()
-            japaneseCharactersTVC.tableView.reloadData()
+    @IBAction func goodButtonTapped(_ sender: Any) {
+        self.goodJapaneseList.append(self.shownCharacter)
+        if counter == totalNumberOfCharacter {
+            notOkButton.isHidden = true
+            goodButton.isHidden = true
+            finishButton.isHidden = false
+        } else {
+            self.shownCharacter = orderCharacter()
+            self.updateLabels()
         }
-    }
-    
-    func isAlpha(char: Character) -> Bool {
-        switch char {
-        case "a"..."z":
-            return true
-        case "A"..."Z":
-            return true
-        default:
-            return false
-        }
+        
     }
     
 }
@@ -515,8 +586,8 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                             print("the appended chara..." + self.shownCharacter + ": " + theBestString)
                             self.judge = .correct
                             
-                            let sound = self.judgedShownCharacters[self.shownCharacter]?.1
-                            self.judgedShownCharacters[self.shownCharacter] = (self.judge, sound!)
+//                            let sound = self.judgedShownCharacters[self.shownCharacter]?.1
+//                            self.judgedShownCharacters[self.shownCharacter] = (self.judge, sound!)
                             
                             willAppend = false
                             recognitionRequest.shouldReportPartialResults = false
@@ -530,8 +601,8 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                         if theBestString.count > 2 && !self.isAlpha(char: theBestString.first!) {
                             self.judge = .wrong
                             
-                            let sound = self.judgedShownCharacters[self.shownCharacter]?.1
-                            self.judgedShownCharacters[self.shownCharacter] = (self.judge, sound!)
+//                            let sound = self.judgedShownCharacters[self.shownCharacter]?.1
+//                            self.judgedShownCharacters[self.shownCharacter] = (self.judge, sound!)
                             
                             willAppend = false
                             recognitionRequest.shouldReportPartialResults = false
