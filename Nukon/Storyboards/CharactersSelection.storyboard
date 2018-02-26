@@ -536,6 +536,7 @@
                         <outlet property="nLabel" destination="dFh-Ko-5q0" id="fK2-Hb-Hgh"/>
                         <outlet property="olabel" destination="GAF-pJ-2gf" id="4EQ-f8-xxH"/>
                         <outlet property="parentsStackView" destination="Amd-jv-9Qp" id="d5k-Pf-QaU"/>
+                        <outlet property="practiceButton" destination="ytF-Lt-8Sd" id="8Kv-Ya-FKG"/>
                         <outlet property="sixthChidStackView" destination="NBf-Wr-FIs" id="pwm-KG-byb"/>
                         <outlet property="ulabel" destination="HQB-47-kZ7" id="Lq4-4q-ABp"/>
                         <outletCollection property="soundsLabels" destination="hNV-DQ-pBt" collectionClass="NSMutableArray" id="xey-Ag-0Qv"/>

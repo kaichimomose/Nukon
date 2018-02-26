@@ -50,6 +50,9 @@ class JapaneseCharactersCollectionViewController: UIViewController {
     @IBOutlet var soundsLabels: [UILabel]!
     @IBOutlet var checkboxes: [UIImageView]!
     
+    @IBOutlet weak var practiceButton: UIButton!
+    
+    
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +99,9 @@ class JapaneseCharactersCollectionViewController: UIViewController {
             label.layer.cornerRadius = 25
             label.layer.masksToBounds = true
         }
+        
+        practiceButton.alpha = 0.5
+        practiceButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -229,26 +235,48 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         let label: UILabel = self.labels[index]
         if imageView.image == #imageLiteral(resourceName: "checkedcheckbox") {
             imageView.image = #imageLiteral(resourceName: "emptycheckbox")
-            self.selectedJapanese[self.consonant]![index] = nil
-            var nilCount = 0
-            for character in self.selectedJapanese[self.consonant]! {
-                if character != nil {
-                    break
-                } else {
-                    nilCount += 1
-                }
-            }
-            if nilCount == 6 {
-                self.selectedJapanese[self.consonant] = nil
-            }
+            //flashing delegation task
             self.delegate?.stopFlashingAnimation(Index: index)
+            //deletes character from list
+            self.selectedJapanese[self.consonant]![index] = nil
+            //checks a key has a value
+            self.checkDictionary()
+            //if dictionary is empty, makes practice button enable
+            if self.selectedJapanese.isEmpty {
+                practiceButton.alpha = 0.5
+                practiceButton.isEnabled = false
+            }
         } else {
             imageView.image = #imageLiteral(resourceName: "checkedcheckbox")
+            self.delegate?.flashingAnimation(Index: index)
+            //makes practice button avairable
+            if self.selectedJapanese.isEmpty {
+                practiceButton.alpha = 1
+                practiceButton.isEnabled = true
+            }
+            //if key does not have value, assigns value
             if (self.selectedJapanese[self.consonant] == nil) {
                 self.selectedJapanese[self.consonant] = [nil, nil, nil, nil, nil, nil]
             }
+            //assigns character
             self.selectedJapanese[self.consonant]![index] = label.text!
-            self.delegate?.flashingAnimation(Index: index)
+        }
+    }
+    
+    func checkDictionary() {
+        var nilCount = 0
+        for character in self.selectedJapanese[self.consonant]! {
+            //if a key has a value, return
+            if character != nil {
+                return
+            } else {
+                //increment nil number
+                nilCount += 1
+            }
+        }
+        //all values are nil, delete key from ditionary
+        if nilCount == 6 {
+            self.selectedJapanese[self.consonant] = nil
         }
     }
     
@@ -314,14 +342,18 @@ class JapaneseCharactersCollectionViewController: UIViewController {
     }
     
     @IBAction func practiceButtonTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
-        let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
-        showCharacterVC.japaneseList = self.japaneseList
-        showCharacterVC.japaneseDict = self.selectedJapanese
-        showCharacterVC.japaneseType = self.selectedType
-        self.selectedJapanese = [:]
-        parentsStackView.isHidden = true
-        present(showCharacterVC, animated: true, completion: nil)
+        print(selectedJapanese)
+        if !selectedJapanese.isEmpty {
+            let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
+            let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
+            showCharacterVC.japaneseList = self.japaneseList
+            showCharacterVC.japaneseDict = self.selectedJapanese
+            showCharacterVC.japaneseType = self.selectedType
+            self.selectedJapanese = [:]
+            parentsStackView.isHidden = true
+            present(showCharacterVC, animated: true, completion: nil)
+        }
+        
     }
     
 }

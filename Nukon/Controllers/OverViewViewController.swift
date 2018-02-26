@@ -49,7 +49,10 @@ class OverViewViewController: UIViewController, GetValueFormCell {
         collectionView.collectionViewLayout = layout
         collectionView.alwaysBounceVertical = true
         
-        self.title = "Overview"
+        self.title = selectedType.rawValue
+        
+        practiceButton.alpha = 0.5
+        practiceButton.isEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,17 +66,49 @@ class OverViewViewController: UIViewController, GetValueFormCell {
     
     //delegation function
     func selectCharacter(consonant: String, index: Int, character: String) {
+        //makes practice button avairable
+        if self.selectedJapanese.isEmpty {
+            practiceButton.alpha = 1
+            practiceButton.isEnabled = true
+        }
+        //if key does not have value, assigns value
         if (self.selectedJapanese[consonant] == nil) {
             self.selectedJapanese[consonant] = [nil, nil, nil, nil, nil, nil]
         }
+        //assigns character
         self.selectedJapanese[consonant]![index] = character
     }
     
     //delegation function
     func deselectCharacter(consonant: String, index: Int) {
+        //deletes character from list
         self.selectedJapanese[consonant]![index] = nil
+        //checks a key has a value
+        self.checkDictionary(consonant: consonant)
+        //if dictionary is empty, makes practice button enable
+        if self.selectedJapanese.isEmpty {
+            practiceButton.alpha = 0.5
+            practiceButton.isEnabled = false
+        }
     }
 
+    func checkDictionary(consonant: String) {
+        var nilCount = 0
+        for character in self.selectedJapanese[consonant]! {
+            //if a key has a value, return
+            if character != nil {
+                return
+            } else {
+                //increment nil number
+                nilCount += 1
+            }
+        }
+        //all values are nil, delete key from ditionary
+        if nilCount == 6 {
+            self.selectedJapanese[consonant] = nil
+        }
+    }
+    
     //MARK: - Actions
     @IBAction func practiceTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Speaking", bundle: .main)

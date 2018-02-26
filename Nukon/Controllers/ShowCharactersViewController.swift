@@ -116,7 +116,6 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
     @IBOutlet weak var nextCharacterButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
-    @IBOutlet weak var judgeLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var notOkButton: UIButton!
@@ -190,6 +189,7 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
             self.soundLabel.text = self.sound
             self.characterLabel.backgroundColor = .red
         case .wait:
+            self.soundLabel.text = self.sound
             self.characterLabel.backgroundColor = .yellow
         case .yet:
             self.soundLabel.text = ""
@@ -397,6 +397,37 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
         coreDataStack.saveTo(context: coreDataStack.privateContext)
     }
     
+    func speakJapanese(string: String) {
+        let textToSpeak = AVSpeechUtterance(string: string)
+        textToSpeak.rate = 0.01
+        textToSpeak.volume = 1.0
+        //        let numberOfSeconds = 10.0
+        //        textToSpeak.preUtteranceDelay = numberOfSeconds
+        let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
+        let speak = AVSpeechSynthesizer()
+        textToSpeak.voice = speakerVoice
+        //        speak.delegate = self
+        speak.speak(textToSpeak)
+    }
+    
+    func soundAnimation() {
+        self.soundLabel.alpha = 0
+        self.soundLabel.text = ""
+        
+        let fadein = {
+            self.soundLabel.text = self.sound
+            self.soundLabel.alpha = 1
+        }
+        
+        UIView.animate(withDuration: 2.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity:0.7, options: [.repeat,.autoreverse], animations: fadein, completion: nil)
+    }
+    
+    @IBAction func characterTapped(_ sender: Any) {
+        speakJapanese(string: self.shownCharacter)
+        soundAnimation()
+    }
+    
+    
     @IBAction func nextButtonTapped(_ sender: Any) {
         
         refreshTask()
@@ -420,7 +451,7 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
                 self.posibilities = self.shownCharacters[nextNumber - 1].2
                 self.currentNumber = nextNumber
             }
-            self.judge = self.judgedShownCharacters[self.shownCharacter]!.0
+            self.judge = .yet
             self.comment = .start
             self.buttonTitle = .start
             self.updateLabels()
@@ -439,7 +470,7 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
             self.currentNumber = backNumber
             self.comment = .start
             self.buttonTitle = .start
-            self.judge = self.judgedShownCharacters[self.shownCharacter]!.0
+            self.judge = .yet
             self.updateLabels()
         }
     }
@@ -489,23 +520,6 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
             audioEngine.stop()
             recognitionRequest?.endAudio()
         }
-//        let recapVC  = storyboard?.instantiateViewController(withIdentifier: "RecapViewController") as! RecapViewController
-//        // sends dictionaly of generated character by voice recognition to RecapViewController
-//        var judgedCharacters = [Judge.correct: [(String, String)](), Judge.wrong: [(String, String)]()]
-//        for (key, value) in judgedShownCharacters {
-//            switch value.0 {
-//            case .correct:
-//                judgedCharacters[.correct]?.append((value.1, key))
-//            default:
-//                judgedCharacters[.wrong]?.append((value.1, key))
-//            }
-//        }
-//        recapVC.judgedCharacters = judgedCharacters
-//        recapVC.buffer = self.buffers
-//        recapVC.japaneseType = self.japaneseType
-//        recapVC.showingStyle = self.showingStyle
-//        // goes to RecapViewController
-//        self.present(recapVC, animated: true, completion: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -517,6 +531,9 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
             finishButton.isHidden = false
         } else {
             self.shownCharacter = orderCharacter()
+            self.comment = .start
+            self.buttonTitle = .start
+            self.judge = self.judgedShownCharacters[self.shownCharacter]!.0
             self.updateLabels()
         }
         
@@ -530,6 +547,9 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
             finishButton.isHidden = false
         } else {
             self.shownCharacter = orderCharacter()
+            self.comment = .start
+            self.buttonTitle = .start
+            self.judge = self.judgedShownCharacters[self.shownCharacter]!.0
             self.updateLabels()
         }
         
@@ -588,9 +608,6 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                             print("the appended chara..." + self.shownCharacter + ": " + theBestString)
                             self.judge = .correct
                             
-//                            let sound = self.judgedShownCharacters[self.shownCharacter]?.1
-//                            self.judgedShownCharacters[self.shownCharacter] = (self.judge, sound!)
-                            
                             willAppend = false
                             recognitionRequest.shouldReportPartialResults = false
                             recognitionRequest.endAudio()
@@ -601,10 +618,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     
                     if willAppend {
                         if theBestString.count > 2 && !self.isAlpha(char: theBestString.first!) {
-                            self.judge = .wrong
-                            
-//                            let sound = self.judgedShownCharacters[self.shownCharacter]?.1
-//                            self.judgedShownCharacters[self.shownCharacter] = (self.judge, sound!)
+                            self.judge = .wait
                             
                             willAppend = false
                             recognitionRequest.shouldReportPartialResults = false
@@ -648,21 +662,6 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 self.comment = .start
                 self.buttonTitle = .start
                 self.updateLabels()
-                
-//                if error != nil {
-//                    self.comment = .start
-//                    self.buttonTitle = .start
-//                }
-//                else if self.counter == self.totalNumberOfCharacter{
-//                    self.comment = .recap
-//                    self.buttonTitle = .recap
-//                    self.updateLabels()
-//                }
-//                else {
-//                    self.comment = .next
-//                    self.buttonTitle = .next
-//                    self.updateLabels()
-//                }
                 
             }
         }
