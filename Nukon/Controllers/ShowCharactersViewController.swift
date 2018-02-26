@@ -18,7 +18,7 @@ enum Judge: String {
 }
 
 enum Comment: String {
-    case start = "Hold red button to record"
+    case start = "Hold button to record"
     case recording = "Recording, say just once"
     case recognizing = "Recognizing"
     case again = "Record again"
@@ -38,6 +38,7 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
     //values to show characters
     var japaneseList: [Japanese]!
     var japaneseDict: [String: [String?]]!
+    let instance = PosibilitiesDict.instance
     var posibilitiesDict = [String: [String]]()
     var japaneseType: JapaneseType!
     var soundAndLettersList = [(String, [String?])]()
@@ -150,7 +151,7 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
         
         switch japaneseType {
         case .hiragana, .katakana:
-            self.posibilitiesDict = PosibilitiesDict().regularPosibilitiesDict
+            self.posibilitiesDict = instance.regularPosibilitiesDict
         case .voicedHiragana, .voicedKatakana:
             self.posibilitiesDict = [:]
         case .yVowelHiragana, .yVowelKatakana:
@@ -302,7 +303,7 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
         }
         self.soundType = soundAndLettersList[self.soundIndexCounter].0
         let vowel = self.vowels[self.vowelIndexCounter]
-        self.posibilities = self.posibilitiesDict[showCharacter]!
+//        self.posibilities = self.posibilitiesDict[showCharacter]!
         self.vowelIndexCounter += 1
         self.counter += 1
         //makes correctsound
@@ -312,6 +313,7 @@ class ShowCharactersViewController: UIViewController, NSFetchedResultsController
         } else {
             correctsound = soundType.lowercased() + vowel
         }
+        self.posibilities = self.posibilitiesDict[correctsound]!
         self.sound = correctsound
         self.judgedShownCharacters[showCharacter] = (.yet, self.soundType)
         self.shownCharacters.append((correctsound, showCharacter, self.posibilities))

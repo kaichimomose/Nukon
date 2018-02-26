@@ -130,39 +130,33 @@ class PracticeViewController: UIViewController {
     
 
     @IBAction func tappedHiraganaButton(_ sender: Any) {
-        let newLevelVC = storyboard?.instantiateViewController(withIdentifier: "NewLevelVC") as! NewLevelViewController
-        if let japaneseType = self.japaneseType {
-            newLevelVC.japaneseType = japaneseType
-        } else {
-            newLevelVC.selectedType = SelectedType.hiragana
-//            newLevelVC.numberOfRegular = regularHiraganaWordsLearnt
-//            newLevelVC.numberOfVoiced = voicedHiraganaWordsLearnt
-//            newLevelVC.numberOfYVowel = yVowelHiraganaWordsLearnt
-        }
-        if let sound = self.sound {
-            newLevelVC.sound = sound
-        }
+//        let newLevelVC = storyboard?.instantiateViewController(withIdentifier: "NewLevelVC") as! NewLevelViewController
+//        if let japaneseType = self.japaneseType {
+//            newLevelVC.japaneseType = japaneseType
+//        } else {
+//            newLevelVC.selectedType = SelectedType.hiragana
+////            newLevelVC.numberOfRegular = regularHiraganaWordsLearnt
+////            newLevelVC.numberOfVoiced = voicedHiraganaWordsLearnt
+////            newLevelVC.numberOfYVowel = yVowelHiraganaWordsLearnt
+//        }
+//        if let sound = self.sound {
+//            newLevelVC.sound = sound
+//        }
+//        animateOutHiraganaPopUp()
+//        self.navigationController?.pushViewController(newLevelVC, animated: true)
         animateOutHiraganaPopUp()
-        self.navigationController?.pushViewController(newLevelVC, animated: true)
+        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
+        japaneseCharactersCVC.selectedType = .hiragana
+        self.navigationController?.pushViewController(japaneseCharactersCVC, animated: true)
     }
     
     
     @IBAction func tappedKatakanaButton(_ sender: Any) {
-        let newLevelVC = storyboard?.instantiateViewController(withIdentifier: "NewLevelVC") as! NewLevelViewController
-        if let japaneseType = self.japaneseType {
-            newLevelVC.japaneseType = japaneseType
-        } else {
-            newLevelVC.selectedType = SelectedType.katakana
-//            newLevelVC.numberOfRegular = regularKatakanaWordsLearnt
-//            newLevelVC.numberOfVoiced = voicedKatakanaWordsLearnt
-//            newLevelVC.numberOfYVowel = yVowelKatakanaWordsLearnt
-        }
-        if let sound = self.sound {
-            newLevelVC.sound = sound
-        }
         animateOutKatakanaPopUp()
-//        self.navigationController?.pushViewController(newLevelVC, animated: true)
-        present(newLevelVC, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "OverView", bundle: .main)
+        let overViewVC = storyboard.instantiateViewController(withIdentifier: "OverViewViewController") as! OverViewViewController
+        self.navigationController?.pushViewController(overViewVC, animated: true)
     }
     
     @IBAction func tappedKanjiButton(_ sender: Any) {

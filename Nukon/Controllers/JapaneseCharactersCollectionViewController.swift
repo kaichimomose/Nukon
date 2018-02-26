@@ -230,6 +230,17 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         if imageView.image == #imageLiteral(resourceName: "checkedcheckbox") {
             imageView.image = #imageLiteral(resourceName: "emptycheckbox")
             self.selectedJapanese[self.consonant]![index] = nil
+            var nilCount = 0
+            for character in self.selectedJapanese[self.consonant]! {
+                if character != nil {
+                    break
+                } else {
+                    nilCount += 1
+                }
+            }
+            if nilCount == 6 {
+                self.selectedJapanese[self.consonant] = nil
+            }
             self.delegate?.stopFlashingAnimation(Index: index)
         } else {
             imageView.image = #imageLiteral(resourceName: "checkedcheckbox")
@@ -308,6 +319,8 @@ class JapaneseCharactersCollectionViewController: UIViewController {
         showCharacterVC.japaneseList = self.japaneseList
         showCharacterVC.japaneseDict = self.selectedJapanese
         showCharacterVC.japaneseType = self.selectedType
+        self.selectedJapanese = [:]
+        parentsStackView.isHidden = true
         present(showCharacterVC, animated: true, completion: nil)
     }
     

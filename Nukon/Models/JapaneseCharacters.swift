@@ -71,5 +71,5 @@ struct JapaneseCharacters {
         Japanese(select: false, sound: "Ry", letters: ["リャ", "　", "リュ", "　", "リョ", "　"])
     ]
     
-    var vowelSounds = ["a", "i", "u", "e", "o", " "]
+    var vowelSounds = ["a", "i", "u", "e", "o", ""]
 }
