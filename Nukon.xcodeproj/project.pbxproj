@@ -43,12 +43,18 @@
 		BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA65BB51FCB5AD100F426F0 /* UserData.swift */; };
 		BFB83CEA1FE19CF30017D0E7 /* Metal_Gong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFB83CE91FE19CF30017D0E7 /* Metal_Gong.mp3 */; };
 		BFD0D7D21FDF6379000D6F1C /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD0D7D11FDF6378000D6F1C /* MGPhotoHelper.swift */; };
+		F60611DA2049F673007407C3 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60611D92049F673007407C3 /* MenuButton.swift */; };
 		F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */; };
 		F64CBD9A1FCAC707001E0E47 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */; };
 		F64CBD9C1FCAC7DC001E0E47 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */; };
+		F64CE7702045AC2000C480EB /* HiraganaHomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */; };
+		F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */; };
+		F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */; };
 		F66783711FDF2E640064CAD3 /* nukon_logo@3x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F667836E1FDF2E630064CAD3 /* nukon_logo@3x.pdf */; };
 		F66783721FDF2E640064CAD3 /* nukon_logo@2x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F667836F1FDF2E630064CAD3 /* nukon_logo@2x.pdf */; };
 		F66783731FDF2E640064CAD3 /* nukon_logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F66783701FDF2E640064CAD3 /* nukon_logo.pdf */; };
+		F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691EEF82048B6CF00ED5DA8 /* SunButton.swift */; };
+		F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691EEFB2048BB4000ED5DA8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,12 +96,18 @@
 		BFA65BB51FCB5AD100F426F0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BFB83CE91FE19CF30017D0E7 /* Metal_Gong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Metal_Gong.mp3; sourceTree = "<group>"; };
 		BFD0D7D11FDF6378000D6F1C /* MGPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
+		F60611D92049F673007407C3 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabGradientButton.swift; sourceTree = "<group>"; };
 		F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HiraganaHomeScreen.storyboard; sourceTree = "<group>"; };
+		F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiraganaHomeScreenViewController.swift; sourceTree = "<group>"; };
+		F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalityFeatureLabel.swift; sourceTree = "<group>"; };
 		F667836E1FDF2E630064CAD3 /* nukon_logo@3x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "nukon_logo@3x.pdf"; sourceTree = "<group>"; };
 		F667836F1FDF2E630064CAD3 /* nukon_logo@2x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "nukon_logo@2x.pdf"; sourceTree = "<group>"; };
 		F66783701FDF2E640064CAD3 /* nukon_logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = nukon_logo.pdf; sourceTree = "<group>"; };
+		F691EEF82048B6CF00ED5DA8 /* SunButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunButton.swift; sourceTree = "<group>"; };
+		F691EEFB2048BB4000ED5DA8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +140,7 @@
 		BF5FF9511FA0D35D00A46DE0 /* Nukon */ = {
 			isa = PBXGroup;
 			children = (
+				F691EEFA2048BB2400ED5DA8 /* Extensions */,
 				BF76DDD61FD9EF490030F52B /* Custom View Classes */,
 				BF5FF9671FA0D56300A46DE0 /* Controllers */,
 				BF5FF96B1FA0D56300A46DE0 /* Storyboards */,
@@ -158,6 +171,7 @@
 				F64CBD991FCAC706001E0E47 /* UserProfileViewController.swift */,
 				BF9B20B51FD70C7B00776A67 /* ReviewTableViewController.swift */,
 				BF51F0CE1FD315CA00DB6DB8 /* ReviewViewController.swift */,
+				F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -185,6 +199,7 @@
 				BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */,
 				F64CBD9B1FCAC7DC001E0E47 /* UserProfile.storyboard */,
 				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
+				F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -235,6 +250,9 @@
 				BF76DDDA1FD9EF490030F52B /* GradientView.swift */,
 				BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */,
 				F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */,
+				F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */,
+				F691EEF82048B6CF00ED5DA8 /* SunButton.swift */,
+				F60611D92049F673007407C3 /* MenuButton.swift */,
 			);
 			path = "Custom View Classes";
 			sourceTree = "<group>";
@@ -245,6 +263,14 @@
 				BFB83CE91FE19CF30017D0E7 /* Metal_Gong.mp3 */,
 			);
 			path = LaunchScreenSound;
+			sourceTree = "<group>";
+		};
+		F691EEFA2048BB2400ED5DA8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F691EEFB2048BB4000ED5DA8 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +335,7 @@
 			files = (
 				BF5FF9751FA0D91200A46DE0 /* Practice.storyboard in Resources */,
 				F66783731FDF2E640064CAD3 /* nukon_logo.pdf in Resources */,
+				F64CE7702045AC2000C480EB /* HiraganaHomeScreen.storyboard in Resources */,
 				F66783711FDF2E640064CAD3 /* nukon_logo@3x.pdf in Resources */,
 				BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */,
 				F66783721FDF2E640064CAD3 /* nukon_logo@2x.pdf in Resources */,
@@ -330,14 +357,19 @@
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
 				BF51F0CF1FD315CA00DB6DB8 /* ReviewViewController.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
+				F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */,
 				BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
 				BF51F0D31FD31F1900DB6DB8 /* ReviewJapaneseCharactersCollectionViewCell.swift in Sources */,
 				BFA65BB61FCB5AD200F426F0 /* UserData.swift in Sources */,
 				BF0A869B1FB8F10D00B8305A /* SelectedSoundsHeaderTableViewCell.swift in Sources */,
 				BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */,
+				F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */,
+				F60611DA2049F673007407C3 /* MenuButton.swift in Sources */,
 				BF5FF97F1FA0DFFB00A46DE0 /* JapaneseCharactersTableViewCell.swift in Sources */,
 				BFA65BB41FCB4DDC00F426F0 /* CoreDataHelper.swift in Sources */,
+				F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */,
+				F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */,
 				BF76DDE21FD9F0E10030F52B /* NewLevelViewController.swift in Sources */,
 				BF5FF97D1FA0DF9300A46DE0 /* JapaneseCharactersTableViewController.swift in Sources */,
 				BF51F0D11FD3171800DB6DB8 /* ReviewCollectionReusableView.swift in Sources */,
@@ -489,11 +521,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CGUE68EN3T;
+				DEVELOPMENT_TEAM = K62Y623GK6;
 				INFOPLIST_FILE = Nukon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kaichi-momoseNukon";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mauldin-momoseNukon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -507,11 +539,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CGUE68EN3T;
+				DEVELOPMENT_TEAM = K62Y623GK6;
 				INFOPLIST_FILE = Nukon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kaichi-momoseNukon";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mauldin-momoseNukon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
