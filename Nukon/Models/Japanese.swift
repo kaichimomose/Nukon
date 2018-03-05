@@ -9,17 +9,17 @@
 import Foundation
 
 struct Japanese {
-    var select: Bool
+    var unLockNext: Bool
     let sound: String
     let letters: [String]
 //    let hiragana: [String]?
 }
 
 enum JapaneseType: String {
-    case hiragana = "hiragana"
-    case katakana = "katakana"
-    case voicedHiragana = "voiced-hiragana"
-    case voicedKatakana = "voiced-katakana"
+    case hiragana = "Hiragana"
+    case katakana = "Katakana"
+//    case voicedHiragana = "Voiced-hiragana"
+//    case voicedKatakana = "Voiced-katakana"
     case yVowelHiragana = "Y-vowel-hiragana"
     case yVowelKatakana = "Y-vowel-katakana"
 }

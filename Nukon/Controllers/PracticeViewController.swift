@@ -121,9 +121,9 @@ class PracticeViewController: UIViewController {
         
         guard let japaneseType = self.japaneseType else {return}
         switch japaneseType {
-        case .hiragana, .voicedHiragana, .yVowelHiragana:
+        case .hiragana, .yVowelHiragana:
             self.tappedHiraganaButton(self.hiraganaButton)
-        case .katakana, .voicedKatakana, .yVowelKatakana:
+        case .katakana, .yVowelKatakana:
             self.tappedKatakanaButton(self.katakanaButton)
         }
     }
@@ -147,16 +147,17 @@ class PracticeViewController: UIViewController {
         animateOutHiraganaPopUp()
         let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
         let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-        japaneseCharactersCVC.selectedType = .hiragana
+        japaneseCharactersCVC.japaneseType = .hiragana
         self.navigationController?.pushViewController(japaneseCharactersCVC, animated: true)
     }
     
     
     @IBAction func tappedKatakanaButton(_ sender: Any) {
         animateOutKatakanaPopUp()
-        let storyboard = UIStoryboard(name: "OverView", bundle: .main)
-        let overViewVC = storyboard.instantiateViewController(withIdentifier: "OverViewViewController") as! OverViewViewController
-        self.navigationController?.pushViewController(overViewVC, animated: true)
+        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
+        japaneseCharactersCVC.japaneseType = .katakana
+        self.navigationController?.pushViewController(japaneseCharactersCVC, animated: true)
     }
     
     @IBAction func tappedKanjiButton(_ sender: Any) {

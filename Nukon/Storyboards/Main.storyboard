@@ -37,15 +37,5 @@
             </objects>
             <point key="canvasLocation" x="1076" y="-142"/>
         </scene>
-        <!--UserProfile-->
-        <scene sceneID="2oF-5I-MPA">
-            <objects>
-                <viewControllerPlaceholder storyboardName="UserProfile" id="3tt-kU-oAV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="WO9-yD-20K"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qnc-Ue-Gtt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1111" y="433"/>
-        </scene>
     </scenes>
 </document>

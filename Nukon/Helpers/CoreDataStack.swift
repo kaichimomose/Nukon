@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-public final class CoredataStack {
-    static let instance = CoredataStack()
+public final class CoreDataStack {
+    static let instance = CoreDataStack()
     
     // Only allow static use, no instance creation
     private init() {}

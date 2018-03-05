@@ -11,47 +11,125 @@ import UIKit
 class OverViewCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
-    var selectedJapanese: [String?]! {
+    var isUnLocked: Bool!
+    var characterDict: [String: WordLearnt]!
+    
+    var japanese: Japanese! {
         didSet {
-            for i in 0..<selectedJapanese.count {
-                if selectedJapanese[i] != nil {
-                    checkboxesImageViews[i].image = #imageLiteral(resourceName: "checkedcheckbox")
-                } else {
-                    checkboxesImageViews[i].image = #imageLiteral(resourceName: "emptycheckbox")
+            let numberOfCharacters = japanese.letters.count
+            switch numberOfCharacters {
+                case 3:
+                    for i in 0..<japanese.letters.count {
+                        let apperIndex = i*2
+                        let character = japanese.letters[i]
+                        characterLabels[apperIndex].text = character
+                        self.coloringAndUnlock(character: character, index: apperIndex)
+                        soundLabels[apperIndex].text = japanese.sound.lowercased() + vowels[apperIndex]
+                        if i < 2 {
+                            let hideIndex = apperIndex + 1
+                            chracterViews[hideIndex].backgroundColor = .clear
+                            checkboxesImageViews[hideIndex].isHidden = true
+                            characterLabels[hideIndex].isHidden = true
+                            soundLabels[hideIndex].isHidden = true
+                        }
+                    }
+                case 2:
+                for i in 0..<japanese.letters.count {
+                    let apperIndex = i*4
+                    let character = japanese.letters[i]
+                    characterLabels[apperIndex].text = character
+                    self.coloringAndUnlock(character: character, index: apperIndex)
+                    soundLabels[apperIndex].text = japanese.sound.lowercased() + vowels[apperIndex]
                 }
+                for j in 1...3 {
+                    chracterViews[j].backgroundColor = .clear
+                    checkboxesImageViews[j].isHidden = true
+                    characterLabels[j].isHidden = true
+                    soundLabels[j].isHidden = true
+                }
+                case 1:
+                    let character = japanese.letters[0]
+                    self.coloringAndUnlock(character: character, index: 2)
+                    characterLabels[2].text = character
+                    soundLabels[2].text = "n"
+                    for i in 0..<5 {
+                        if i != 2 {
+                            chracterViews[i].backgroundColor = .clear
+                            checkboxesImageViews[i].isHidden = true
+                            characterLabels[i].isHidden = true
+                            soundLabels[i].isHidden = true
+                        }
+                    }
+                default:
+                    for i in 0..<japanese.letters.count {
+                        let character = japanese.letters[i]
+                        self.coloringAndUnlock(character: character, index: i)
+                        checkboxesImageViews[i].isHidden = false
+                        characterLabels[i].isHidden = false
+                        soundLabels[i].isHidden = false
+                        characterLabels[i].text = character
+                        if japanese.sound == "Vowel" {
+                            soundLabels[i].text = vowels[i]
+                        } else {
+                            soundLabels[i].text = japanese.sound.lowercased() + vowels[i]
+                        }
+                    }
             }
         }
     }
     
-    var japanese: Japanese! {
+    var selectedJapanese: [String?]? {
         didSet {
-            for i in 0..<japanese.letters.count {
-                if japanese.letters[i] == "　" {
-                    chracterViews[i].backgroundColor = .white
-                    checkboxesImageViews[i].isHidden = true
-                    characterLabels[i].isHidden = true
-                    soundLabels[i].isHidden = true
-                } else {
-                    chracterViews[i].backgroundColor = .red
-                    checkboxesImageViews[i].isHidden = false
-                    characterLabels[i].isHidden = false
-                    soundLabels[i].isHidden = false
-                    characterLabels[i].text = japanese.letters[i]
-                    if japanese.sound == "vowel" {
-                        soundLabels[i].text = vowels[i]
-                    } else {
-                        soundLabels[i].text = japanese.sound.lowercased() + vowels[i]
+            guard let selectedJapanese = self.selectedJapanese else {
+                self.checkboxesImageViews.forEach({ imageView in
+                    imageView.image = #imageLiteral(resourceName: "emptycheckbox")
+                })
+                return
+            }
+            let numberOfCharacters = japanese.letters.count
+            switch numberOfCharacters {
+                case 3:
+                    for i in 0..<selectedJapanese.count {
+                        let apperIndex = i*2
+                        if selectedJapanese[i] != nil {
+                            checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "checkedcheckbox")
+                        } else {
+                            checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "emptycheckbox")
+                        }
                     }
+                case 2:
+                    for i in 0..<selectedJapanese.count {
+                        let apperIndex = i*4
+                        if selectedJapanese[i] != nil {
+                            checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "checkedcheckbox")
+                        } else {
+                            checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "emptycheckbox")
+                        }
+                    }
+                case 1:
+                    if selectedJapanese[0] != nil {
+                        checkboxesImageViews[2].image = #imageLiteral(resourceName: "checkedcheckbox")
+                    } else {
+                        checkboxesImageViews[2].image = #imageLiteral(resourceName: "emptycheckbox")
                 }
+                default:
+                    for i in 0..<selectedJapanese.count {
+                        if selectedJapanese[i] != nil {
+                            checkboxesImageViews[i].image = #imageLiteral(resourceName: "checkedcheckbox")
+                        } else {
+                            checkboxesImageViews[i].image = #imageLiteral(resourceName: "emptycheckbox")
+                        }
+                    }
             }
         }
     }
+    
     let vowels = JapaneseCharacters().vowelSounds
     
     var characterLabels: [UILabel]!
     var soundLabels: [UILabel]!
     
-    var delegate: GetValueFormCell?
+    var delegate: GetValueFromCell?
     
     //MARK: - Outlets
     @IBOutlet weak var stackView: UIStackView!
@@ -63,21 +141,20 @@ class OverViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var uCheckboxImageView: UIImageView!
     @IBOutlet weak var eCheckboxImageView: UIImageView!
     @IBOutlet weak var oCheckboxImageView: UIImageView!
-    @IBOutlet weak var nCheckboxImageView: UIImageView!
     
     @IBOutlet weak var aVowelCharacter: UILabel!
     @IBOutlet weak var iVowelCharacter: UILabel!
     @IBOutlet weak var uVowelCharacter: UILabel!
     @IBOutlet weak var eVowelCharacter: UILabel!
     @IBOutlet weak var oVowelCharacter: UILabel!
-    @IBOutlet weak var nVowelCharacter: UILabel!
     
     @IBOutlet weak var aVowelSound: UILabel!
     @IBOutlet weak var iVowelSound: UILabel!
     @IBOutlet weak var uVowelSound: UILabel!
     @IBOutlet weak var eVowelSound: UILabel!
     @IBOutlet weak var oVowelSound: UILabel!
-    @IBOutlet weak var nVowelSound: UILabel!
+    
+    @IBOutlet var buttons: [UIButton]!
     
     //MARK: - Functions
     override func awakeFromNib() {
@@ -87,7 +164,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
             view.layer.cornerRadius = view.frame.size.height/2
         }
         
-        checkboxesImageViews = [aCheckboxImageView, iCheckboxImageView, uCheckboxImageView, eCheckboxImageView, oCheckboxImageView, nCheckboxImageView]
+        checkboxesImageViews = [aCheckboxImageView, iCheckboxImageView, uCheckboxImageView, eCheckboxImageView, oCheckboxImageView]
         
         checkboxesImageViews.forEach { imageView in
             imageView.backgroundColor = .white
@@ -97,25 +174,69 @@ class OverViewCollectionViewCell: UICollectionViewCell {
             imageView.layer.masksToBounds = true
         }
         
-        characterLabels = [aVowelCharacter, iVowelCharacter, uVowelCharacter, eVowelCharacter, oVowelCharacter, nVowelCharacter]
+        characterLabels = [aVowelCharacter, iVowelCharacter, uVowelCharacter, eVowelCharacter, oVowelCharacter]
         
-        soundLabels = [aVowelSound, iVowelSound, uVowelSound, eVowelSound, oVowelSound, nVowelSound]
+        soundLabels = [aVowelSound, iVowelSound, uVowelSound, eVowelSound, oVowelSound]
         
     }
     
     func checkUncheckBox(index: Int) {
+        let numberOfCharacters = japanese.letters.count
         let imageView: UIImageView = self.checkboxesImageViews[index]
-        let label: UILabel = self.characterLabels[index]
-        if imageView.image == #imageLiteral(resourceName: "checkedcheckbox") {
-            imageView.image = #imageLiteral(resourceName: "emptycheckbox")
-            self.delegate?.deselectCharacter(consonant: japanese.sound, index: index)
-        } else {
-            imageView.image = #imageLiteral(resourceName: "checkedcheckbox")
-            self.delegate?.selectCharacter(consonant: japanese.sound, index: index, character: label.text!)
+        let character: String = self.characterLabels[index].text!
+        if character != "" {
+            var sendIndex: Int!
+            var nilList: [String?]!
+            switch numberOfCharacters {
+            case 3:
+                sendIndex = Int(index/2)
+                nilList = [nil, nil, nil]
+            case 2:
+                sendIndex = Int(index/4)
+                nilList = [nil, nil]
+            case 1:
+                sendIndex = 0
+                nilList = [nil]
+            default:
+                sendIndex = index
+                nilList = [nil, nil, nil, nil, nil]
+            }
+            if imageView.image == #imageLiteral(resourceName: "checkedcheckbox") {
+                imageView.image = #imageLiteral(resourceName: "emptycheckbox")
+                self.delegate?.deselectCharacter(consonant: japanese.sound, index: sendIndex, character: character)
+            } else {
+                imageView.image = #imageLiteral(resourceName: "checkedcheckbox")
+                self.delegate?.selectCharacter(consonant: japanese.sound, index: sendIndex, character: character, nilList: nilList)
+            }
         }
     }
     
-    //MARK: - TapGesture Action
+    func coloringAndUnlock(character: String, index: Int) {
+        if let wordLearnt = characterDict[character], isUnLocked {
+            switch wordLearnt.confidenceCounter {
+            case 4:
+                chracterViews[index].backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1.0) //Green
+            case 3:
+                chracterViews[index].backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1.0) //Yellow
+            case 2:
+                chracterViews[index].backgroundColor = UIColor(red: 255/255, green: 185/255, blue: 0/255, alpha: 1.0) //Light Orange
+            case 1:
+                chracterViews[index].backgroundColor = UIColor(red: 255/255, green: 105/255, blue: 0/255, alpha: 1.0) //Orange
+            default:
+                chracterViews[index].backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1.0) //Red
+            }
+            buttons.forEach({ button in
+                button.isEnabled = true
+            })
+        } else {
+            chracterViews[index].backgroundColor = .lightGray
+            buttons.forEach({ button in
+                button.isEnabled = false
+            })
+        }
+    }
+    
+    //MARK: - Actions
     @IBAction func firstChracterTapped(_ sender: Any) {
         checkUncheckBox(index: 0)
     }
@@ -134,10 +255,6 @@ class OverViewCollectionViewCell: UICollectionViewCell {
     
     @IBAction func fifthChracterTapped(_ sender: Any) {
         checkUncheckBox(index: 4)
-    }
-    
-    @IBAction func sixthChracterTapped(_ sender: Any) {
-        checkUncheckBox(index: 5)
     }
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

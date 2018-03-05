@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "microphone.pdf",
+      "filename" : "circle.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "microphone@2x.pdf",
+      "filename" : "circle@2x.pdf",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "microphone@3x.pdf",
+      "filename" : "circle@3x.pdf",
       "scale" : "3x"
     }
   ],
