@@ -31,63 +31,63 @@ class FirstCharacterCell: UICollectionViewCell {
         didSet {
             characterLabel.text = japanese.sound
             let numberOfCharacters = japanese.letters.count
-            switch numberOfCharacters {
-            case 3:
-                for i in 0..<japanese.letters.count {
-                    let apperIndex = i*2
-                    let character = japanese.letters[i]
+            var hiddenIndexes = [Int]()
+            for i in 0..<numberOfCharacters {
+                let character = japanese.letters[i]
+                var vowel: String!
+                var apperIndex: Int!
+                switch numberOfCharacters {
+                    case 3:
+                        vowel = vowels[i*2]
+                        if i == 0 {
+                            apperIndex = 0
+                            hiddenIndexes.append(1)
+                        }
+                        else if i == 1 {
+                            apperIndex = 2
+                        }
+                        else if i == 2 {
+                            apperIndex = 3
+                            hiddenIndexes.append(4)
+                        }
+                    case 2:
+                        vowel = vowels[i*4]
+                        if i == 0 {
+                            apperIndex = 1
+                            hiddenIndexes.append(0)
+                        }
+                        if i == 1 {
+                            apperIndex = 4
+                            hiddenIndexes.append(2)
+                            hiddenIndexes.append(3)
+                    }
+                    case 1:
+                        self.coloringAndUnlock(character: character, index: 0)
+                        characterLabels[0].text = character
+                        soundLabels[0].text = "n"
+                        hiddenIndexes = [1, 2, 3, 4]
+                    default:
+                        vowel = vowels[i]
+                        apperIndex = i
+                }
+                if numberOfCharacters > 1 {
+                    checkboxesImageViews[apperIndex].isHidden = false
+                    characterLabels[apperIndex].alpha = 1
+                    soundLabels[apperIndex].alpha = 1
                     characterLabels[apperIndex].text = character
                     self.coloringAndUnlock(character: character, index: apperIndex)
-                    soundLabels[apperIndex].text = japanese.sound.lowercased() + vowels[apperIndex]
-                    if i < 2 {
-                        let hideIndex = apperIndex + 1
-                        characterViews[hideIndex].backgroundColor = .clear
-                        checkboxesImageViews[hideIndex].isHidden = true
-                        characterLabels[hideIndex].alpha = 0
-                        soundLabels[hideIndex].isHidden = true
-                    }
-                }
-            case 2:
-                for i in 0..<japanese.letters.count {
-                    let apperIndex = i*4
-                    let character = japanese.letters[i]
-                    characterLabels[apperIndex].text = character
-                    self.coloringAndUnlock(character: character, index: apperIndex)
-                    soundLabels[apperIndex].text = japanese.sound.lowercased() + vowels[apperIndex]
-                }
-                for j in 1...3 {
-                    characterViews[j].backgroundColor = .clear
-                    checkboxesImageViews[j].isHidden = true
-                    characterLabels[j].alpha = 0
-                    soundLabels[j].isHidden = true
-                }
-            case 1:
-                let character = japanese.letters[0]
-                self.coloringAndUnlock(character: character, index: 2)
-                characterLabels[2].text = character
-                soundLabels[2].text = "n"
-                for i in 0..<5 {
-                    if i != 2 {
-                        characterViews[i].backgroundColor = .clear
-                        checkboxesImageViews[i].isHidden = true
-                        characterLabels[i].alpha = 0
-                        soundLabels[i].isHidden = true
-                    }
-                }
-            default:
-                for i in 0..<japanese.letters.count {
-                    let character = japanese.letters[i]
-                    self.coloringAndUnlock(character: character, index: i)
-                    checkboxesImageViews[i].isHidden = false
-                    characterLabels[i].alpha = 1
-                    soundLabels[i].isHidden = false
-                    characterLabels[i].text = character
                     if japanese.sound == "Vowel" {
-                        soundLabels[i].text = vowels[i]
+                        soundLabels[apperIndex].text = vowel
                     } else {
-                        soundLabels[i].text = japanese.sound.lowercased() + vowels[i]
+                        soundLabels[apperIndex].text = japanese.sound.lowercased() + vowel
                     }
                 }
+            }
+            for hiddenIndex in hiddenIndexes {
+                characterViews[hiddenIndex].backgroundColor = .clear
+                checkboxesImageViews[hiddenIndex].isHidden = true
+                characterLabels[hiddenIndex].alpha = 0
+                soundLabels[hiddenIndex].alpha = 0
             }
         }
     }
@@ -100,11 +100,17 @@ class FirstCharacterCell: UICollectionViewCell {
                 })
                 return
             }
+            print(selectedJapanese)
             let numberOfCharacters = japanese.letters.count
             switch numberOfCharacters {
             case 3:
                 for i in 0..<selectedJapanese.count {
-                    let apperIndex = i*2
+                    let apperIndex: Int!
+                    if i < 2 {
+                        apperIndex = i*2
+                    } else {
+                        apperIndex = 3
+                    }
                     if selectedJapanese[i] != nil {
                         checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "checkedcheckbox")
                     } else {
@@ -113,7 +119,12 @@ class FirstCharacterCell: UICollectionViewCell {
                 }
             case 2:
                 for i in 0..<selectedJapanese.count {
-                    let apperIndex = i*4
+                    let apperIndex: Int!
+                    if i == 0 {
+                        apperIndex = 1
+                    } else {
+                        apperIndex = 4
+                    }
                     if selectedJapanese[i] != nil {
                         checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "checkedcheckbox")
                     } else {
@@ -122,9 +133,9 @@ class FirstCharacterCell: UICollectionViewCell {
                 }
             case 1:
                 if selectedJapanese[0] != nil {
-                    checkboxesImageViews[2].image = #imageLiteral(resourceName: "checkedcheckbox")
+                    checkboxesImageViews[0].image = #imageLiteral(resourceName: "checkedcheckbox")
                 } else {
-                    checkboxesImageViews[2].image = #imageLiteral(resourceName: "emptycheckbox")
+                    checkboxesImageViews[0].image = #imageLiteral(resourceName: "emptycheckbox")
                 }
             default:
                 for i in 0..<selectedJapanese.count {
@@ -237,7 +248,11 @@ class FirstCharacterCell: UICollectionViewCell {
             var nilList: [String?]!
             switch numberOfCharacters {
             case 3:
-                sendIndex = Int(index/2)
+                if index < 3 {
+                    sendIndex = Int(index/2)
+                } else {
+                    sendIndex = 2
+                }
                 nilList = [nil, nil, nil]
             case 2:
                 sendIndex = Int(index/4)

@@ -107,7 +107,7 @@ class ShowCharactersViewController: UIViewController {
             button.layer.cornerRadius = button.frame.size.height/2
         }
         
-        self.unenableJudgeButtons()
+//        self.unenableJudgeButtons()
         
         guard let japaneseDict = self.japaneseDict, let japaneseList = self.japaneseList else {return}
         for japanese in japaneseList{

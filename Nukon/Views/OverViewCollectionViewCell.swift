@@ -22,6 +22,9 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                     for i in 0..<japanese.letters.count {
                         let apperIndex = i*2
                         let character = japanese.letters[i]
+                        checkboxesImageViews[apperIndex].isHidden = false
+                        characterLabels[apperIndex].alpha = 1
+                        soundLabels[apperIndex].alpha = 1
                         characterLabels[apperIndex].text = character
                         self.coloringAndUnlock(character: character, index: apperIndex)
                         soundLabels[apperIndex].text = japanese.sound.lowercased() + vowels[apperIndex]
@@ -29,14 +32,17 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                             let hideIndex = apperIndex + 1
                             chracterViews[hideIndex].backgroundColor = .clear
                             checkboxesImageViews[hideIndex].isHidden = true
-                            characterLabels[hideIndex].isHidden = true
-                            soundLabels[hideIndex].isHidden = true
+                            characterLabels[hideIndex].alpha = 0
+                            soundLabels[hideIndex].alpha = 0
                         }
                     }
                 case 2:
                 for i in 0..<japanese.letters.count {
                     let apperIndex = i*4
                     let character = japanese.letters[i]
+                    checkboxesImageViews[apperIndex].isHidden = false
+                    characterLabels[apperIndex].alpha = 1
+                    soundLabels[apperIndex].alpha = 1
                     characterLabels[apperIndex].text = character
                     self.coloringAndUnlock(character: character, index: apperIndex)
                     soundLabels[apperIndex].text = japanese.sound.lowercased() + vowels[apperIndex]
@@ -44,11 +50,14 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                 for j in 1...3 {
                     chracterViews[j].backgroundColor = .clear
                     checkboxesImageViews[j].isHidden = true
-                    characterLabels[j].isHidden = true
-                    soundLabels[j].isHidden = true
+                    characterLabels[j].alpha = 0
+                    soundLabels[j].alpha = 0
                 }
                 case 1:
                     let character = japanese.letters[0]
+                    checkboxesImageViews[2].isHidden = false
+                    characterLabels[2].alpha = 1
+                    soundLabels[2].alpha = 1
                     self.coloringAndUnlock(character: character, index: 2)
                     characterLabels[2].text = character
                     soundLabels[2].text = "n"
@@ -56,8 +65,8 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                         if i != 2 {
                             chracterViews[i].backgroundColor = .clear
                             checkboxesImageViews[i].isHidden = true
-                            characterLabels[i].isHidden = true
-                            soundLabels[i].isHidden = true
+                            characterLabels[i].alpha = 0
+                            soundLabels[i].alpha = 0
                         }
                     }
                 default:
@@ -65,8 +74,8 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                         let character = japanese.letters[i]
                         self.coloringAndUnlock(character: character, index: i)
                         checkboxesImageViews[i].isHidden = false
-                        characterLabels[i].isHidden = false
-                        soundLabels[i].isHidden = false
+                        characterLabels[i].alpha = 1
+                        soundLabels[i].alpha = 1
                         characterLabels[i].text = character
                         if japanese.sound == "Vowel" {
                             soundLabels[i].text = vowels[i]
