@@ -273,7 +273,7 @@ class ShowCharactersViewController: UIViewController {
     func unenableJudgeButtons() {
         self.judgeButtons.forEach { button in
             button.alpha = 0.5
-            button.isEnabled = true
+            button.isEnabled = false
         }
     }
     
@@ -409,6 +409,11 @@ class ShowCharactersViewController: UIViewController {
     @IBAction func goodButtonTapped(_ sender: Any) {
         self.updateCoreData(confidence: 4)
         self.dissmissOrNextCharacter()
+    }
+    
+    
+    @IBAction func exitButtonTapped(_ sender: Any) {
+        self.dismissView()
     }
     
 }

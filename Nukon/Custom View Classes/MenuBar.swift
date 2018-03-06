@@ -13,6 +13,8 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     let cellId = "MenuCell"
     let imageName = ["circle", "circle_collection"]
     
+    var japaneseCharacterCVC: JapaneseCharactersCollectionViewController?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -39,6 +41,10 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         cell.iconImageView.image = UIImage(named: imageName[indexPath.row])?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = .lightGray
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        japaneseCharacterCVC?.scrollToItemIndexPath(menuindex: indexPath.row)
     }
     
 }

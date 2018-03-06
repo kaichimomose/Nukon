@@ -12,14 +12,11 @@ struct Japanese {
     var unLockNext: Bool
     let sound: String
     let letters: [String]
-//    let hiragana: [String]?
 }
 
 enum JapaneseType: String {
     case hiragana = "Hiragana"
     case katakana = "Katakana"
-//    case voicedHiragana = "Voiced-hiragana"
-//    case voicedKatakana = "Voiced-katakana"
     case yVowelHiragana = "Y-vowel-hiragana"
     case yVowelKatakana = "Y-vowel-katakana"
 }

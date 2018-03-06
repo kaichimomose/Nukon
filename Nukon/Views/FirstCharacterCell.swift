@@ -92,6 +92,52 @@ class FirstCharacterCell: UICollectionViewCell {
         }
     }
     
+    var selectedJapanese: [String?]? {
+        didSet {
+            guard let selectedJapanese = self.selectedJapanese else {
+                self.checkboxesImageViews.forEach({ imageView in
+                    imageView.image = #imageLiteral(resourceName: "emptycheckbox")
+                })
+                return
+            }
+            let numberOfCharacters = japanese.letters.count
+            switch numberOfCharacters {
+            case 3:
+                for i in 0..<selectedJapanese.count {
+                    let apperIndex = i*2
+                    if selectedJapanese[i] != nil {
+                        checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "checkedcheckbox")
+                    } else {
+                        checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "emptycheckbox")
+                    }
+                }
+            case 2:
+                for i in 0..<selectedJapanese.count {
+                    let apperIndex = i*4
+                    if selectedJapanese[i] != nil {
+                        checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "checkedcheckbox")
+                    } else {
+                        checkboxesImageViews[apperIndex].image = #imageLiteral(resourceName: "emptycheckbox")
+                    }
+                }
+            case 1:
+                if selectedJapanese[0] != nil {
+                    checkboxesImageViews[2].image = #imageLiteral(resourceName: "checkedcheckbox")
+                } else {
+                    checkboxesImageViews[2].image = #imageLiteral(resourceName: "emptycheckbox")
+                }
+            default:
+                for i in 0..<selectedJapanese.count {
+                    if selectedJapanese[i] != nil {
+                        checkboxesImageViews[i].image = #imageLiteral(resourceName: "checkedcheckbox")
+                    } else {
+                        checkboxesImageViews[i].image = #imageLiteral(resourceName: "emptycheckbox")
+                    }
+                }
+            }
+        }
+    }
+    
     var checkboxesImageViews: [UIImageView]!
     
     var characterLabels: [UILabel]!
@@ -154,16 +200,16 @@ class FirstCharacterCell: UICollectionViewCell {
         soundLabels = [aVowelSound, iVowelSound, uVowelSound, eVowelSound, oVowelSound]
     }
     
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        guard let attributes = super.preferredLayoutAttributesFitting(layoutAttributes).copy() as? UICollectionViewLayoutAttributes else {return layoutAttributes}
-        
-//        let height = systemLayoutSizeFitting(attributes.size).height
-        
-        attributes.size.height = UIScreen.main.bounds.width - 100
-        attributes.size.width = UIScreen.main.bounds.width - 100
-        //        attributes.size.width = self.contentView.frame.size.width
-        return attributes
-    }
+//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+//        guard let attributes = super.preferredLayoutAttributesFitting(layoutAttributes).copy() as? UICollectionViewLayoutAttributes else {return layoutAttributes}
+//        
+////        let height = systemLayoutSizeFitting(attributes.size).height
+//        
+//        attributes.size.height = UIScreen.main.bounds.width - 100
+//        attributes.size.width = UIScreen.main.bounds.width - 100
+//        //        attributes.size.width = self.contentView.frame.size.width
+//        return attributes
+//    }
     
     func coloringAndUnlock(character: String, index: Int) {
         if let wordLearnt = characterDict[character] {

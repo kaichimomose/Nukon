@@ -37,6 +37,9 @@
                                                     <constraint firstAttribute="width" constant="35" id="qQl-38-icK"/>
                                                 </constraints>
                                                 <state key="normal" image="exit"/>
+                                                <connections>
+                                                    <action selector="exitButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="gno-IZ-kC0"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="SMm-NL-LFK">
                                                 <rect key="frame" x="75" y="0.0" width="225" height="35"/>
@@ -295,20 +298,6 @@
                 <exit id="FAV-eI-vPr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3000.8000000000002" y="472.71364317841085"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="e3r-2M-gsA">
-            <objects>
-                <viewController id="OPN-iD-fCi" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H6c-g7-Id4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="EXv-ij-7Iy"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qqv-zR-bHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

@@ -7,35 +7,30 @@
 //
 
 import UIKit
-import AVFoundation
 import CoreData
 
-class JapaneseCharactersCollectionViewController: UIViewController, GetValueFromCell {
-    //MARK: - Properties
-    let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
-    let speak = AVSpeechSynthesizer()
+protocol GetValueFromCollectionView {
+    func getSelectedValue(selectedJapanese: [String: [String?]], selectedJpaneseCoreData: [String: WordLearnt])
+    func getDeselectedValue(selectedJapanese: [String: [String?]], selectedJpaneseCoreData: [String: WordLearnt])
+}
+
+class JapaneseCharactersCollectionViewController: UIViewController, GetValueFromCollectionView {
     
+    //MARK: - Properties
     var japaneseList = [Japanese]()
     var japaneseType: JapaneseType!
-    let vowels = JapaneseCharacters().vowelSounds
     
     var selectedJapanese = [String: [String?]]()
     var selectedJpaneseCoreData = [String: WordLearnt]()
     var consonantDict = [String: [String: WordLearnt]]()
     
     var unLockNextConsonant = [String: Bool]()
-    var numberOfUnlockedCell: Int = 1
-    
-    var labels = [UILabel]()
+    var numberOfUnlockedCell: Int!
     
     let coreDataStack = CoreDataStack.instance
     
-    //delegation
-    var delegate: CellDelegate?
-    
-    //collectionView layout
-    let layout = UICollectionViewFlowLayout() //UPCarouselFlowLayout()
-    let inset = UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 50)
+    let consonantViewCell = "ConsonantViewCell"
+    let overViewCell = "OverViewCell"
     
     //MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -52,14 +47,17 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
         
         //sets title
         switch self.japaneseType {
-            case .hiragana, .katakana:
-                self.title = "Regular-sounds"
+            case .hiragana:
+                self.title = "HIRAGANA"
+            case .katakana:
+                self.title = "KATAKANA"
             case .yVowelHiragana, .yVowelKatakana:
                 self.title = "Y-vowel-sounds"
             default:
                 self.title = ""
         }
         
+        menuBar.japaneseCharacterCVC = self
         menuBarCollectionView.delegate = menuBar
         menuBarCollectionView.dataSource = menuBar
         
@@ -69,21 +67,9 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
         //collectionview setting
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "SoundsCell", bundle: .main), forCellWithReuseIdentifier: "SoundsCell")
-        collectionView.register(UINib.init(nibName: "FirstCharacterCell", bundle: .main), forCellWithReuseIdentifier: "FirstCharacterCell")
-        
-        //cell setting
-        let length = UIScreen.main.bounds.width - (inset.left+inset.right)
-        
-        layout.scrollDirection = .vertical
-        layout.sectionInset = inset
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        layout.estimatedItemSize = CGSize(width: length, height: length)
-        layout.itemSize = CGSize(width: length, height: length)
-        
-        collectionView.collectionViewLayout = layout
-        collectionView.alwaysBounceVertical = true
+//        collectionView.alwaysBounceHorizontal = true
+        collectionView.isScrollEnabled = false
+//        collectionView.isPagingEnabled = true
         
         practiceButton.alpha = 0.5
         practiceButton.isEnabled = false
@@ -95,20 +81,21 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
         let fetchRequest: NSFetchRequest<Consonant> = Consonant.fetchRequest()
         // Add Specific type Descriptors
         fetchRequest.predicate = NSPredicate(format: "system == %@", japaneseType.rawValue)
-        
+
         do {
             let result = try self.coreDataStack.viewContext.fetch(fetchRequest)
+            var unlockcellCounter = 1
             for item in result {
                 guard let consonant = item.consonant else {return}
                 let words = item.words?.allObjects as? [WordLearnt]
                 guard let wordsLearnt = words else {return}
                 var characterDict = [String: WordLearnt]()
-                
+
                 //counter for confidence to unlock
                 var isOk = 0 //green, yellow
                 var isSoso = 0 //light orange
                 var isNotOk = 0 //red, orange
-                
+
                 for wordLearnt in wordsLearnt {
                     characterDict[wordLearnt.word!] = wordLearnt
                     let confidence = Int(wordLearnt.confidenceCounter)
@@ -121,13 +108,16 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
                         isSoso += 1
                     }
                 }
-                
+
                 //unlock next chracters and save
                 if !item.unLockNext {
                     if isOk >= 1 && isNotOk == 0 {
                         let backgroundEntity = coreDataStack.privateContext.object(with: item.objectID) as! Consonant
                         backgroundEntity.unLockNext = true
                         unLockNextConsonant[consonant] = true
+                        if consonant != "P" && consonant != "Py" {
+                            unlockcellCounter += 1
+                        }
                         coreDataStack.saveTo(context: coreDataStack.privateContext)
                         coreDataStack.viewContext.refresh(item, mergeChanges: true)
                     } else {
@@ -136,16 +126,22 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
                 } else {
                     unLockNextConsonant[consonant] = true
                     if consonant != "P" && consonant != "Py" {
-                        numberOfUnlockedCell += 1
+                        unlockcellCounter += 1
                     }
                 }
-                
                 consonantDict[consonant] = characterDict
             }
+            self.numberOfUnlockedCell = unlockcellCounter
         }catch let error {
             print(error)
         }
         collectionView.reloadData()
+    }
+    
+    func scrollToItemIndexPath(menuindex: Int) {
+        collectionView.reloadData()
+        let indexPath = NSIndexPath(item: 0, section: menuindex)
+        collectionView.scrollToItem(at: indexPath as IndexPath, at: .left, animated: false)
     }
     
     func chooseJapaneseCharacterType(type: JapaneseType) {
@@ -163,28 +159,20 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     }
     
     //delegation function
-    func selectCharacter(consonant: String, index: Int, character: String, nilList: [String?]) {
+    func getSelectedValue(selectedJapanese: [String: [String?]], selectedJpaneseCoreData: [String: WordLearnt]) {
         //makes practice button avairable
         if self.selectedJapanese.isEmpty {
             practiceButton.alpha = 1
             practiceButton.isEnabled = true
         }
-        //if key does not have value, assigns value
-        if (self.selectedJapanese[consonant] == nil) {
-            self.selectedJapanese[consonant] = nilList
-        }
-        //assigns character
-        self.selectedJapanese[consonant]![index] = character
-        self.selectedJpaneseCoreData[character] = consonantDict[consonant]![character]
+        self.selectedJapanese = selectedJapanese
+        self.selectedJpaneseCoreData = selectedJpaneseCoreData
     }
     
     //delegation function
-    func deselectCharacter(consonant: String, index: Int, character: String) {
-        //deletes character from list
-        self.selectedJapanese[consonant]![index] = nil
-        self.selectedJpaneseCoreData[character] = nil
-        //checks a key has a value
-        self.checkDictionary(consonant: consonant)
+    func getDeselectedValue(selectedJapanese: [String: [String?]], selectedJpaneseCoreData: [String: WordLearnt]) {
+        self.selectedJapanese = selectedJapanese
+        self.selectedJpaneseCoreData = selectedJpaneseCoreData
         //if dictionary is empty, makes practice button enable
         if self.selectedJapanese.isEmpty {
             practiceButton.alpha = 0.5
@@ -192,26 +180,8 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
         }
     }
     
-    func checkDictionary(consonant: String) {
-        var nilCount = 0
-        let numberOfContents = self.selectedJapanese[consonant]!.count
-        for character in self.selectedJapanese[consonant]! {
-            //if a key has a value, return
-            if character != nil {
-                return
-            } else {
-                //increment nil number
-                nilCount += 1
-            }
-        }
-        //all values are nil, delete key from ditionary
-        if nilCount == numberOfContents {
-            self.selectedJapanese[consonant] = nil
-        }
-    }
     
     @IBAction func practiceButtonTapped(_ sender: Any) {
-        print(selectedJapanese)
         if !selectedJapanese.isEmpty {
             let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
             let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
@@ -221,49 +191,60 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
             showCharacterVC.characterCoreDataDict = self.selectedJpaneseCoreData
             self.selectedJapanese = [:]
             self.selectedJpaneseCoreData = [:]
+            self.practiceButton.alpha = 0.5
+            self.practiceButton.isEnabled = false
             present(showCharacterVC, animated: true, completion: nil)
         }
-        
-    }
-    
-    @IBAction func overviewTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "OverView", bundle: .main)
-        let overViewVC = storyboard.instantiateViewController(withIdentifier: "OverViewViewController") as! OverViewViewController
-        overViewVC.japaneseType = self.japaneseType
-        overViewVC.japaneseList = self.japaneseList
-        present(overViewVC, animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "OverView" {
-            let overViewVC = segue.destination as! OverViewViewController
-            overViewVC.japaneseType = self.japaneseType
-            overViewVC.japaneseList = self.japaneseList
-        }
+
     }
     
 }
 
-extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.numberOfUnlockedCell//japaneseList.count
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let firstCharacterCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FirstCharacterCell", for: indexPath) as! FirstCharacterCell
-        
-        let row = indexPath.row
-        firstCharacterCell.collectionView = self.collectionView
-        firstCharacterCell.delegate = self
-        firstCharacterCell.characterDict = self.consonantDict[japaneseList[row].sound]
-        firstCharacterCell.japanese = japaneseList[row]
-        
-        return firstCharacterCell
+        switch indexPath.section {
+            
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: consonantViewCell, for: indexPath) as! ConsonantViewCell
+            cell.delegate = self
+            cell.japaneseList = self.japaneseList
+            cell.japaneseType = self.japaneseType
+            cell.selectedJapanese = self.selectedJapanese
+            cell.selectedJpaneseCoreData = self.selectedJpaneseCoreData
+            cell.consonantDict = self.consonantDict
+            cell.unLockNextConsonant = self.unLockNextConsonant
+            cell.numberOfUnlockedCell = self.numberOfUnlockedCell
+            cell.collectionView.reloadData()
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: overViewCell, for: indexPath) as! OverViewCell
+            cell.delegate = self
+            cell.japaneseList = self.japaneseList
+            cell.japaneseType = self.japaneseType
+            cell.selectedJapanese = self.selectedJapanese
+            cell.selectedJpaneseCoreData = self.selectedJpaneseCoreData
+            cell.consonantDict = self.consonantDict
+            cell.unLockNextConsonant = self.unLockNextConsonant
+            cell.collectionView.reloadData()
+            return cell
+        }
     }
     
 }
