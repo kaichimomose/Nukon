@@ -137,12 +137,12 @@ class UserProfileViewController: UIViewController, UITabBarControllerDelegate {
                 //                if wordLearnt.numberOfCorrect > wordLearnt.numberOfWrong {
                 //                    self.numberOfWordsLearnt.append(wordLearnt)
                 //                }
-                if wordLearnt.numberOfCorrect >= 5 {
-                    self.numberOfWordsLearnt.append(wordLearnt)
-                }
-                else {
-                    self.numberOfWordsToReview.append(wordLearnt)
-                }
+//                if wordLearnt.numberOfCorrect >= 5 {
+//                    self.numberOfWordsLearnt.append(wordLearnt)
+//                }
+//                else {
+//                    self.numberOfWordsToReview.append(wordLearnt)
+//                }
                 //                CoreDataHelper.delete(wordLearnt: wordLearnt)
             }
             numOfWordsToReviewLabel.setTitle(String(numberOfWordsToReview.count), for: .normal)

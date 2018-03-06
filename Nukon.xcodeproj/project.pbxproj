@@ -14,11 +14,10 @@
 		BF504227204CEA4A00490A1A /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF504226204CEA4A00490A1A /* MenuCell.swift */; };
 		BF504229204D96CA00490A1A /* OverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF504228204D96CA00490A1A /* OverViewCell.swift */; };
 		BF50422B204DF26600490A1A /* ConsonantViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50422A204DF26500490A1A /* ConsonantViewCell.swift */; };
+		BF504238204E667900490A1A /* Nukon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF504236204E667900490A1A /* Nukon.xcdatamodeld */; };
 		BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */; };
-		BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */; };
 		BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF95E1FA0D35D00A46DE0 /* LaunchScreen.storyboard */; };
 		BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */; };
-		BF5FF9751FA0D91200A46DE0 /* Practice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */; };
 		BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */; };
 		BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */; };
 		BF7199122038F46100E3A03D /* Speaking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7199112038F46000E3A03D /* Speaking.storyboard */; };
@@ -41,7 +40,13 @@
 		BFE76F1B20425A4C005E9F0C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE76F1A20425A4C005E9F0C /* CoreDataStack.swift */; };
 		BFE76F2820433847005E9F0C /* OverViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE76F2620433847005E9F0C /* OverViewCollectionViewCell.swift */; };
 		BFE76F2920433847005E9F0C /* OverViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE76F2720433847005E9F0C /* OverViewCollectionViewCell.xib */; };
+		F60611DA2049F673007407C3 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60611D92049F673007407C3 /* MenuButton.swift */; };
 		F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */; };
+		F64CE7702045AC2000C480EB /* HiraganaHomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */; };
+		F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */; };
+		F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */; };
+		F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691EEF82048B6CF00ED5DA8 /* SunButton.swift */; };
+		F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691EEFB2048BB4000ED5DA8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,13 +57,12 @@
 		BF504226204CEA4A00490A1A /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		BF504228204D96CA00490A1A /* OverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewCell.swift; sourceTree = "<group>"; };
 		BF50422A204DF26500490A1A /* ConsonantViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsonantViewCell.swift; sourceTree = "<group>"; };
+		BF504237204E667900490A1A /* Nukon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nukon.xcdatamodel; sourceTree = "<group>"; };
 		BF5FF94F1FA0D35D00A46DE0 /* Nukon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nukon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF5FF95A1FA0D35D00A46DE0 /* Nukon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nukon.xcdatamodel; sourceTree = "<group>"; };
 		BF5FF95F1FA0D35D00A46DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF5FF9611FA0D35D00A46DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Practice.storyboard; sourceTree = "<group>"; };
 		BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
 		BF7199112038F46000E3A03D /* Speaking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Speaking.storyboard; sourceTree = "<group>"; };
@@ -81,7 +85,13 @@
 		BFE76F1A20425A4C005E9F0C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		BFE76F2620433847005E9F0C /* OverViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		BFE76F2720433847005E9F0C /* OverViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		F60611D92049F673007407C3 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabGradientButton.swift; sourceTree = "<group>"; };
+		F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HiraganaHomeScreen.storyboard; sourceTree = "<group>"; };
+		F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiraganaHomeScreenViewController.swift; sourceTree = "<group>"; };
+		F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalityFeatureLabel.swift; sourceTree = "<group>"; };
+		F691EEF82048B6CF00ED5DA8 /* SunButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunButton.swift; sourceTree = "<group>"; };
+		F691EEFB2048BB4000ED5DA8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +124,7 @@
 		BF5FF9511FA0D35D00A46DE0 /* Nukon */ = {
 			isa = PBXGroup;
 			children = (
+				F691EEFA2048BB2400ED5DA8 /* Extensions */,
 				BF76DDD61FD9EF490030F52B /* Custom View Classes */,
 				BF5FF9671FA0D56300A46DE0 /* Controllers */,
 				BF5FF96B1FA0D56300A46DE0 /* Storyboards */,
@@ -135,6 +146,7 @@
 				BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */,
 				BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
+				F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,9 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
-				BF5FF9741FA0D91200A46DE0 /* Practice.storyboard */,
 				BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */,
 				BF7199112038F46000E3A03D /* Speaking.storyboard */,
+				F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -195,7 +207,7 @@
 		BF5FF9711FA0D57200A46DE0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */,
+				BF504236204E667900490A1A /* Nukon.xcdatamodeld */,
 				BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */,
 				BF4ABFDE1FAE266E000EBCD3 /* JapaneseCharacters.swift */,
 				BF719913203BBEC100E3A03D /* Posibilities.swift */,
@@ -214,6 +226,9 @@
 				F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */,
 				BF504222204CCAAD00490A1A /* MenuBar.swift */,
 				BF504224204CCEF700490A1A /* UIView+extension.swift */,
+				F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */,
+				F691EEF82048B6CF00ED5DA8 /* SunButton.swift */,
+				F60611D92049F673007407C3 /* MenuButton.swift */,
 			);
 			path = "Custom View Classes";
 			sourceTree = "<group>";
@@ -224,6 +239,14 @@
 				BFB83CE91FE19CF30017D0E7 /* Metal_Gong.mp3 */,
 			);
 			path = LaunchScreenSound;
+			sourceTree = "<group>";
+		};
+		F691EEFA2048BB2400ED5DA8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F691EEFB2048BB4000ED5DA8 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF5FF9751FA0D91200A46DE0 /* Practice.storyboard in Resources */,
+				F64CE7702045AC2000C480EB /* HiraganaHomeScreen.storyboard in Resources */,
 				BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */,
 				BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */,
 				BFB83CEA1FE19CF30017D0E7 /* Metal_Gong.mp3 in Resources */,
@@ -308,6 +331,7 @@
 				BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */,
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
+				F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */,
 				BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
 				BF719914203BBEC100E3A03D /* Posibilities.swift in Sources */,
@@ -318,6 +342,7 @@
 				BF504223204CCAAD00490A1A /* MenuBar.swift in Sources */,
 				BFD0D7D21FDF6379000D6F1C /* MGPhotoHelper.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
+				BF504238204E667900490A1A /* Nukon.xcdatamodeld in Sources */,
 				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
 				BF9ADFED202D72BB0024A71C /* UPCarouselFlowLayout.swift in Sources */,
 				BF9ADFD1202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift in Sources */,
@@ -327,9 +352,12 @@
 				BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */,
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF504229204D96CA00490A1A /* OverViewCell.swift in Sources */,
-				BF5FF95B1FA0D35D00A46DE0 /* Nukon.xcdatamodeld in Sources */,
 				BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */,
 				BF504227204CEA4A00490A1A /* MenuCell.swift in Sources */,
+				F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */,
+				F60611DA2049F673007407C3 /* MenuButton.swift in Sources */,
+				F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */,
+				F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */,
 				BF76DDDC1FD9EF4A0030F52B /* CustomImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,12 +542,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		BF5FF9591FA0D35D00A46DE0 /* Nukon.xcdatamodeld */ = {
+		BF504236204E667900490A1A /* Nukon.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				BF5FF95A1FA0D35D00A46DE0 /* Nukon.xcdatamodel */,
+				BF504237204E667900490A1A /* Nukon.xcdatamodel */,
 			);
-			currentVersion = BF5FF95A1FA0D35D00A46DE0 /* Nukon.xcdatamodel */;
+			currentVersion = BF504237204E667900490A1A /* Nukon.xcdatamodel */;
 			path = Nukon.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

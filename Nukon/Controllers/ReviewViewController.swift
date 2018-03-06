@@ -143,14 +143,14 @@ class ReviewViewController: UIViewController, AlertPresentable {
     //
     func categorizingWithUnmberOfCorrect() {
         for wordLearnt in wordsLearnt {
-            let numberOfCorrect = wordLearnt.numberOfCorrect
-            // find key(accuracyRate) in sectionData, and append wordLearnt or insert key-value
-            if self.sectionData[numberOfCorrect] != nil {
-                self.sectionData[numberOfCorrect]?.append(wordLearnt)
-            } else {
-                self.sectionData[numberOfCorrect] = [wordLearnt]
-                self.sectionDataSort.append(numberOfCorrect)
-            }
+//            let numberOfCorrect = wordLearnt.numberOfCorrect
+//            // find key(accuracyRate) in sectionData, and append wordLearnt or insert key-value
+//            if self.sectionData[numberOfCorrect] != nil {
+//                self.sectionData[numberOfCorrect]?.append(wordLearnt)
+//            } else {
+//                self.sectionData[numberOfCorrect] = [wordLearnt]
+//                self.sectionDataSort.append(numberOfCorrect)
+//            }
             
         }
         //sort sectionData numerical order
@@ -231,15 +231,15 @@ extension ReviewViewController: UICollectionViewDataSource {
         let wordLearnt = sectionData[accuracyRate]![row]
         
         cell.japaneseCharacterLabel.text = wordLearnt.word
-        cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(wordLearnt.numberOfCorrect)"
-        cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(wordLearnt.numberOfWrong)"
-        cell.soundLabel.text = wordLearnt.sound
-        if wordLearnt.sound == "vowel" {
-            cell.soundLabel.font = cell.soundLabel.font.withSize(18.0)
-        }
-        else {
-            cell.soundLabel.font = cell.soundLabel.font.withSize(25.0)
-        }
+//        cell.numberOfCorrectLabel.text = "\(Judge.correct.rawValue): \(wordLearnt.numberOfCorrect)"
+//        cell.numberOfWrongLabel.text = "\(Judge.wrong.rawValue): \(wordLearnt.numberOfWrong)"
+//        cell.soundLabel.text = wordLearnt.sound
+//        if wordLearnt.sound == "vowel" {
+//            cell.soundLabel.font = cell.soundLabel.font.withSize(18.0)
+//        }
+//        else {
+//            cell.soundLabel.font = cell.soundLabel.font.withSize(25.0)
+//        }
 //        if wordLearnt.type == JapaneseType.hiragana.rawValue {
 //            cell.japaneseTypeLabel.text =  "hi"
 //        }
@@ -267,25 +267,25 @@ extension ReviewViewController: UICollectionViewDataSource {
         let section = indexPath.section
         let accuracyRate = self.sectionDataSort[section]
         let wordLearnt = sectionData[accuracyRate]![row]
-        if wordLearnt.type == JapaneseType.hiragana.rawValue {
-            self.selectedJapaneseType = .hiragana
-        }
-        else if wordLearnt.type == JapaneseType.katakana.rawValue {
-            self.selectedJapaneseType = .katakana
-        }
-        else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
-            self.selectedJapaneseType = .voicedHiragana
-        }
-        else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
-            self.selectedJapaneseType = .voicedKatakana
-        }
-        else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
-            self.selectedJapaneseType = .yVowelHiragana
-        }
-        else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
-            self.selectedJapaneseType = .yVowelKatakana
-        }
-        self.selectedSound = wordLearnt.sound
+//        if wordLearnt.type == JapaneseType.hiragana.rawValue {
+//            self.selectedJapaneseType = .hiragana
+//        }
+//        else if wordLearnt.type == JapaneseType.katakana.rawValue {
+//            self.selectedJapaneseType = .katakana
+//        }
+//        else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
+//            self.selectedJapaneseType = .voicedHiragana
+//        }
+//        else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
+//            self.selectedJapaneseType = .voicedKatakana
+//        }
+//        else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
+//            self.selectedJapaneseType = .yVowelHiragana
+//        }
+//        else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
+//            self.selectedJapaneseType = .yVowelKatakana
+//        }
+//        self.selectedSound = wordLearnt.sound
         jumpToJCTVCAlert(character: wordLearnt.word!, closure: jumpToJCTVC, sound: speakJapanese(_:))
     }
    

@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="198" y="146"/>
         </scene>
-        <!--Practice-->
+        <!--HiraganaHomeScreen-->
         <scene sceneID="4W3-uB-G03">
             <objects>
-                <viewControllerPlaceholder storyboardName="Practice" id="QbT-WE-yha" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="HiraganaHomeScreen" id="QbT-WE-yha" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="AAo-j2-7n6"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pV0-bU-Ubx" userLabel="First Responder" sceneMemberID="firstResponder"/>

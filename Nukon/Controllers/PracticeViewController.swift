@@ -23,8 +23,8 @@ class PracticeViewController: UIViewController {
     
     
     @IBOutlet weak var hiraganaTab: UIButton!
-    @IBOutlet weak var katakanaTab: tabGradientButton!
-    @IBOutlet weak var kanjiTab: tabGradientButton!
+//    @IBOutlet weak var katakanaTab: tabGradientButton!
+//    @IBOutlet weak var kanjiTab: tabGradientButton!
     
     
     

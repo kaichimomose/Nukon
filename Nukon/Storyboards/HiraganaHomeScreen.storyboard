@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VLa-bD-zdX">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hiragana Home Screen View Controller-->
+        <scene sceneID="xfy-bw-gXx">
+            <objects>
+                <viewController id="VLa-bD-zdX" customClass="HiraganaHomeScreenViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ELe-iZ-SAk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-aUc">
+                                <rect key="frame" x="0.0" y="51.333333333333343" width="414" height="59"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="HIRAGANA">
+                                        <attributes>
+                                            <color key="NSColor" red="0.95686274509803915" green="0.94509803921568625" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="43" name="AvenirNext-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
+                                <rect key="frame" x="112" y="111.33333333333331" width="190" height="43"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="ひらがな">
+                                        <attributes>
+                                            <color key="NSColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="43" name="HiraginoSans-W6"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yp0-Lz-ksZ" customClass="SunButton" customModule="Nukon" customModuleProvider="target">
+                                <rect key="frame" x="128" y="289" width="158" height="158"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Yp0-Lz-ksZ" secondAttribute="height" multiplier="1:1" id="xqI-Mu-aEI"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sunPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="X7c-YL-Wk4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjG-xd-Om5" customClass="studyButton" customModule="Nukon" customModuleProvider="target">
+                                <rect key="frame" x="167" y="328" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WjG-xd-Om5" secondAttribute="height" multiplier="1:1" id="NJb-0G-SGb"/>
+                                </constraints>
+                                <state key="normal" image="study"/>
+                                <connections>
+                                    <action selector="studyButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="ZQg-FA-TbQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Cg-hO0" customClass="combosButtons" customModule="Nukon" customModuleProvider="target">
+                                <rect key="frame" x="167" y="328.66666666666669" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZHx-Cg-hO0" secondAttribute="height" multiplier="1:1" id="sKC-ud-ams"/>
+                                </constraints>
+                                <state key="normal" image="combos"/>
+                                <connections>
+                                    <action selector="comboButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="XFO-5A-Gph"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
+                                <rect key="frame" x="167" y="328" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KwN-pA-ucu" secondAttribute="height" multiplier="1:1" id="TzX-LW-Ytu"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="charButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="M2G-9P-Awk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.68627450980000004" green="0.79607843140000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KwN-pA-ucu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="2dA-6x-yXy"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="3eT-2p-Cba"/>
+                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="5fF-sq-O0p"/>
+                            <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="150:667" constant="-7.6086956521739069" id="6aa-qB-Yke"/>
+                            <constraint firstItem="KwN-pA-ucu" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Bd7-Gs-olg"/>
+                            <constraint firstItem="0wV-Dm-O5P" firstAttribute="top" secondItem="bD5-JF-aUc" secondAttribute="bottom" constant="1" id="GLD-0v-DdW"/>
+                            <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="GX0-zj-fEh"/>
+                            <constraint firstItem="0wV-Dm-O5P" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="172:667" id="LCk-nv-C5V"/>
+                            <constraint firstItem="0wV-Dm-O5P" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Ldi-aC-MQq"/>
+                            <constraint firstItem="bD5-JF-aUc" firstAttribute="trailing" secondItem="oup-LF-boy" secondAttribute="trailing" id="R8c-2S-gN7"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="RRN-YB-AUa"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="Vx4-af-Kan"/>
+                            <constraint firstItem="bD5-JF-aUc" firstAttribute="leading" secondItem="oup-LF-boy" secondAttribute="leading" id="c2M-eO-rqz"/>
+                            <constraint firstItem="bD5-JF-aUc" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="0.22" id="ctL-Wj-Jcc"/>
+                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="cuQ-FW-Mab"/>
+                            <constraint firstItem="KwN-pA-ucu" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="egf-Ty-tbI"/>
+                            <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="fDp-Ka-ZOn"/>
+                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="gEv-3n-3ld"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oup-LF-boy"/>
+                    </view>
+                    <connections>
+                        <outlet property="characterButton" destination="KwN-pA-ucu" id="xe0-XN-rL6"/>
+                        <outlet property="comboButton" destination="ZHx-Cg-hO0" id="Nib-23-non"/>
+                        <outlet property="homeSunButton" destination="Yp0-Lz-ksZ" id="gkc-e9-fdT"/>
+                        <outlet property="studyButton" destination="WjG-xd-Om5" id="Cfp-IU-qpq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSZ-GJ-n54" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-926" y="112"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="combos" width="50" height="47"/>
+        <image name="study" width="50" height="44"/>
+    </resources>
+</document>
