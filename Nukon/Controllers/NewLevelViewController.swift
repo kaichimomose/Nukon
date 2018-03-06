@@ -81,27 +81,27 @@ class NewLevelViewController: UIViewController {
 
     func categorizingWordsLearnt() {
         for wordLearnt in self.wordsLearnt {
-            if wordLearnt.numberOfCorrect >= 5 {
-                //distinguishs japanese type
-                var japaneseType: JapaneseType!
-                if wordLearnt.type == JapaneseType.hiragana.rawValue {
-                    japaneseType = .hiragana
-                }
-                else if wordLearnt.type == JapaneseType.katakana.rawValue {
-                    japaneseType = .katakana
-                }
-                else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
-                    japaneseType = .voicedHiragana
-                }
-                else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
-                    japaneseType = .voicedKatakana
-                }
-                else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
-                    japaneseType = .yVowelHiragana
-                }
-                else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
-                    japaneseType = .yVowelKatakana
-                }
+//            if wordLearnt.numberOfCorrect >= 5 {
+//                //distinguishs japanese type
+//                var japaneseType: JapaneseType!
+//                if wordLearnt.type == JapaneseType.hiragana.rawValue {
+//                    japaneseType = .hiragana
+//                }
+//                else if wordLearnt.type == JapaneseType.katakana.rawValue {
+//                    japaneseType = .katakana
+//                }
+//                else if wordLearnt.type == JapaneseType.voicedHiragana.rawValue {
+//                    japaneseType = .voicedHiragana
+//                }
+//                else if wordLearnt.type == JapaneseType.voicedKatakana.rawValue {
+//                    japaneseType = .voicedKatakana
+//                }
+//                else if wordLearnt.type == JapaneseType.yVowelHiragana.rawValue {
+//                    japaneseType = .yVowelHiragana
+//                }
+//                else if wordLearnt.type == JapaneseType.yVowelKatakana.rawValue {
+//                    japaneseType = .yVowelKatakana
+//                }
                 //categorizes wordLearnt object among 3 types based on japaneseType
                 guard let selectedType = self.selectedType else {return}
                 switch selectedType {
