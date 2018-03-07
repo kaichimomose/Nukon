@@ -32,7 +32,7 @@ import UIKit
         view.bringSubview(toFront: homeSunButton)
         
         //Commence shadow animations
-        homeSunButton.animateShadow()
+        homeSunButton.animateShadow(pulsing: true)
         
         
         //Create pulsating layer on View Controller's View
@@ -55,13 +55,22 @@ import UIKit
     //MAIN BUTTON'S ACTION WHEN PRESSED
     @IBAction func sunPressed(_ sender: Any) {
         
+        UIView.animate(withDuration: 0.12, animations: {
+            self.homeSunButton.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }) { (_) in
+            UIView.animate(withDuration: 0.12, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 4, options: .curveLinear, animations: {
+                self.homeSunButton.transform = CGAffineTransform.identity
+            }, completion: nil)
+        }
+        
         //When sun button is pressed, animate the pulsating layer
         if popCount == 0 {
-            homeSunButton.stopAnimating()
+            homeSunButton.animateShadow(pulsing: false)
             animatePulsatingLayer()
             popOutMenuButtons()
             popCount += 1
         } else {
+            homeSunButton.animateShadow(pulsing: true)
             animatePulsatingLayer()
             popInMenuButtons()
             popCount -= 1
@@ -135,13 +144,13 @@ extension HiraganaHomeScreenViewController {
     //Menu Button Animations -----------------------------------------------------
     func popOutMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
-            self.studyButton.center.x = self.studyButton.center.x - 155
+            self.studyButton.center.x = self.studyButton.center.x - 135
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.comboButton.center.y = self.comboButton.center.y - 155
+                self.comboButton.center.y = self.comboButton.center.y - 135
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
-                    self.characterButton.center.x = self.characterButton.center.x + 155
+                    self.characterButton.center.x = self.characterButton.center.x + 135
                 }, completion: nil)
             })
         }
@@ -149,13 +158,13 @@ extension HiraganaHomeScreenViewController {
     
     func popInMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
-            self.studyButton.center.x = self.studyButton.center.x + 155
+            self.studyButton.center.x = self.studyButton.center.x + 135
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.comboButton.center.y = self.comboButton.center.y + 155
+                self.comboButton.center.y = self.comboButton.center.y + 135
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
-                        self.characterButton.center.x = self.characterButton.center.x - 155
+                        self.characterButton.center.x = self.characterButton.center.x - 135
                 }, completion: nil)
             })
         }

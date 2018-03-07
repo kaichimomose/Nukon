@@ -24,7 +24,7 @@ extension UIColor {
 
 extension UIButton {
     
-    func animateShadow() {
+    func animateShadow(pulsing: Bool) {
         layer.shadowColor = UIColor.redSun.cgColor
         layer.shadowRadius = 15
         
@@ -35,12 +35,14 @@ extension UIButton {
         animation.duration = 1.0
         animation.autoreverses = true
         animation.repeatCount = CFloat.infinity
+        
+        if pulsing == false {
+            animation.toValue = 0
+            animation.duration = 0
+            animation.autoreverses = false
+            animation.repeatCount = 0
+        }
 
         layer.add(animation, forKey: "shadowPulsingEffect")
-    }
-    
-    func stopAnimating() {
-        layer.shadowRadius = 0
-        layer.shadowOpacity = 0
     }
 }

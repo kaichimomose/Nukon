@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VLa-bD-zdX">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,11 +16,11 @@
             <objects>
                 <viewController id="VLa-bD-zdX" customClass="HiraganaHomeScreenViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ELe-iZ-SAk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-aUc">
-                                <rect key="frame" x="0.0" y="51.333333333333343" width="414" height="59"/>
+                                <rect key="frame" x="0.0" y="59.666666666666657" width="375" height="59"/>
                                 <attributedString key="attributedText">
                                     <fragment content="HIRAGANA">
                                         <attributes>
@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
-                                <rect key="frame" x="112" y="111.33333333333331" width="190" height="43"/>
+                                <rect key="frame" x="82.666666666666671" y="119.66666666666669" width="209.66666666666663" height="43"/>
                                 <attributedString key="attributedText">
                                     <fragment content="ひらがな">
                                         <attributes>
@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yp0-Lz-ksZ" customClass="SunButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="128" y="289" width="158" height="158"/>
+                                <rect key="frame" x="110" y="328.66666666666669" width="155" height="155"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Yp0-Lz-ksZ" secondAttribute="height" multiplier="1:1" id="xqI-Mu-aEI"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjG-xd-Om5" customClass="studyButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="167" y="328" width="80" height="80"/>
+                                <rect key="frame" x="143.33333333333334" y="362" width="88.333333333333343" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WjG-xd-Om5" secondAttribute="height" multiplier="1:1" id="NJb-0G-SGb"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Cg-hO0" customClass="combosButtons" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="167" y="328.66666666666669" width="80" height="80"/>
+                                <rect key="frame" x="143.33333333333334" y="362" width="88.333333333333343" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZHx-Cg-hO0" secondAttribute="height" multiplier="1:1" id="sKC-ud-ams"/>
                                 </constraints>
@@ -75,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="167" y="328" width="80" height="80"/>
+                                <rect key="frame" x="143.33333333333334" y="362" width="88.333333333333343" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KwN-pA-ucu" secondAttribute="height" multiplier="1:1" id="TzX-LW-Ytu"/>
                                 </constraints>
@@ -89,7 +89,7 @@
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="2dA-6x-yXy"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="3eT-2p-Cba"/>
                             <constraint firstItem="ZHx-Cg-hO0" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="5fF-sq-O0p"/>
-                            <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="150:667" constant="-7.6086956521739069" id="6aa-qB-Yke"/>
+                            <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="150:667" constant="-27.608695652173907" id="6aa-qB-Yke"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Bd7-Gs-olg"/>
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="top" secondItem="bD5-JF-aUc" secondAttribute="bottom" constant="1" id="GLD-0v-DdW"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="GX0-zj-fEh"/>
@@ -120,7 +120,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="combos" width="50" height="47"/>
-        <image name="study" width="50" height="44"/>
+        <image name="combos" width="60" height="56"/>
+        <image name="study" width="60" height="53"/>
     </resources>
 </document>
