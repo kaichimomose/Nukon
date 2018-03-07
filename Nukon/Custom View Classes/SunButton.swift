@@ -10,8 +10,6 @@ import UIKit
 
 class SunButton: UIButton {
     
-    var animation: CABasicAnimation?
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         layer.cornerRadius = layer.frame.height / 2
