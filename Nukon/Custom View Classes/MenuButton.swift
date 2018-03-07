@@ -14,7 +14,7 @@ class studyButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        layer.contents = UIImage(named: "study")?.cgImage
+//        layer.contents = UIImage(named: "study")?.cgImage
         layer.contentsGravity = kCAGravityCenter
         
         layer.backgroundColor = UIColor.lavender.cgColor
@@ -33,7 +33,7 @@ class combosButtons: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        layer.contents = UIImage(named: "combos")?.cgImage
+//        layer.contents = UIImage(named: "combos")?.cgImage
         layer.contentsGravity = kCAGravityCenter
     
         layer.backgroundColor = UIColor.peach.cgColor
