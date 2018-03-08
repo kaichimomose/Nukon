@@ -55,7 +55,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjG-xd-Om5" customClass="studyButton" customModule="Nukon" customModuleProvider="target">
+<<<<<<< HEAD
                                 <rect key="frame" x="151.5" y="297.5" width="72.5" height="72"/>
+=======
+                                <rect key="frame" x="155" y="301" width="65" height="65"/>
+>>>>>>> 3e63c0a49cf1b39851d581223203819dcb45e1aa
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WjG-xd-Om5" secondAttribute="height" multiplier="1:1" id="NJb-0G-SGb"/>
                                 </constraints>
@@ -65,7 +69,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Cg-hO0" customClass="combosButtons" customModule="Nukon" customModuleProvider="target">
+<<<<<<< HEAD
                                 <rect key="frame" x="151.5" y="297.5" width="72.5" height="72"/>
+=======
+                                <rect key="frame" x="155" y="301" width="65" height="65"/>
+>>>>>>> 3e63c0a49cf1b39851d581223203819dcb45e1aa
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZHx-Cg-hO0" secondAttribute="height" multiplier="1:1" id="sKC-ud-ams"/>
                                 </constraints>
@@ -74,11 +82,17 @@
                                     <action selector="comboButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="XFO-5A-Gph"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
                                 <rect key="frame" x="151.5" y="297.5" width="72.5" height="72"/>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
+                                <rect key="frame" x="152" y="297.5" width="72.5" height="72.5"/>
+>>>>>>> 3e63c0a49cf1b39851d581223203819dcb45e1aa
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KwN-pA-ucu" secondAttribute="height" multiplier="1:1" id="TzX-LW-Ytu"/>
                                 </constraints>
+                                <state key="normal" image="character"/>
                                 <connections>
                                     <action selector="charButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="M2G-9P-Awk"/>
                                 </connections>
@@ -88,7 +102,7 @@
                         <constraints>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="2dA-6x-yXy"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="3eT-2p-Cba"/>
-                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="5fF-sq-O0p"/>
+                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" constant="-7.5" id="5fF-sq-O0p"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="150:667" constant="-27.608695652173907" id="6aa-qB-Yke"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Bd7-Gs-olg"/>
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="top" secondItem="bD5-JF-aUc" secondAttribute="bottom" constant="1" id="GLD-0v-DdW"/>
@@ -96,7 +110,7 @@
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="172:667" id="LCk-nv-C5V"/>
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Ldi-aC-MQq"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="trailing" secondItem="oup-LF-boy" secondAttribute="trailing" id="R8c-2S-gN7"/>
-                            <constraint firstItem="WjG-xd-Om5" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="RRN-YB-AUa"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" constant="-7.5" id="RRN-YB-AUa"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="Vx4-af-Kan"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="leading" secondItem="oup-LF-boy" secondAttribute="leading" id="c2M-eO-rqz"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="0.22" id="ctL-Wj-Jcc"/>
@@ -120,7 +134,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="combos" width="60" height="56"/>
-        <image name="study" width="60" height="53"/>
+        <image name="character" width="29" height="32"/>
+        <image name="combos" width="35" height="32"/>
+        <image name="study" width="35" height="35"/>
     </resources>
 </document>
