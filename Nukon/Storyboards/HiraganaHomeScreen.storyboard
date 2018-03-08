@@ -55,11 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjG-xd-Om5" customClass="studyButton" customModule="Nukon" customModuleProvider="target">
-<<<<<<< HEAD
-                                <rect key="frame" x="151.5" y="297.5" width="72.5" height="72"/>
-=======
                                 <rect key="frame" x="155" y="301" width="65" height="65"/>
->>>>>>> 3e63c0a49cf1b39851d581223203819dcb45e1aa
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WjG-xd-Om5" secondAttribute="height" multiplier="1:1" id="NJb-0G-SGb"/>
                                 </constraints>
@@ -69,11 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Cg-hO0" customClass="combosButtons" customModule="Nukon" customModuleProvider="target">
-<<<<<<< HEAD
-                                <rect key="frame" x="151.5" y="297.5" width="72.5" height="72"/>
-=======
                                 <rect key="frame" x="155" y="301" width="65" height="65"/>
->>>>>>> 3e63c0a49cf1b39851d581223203819dcb45e1aa
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZHx-Cg-hO0" secondAttribute="height" multiplier="1:1" id="sKC-ud-ams"/>
                                 </constraints>
@@ -82,13 +74,8 @@
                                     <action selector="comboButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="XFO-5A-Gph"/>
                                 </connections>
                             </button>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="151.5" y="297.5" width="72.5" height="72"/>
-=======
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
                                 <rect key="frame" x="152" y="297.5" width="72.5" height="72.5"/>
->>>>>>> 3e63c0a49cf1b39851d581223203819dcb45e1aa
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KwN-pA-ucu" secondAttribute="height" multiplier="1:1" id="TzX-LW-Ytu"/>
                                 </constraints>
