@@ -27,7 +27,7 @@ class OverViewCell: UICollectionViewCell, GetValueFromCell {
     
     //collectionView layout
     let layout = UICollectionViewFlowLayout() //UPCarouselFlowLayout()
-    let inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    let inset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     
     @IBOutlet weak var collectionView: UICollectionView!
     

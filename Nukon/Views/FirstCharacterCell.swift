@@ -154,10 +154,16 @@ class FirstCharacterCell: UICollectionViewCell {
     var characterLabels: [UILabel]!
     var soundLabels: [UILabel]!
     
+    var characterViews: [UIView]!
+    
     //MARK: - Outlets
     @IBOutlet weak var characterLabel: UILabel!
     
-    @IBOutlet var characterViews: [UIView]!
+    @IBOutlet weak var aVowelView: UIView!
+    @IBOutlet weak var iVowelView: UIView!
+    @IBOutlet weak var uVowelView: UIView!
+    @IBOutlet weak var eVowelView: UIView!
+    @IBOutlet weak var oVowelView: UIView!
     
     @IBOutlet weak var aCheckboxImageView: UIImageView!
     @IBOutlet weak var iCheckboxImageView: UIImageView!
@@ -186,6 +192,8 @@ class FirstCharacterCell: UICollectionViewCell {
         characterLabel.layer.cornerRadius = characterLabel.frame.width/2
         characterLabel.layer.masksToBounds = true
         
+        characterViews = [aVowelView, iVowelView, uVowelView, eVowelView, oVowelView]
+        
         characterViews.forEach { view in
             view.layer.cornerRadius = view.frame.height/2
             view.alpha = 0
@@ -211,17 +219,6 @@ class FirstCharacterCell: UICollectionViewCell {
         soundLabels = [aVowelSound, iVowelSound, uVowelSound, eVowelSound, oVowelSound]
     }
     
-//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-//        guard let attributes = super.preferredLayoutAttributesFitting(layoutAttributes).copy() as? UICollectionViewLayoutAttributes else {return layoutAttributes}
-//        
-////        let height = systemLayoutSizeFitting(attributes.size).height
-//        
-//        attributes.size.height = UIScreen.main.bounds.width - 100
-//        attributes.size.width = UIScreen.main.bounds.width - 100
-//        //        attributes.size.width = self.contentView.frame.size.width
-//        return attributes
-//    }
-    
     func coloringAndUnlock(character: String, index: Int) {
         if let wordLearnt = characterDict[character] {
             switch wordLearnt.confidenceCounter {
@@ -234,7 +231,7 @@ class FirstCharacterCell: UICollectionViewCell {
             case 1:
                 characterViews[index].backgroundColor = UIColor(red: 255/255, green: 105/255, blue: 0/255, alpha: 1.0) //Orange
             default:
-                characterViews[index].backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1.0) //Red
+                characterViews[index].backgroundColor = UIColor.redSun //Red
             }
         }
     }
@@ -277,10 +274,28 @@ class FirstCharacterCell: UICollectionViewCell {
     func characterDistributingAnimation() {
         //initial settings
         
-        self.characterViews.forEach({ view in
-            view.transform = CGAffineTransform(rotationAngle: 90).concatenating(CGAffineTransform(translationX: 0, y: 0))
+        for index in 0..<self.characterViews.count {
+            let view = self.characterViews[index]
             view.alpha = 0
-        })
+            
+            switch index {
+            case 0:
+                view.transform = CGAffineTransform.init(translationX: 0, y: 110)
+            case 1:
+                view.transform = CGAffineTransform.init(translationX: 110, y: 0)
+            
+            case 2:
+                view.transform = CGAffineTransform.init(translationX: 50, y: -110)
+                
+            case 3:
+                view.transform = CGAffineTransform.init(translationX: -50, y: -110)
+            
+            case 4:
+                view.transform = CGAffineTransform.init(translationX: -110, y: 0)
+            default:
+                view.transform = CGAffineTransform.init(translationX: 0, y: 0)
+            }
+        }
         
         self.checkboxesImageViews.forEach { imageView in
             imageView.alpha = 0
@@ -394,5 +409,12 @@ class FirstCharacterCell: UICollectionViewCell {
         speakOrderly(list: japanese.letters)
     }
     
-    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        guard let attributes = super.preferredLayoutAttributesFitting(layoutAttributes).copy() as? UICollectionViewLayoutAttributes else {return layoutAttributes}
+        
+        attributes.size.height = collectionView.frame.height
+        attributes.size.width = collectionView.frame.width
+        //        attributes.size.width = self.contentView.frame.size.width
+        return attributes
+    }
 }

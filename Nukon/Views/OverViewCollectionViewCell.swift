@@ -272,7 +272,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
         let height = systemLayoutSizeFitting(attributes.size).height
         
         attributes.size.height = height
-        attributes.size.width = UIScreen.main.bounds.width - 20
+        attributes.size.width = UIScreen.main.bounds.width - 10
         //        attributes.size.width = self.contentView.frame.size.width
         return attributes
     }
