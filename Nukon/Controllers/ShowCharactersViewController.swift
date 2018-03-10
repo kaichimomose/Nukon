@@ -151,13 +151,18 @@ class ShowCharactersViewController: UIViewController {
         // updates all labels
         self.commentLabel.text = self.comment.rawValue
         self.characterButton.setTitle(self.shownCharacter, for: .normal)
+        if self.shownCharacter.count > 1 {
+            self.characterButton.titleLabel?.font = self.characterButton.titleLabel?.font.withSize(100)
+        }
         self.countCharacters.text = "\(self.currentNumber)/\(self.totalNumberOfCharacter)"
         switch self.judge {
         case .correct:
+            self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
             self.characterButton.backgroundColor = .green
             self.enableJudgeButtons()
         case .wrong, .wait:
+            self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
             self.characterButton.backgroundColor = .yellow
             self.enableJudgeButtons()
