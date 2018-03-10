@@ -24,13 +24,13 @@ class MenuCell: UICollectionViewCell {
     
     override var isHighlighted: Bool {
         didSet {
-            iconImageView.tintColor = isHighlighted ? .black : .lightGray
+            iconImageView.tintColor = isHighlighted ? .redSun : .lightGray
         }
     }
     
     override var isSelected: Bool {
         didSet {
-            iconImageView.tintColor = isSelected ? .black : .lightGray
+            iconImageView.tintColor = isSelected ? .redSun : .lightGray
         }
     }
     

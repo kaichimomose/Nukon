@@ -153,6 +153,8 @@ class ShowCharactersViewController: UIViewController {
         self.characterButton.setTitle(self.shownCharacter, for: .normal)
         if self.shownCharacter.count > 1 {
             self.characterButton.titleLabel?.font = self.characterButton.titleLabel?.font.withSize(100)
+        } else {
+            self.characterButton.titleLabel?.font = self.characterButton.titleLabel?.font.withSize(125)
         }
         self.countCharacters.text = "\(self.currentNumber)/\(self.totalNumberOfCharacter)"
         switch self.judge {
@@ -174,6 +176,7 @@ class ShowCharactersViewController: UIViewController {
 
     }
 
+    //shakes chracterview
     func shakeCharacter() {
         let shakeAnimation = CABasicAnimation(keyPath: "position")
         shakeAnimation.duration = 0.07

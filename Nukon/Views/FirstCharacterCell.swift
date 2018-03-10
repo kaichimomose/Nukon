@@ -31,6 +31,8 @@ class FirstCharacterCell: UICollectionViewCell {
         didSet {
             if japanese.sound == "Vowel" || japanese.sound == "Special-N" {
                 characterLabel.font = characterLabel.font.withSize(40)
+            } else {
+                characterLabel.font = characterLabel.font.withSize(100)
             }
             characterLabel.text = japanese.sound
             let numberOfCharacters = japanese.letters.count

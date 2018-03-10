@@ -198,13 +198,13 @@
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytF-Lt-8Sd">
                                         <rect key="frame" x="0.0" y="587" width="375" height="60"/>
-                                        <color key="backgroundColor" red="0.035294117647058823" green="0.44313725490196076" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.96522730590000005" green="0.95312029119999997" blue="0.89265578990000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="OTz-AI-pWu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <state key="normal" title="PRACTICE">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.93271499869999996" green="0.52084916830000005" blue="0.49745017289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="practiceButtonTapped:" destination="eFm-zB-KpV" eventType="touchUpInside" id="m06-fl-ooN"/>
