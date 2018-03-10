@@ -26,7 +26,6 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
     var selectedJpaneseCoreData: [String: WordLearnt]!
     var consonantDict: [String: [String: WordLearnt]]!
     
-    var unLockNextConsonant: [String: Bool]!
     var numberOfUnlockedCell: Int!
     
     let cellReuseIdentifer = "FirstCharacterCell"
@@ -44,18 +43,7 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
         collectionView.dataSource = self
         
         collectionView.register(UINib.init(nibName: "FirstCharacterCell", bundle: .main), forCellWithReuseIdentifier: cellReuseIdentifer)
-        
-        //cell setting
-//        let length = UIScreen.main.bounds.width - (inset.left+inset.right)
-//        
-//        layout.scrollDirection = .vertical
-//        layout.sectionInset = inset
-//        layout.minimumLineSpacing = 10
-//        layout.minimumInteritemSpacing = 10
-//        layout.estimatedItemSize = CGSize(width: length, height: length)
-//        layout.itemSize = CGSize(width: length, height: length)
-        
-//        collectionView.collectionViewLayout = layout
+
         collectionView.alwaysBounceVertical = true
         collectionView.isPagingEnabled = true
         

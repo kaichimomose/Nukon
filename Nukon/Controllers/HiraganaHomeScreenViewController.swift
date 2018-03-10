@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 @IBDesignable class HiraganaHomeScreenViewController: UIViewController {
     
-    @IBOutlet weak var homeSunButton: UIButton!
     
     var pulsatingLayer: CAShapeLayer!
     
     var popCount = 0
+    
+    var japaneseType = JapaneseType.hiragana
+    
+    let coreDataStack = CoreDataStack.instance
+    
+    var showingCharacters = [String: [String]]()
+    var characterDict = [String: WordLearnt]()
+    var consonantDict = [String: Consonant]()
+    
+    @IBOutlet weak var homeSunButton: UIButton!
     
     @IBOutlet weak var studyButton: studyButton!
     
@@ -52,6 +62,34 @@ import UIKit
     }
     
     
+    //fetch core data
+    func fetchCoredata(){
+        // Initialize Fetch Request\
+        let fetchRequest: NSFetchRequest<Consonant> = Consonant.fetchRequest()
+        // Add Specific type Descriptors
+        fetchRequest.predicate = NSPredicate(format: "system == %@ OR system == %@", japaneseType.rawValue, JapaneseType.yVowelHiragana.rawValue)
+        do {
+            let result = try self.coreDataStack.viewContext.fetch(fetchRequest)
+
+            for item in result {
+                guard let consonant = item.consonant else {return}
+                if item.isUnlocked {
+                    showingCharacters[consonant] = []
+                    let words = item.words?.allObjects as? [WordLearnt]
+                    guard let wordsLearnt = words else {return}
+                    for wordLearnt in wordsLearnt {
+                        showingCharacters[consonant]?.append(wordLearnt.word!)
+                        characterDict[wordLearnt.word!] = wordLearnt
+                    }
+                    //sort letters
+                    showingCharacters[consonant]!.sort()
+                }
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
     //MAIN BUTTON'S ACTION WHEN PRESSED
     @IBAction func sunPressed(_ sender: Any) {
         
@@ -80,7 +118,15 @@ import UIKit
     
     
     @IBAction func studyButtonPressed(_ sender: Any) {
-        
+        fetchCoredata()
+        if !self.showingCharacters.isEmpty {
+            let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
+            let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
+            showCharacterVC.japaneseDictForRandom = self.showingCharacters
+            showCharacterVC.japaneseType = self.japaneseType
+            showCharacterVC.characterCoreDataDict = self.characterDict
+            present(showCharacterVC, animated: true, completion: nil)
+        }
     }
     
     

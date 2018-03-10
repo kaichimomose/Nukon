@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Consonant" representedClassName="Consonant" syncable="YES" codeGenerationType="class">
         <attribute name="consonant" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isUnlocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="system" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unLockNext" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WordLearnt" inverseName="consonant" inverseEntity="WordLearnt" syncable="YES"/>
@@ -12,7 +13,7 @@
         <relationship name="consonant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consonant" inverseName="words" inverseEntity="Consonant" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Consonant" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Consonant" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="WordLearnt" positionX="-36" positionY="9" width="128" height="90"/>
     </elements>
 </model>

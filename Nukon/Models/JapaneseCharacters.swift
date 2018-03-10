@@ -79,4 +79,32 @@ struct JapaneseCharacters {
     ]
     
     let vowelSounds = ["a", "i", "u", "e", "o"]
+    
+    let soundsList = ["Vowel": ["a", "i", "u", "e", "o"],
+                      "K": ["ka", "ki", "ku", "ke", "ko"],
+                      "S": ["sa", "si", "su", "se", "so"],
+                      "T": ["ta", "ti", "tu", "te", "to"],
+                      "N": ["na", "ni", "nu", "ne", "no"],
+                      "Special-N": ["n"],
+                      "H": ["ha", "hi", "hu", "he", "ho"],
+                      "M": ["ma", "mi", "mu", "me", "mo"],
+                      "Y": ["ya", "yu", "yo"],
+                      "R": ["ra", "ri", "ru", "re", "ro"],
+                      "W": ["wa", "wo"],
+                      "G": ["ga", "gi", "gu", "ge", "go"],
+                      "Z": ["za", "zi", "zu", "ze", "zo"],
+                      "D": ["da", "di", "du", "de", "do"],
+                      "B": ["ba", "bi", "bu", "be", "bo"],
+                      "P": ["pa", "pi", "pu", "pe", "po"],
+                      "Ky": ["kya", "kyu", "kyo"],
+                      "Sy": ["sya", "syu", "syo"],
+                      "Cy": ["cya", "cyu", "cyo"],
+                      "Ny": ["nya", "nyu", "nyo"],
+                      "Hy": ["hya", "hyu", "hyo"],
+                      "My": ["mya", "myu", "myo"],
+                      "Ry": ["rya", "ryu", "ryo"],
+                      "Gy": ["gya", "gyu", "gyo"],
+                      "J": ["ja", "ju", "jo"],
+                      "By": ["bya", "byu", "byo"],
+                      "Py": ["pya", "pyu", "pyo"]]
 }

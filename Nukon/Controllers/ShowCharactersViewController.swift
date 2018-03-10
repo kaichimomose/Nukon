@@ -33,18 +33,26 @@ enum ButtonTitle {
     case recap
 }
 
+enum Order {
+    case orderly
+    case randomly
+}
+
 class ShowCharactersViewController: UIViewController {
     
     //MARK: - Propaties
     //values to show characters
-    var japaneseList: [Japanese]!
-    var japaneseDict: [String: [String?]]!
+    var japaneseList: [Japanese]?
+    var japaneseDict: [String: [String?]]?
+    var japaneseDictForRandom: [String: [String]]?
     let instance = PosibilitiesDict.instance
     var posibilitiesDict = [String: [String]]()
     var posibilities = [String]()
     var japaneseType: JapaneseType!
     var soundAndLettersList = [(String, [String?])]()
-    let vowels = JapaneseCharacters().vowelSounds
+    var vowels = JapaneseCharacters().vowelSounds
+    var soundsList = JapaneseCharacters().soundsList
+    var order: Order = .orderly
     
     var judgedShownCharacters = [String: [(String, Int)]]()
     
@@ -107,13 +115,19 @@ class ShowCharactersViewController: UIViewController {
             button.layer.cornerRadius = button.frame.size.height/2
         }
         
-//        self.unenableJudgeButtons()
+        self.unenableJudgeButtons()
         
-        guard let japaneseDict = self.japaneseDict, let japaneseList = self.japaneseList else {return}
-        for japanese in japaneseList{
-            if let letters = japaneseDict[japanese.sound] {
-                // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
-                self.soundAndLettersList.append((japanese.sound, letters))
+        if let japaneseList = self.japaneseList, let japaneseDict = self.japaneseDict {
+            for japanese in japaneseList{
+                if let letters = japaneseDict[japanese.sound] {
+                    // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
+                    self.soundAndLettersList.append((japanese.sound, letters))
+                }
+            }
+        } else if let japaneseDict = self.japaneseDictForRandom {
+            self.order = .randomly
+            for (consonant, letters) in japaneseDict {
+                self.soundAndLettersList.append((consonant, letters))
             }
         }
         
@@ -121,7 +135,12 @@ class ShowCharactersViewController: UIViewController {
         
         self.totalNumberOfCharacter = numberOfCharacters()
         // choose first chracter
-        self.shownCharacter = orderCharacter()
+        switch self.order {
+            case .orderly:
+                self.shownCharacter = orderCharacter()
+            case .randomly:
+                self.shownCharacter = randomCharacter()
+        }
         
         self.updateLabels()
 
@@ -136,10 +155,10 @@ class ShowCharactersViewController: UIViewController {
         case .correct:
             self.soundLabel.text = self.sound
             self.characterLabel.backgroundColor = .green
-             self.enableJudgeButtons()
+            self.enableJudgeButtons()
         case .wrong:
             self.soundLabel.text = self.sound
-            self.characterLabel.backgroundColor = .red
+            self.characterLabel.backgroundColor = .yellow
             self.enableJudgeButtons()
         case .wait:
             self.soundLabel.text = self.sound
@@ -161,15 +180,52 @@ class ShowCharactersViewController: UIViewController {
     func numberOfCharacters() -> Int {
         // return total number of characters that are in the list
         var numberOfCharacters = 0
-        
-        for (_, value) in self.japaneseDict {
-            for character in value {
-                if character != nil {
-                    numberOfCharacters += 1
+        switch order {
+        case .orderly:
+            guard let japaneseDict = self.japaneseDict else {return 0}
+            for value in japaneseDict.values {
+                for character in value {
+                    if character != nil {
+                        numberOfCharacters += 1
+                    }
                 }
+            }
+        case .randomly:
+            guard let japaneseDict = self.japaneseDictForRandom else {return 0}
+            for value in japaneseDict.values {
+                numberOfCharacters += value.count
             }
         }
         return numberOfCharacters
+    }
+    
+    func randomCharacter() -> String {
+        // chooses a character randomly, returns it
+        // generates random numbers
+        let soundIndex = Int(arc4random()) % self.soundAndLettersList.count
+        let (sound, letters) = self.soundAndLettersList[soundIndex]
+        // gets sounds
+        var sounds = soundsList[sound]
+        let vowelIndex = Int(arc4random()) % letters.count
+        // picks a character with random numbers
+        let showCharacter = letters[vowelIndex]
+        let correntsound = sounds![vowelIndex]
+        // picks a list of possible characters of the picked character
+        self.posibilities = self.posibilitiesDict[correntsound]!
+        self.sound = correntsound
+        self.shownCharacters.append((correntsound, showCharacter!, self.posibilities))
+        
+        // deletes selected character
+        self.soundAndLettersList[soundIndex].1.remove(at: vowelIndex)
+        self.soundsList[sound]?.remove(at: vowelIndex)
+        if self.soundAndLettersList[soundIndex].1.count == 0 {
+            self.soundAndLettersList.remove(at: soundIndex)
+        }
+        //updates currentNumber
+        self.counter += 1
+        self.currentNumber = self.counter
+        return showCharacter!
+        
     }
     
     func orderCharacter() -> String {
@@ -273,7 +329,7 @@ class ShowCharactersViewController: UIViewController {
     func unenableJudgeButtons() {
         self.judgeButtons.forEach { button in
             button.alpha = 0.5
-            button.isEnabled = false
+            button.isEnabled = true
         }
     }
     
@@ -291,7 +347,12 @@ class ShowCharactersViewController: UIViewController {
             self.dismissView()
         } else {
             self.unenableJudgeButtons()
-            self.shownCharacter = orderCharacter()
+            switch self.order {
+                case .orderly:
+                    self.shownCharacter = orderCharacter()
+                case .randomly:
+                    self.shownCharacter = randomCharacter()
+            }
             self.comment = .start
             self.buttonTitle = .start
             self.judge = .yet
@@ -520,7 +581,11 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                     }
                 }
                 
-                self.comment = .start
+                if self.judge == .wrong {
+                    self.comment = .again
+                } else {
+                    self.comment = .start
+                }
                 self.buttonTitle = .start
                 self.updateLabels()
                 

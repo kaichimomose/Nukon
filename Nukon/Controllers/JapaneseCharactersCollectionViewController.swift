@@ -22,7 +22,8 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     
     var selectedJapanese = [String: [String?]]()
     var selectedJpaneseCoreData = [String: WordLearnt]()
-    var consonantDict = [String: [String: WordLearnt]]()
+    var consonantAndWordDict = [String: [String: WordLearnt]]()
+    var consonantDict = [String: Consonant]()
     
     var unLockNextConsonant = [String: Bool]()
     var numberOfUnlockedCell: Int!
@@ -44,18 +45,6 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //sets title
-        switch self.japaneseType {
-            case .hiragana:
-                self.title = "HIRAGANA"
-            case .katakana:
-                self.title = "KATAKANA"
-            case .yVowelHiragana, .yVowelKatakana:
-                self.title = "Y-vowel-sounds"
-            default:
-                self.title = ""
-        }
         
         menuBar.japaneseCharacterCVC = self
         menuBarCollectionView.delegate = menuBar
@@ -84,7 +73,7 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
 
         do {
             let result = try self.coreDataStack.viewContext.fetch(fetchRequest)
-            var unlockcellCounter = 1
+            var unlockedcellCounter = 1
             for item in result {
                 guard let consonant = item.consonant else {return}
                 let words = item.words?.allObjects as? [WordLearnt]
@@ -116,7 +105,7 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
                         backgroundEntity.unLockNext = true
                         unLockNextConsonant[consonant] = true
                         if consonant != "P" && consonant != "Py" {
-                            unlockcellCounter += 1
+                            unlockedcellCounter += 1
                         }
                         coreDataStack.saveTo(context: coreDataStack.privateContext)
                         coreDataStack.viewContext.refresh(item, mergeChanges: true)
@@ -126,12 +115,20 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
                 } else {
                     unLockNextConsonant[consonant] = true
                     if consonant != "P" && consonant != "Py" {
-                        unlockcellCounter += 1
+                        unlockedcellCounter += 1
                     }
                 }
-                consonantDict[consonant] = characterDict
+                consonantAndWordDict[consonant] = characterDict
+                consonantDict[consonant] = item
             }
-            self.numberOfUnlockedCell = unlockcellCounter
+            self.numberOfUnlockedCell = unlockedcellCounter
+            //set isUnlocked true
+            let willUnlockConsonant = japaneseList[unlockedcellCounter - 1].sound
+            let consonant = consonantDict[willUnlockConsonant]!
+            let backgroundEntity = coreDataStack.privateContext.object(with: consonant.objectID) as! Consonant
+            backgroundEntity.isUnlocked = true
+            coreDataStack.saveTo(context: coreDataStack.privateContext)
+            coreDataStack.viewContext.refresh(consonant, mergeChanges: true)
         }catch let error {
             print(error)
         }
@@ -228,8 +225,7 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
             cell.japaneseType = self.japaneseType
             cell.selectedJapanese = self.selectedJapanese
             cell.selectedJpaneseCoreData = self.selectedJpaneseCoreData
-            cell.consonantDict = self.consonantDict
-            cell.unLockNextConsonant = self.unLockNextConsonant
+            cell.consonantDict = self.consonantAndWordDict
             cell.numberOfUnlockedCell = self.numberOfUnlockedCell
             cell.collectionView.reloadData()
             return cell
@@ -240,7 +236,7 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
             cell.japaneseType = self.japaneseType
             cell.selectedJapanese = self.selectedJapanese
             cell.selectedJpaneseCoreData = self.selectedJpaneseCoreData
-            cell.consonantDict = self.consonantDict
+            cell.consonantDict = self.consonantAndWordDict
             cell.unLockNextConsonant = self.unLockNextConsonant
             cell.collectionView.reloadData()
             return cell
