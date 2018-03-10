@@ -164,7 +164,8 @@ class ShowCharactersViewController: UIViewController {
         case .wrong, .wait:
             self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
-            self.characterButton.backgroundColor = .yellow
+            self.characterButton.backgroundColor = .materialBeige
+            self.shakeCharacter()
             self.enableJudgeButtons()
         case .yet:
             self.soundLabel.text = ""
@@ -173,9 +174,15 @@ class ShowCharactersViewController: UIViewController {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func shakeCharacter() {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = 0.07
+        shakeAnimation.repeatCount = 4
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: self.characterView.center.x - 10, y: self.characterView.center.y))
+        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: self.characterView.center.x + 10, y: self.characterView.center.y))
+        
+        self.characterView.layer.add(shakeAnimation, forKey: "position")
     }
     
     

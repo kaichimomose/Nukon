@@ -273,6 +273,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="characterButton" destination="v2q-jr-QmE" id="dhJ-La-FMS"/>
+                        <outlet property="characterView" destination="Okx-Cf-tKK" id="Kx8-oC-GDh"/>
                         <outlet property="commentLabel" destination="cg2-Sc-ilT" id="klc-Bi-xzS"/>
                         <outlet property="countCharacters" destination="SMm-NL-LFK" id="j2J-my-6ZG"/>
                         <outlet property="goodButton" destination="c7s-Y4-3dF" id="E1u-8m-4sQ"/>
