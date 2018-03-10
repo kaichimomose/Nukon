@@ -224,21 +224,34 @@ class OverViewCollectionViewCell: UICollectionViewCell {
         if let wordLearnt = characterDict[character], isUnLocked {
             switch wordLearnt.confidenceCounter {
             case 4:
-                chracterViews[index].backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1.0) //Green
+                chracterViews[index].backgroundColor = UIColor.materialBlue //blue
             case 3:
-                chracterViews[index].backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1.0) //Yellow
+                chracterViews[index].backgroundColor = UIColor.materialGreen //Green
             case 2:
-                chracterViews[index].backgroundColor = UIColor(red: 255/255, green: 185/255, blue: 0/255, alpha: 1.0) //Light Orange
+                chracterViews[index].backgroundColor = UIColor.materialYellow //dark yellow
             case 1:
-                chracterViews[index].backgroundColor = UIColor(red: 255/255, green: 105/255, blue: 0/255, alpha: 1.0) //Orange
+                chracterViews[index].backgroundColor = UIColor.materialOrange //Orange
             default:
-                chracterViews[index].backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1.0) //Red
+                chracterViews[index].backgroundColor = UIColor.redSun //Red
             }
+            
+            chracterViews[index].alpha = 1
+            
+            checkboxesImageViews.forEach({ imageView in
+                imageView.alpha = 1
+            })
+            
             buttons.forEach({ button in
                 button.isEnabled = true
             })
         } else {
             chracterViews[index].backgroundColor = .lightGray
+            chracterViews[index].alpha = 0.5
+            
+            checkboxesImageViews.forEach({ imageView in
+                imageView.alpha = 0.5
+            })
+            
             buttons.forEach({ button in
                 button.isEnabled = false
             })

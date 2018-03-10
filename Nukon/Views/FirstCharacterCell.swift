@@ -29,6 +29,9 @@ class FirstCharacterCell: UICollectionViewCell {
     
     var japanese: Japanese! {
         didSet {
+            if japanese.sound == "Vowel" || japanese.sound == "Special-N" {
+                characterLabel.font = characterLabel.font.withSize(40)
+            }
             characterLabel.text = japanese.sound
             let numberOfCharacters = japanese.letters.count
             var hiddenIndexes = [Int]()
@@ -223,13 +226,13 @@ class FirstCharacterCell: UICollectionViewCell {
         if let wordLearnt = characterDict[character] {
             switch wordLearnt.confidenceCounter {
             case 4:
-                characterViews[index].backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1.0) //Green
+                characterViews[index].backgroundColor = UIColor.materialBlue //Blue
             case 3:
-                characterViews[index].backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1.0) //Yellow
+                characterViews[index].backgroundColor = UIColor.materialGreen //Green
             case 2:
-                characterViews[index].backgroundColor = UIColor(red: 255/255, green: 185/255, blue: 0/255, alpha: 1.0) //Light Orange
+                characterViews[index].backgroundColor = UIColor.materialYellow //melon
             case 1:
-                characterViews[index].backgroundColor = UIColor(red: 255/255, green: 105/255, blue: 0/255, alpha: 1.0) //Orange
+                characterViews[index].backgroundColor = UIColor.materialOrange //Orange
             default:
                 characterViews[index].backgroundColor = UIColor.redSun //Red
             }

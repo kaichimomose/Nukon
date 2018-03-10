@@ -76,7 +76,7 @@ class ShowCharactersViewController: UIViewController {
     private let audioEngine = AVAudioEngine()
     
     
-    @IBOutlet weak var characterLabel: UILabel!
+    @IBOutlet weak var characterView: UIView!
     @IBOutlet weak var countCharacters: UILabel!
     @IBOutlet weak var nextCharacterButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
@@ -87,6 +87,9 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var goodButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
     
+    
+    @IBOutlet weak var characterButton: UIButton!
+    
     @IBOutlet var judgeButtons: [UIButton]!
     
     override func viewDidLoad() {
@@ -94,14 +97,12 @@ class ShowCharactersViewController: UIViewController {
         
         speechRecognizer.delegate = self
         
-        self.characterLabel.layer.cornerRadius = 6
-        self.characterLabel.layer.masksToBounds = true
-        self.characterLabel.layer.borderColor = UIColor.lightGray.cgColor
-        self.characterLabel.layer.borderWidth = 1
+        self.characterButton.layer.cornerRadius = 15
+        self.characterButton.layer.shadowColor = UIColor.materialBeige.cgColor
+        self.characterButton.layer.shadowRadius = 15
+        self.characterButton.layer.shadowOpacity = 0.7
         
         self.nextCharacterButton.layer.cornerRadius = self.nextCharacterButton.frame.width / 2
-        self.nextCharacterButton.layer.borderColor = UIColor.black.cgColor
-        self.nextCharacterButton.layer.borderWidth = 1
         
         self.judgeButtons.forEach { button in
             button.layer.cornerRadius = button.frame.size.height/2
@@ -130,24 +131,24 @@ class ShowCharactersViewController: UIViewController {
     func updateLabels() {
         // updates all labels
         self.commentLabel.text = self.comment.rawValue
-        self.characterLabel.text = self.shownCharacter
+        self.characterButton.setTitle(self.shownCharacter, for: .normal)
         self.countCharacters.text = "\(self.currentNumber)/\(self.totalNumberOfCharacter)"
         switch self.judge {
         case .correct:
             self.soundLabel.text = self.sound
-            self.characterLabel.backgroundColor = .green
+            self.characterButton.backgroundColor = .green
              self.enableJudgeButtons()
         case .wrong:
             self.soundLabel.text = self.sound
-            self.characterLabel.backgroundColor = .red
+            self.characterButton.backgroundColor = .red
             self.enableJudgeButtons()
         case .wait:
             self.soundLabel.text = self.sound
-            self.characterLabel.backgroundColor = .yellow
+            self.characterButton.backgroundColor = .yellow
             self.enableJudgeButtons()
         case .yet:
             self.soundLabel.text = ""
-            self.characterLabel.backgroundColor = .white
+            self.characterButton.backgroundColor = .materialBeige
         }
 
     }
