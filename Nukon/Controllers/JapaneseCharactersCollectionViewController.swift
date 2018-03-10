@@ -42,6 +42,9 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     
     @IBOutlet weak var menuBar: MenuBar!
     
+    
+    
+    
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()

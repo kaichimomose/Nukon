@@ -15,10 +15,29 @@ extension UIColor {
     }
     
     static let pulsatingFillColor = UIColor.rgb(r: 86, g: 30, b: 63)
+    
+    
     static let redSun = UIColor.rgb(r: 242, g: 110, b: 108)
+    
+    
     static let lavender = UIColor.rgb(r: 214, g: 143, b: 214)
+    
+    
     static let aqua = UIColor.rgb(r: 124, g: 222, b: 220)
+    
+    
     static let peach = UIColor.rgb(r: 234, g: 185, b: 185)
+    
+    //colors for study recognition
+    static let materialOrange = UIColor.rgb(r: 275, g: 279, b: 115)
+    
+    static let materialYellow = UIColor.rgb(r: 255, g: 225, b: 115)
+    
+    static let materialGreen = UIColor.rgb(r: 115, g: 255, b: 115)
+    
+    static let materialBlue = UIColor.rgb(r: 115, g: 191, b: 255)
+    
+    static let materialBeige = UIColor.rgb(r: 244, g: 241, b: 222)
     
 }
 

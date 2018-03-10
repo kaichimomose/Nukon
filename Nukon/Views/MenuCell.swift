@@ -10,6 +10,12 @@ import UIKit
 
 class MenuCell: UICollectionViewCell {
     
+    @IBOutlet weak var menuBarView: UIView! {
+        didSet {
+            menuBarView.layer.cornerRadius = 10
+        }
+    }
+    
     @IBOutlet weak var iconImageView: UIImageView! {
         didSet {
             iconImageView.tintColor = .lightGray
