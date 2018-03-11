@@ -438,13 +438,13 @@ extension FirstCharacterCell {
     
     private func createPulseLayer() {
         
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.1, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.2, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         pulseLayer = CAShapeLayer()
         pulseLayer.path = circularPath.cgPath
         pulseLayer.strokeColor = UIColor.clear.cgColor
         pulseLayer.lineWidth = 10
-        pulseLayer.fillColor = UIColor.white.cgColor
+        pulseLayer.fillColor = UIColor.redSun.cgColor
         pulseLayer.lineCap = kCALineCapRound
         pulseLayer.position = characterLabel.center
         characterLabel.layer.addSublayer(pulseLayer)
@@ -456,7 +456,7 @@ extension FirstCharacterCell {
         let fadeAnimation = CABasicAnimation(keyPath: "opacity")
         
         //initial values
-        animation.toValue = 950
+        animation.toValue = 960
         fadeAnimation.fromValue = 1
         
         //how long animation runs
