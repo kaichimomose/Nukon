@@ -96,6 +96,7 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var finishButton: UIButton!
     
     
+    
     @IBOutlet weak var characterButton: UIButton!
     
     @IBOutlet var judgeButtons: [UIButton]!
@@ -418,11 +419,24 @@ class ShowCharactersViewController: UIViewController {
         }
     }
     
+    func squeezeIn() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.nextCharacterButton.transform = CGAffineTransform(scaleX: 0.91, y: 0.91)
+        })
+    }
+    
+    func releaseButton() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.nextCharacterButton.transform = CGAffineTransform.identity
+        })
+    }
+    
     @IBAction func buttonDown(_ sender: UIButton) {
         switch buttonTitle {
         case .next:
             return
         case .start:
+            squeezeIn()
             if !audioEngine.isRunning {
                 if recognitionIsEnd {
                     try! startRecording()
@@ -454,6 +468,7 @@ class ShowCharactersViewController: UIViewController {
                 self.updateLabels()
             }
         }
+        releaseButton()
         self.buttonTitle = .start
 //        self.updateLabels()
     }
@@ -600,7 +615,6 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 }
                 self.buttonTitle = .start
                 self.updateLabels()
-                
             }
         }
         

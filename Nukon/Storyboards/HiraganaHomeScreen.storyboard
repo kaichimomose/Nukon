@@ -55,7 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjG-xd-Om5" customClass="studyButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="155" y="301" width="65" height="65"/>
+                                <rect key="frame" x="155" y="301" width="72.5" height="72.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WjG-xd-Om5" secondAttribute="height" multiplier="1:1" id="NJb-0G-SGb"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Cg-hO0" customClass="combosButtons" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="155" y="301" width="65" height="65"/>
+                                <rect key="frame" x="155" y="301" width="72.5" height="72.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZHx-Cg-hO0" secondAttribute="height" multiplier="1:1" id="sKC-ud-ams"/>
                                 </constraints>
@@ -88,8 +88,8 @@
                         <color key="backgroundColor" red="0.68627450980000004" green="0.79607843140000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="2dA-6x-yXy"/>
-                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="3eT-2p-Cba"/>
-                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" constant="-7.5" id="5fF-sq-O0p"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" constant="3.75" id="3eT-2p-Cba"/>
+                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="5fF-sq-O0p"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="150:667" constant="-27.608695652173907" id="6aa-qB-Yke"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Bd7-Gs-olg"/>
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="top" secondItem="bD5-JF-aUc" secondAttribute="bottom" constant="1" id="GLD-0v-DdW"/>
@@ -97,14 +97,14 @@
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="172:667" id="LCk-nv-C5V"/>
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Ldi-aC-MQq"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="trailing" secondItem="oup-LF-boy" secondAttribute="trailing" id="R8c-2S-gN7"/>
-                            <constraint firstItem="WjG-xd-Om5" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" constant="-7.5" id="RRN-YB-AUa"/>
-                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="Vx4-af-Kan"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="RRN-YB-AUa"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" constant="3.75" id="Vx4-af-Kan"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="leading" secondItem="oup-LF-boy" secondAttribute="leading" id="c2M-eO-rqz"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="0.22" id="ctL-Wj-Jcc"/>
-                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="cuQ-FW-Mab"/>
+                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" constant="3.75" id="cuQ-FW-Mab"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="egf-Ty-tbI"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="fDp-Ka-ZOn"/>
-                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="gEv-3n-3ld"/>
+                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" constant="3.75" id="gEv-3n-3ld"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oup-LF-boy"/>
                     </view>

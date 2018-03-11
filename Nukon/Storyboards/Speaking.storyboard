@@ -36,7 +36,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="qQl-38-icK"/>
                                                 </constraints>
-                                                <state key="normal" image="exit"/>
+                                                <state key="normal" image="cancel_button"/>
                                                 <connections>
                                                     <action selector="exitButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="gno-IZ-kC0"/>
                                                 </connections>
@@ -294,7 +294,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="exit" width="52" height="54"/>
+        <image name="cancel_button" width="120" height="121"/>
         <image name="info_icon" width="120" height="120"/>
         <image name="microphone" width="40" height="60"/>
     </resources>
