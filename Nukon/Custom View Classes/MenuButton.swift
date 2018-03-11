@@ -55,3 +55,20 @@ class characterListButton: UIButton {
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
