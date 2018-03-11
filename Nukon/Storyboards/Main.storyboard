@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="Je7-66-vTI">
             <objects>
-                <tabBarController storyboardIdentifier="main" automaticallyAdjustsScrollViewInsets="NO" id="YHl-yS-720" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="main" automaticallyAdjustsScrollViewInsets="NO" id="YHl-yS-720" customClass="CustomTabBarController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0DF-Ok-caK">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -39,6 +39,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JCY-qk-ifb"/>
+        <segue reference="dvf-kt-LuC"/>
     </inferredMetricsTieBreakers>
 </document>

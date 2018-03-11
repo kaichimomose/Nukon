@@ -16,13 +16,27 @@ import CoreData
     
     var popCount = 0
     
-    var japaneseType = JapaneseType.hiragana
+    var japaneseType: JapaneseType! {
+        didSet {
+            if japaneseType == .hiragana {
+                yVowelJapanese = .yVowelHiragana
+            } else {
+                yVowelJapanese = .yVowelKatakana
+            }
+        }
+    }
+    var yVowelJapanese: JapaneseType!
     
     let coreDataStack = CoreDataStack.instance
     
     var showingCharacters = [String: [String]]()
     var characterDict = [String: WordLearnt]()
     var consonantDict = [String: Consonant]()
+    
+    @IBOutlet weak var titleRomeLabel: UILabel!
+    
+    @IBOutlet weak var titleJapaneseLabel: UILabel!
+    
     
     @IBOutlet weak var homeSunButton: UIButton!
     
@@ -37,23 +51,30 @@ import CoreData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //set title
+        titleRomeLabel.text = japaneseType.rawValue
+        
+        if japaneseType == .hiragana {
+            titleJapaneseLabel.text = "ひらがな"
+        } else {
+            titleJapaneseLabel.text = "カタカナ"
+        }
         
         //Bring Home Sun Button to the front
         view.bringSubview(toFront: homeSunButton)
         
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         //Commence shadow animations
         homeSunButton.animateShadow(pulsing: true)
         
-        
         //Create pulsating layer on View Controller's View
         createPulseLayer()
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,7 +88,7 @@ import CoreData
         // Initialize Fetch Request\
         let fetchRequest: NSFetchRequest<Consonant> = Consonant.fetchRequest()
         // Add Specific type Descriptors
-        fetchRequest.predicate = NSPredicate(format: "system == %@ OR system == %@", japaneseType.rawValue, JapaneseType.yVowelHiragana.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "system == %@ OR system == %@", japaneseType.rawValue, yVowelJapanese.rawValue)
         do {
             let result = try self.coreDataStack.viewContext.fetch(fetchRequest)
 
@@ -133,14 +154,14 @@ import CoreData
     @IBAction func comboButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
         let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-        japaneseCharactersCVC.japaneseType = .yVowelHiragana
+        japaneseCharactersCVC.japaneseType = self.yVowelJapanese
         self.present(japaneseCharactersCVC, animated: true)
     }
     
     @IBAction func charButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
         let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-        japaneseCharactersCVC.japaneseType = .hiragana
+        japaneseCharactersCVC.japaneseType = self.japaneseType
         self.present(japaneseCharactersCVC, animated: true)
     }
     

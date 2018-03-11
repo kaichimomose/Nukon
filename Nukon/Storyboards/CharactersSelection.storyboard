@@ -227,6 +227,7 @@
                         <outlet property="menuBar" destination="ze0-7I-2H2" id="T0d-8D-SLI"/>
                         <outlet property="menuBarCollectionView" destination="De7-ms-LTP" id="zRz-cI-je3"/>
                         <outlet property="practiceButton" destination="ytF-Lt-8Sd" id="8Kv-Ya-FKG"/>
+                        <outlet property="titleLable" destination="DND-Ie-J5f" id="9cd-GQ-aWz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sC-Me-ec7" userLabel="First Responder" sceneMemberID="firstResponder"/>

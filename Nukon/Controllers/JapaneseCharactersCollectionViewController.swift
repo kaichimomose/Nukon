@@ -34,6 +34,8 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     let overViewCell = "OverViewCell"
     
     //MARK: - Outlets
+    @IBOutlet weak var titleLable: UILabel!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var practiceButton: UIButton!
@@ -42,12 +44,11 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     
     @IBOutlet weak var menuBar: MenuBar!
     
-    
-    
-    
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLable.text = japaneseType.rawValue
         
         menuBar.japaneseCharacterCVC = self
         menuBarCollectionView.delegate = menuBar

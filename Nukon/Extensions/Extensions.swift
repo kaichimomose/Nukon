@@ -28,6 +28,10 @@ extension UIColor {
     
     static let peach = UIColor.rgb(r: 234, g: 185, b: 185)
     
+    //background color
+    static let hiraganaBackground = rgb(r: 179, g: 205, b: 253)
+    static let katakanaBackground = rgb(r: 239, g: 168, b: 218)
+    
     //colors for study recognition
     static let materialOrange = UIColor.rgb(r: 275, g: 279, b: 115)
     

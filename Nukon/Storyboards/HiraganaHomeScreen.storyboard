@@ -14,7 +14,7 @@
         <!--Hiragana Home Screen View Controller-->
         <scene sceneID="xfy-bw-gXx">
             <objects>
-                <viewController id="VLa-bD-zdX" customClass="HiraganaHomeScreenViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="VLa-bD-zdX" customClass="HiraganaHomeScreenViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ELe-iZ-SAk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,6 +113,8 @@
                         <outlet property="comboButton" destination="ZHx-Cg-hO0" id="Nib-23-non"/>
                         <outlet property="homeSunButton" destination="Yp0-Lz-ksZ" id="gkc-e9-fdT"/>
                         <outlet property="studyButton" destination="WjG-xd-Om5" id="Cfp-IU-qpq"/>
+                        <outlet property="titleJapaneseLabel" destination="0wV-Dm-O5P" id="Nwd-Zc-a3c"/>
+                        <outlet property="titleRomeLabel" destination="bD5-JF-aUc" id="C6d-1J-JKK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSZ-GJ-n54" userLabel="First Responder" sceneMemberID="firstResponder"/>

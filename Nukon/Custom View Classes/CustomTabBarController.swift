@@ -14,7 +14,20 @@ class CustomTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let storyboard = UIStoryboard.init(name: "HiraganaHomeScreen", bundle: .main)
+        
+        let hiraganaController = storyboard.instantiateViewController(withIdentifier: "Home") as! HiraganaHomeScreenViewController
+        hiraganaController.japaneseType = .hiragana
+        hiraganaController.view.backgroundColor = UIColor.hiraganaBackground
+        hiraganaController.tabBarItem = UITabBarItem(title: "HIRAGANA", image: #imageLiteral(resourceName: "hiraganaSym"), tag: 0)
+        
+        let katakanaController = storyboard.instantiateViewController(withIdentifier: "Home") as! HiraganaHomeScreenViewController
+        katakanaController.japaneseType = .katakana
+        katakanaController.view.backgroundColor = UIColor.katakanaBackground
+        katakanaController.tabBarItem = UITabBarItem(title: "KATAKANA", image: #imageLiteral(resourceName: "katakanaSym"), tag: 1)
+        
+        self.viewControllers = [hiraganaController, katakanaController]
+        
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +35,7 @@ class CustomTabBarController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     /*
     // MARK: - Navigation
 
