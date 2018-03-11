@@ -234,9 +234,9 @@ class FirstCharacterCell: UICollectionViewCell {
         if let wordLearnt = characterDict[character] {
             switch wordLearnt.confidenceCounter {
             case 4:
-                characterViews[index].backgroundColor = UIColor.materialBlue //Blue
-            case 3:
                 characterViews[index].backgroundColor = UIColor.materialGreen //Green
+            case 3:
+                characterViews[index].backgroundColor = UIColor.materialLightGreen //LightGreen
             case 2:
                 characterViews[index].backgroundColor = UIColor.materialYellow //melon
             case 1:

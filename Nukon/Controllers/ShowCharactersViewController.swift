@@ -41,6 +41,8 @@ enum Order {
 class ShowCharactersViewController: UIViewController {
     
     //MARK: - Propaties
+    var backgroundColor: UIColor!
+    
     //values to show characters
     var japaneseList: [Japanese]?
     var japaneseDict: [String: [String?]]?
@@ -106,6 +108,8 @@ class ShowCharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = self.backgroundColor
         
         speechRecognizer.delegate = self
         
@@ -237,6 +241,7 @@ class ShowCharactersViewController: UIViewController {
         if self.soundAndLettersList[soundIndex].1.count == 0 {
             self.soundAndLettersList.remove(at: soundIndex)
         }
+        print(soundAndLettersList)
         //updates currentNumber
         self.counter += 1
         self.currentNumber = self.counter
@@ -379,7 +384,9 @@ class ShowCharactersViewController: UIViewController {
     //MARK: - Actions
     @IBAction func characterTapped(_ sender: Any) {
         speakJapanese(string: self.shownCharacter)
-        soundAnimation()
+        if self.judge == .yet {
+            soundAnimation()
+        }
     }
     
     
@@ -441,10 +448,12 @@ class ShowCharactersViewController: UIViewController {
         case .start:
             squeezeIn()
             if !audioEngine.isRunning {
+                //if recoginitionIsEnd is true, call startRecording
                 if recognitionIsEnd {
                     try! startRecording()
                     recognitionIsEnd = false
                 }
+                //start audio engine and recording
                 try! startAudioEngine()
             }
             self.buttonTitle = .hold
@@ -464,6 +473,7 @@ class ShowCharactersViewController: UIViewController {
             let when = DispatchTime.now() + 1 // delay for the number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 // Your code with delay
+                //stops recording
                 self.audioEngine.stop()
                 if self.comment != .again {
                     self.comment = .start
@@ -548,6 +558,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         
         var willAppend = true
         var theBestString = ""
+        var appendedString = ""
         
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
             guard let `self` = self else { return }
@@ -555,15 +566,19 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
             var isFinal = false
             
             if let result = result {
-                //                let posibilities = result.transcriptions
-                //                print(posibilities)//show correctsound
+                let previousBestString = theBestString
                 self.commentLabel.text = Comment.recognizing.rawValue
                 theBestString = result.bestTranscription.formattedString
+                if theBestString != "" && previousBestString != "" {
+                    let index = theBestString.index(theBestString.startIndex, offsetBy: previousBestString.count)
+                    appendedString = String(theBestString[index...])
+                    print(appendedString)
+                }
 //                print(self.shownCharacter + ": " + theBestString)
                 if willAppend {
                     // passes first result
                     for posibility in self.posibilities {
-                        if theBestString == posibility {
+                        if theBestString == posibility || appendedString == posibility{
                             print("the appended chara..." + self.shownCharacter + ": " + theBestString)
                             self.judge = .correct
                             
@@ -589,7 +604,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                         }
                     }
                 }
-                
+
                 isFinal = result.isFinal
                 print(isFinal)
                 print(theBestString)

@@ -46,7 +46,7 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
 
         collectionView.alwaysBounceVertical = true
         collectionView.isPagingEnabled = true
-        
+
     }
     
     //delegation function

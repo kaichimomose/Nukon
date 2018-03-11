@@ -224,9 +224,9 @@ class OverViewCollectionViewCell: UICollectionViewCell {
         if let wordLearnt = characterDict[character], isUnLocked {
             switch wordLearnt.confidenceCounter {
             case 4:
-                chracterViews[index].backgroundColor = UIColor.materialBlue //blue
-            case 3:
                 chracterViews[index].backgroundColor = UIColor.materialGreen //Green
+            case 3:
+                chracterViews[index].backgroundColor = UIColor.materialLightGreen //LightGreen
             case 2:
                 chracterViews[index].backgroundColor = UIColor.materialYellow //dark yellow
             case 1:

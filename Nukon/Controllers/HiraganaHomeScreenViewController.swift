@@ -11,10 +11,12 @@ import CoreData
 
 @IBDesignable class HiraganaHomeScreenViewController: UIViewController {
     
-    
+    //MARK: - Properties
     var pulsatingLayer: CAShapeLayer!
     
     var popCount = 0
+    
+    var backgroundColor: UIColor!
     
     var japaneseType: JapaneseType! {
         didSet {
@@ -25,6 +27,7 @@ import CoreData
             }
         }
     }
+    
     var yVowelJapanese: JapaneseType!
     
     let coreDataStack = CoreDataStack.instance
@@ -33,10 +36,10 @@ import CoreData
     var characterDict = [String: WordLearnt]()
     var consonantDict = [String: Consonant]()
     
+    //MARK: - Ourlets
     @IBOutlet weak var titleRomeLabel: UILabel!
     
     @IBOutlet weak var titleJapaneseLabel: UILabel!
-    
     
     @IBOutlet weak var homeSunButton: UIButton!
     
@@ -46,10 +49,12 @@ import CoreData
     
     @IBOutlet weak var characterButton: characterListButton!
 
-    
-    
+    //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set backgound color
+        self.view.backgroundColor = self.backgroundColor
         
         //set title
         titleRomeLabel.text = japaneseType.rawValue
@@ -111,6 +116,7 @@ import CoreData
         }
     }
     
+    //MARK: - Actions
     //MAIN BUTTON'S ACTION WHEN PRESSED
     @IBAction func sunPressed(_ sender: Any) {
         
@@ -146,6 +152,7 @@ import CoreData
             showCharacterVC.japaneseDictForRandom = self.showingCharacters
             showCharacterVC.japaneseType = self.japaneseType
             showCharacterVC.characterCoreDataDict = self.characterDict
+            showCharacterVC.backgroundColor = self.backgroundColor
             present(showCharacterVC, animated: true, completion: nil)
         }
     }
@@ -155,6 +162,7 @@ import CoreData
         let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
         let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
         japaneseCharactersCVC.japaneseType = self.yVowelJapanese
+        japaneseCharactersCVC.backgoundColor = self.backgroundColor
         self.present(japaneseCharactersCVC, animated: true)
     }
     
@@ -162,10 +170,9 @@ import CoreData
         let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
         let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
         japaneseCharactersCVC.japaneseType = self.japaneseType
+        japaneseCharactersCVC.backgoundColor = self.backgroundColor
         self.present(japaneseCharactersCVC, animated: true)
     }
-    
-    
 
 }
 

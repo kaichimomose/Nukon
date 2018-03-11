@@ -39,7 +39,7 @@ extension UIColor {
     
     static let materialGreen = UIColor.rgb(r: 115, g: 255, b: 115)
     
-    static let materialBlue = UIColor.rgb(r: 115, g: 191, b: 255)
+    static let materialLightGreen = UIColor.rgb(r: 199, g: 255, b: 115)
     
     static let materialBeige = UIColor.rgb(r: 244, g: 241, b: 222)
     

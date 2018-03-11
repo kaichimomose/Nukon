@@ -98,7 +98,7 @@ struct JapaneseCharacters {
                       "P": ["pa", "pi", "pu", "pe", "po"],
                       "Ky": ["kya", "kyu", "kyo"],
                       "Sy": ["sya", "syu", "syo"],
-                      "Cy": ["cya", "cyu", "cyo"],
+                      "Ch": ["cha", "chu", "cho"],
                       "Ny": ["nya", "nyu", "nyo"],
                       "Hy": ["hya", "hyu", "hyo"],
                       "My": ["mya", "myu", "myo"],

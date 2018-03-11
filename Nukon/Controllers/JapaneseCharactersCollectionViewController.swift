@@ -17,6 +17,8 @@ protocol GetValueFromCollectionView {
 class JapaneseCharactersCollectionViewController: UIViewController, GetValueFromCollectionView {
     
     //MARK: - Properties
+    var backgoundColor: UIColor!
+    
     var japaneseList = [Japanese]()
     var japaneseType: JapaneseType!
     
@@ -48,11 +50,14 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = self.backgoundColor
+        
         titleLable.text = japaneseType.rawValue
         
         menuBar.japaneseCharacterCVC = self
         menuBarCollectionView.delegate = menuBar
         menuBarCollectionView.dataSource = menuBar
+        menuBarCollectionView.backgroundColor = self.backgoundColor
         
         let selectedIndexpath = NSIndexPath(row: 0, section: 0)
         menuBarCollectionView.selectItem(at: selectedIndexpath as IndexPath, animated: false, scrollPosition: [])
@@ -60,9 +65,7 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
         //collectionview setting
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.alwaysBounceHorizontal = true
         collectionView.isScrollEnabled = false
-//        collectionView.isPagingEnabled = true
         
         practiceButton.alpha = 0.5
         practiceButton.isEnabled = false
@@ -190,6 +193,7 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
             showCharacterVC.japaneseDict = self.selectedJapanese
             showCharacterVC.japaneseType = self.japaneseType
             showCharacterVC.characterCoreDataDict = self.selectedJpaneseCoreData
+            showCharacterVC.backgroundColor = self.backgoundColor
             self.selectedJapanese = [:]
             self.selectedJpaneseCoreData = [:]
             self.practiceButton.alpha = 0.5
@@ -231,6 +235,7 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
             cell.selectedJpaneseCoreData = self.selectedJpaneseCoreData
             cell.consonantDict = self.consonantAndWordDict
             cell.numberOfUnlockedCell = self.numberOfUnlockedCell
+            cell.collectionView.backgroundColor = self.backgoundColor
             cell.collectionView.reloadData()
             return cell
         default:
@@ -242,6 +247,7 @@ extension JapaneseCharactersCollectionViewController: UICollectionViewDataSource
             cell.selectedJpaneseCoreData = self.selectedJpaneseCoreData
             cell.consonantDict = self.consonantAndWordDict
             cell.unLockNextConsonant = self.unLockNextConsonant
+            cell.collectionView.backgroundColor = self.backgoundColor
             cell.collectionView.reloadData()
             return cell
         }

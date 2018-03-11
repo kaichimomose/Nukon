@@ -18,12 +18,12 @@ class CustomTabBarController: UITabBarController {
         
         let hiraganaController = storyboard.instantiateViewController(withIdentifier: "Home") as! HiraganaHomeScreenViewController
         hiraganaController.japaneseType = .hiragana
-        hiraganaController.view.backgroundColor = UIColor.hiraganaBackground
+        hiraganaController.backgroundColor = UIColor.hiraganaBackground
         hiraganaController.tabBarItem = UITabBarItem(title: "HIRAGANA", image: #imageLiteral(resourceName: "hiraganaSym"), tag: 0)
         
         let katakanaController = storyboard.instantiateViewController(withIdentifier: "Home") as! HiraganaHomeScreenViewController
         katakanaController.japaneseType = .katakana
-        katakanaController.view.backgroundColor = UIColor.katakanaBackground
+        katakanaController.backgroundColor = UIColor.katakanaBackground
         katakanaController.tabBarItem = UITabBarItem(title: "KATAKANA", image: #imageLiteral(resourceName: "katakanaSym"), tag: 1)
         
         self.viewControllers = [hiraganaController, katakanaController]
