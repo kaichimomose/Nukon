@@ -15,6 +15,7 @@
 		BF504229204D96CA00490A1A /* OverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF504228204D96CA00490A1A /* OverViewCell.swift */; };
 		BF50422B204DF26600490A1A /* ConsonantViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50422A204DF26500490A1A /* ConsonantViewCell.swift */; };
 		BF504238204E667900490A1A /* Nukon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF504236204E667900490A1A /* Nukon.xcdatamodeld */; };
+		BF50423A2054CD1000490A1A /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5042392054CD0E00490A1A /* CustomTabBarController.swift */; };
 		BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */; };
 		BF5FF9601FA0D35D00A46DE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF95E1FA0D35D00A46DE0 /* LaunchScreen.storyboard */; };
 		BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		BF504228204D96CA00490A1A /* OverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewCell.swift; sourceTree = "<group>"; };
 		BF50422A204DF26500490A1A /* ConsonantViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsonantViewCell.swift; sourceTree = "<group>"; };
 		BF504237204E667900490A1A /* Nukon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nukon.xcdatamodel; sourceTree = "<group>"; };
+		BF5042392054CD0E00490A1A /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BF5FF94F1FA0D35D00A46DE0 /* Nukon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nukon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5FF95F1FA0D35D00A46DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */,
 				F691EEF82048B6CF00ED5DA8 /* SunButton.swift */,
 				F60611D92049F673007407C3 /* MenuButton.swift */,
+				BF5042392054CD0E00490A1A /* CustomTabBarController.swift */,
 			);
 			path = "Custom View Classes";
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			files = (
 				BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */,
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
+				BF50423A2054CD1000490A1A /* CustomTabBarController.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
 				F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */,
 				BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */,
