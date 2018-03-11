@@ -95,6 +95,9 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var goodButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
     
+    // create cancel or exit button, takes user back to overview screen
+    @IBOutlet weak var cancelButton: UIButton!
+    
     
     
     @IBOutlet weak var characterButton: UIButton!
@@ -501,7 +504,14 @@ class ShowCharactersViewController: UIViewController {
     
     
     @IBAction func exitButtonTapped(_ sender: Any) {
-        self.dismissView()
+        UIView.animate(withDuration: 0.2, animations: {
+            self.cancelButton.transform = CGAffineTransform(scaleX: 0.50, y: 0.50)
+        }) { (_) in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.cancelButton.transform = CGAffineTransform.identity
+            })
+            self.dismissView()
+        }
     }
     
 }

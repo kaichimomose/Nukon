@@ -16,6 +16,9 @@ protocol CellDelegate {
 
 class FirstCharacterCell: UICollectionViewCell {
     
+    //MARK: - LAYERS
+    var pulseLayer: CAShapeLayer!
+    
     //MARK: - Propaties
     let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
     let speak = AVSpeechSynthesizer()
@@ -196,6 +199,9 @@ class FirstCharacterCell: UICollectionViewCell {
         
         characterLabel.layer.cornerRadius = characterLabel.frame.width/2
         characterLabel.layer.masksToBounds = true
+        
+        //create pulse layer for when user touches button
+        createPulseLayer()
         
         characterViews = [aVowelView, iVowelView, uVowelView, eVowelView, oVowelView]
         
@@ -408,7 +414,9 @@ class FirstCharacterCell: UICollectionViewCell {
         checkUncheckBox(index: 4)
     }
 
+    //middle character button is tapped -----------------------------------
     @IBAction func consonantTapped(_ sender: Any) {
+        animatePulseLayer()
         collectionView.isUserInteractionEnabled = false
         characterDistributingAnimation()
         speakOrderly(list: japanese.letters)
@@ -423,3 +431,71 @@ class FirstCharacterCell: UICollectionViewCell {
         return attributes
     }
 }
+
+
+extension FirstCharacterCell {
+    
+    
+    private func createPulseLayer() {
+        
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 0.2, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        
+        pulseLayer = CAShapeLayer()
+        pulseLayer.path = circularPath.cgPath
+        pulseLayer.strokeColor = UIColor.clear.cgColor
+        pulseLayer.lineWidth = 10
+        pulseLayer.fillColor = UIColor.redSun.cgColor
+        pulseLayer.lineCap = kCALineCapRound
+        pulseLayer.position = characterLabel.center
+        characterLabel.layer.addSublayer(pulseLayer)
+    }
+    
+    //Pulsating animations
+    func animatePulseLayer() {
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        let fadeAnimation = CABasicAnimation(keyPath: "opacity")
+        
+        //initial values
+        animation.toValue = 960
+        fadeAnimation.fromValue = 1
+        
+        //how long animation runs
+        animation.duration = 0.4
+        fadeAnimation.duration = 0.45
+        
+        //ending values of animations
+        fadeAnimation.toValue = 0
+        
+        //animation.repeatCount = Float.infinity
+        pulseLayer.add(animation, forKey: "pulsating")
+        pulseLayer.add(fadeAnimation, forKey: "fade")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
