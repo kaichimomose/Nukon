@@ -272,6 +272,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="Ee5-xS-ZB4" id="Lnu-8E-anT"/>
                         <outlet property="characterButton" destination="v2q-jr-QmE" id="dhJ-La-FMS"/>
                         <outlet property="characterView" destination="Okx-Cf-tKK" id="Kx8-oC-GDh"/>
                         <outlet property="commentLabel" destination="cg2-Sc-ilT" id="klc-Bi-xzS"/>
