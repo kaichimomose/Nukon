@@ -95,7 +95,7 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var goodButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
     
-    
+    // create cancel or exit button, takes user back to overview screen
     @IBOutlet weak var cancelButton: UIButton!
     
     
