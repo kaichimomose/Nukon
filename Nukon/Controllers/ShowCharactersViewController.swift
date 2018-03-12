@@ -40,6 +40,9 @@ enum Order {
 
 class ShowCharactersViewController: UIViewController {
     
+    //create pulse layer for when user guesses correctly
+    var pulseLayer: CAShapeLayer!
+    
     //MARK: - Propaties
     var backgroundColor: UIColor!
     
