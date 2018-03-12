@@ -52,6 +52,7 @@
 		F64BBE532056E35700909ED8 /* swooshBackThree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F64BBE502056E35600909ED8 /* swooshBackThree.mp3 */; };
 		F64BBE542056E35700909ED8 /* swooshBackOne.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F64BBE512056E35700909ED8 /* swooshBackOne.mp3 */; };
 		F64BBE582056E3ED00909ED8 /* SoundEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64BBE572056E3ED00909ED8 /* SoundEffects.swift */; };
+		F64BBE5A205713F900909ED8 /* boing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F64BBE59205713F800909ED8 /* boing.mp3 */; };
 		F64CE7702045AC2000C480EB /* HiraganaHomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */; };
 		F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */; };
 		F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */; };
@@ -107,6 +108,7 @@
 		F64BBE502056E35600909ED8 /* swooshBackThree.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = swooshBackThree.mp3; path = ../../Downloads/swooshBackThree.mp3; sourceTree = "<group>"; };
 		F64BBE512056E35700909ED8 /* swooshBackOne.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = swooshBackOne.mp3; path = ../../Downloads/swooshBackOne.mp3; sourceTree = "<group>"; };
 		F64BBE572056E3ED00909ED8 /* SoundEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffects.swift; sourceTree = "<group>"; };
+		F64BBE59205713F800909ED8 /* boing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boing.mp3; path = ../../Downloads/boing.mp3; sourceTree = "<group>"; };
 		F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HiraganaHomeScreen.storyboard; sourceTree = "<group>"; };
 		F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiraganaHomeScreenViewController.swift; sourceTree = "<group>"; };
 		F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalityFeatureLabel.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		BF5FF9461FA0D35D00A46DE0 = {
 			isa = PBXGroup;
 			children = (
+				F64BBE59205713F800909ED8 /* boing.mp3 */,
 				F64BBE512056E35700909ED8 /* swooshBackOne.mp3 */,
 				F64BBE502056E35600909ED8 /* swooshBackThree.mp3 */,
 				F64BBE4F2056E35600909ED8 /* swooshBackTwo.mp3 */,
@@ -339,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64BBE5A205713F900909ED8 /* boing.mp3 in Resources */,
 				F64BBE522056E35700909ED8 /* swooshBackTwo.mp3 in Resources */,
 				F64BBE532056E35700909ED8 /* swooshBackThree.mp3 in Resources */,
 				F64BBE542056E35700909ED8 /* swooshBackOne.mp3 in Resources */,

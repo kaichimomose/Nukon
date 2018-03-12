@@ -46,6 +46,9 @@ class ShowCharactersViewController: UIViewController {
     //MARK: - Propaties
     var backgroundColor: UIColor!
     
+    //Mark: Sound Properties
+    var effects = SoundEffects()
+    
     //values to show characters
     var japaneseList: [Japanese]?
     var japaneseDict: [String: [String?]]?
@@ -178,13 +181,15 @@ class ShowCharactersViewController: UIViewController {
         case .correct:
             self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
-            self.shakeVertically()
+            self.pulsate()
+            self.effects.sound(nil, .right)
             self.enableJudgeButtons()
         case .wrong, .wait:
             self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
             self.characterButton.backgroundColor = .materialBeige
             self.shakeCharacter()
+            self.effects.sound(nil, .wrong)
             self.enableJudgeButtons()
         case .yet:
             self.soundLabel.text = ""
@@ -194,26 +199,25 @@ class ShowCharactersViewController: UIViewController {
     }
     
     //animation when character guesses correctly
-    func shakeVertically() {
-        let shakeAnimation = CABasicAnimation(keyPath: "position")
+    func pulsate() {
         let pulseAnimation = CABasicAnimation(keyPath: "backgroundColor")
-        
-        shakeAnimation.duration = 0.08
+        let scaleUpAnimation = CABasicAnimation(keyPath: "transform.scale")
         pulseAnimation.duration = 0.5
+        scaleUpAnimation.duration = 0.5
+//        pulseAnimation.repeatCount = 1
         
-        pulseAnimation.repeatCount = 1
-        
-        shakeAnimation.autoreverses = true
+//        shakeAnimation.autoreverses = true
         pulseAnimation.autoreverses = true
+        scaleUpAnimation.autoreverses = true
         
-//        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: self.characterView.center.x, y: self.characterView.center.y))
-//        pulseAnimation.fromValue = UIColor.materialBeige.cgColor
+        scaleUpAnimation.fromValue = NSValue(caTransform3D: CATransform3DIdentity)
+        pulseAnimation.toValue = UIColor.materialGreen.cgColor
+        scaleUpAnimation.toValue = NSValue(caTransform3D: CATransform3DMakeScale(1.0, 1.0, 1.0))
         
-        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: self.characterView.center.x, y: self.characterView.center.y + 40))
-        pulseAnimation.fromValue = UIColor.materialGreen.cgColor
         
         self.characterButton.layer.add(pulseAnimation, forKey: "backgroundColor")
-        self.characterButton.layer.add(shakeAnimation, forKey: "position")
+        self.characterButton.layer.add(scaleUpAnimation, forKey: "transform")
+        
     }
     
     //shakes chracterview

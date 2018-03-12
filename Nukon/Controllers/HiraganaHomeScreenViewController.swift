@@ -226,15 +226,15 @@ extension HiraganaHomeScreenViewController {
     func popOutMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
             self.studyButton.center.x = self.studyButton.center.x - 135
-            self.effects.swooshEffect(Swoosh.one)
+            self.effects.sound(.one, nil)
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.comboButton.center.y = self.comboButton.center.y - 135
-                self.effects.swooshEffect(Swoosh.two)
+                self.effects.sound(.two, nil)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
                     self.characterButton.center.x = self.characterButton.center.x + 135
-                    self.effects.swooshEffect(Swoosh.three)
+                    self.effects.sound(.three, nil)
                 }, completion: nil)
             })
         }
@@ -243,15 +243,15 @@ extension HiraganaHomeScreenViewController {
     func popInMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
             self.studyButton.center.x = self.studyButton.center.x + 135
-            self.effects.swooshEffect(Swoosh.backOne)
+            self.effects.sound(.backOne, nil)
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.comboButton.center.y = self.comboButton.center.y + 135
-                self.effects.swooshEffect(Swoosh.backTwo)
+                self.effects.sound(.backTwo, nil)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
                         self.characterButton.center.x = self.characterButton.center.x - 135
-                        self.effects.swooshEffect(Swoosh.backThree)
+                        self.effects.sound(.backThree, nil)
                 }, completion: nil)
             })
         }

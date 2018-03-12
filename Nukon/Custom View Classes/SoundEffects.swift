@@ -20,6 +20,11 @@ enum Swoosh: String {
     case backThree = "swooshBackThree"
 }
 
+enum Guesses: String {
+    case right = "bell_2x"
+    case wrong = "boing"
+}
+
 struct SoundEffects {
     
     var player: AVAudioPlayer?
@@ -28,36 +33,69 @@ struct SoundEffects {
     
     let fileType = "mp3"
     
-    mutating func swooshEffect(_ type: Swoosh) {
-        switch type {
-        case .one:
-            soundResource(.one)
+    mutating func sound(_ swooshType: Swoosh?, _ guessType: Guesses?) {
+        if let swoosh = swooshType {
+            switch swoosh {
+            case .one:
+                swooshResource(.one)
+                
+            case .two:
+                swooshResource(.two)
+                
+            case .three:
+                swooshResource(.three)
+                
+            case .backOne:
+                swooshResource(.backOne)
+                
+            case .backTwo:
+                swooshResource(.backTwo)
             
-        case .two:
-            soundResource(.two)
-            
-        case .three:
-            soundResource(.three)
-            
-        case .backOne:
-            soundResource(.backOne)
-            
-        case .backTwo:
-            soundResource(.backTwo)
+            case .backThree:
+                swooshResource(.backThree)
+            }
+        }
         
-        case .backThree:
-            soundResource(.backThree)
+        if let guess = guessType {
+            switch guess {
+            case .right:
+                guessEffectResource(.right)
+                
+            case .wrong:
+                guessEffectResource(.wrong)
+            }
         }
     }
   
-    mutating func soundResource(_ type: Swoosh) {
-        guard let url = Bundle.main.url(forResource: type.rawValue, withExtension: fileType) else {return}
+    mutating func swooshResource(_ type: Swoosh) {
+        guard let swooshUrl = Bundle.main.url(forResource: type.rawValue, withExtension: fileType) else {return}
         
         do {
             try AudioSession.setCategory(AVAudioSessionCategoryPlayback)
             try AudioSession.setActive(true)
             
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            player = try AVAudioPlayer(contentsOf: swooshUrl, fileTypeHint: AVFileType.mp3.rawValue)
+            
+            guard let player = player else {
+                return
+            }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    mutating func guessEffectResource(_ type: Guesses) {
+        guard let guessUrl = Bundle.main.url(forResource: type.rawValue, withExtension: fileType) else {return}
+        
+        do {
+            try AudioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try AudioSession.setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: guessUrl, fileTypeHint: AVFileType.mp3.rawValue)
             
             guard let player = player else {
                 return
