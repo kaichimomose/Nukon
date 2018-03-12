@@ -8,11 +8,16 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
-@IBDesignable class HiraganaHomeScreenViewController: UIViewController {
+class HiraganaHomeScreenViewController: UIViewController {
     
     //MARK: - Properties
     var pulsatingLayer: CAShapeLayer!
+    
+    var effects = SoundEffects()
+    
+    var swoosh: Swoosh!
     
     var popCount = 0
     
@@ -36,7 +41,7 @@ import CoreData
     var characterDict = [String: WordLearnt]()
     var consonantDict = [String: Consonant]()
     
-    //MARK: - Ourlets
+    //MARK: - Outlets
     @IBOutlet weak var titleRomeLabel: UILabel!
     
     @IBOutlet weak var titleJapaneseLabel: UILabel!
@@ -86,6 +91,8 @@ import CoreData
         
         
     }
+    
+    
     
     
     //fetch core data
@@ -219,12 +226,15 @@ extension HiraganaHomeScreenViewController {
     func popOutMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
             self.studyButton.center.x = self.studyButton.center.x - 135
+            self.effects.swooshEffect(Swoosh.one)
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.comboButton.center.y = self.comboButton.center.y - 135
+                self.effects.swooshEffect(Swoosh.two)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
                     self.characterButton.center.x = self.characterButton.center.x + 135
+                    self.effects.swooshEffect(Swoosh.three)
                 }, completion: nil)
             })
         }
@@ -233,12 +243,15 @@ extension HiraganaHomeScreenViewController {
     func popInMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
             self.studyButton.center.x = self.studyButton.center.x + 135
+            self.effects.swooshEffect(Swoosh.backOne)
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.comboButton.center.y = self.comboButton.center.y + 135
+                self.effects.swooshEffect(Swoosh.backTwo)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
                         self.characterButton.center.x = self.characterButton.center.x - 135
+                        self.effects.swooshEffect(Swoosh.backThree)
                 }, completion: nil)
             })
         }

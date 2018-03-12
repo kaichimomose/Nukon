@@ -84,11 +84,11 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="375" height="200"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2q-jr-QmE">
-                                                        <rect key="frame" x="87" y="0.0" width="200" height="200"/>
+                                                        <rect key="frame" x="87" y="0.0" width="201" height="201"/>
                                                         <color key="backgroundColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="200" id="gli-S4-U1n"/>
-                                                            <constraint firstAttribute="height" constant="200" id="uNV-6E-aKc"/>
+                                                            <constraint firstAttribute="width" constant="201" id="gli-S4-U1n"/>
+                                                            <constraint firstAttribute="height" constant="201" id="uNV-6E-aKc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="125"/>
                                                         <state key="normal">

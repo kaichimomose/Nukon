@@ -103,6 +103,12 @@ class ShowCharactersViewController: UIViewController {
     // create cancel or exit button, takes user back to overview screen
     @IBOutlet weak var cancelButton: UIButton!
     
+    // image to be animated when user guesses correctly
+    @IBOutlet weak var correctImage: UIImageView!
+    
+    // animate sparkle images when correct
+    @IBOutlet weak var sparkleOne: UIImageView!
+    @IBOutlet weak var sparkleTwo: UIImageView!
     
     
     @IBOutlet weak var characterButton: UIButton!
@@ -116,7 +122,7 @@ class ShowCharactersViewController: UIViewController {
         
         speechRecognizer.delegate = self
         
-        self.characterButton.layer.cornerRadius = 15
+        self.characterButton.layer.cornerRadius = 10
         self.characterButton.layer.shadowColor = UIColor.materialBeige.cgColor
         self.characterButton.layer.shadowRadius = 15
         self.characterButton.layer.shadowOpacity = 0.7
@@ -172,7 +178,7 @@ class ShowCharactersViewController: UIViewController {
         case .correct:
             self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
-            self.characterButton.backgroundColor = .green
+            self.shakeVertically()
             self.enableJudgeButtons()
         case .wrong, .wait:
             self.soundLabel.alpha = 1
@@ -186,7 +192,30 @@ class ShowCharactersViewController: UIViewController {
         }
 
     }
-
+    
+    //animation when character guesses correctly
+    func shakeVertically() {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        let pulseAnimation = CABasicAnimation(keyPath: "backgroundColor")
+        
+        shakeAnimation.duration = 0.08
+        pulseAnimation.duration = 0.5
+        
+        pulseAnimation.repeatCount = 1
+        
+        shakeAnimation.autoreverses = true
+        pulseAnimation.autoreverses = true
+        
+//        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: self.characterView.center.x, y: self.characterView.center.y))
+//        pulseAnimation.fromValue = UIColor.materialBeige.cgColor
+        
+        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: self.characterView.center.x, y: self.characterView.center.y + 40))
+        pulseAnimation.fromValue = UIColor.materialGreen.cgColor
+        
+        self.characterButton.layer.add(pulseAnimation, forKey: "backgroundColor")
+        self.characterButton.layer.add(shakeAnimation, forKey: "position")
+    }
+    
     //shakes chracterview
     func shakeCharacter() {
         let shakeAnimation = CABasicAnimation(keyPath: "position")
