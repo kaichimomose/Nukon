@@ -151,40 +151,6 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         }
         
     }
-    
-    
-//    @IBAction func studyButtonPressed(_ sender: Any) {
-//        fetchCoredata()
-//        if !self.showingCharacters.isEmpty {
-//            let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
-//            let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
-//            showCharacterVC.japaneseDictForRandom = self.showingCharacters
-//            showCharacterVC.japaneseType = self.japaneseType
-//            showCharacterVC.characterCoreDataDict = self.characterDict
-//            showCharacterVC.backgroundColor = self.backgroundColor
-//            showCharacterVC.transitioningDelegate = self
-//            showCharacterVC.modalPresentationStyle = .custom
-////            present(showCharacterVC, animated: true, completion: nil)
-//        }
-//    }
-//    
-//    
-//    @IBAction func comboButtonPressed(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
-//        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-//        japaneseCharactersCVC.japaneseType = self.yVowelJapanese
-//        japaneseCharactersCVC.backgoundColor = self.backgroundColor
-//        self.present(japaneseCharactersCVC, animated: true)
-//    }
-//    
-//    @IBAction func charButtonPressed(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
-//        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-//        japaneseCharactersCVC.japaneseType = self.japaneseType
-//        japaneseCharactersCVC.backgoundColor = self.backgroundColor
-//        self.present(japaneseCharactersCVC, animated: true)
-//    }
-
 }
 
 extension HiraganaHomeScreenViewController {
