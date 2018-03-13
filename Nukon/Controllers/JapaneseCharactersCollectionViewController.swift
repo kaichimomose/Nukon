@@ -185,6 +185,11 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     }
     
     
+    @IBAction func homeButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     @IBAction func practiceButtonTapped(_ sender: Any) {
         if !selectedJapanese.isEmpty {
             let storyboard = UIStoryboard(name: "Speaking", bundle: .main)

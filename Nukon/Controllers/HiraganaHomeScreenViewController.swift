@@ -160,7 +160,7 @@ class HiraganaHomeScreenViewController: UIViewController {
             showCharacterVC.japaneseType = self.japaneseType
             showCharacterVC.characterCoreDataDict = self.characterDict
             showCharacterVC.backgroundColor = self.backgroundColor
-            present(showCharacterVC, animated: true, completion: nil)
+            self.present(showCharacterVC, animated: true, completion: nil)
         }
     }
     

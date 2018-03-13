@@ -184,13 +184,25 @@ class ShowCharactersViewController: UIViewController {
             self.pulsate()
             self.effects.sound(nil, .right)
             self.enableJudgeButtons()
+//            let when = DispatchTime.now() + 1.5 // delay for the number of seconds
+//            DispatchQueue.main.asyncAfter(deadline: when) {
+                // Your code with delay
+                //stops recording
+            self.nextCharacterButton.isEnabled = true
+//            }
         case .wrong, .wait:
             self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
             self.characterButton.backgroundColor = .materialBeige
             self.shakeCharacter()
-            self.effects.sound(nil, .wrong)
+//            self.effects.sound(nil, .wrong)
             self.enableJudgeButtons()
+//            let when = DispatchTime.now() + 2 // delay for the number of seconds
+//            DispatchQueue.main.asyncAfter(deadline: when) {
+                // Your code with delay
+                //stops recording
+            self.nextCharacterButton.isEnabled = true
+//            }
         case .yet:
             self.soundLabel.text = ""
             self.characterButton.backgroundColor = .materialBeige
@@ -604,6 +616,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
             if let result = result {
                 let previousBestString = theBestString
                 self.commentLabel.text = Comment.recognizing.rawValue
+                self.nextCharacterButton.isEnabled = false
                 theBestString = result.bestTranscription.formattedString
                 if theBestString != "" && previousBestString != "" {
                     let index = theBestString.index(theBestString.startIndex, offsetBy: previousBestString.count)
