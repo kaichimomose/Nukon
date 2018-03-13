@@ -58,6 +58,9 @@
 		F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */; };
 		F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691EEF82048B6CF00ED5DA8 /* SunButton.swift */; };
 		F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691EEFB2048BB4000ED5DA8 /* Extensions.swift */; };
+		F6AED90120575BA100BCC631 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AED90020575BA100BCC631 /* CircularTransition.swift */; };
+		F6AED90520580A7700BCC631 /* ShowCharacters+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AED90420580A7700BCC631 /* ShowCharacters+extension.swift */; };
+		F6AED9092058511700BCC631 /* SimpleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AED9082058511700BCC631 /* SimpleTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +117,9 @@
 		F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalityFeatureLabel.swift; sourceTree = "<group>"; };
 		F691EEF82048B6CF00ED5DA8 /* SunButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunButton.swift; sourceTree = "<group>"; };
 		F691EEFB2048BB4000ED5DA8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F6AED90020575BA100BCC631 /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		F6AED90420580A7700BCC631 /* ShowCharacters+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShowCharacters+extension.swift"; sourceTree = "<group>"; };
+		F6AED9082058511700BCC631 /* SimpleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,7 @@
 		BF76DDD61FD9EF490030F52B /* Custom View Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F6AED8FF20575B8600BCC631 /* TransitionEffects */,
 				BF76DDD71FD9EF490030F52B /* CustomImageView.swift */,
 				BF76DDD81FD9EF490030F52B /* EditProfile.swift */,
 				BF76DDD91FD9EF490030F52B /* FoundationButton.swift */,
@@ -286,8 +293,18 @@
 			isa = PBXGroup;
 			children = (
 				F691EEFB2048BB4000ED5DA8 /* Extensions.swift */,
+				F6AED90420580A7700BCC631 /* ShowCharacters+extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F6AED8FF20575B8600BCC631 /* TransitionEffects */ = {
+			isa = PBXGroup;
+			children = (
+				F6AED90020575BA100BCC631 /* CircularTransition.swift */,
+				F6AED9082058511700BCC631 /* SimpleTransition.swift */,
+			);
+			path = TransitionEffects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,10 +421,13 @@
 				BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */,
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF504229204D96CA00490A1A /* OverViewCell.swift in Sources */,
+				F6AED9092058511700BCC631 /* SimpleTransition.swift in Sources */,
 				BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */,
+				F6AED90120575BA100BCC631 /* CircularTransition.swift in Sources */,
 				BF504227204CEA4A00490A1A /* MenuCell.swift in Sources */,
 				F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */,
 				F60611DA2049F673007407C3 /* MenuButton.swift in Sources */,
+				F6AED90520580A7700BCC631 /* ShowCharacters+extension.swift in Sources */,
 				F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */,
 				F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */,
 				BF76DDDC1FD9EF4A0030F52B /* CustomImageView.swift in Sources */,

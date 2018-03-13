@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import AVFoundation
 
-class HiraganaHomeScreenViewController: UIViewController {
+class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     //MARK: - Properties
     var pulsatingLayer: CAShapeLayer!
@@ -18,6 +18,8 @@ class HiraganaHomeScreenViewController: UIViewController {
     var effects = SoundEffects()
     
     var swoosh: Swoosh!
+    
+    let transition = CircularTransition()
     
     var popCount = 0
     
@@ -151,35 +153,37 @@ class HiraganaHomeScreenViewController: UIViewController {
     }
     
     
-    @IBAction func studyButtonPressed(_ sender: Any) {
-        fetchCoredata()
-        if !self.showingCharacters.isEmpty {
-            let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
-            let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
-            showCharacterVC.japaneseDictForRandom = self.showingCharacters
-            showCharacterVC.japaneseType = self.japaneseType
-            showCharacterVC.characterCoreDataDict = self.characterDict
-            showCharacterVC.backgroundColor = self.backgroundColor
-            present(showCharacterVC, animated: true, completion: nil)
-        }
-    }
-    
-    
-    @IBAction func comboButtonPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
-        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-        japaneseCharactersCVC.japaneseType = self.yVowelJapanese
-        japaneseCharactersCVC.backgoundColor = self.backgroundColor
-        self.present(japaneseCharactersCVC, animated: true)
-    }
-    
-    @IBAction func charButtonPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
-        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-        japaneseCharactersCVC.japaneseType = self.japaneseType
-        japaneseCharactersCVC.backgoundColor = self.backgroundColor
-        self.present(japaneseCharactersCVC, animated: true)
-    }
+//    @IBAction func studyButtonPressed(_ sender: Any) {
+//        fetchCoredata()
+//        if !self.showingCharacters.isEmpty {
+//            let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
+//            let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
+//            showCharacterVC.japaneseDictForRandom = self.showingCharacters
+//            showCharacterVC.japaneseType = self.japaneseType
+//            showCharacterVC.characterCoreDataDict = self.characterDict
+//            showCharacterVC.backgroundColor = self.backgroundColor
+//            showCharacterVC.transitioningDelegate = self
+//            showCharacterVC.modalPresentationStyle = .custom
+////            present(showCharacterVC, animated: true, completion: nil)
+//        }
+//    }
+//    
+//    
+//    @IBAction func comboButtonPressed(_ sender: Any) {
+//        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+//        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
+//        japaneseCharactersCVC.japaneseType = self.yVowelJapanese
+//        japaneseCharactersCVC.backgoundColor = self.backgroundColor
+//        self.present(japaneseCharactersCVC, animated: true)
+//    }
+//    
+//    @IBAction func charButtonPressed(_ sender: Any) {
+//        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
+//        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
+//        japaneseCharactersCVC.japaneseType = self.japaneseType
+//        japaneseCharactersCVC.backgoundColor = self.backgroundColor
+//        self.present(japaneseCharactersCVC, animated: true)
+//    }
 
 }
 
@@ -222,7 +226,7 @@ extension HiraganaHomeScreenViewController {
     }
     
     
-    //Menu Button Animations -----------------------------------------------------
+    //Menu Button Animations -----------------------------------------------------// 
     func popOutMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
             self.studyButton.center.x = self.studyButton.center.x - 135
@@ -254,6 +258,52 @@ extension HiraganaHomeScreenViewController {
                         self.effects.sound(.backThree, nil)
                 }, completion: nil)
             })
+        }
+    }
+    
+    
+    
+    // transition animation
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+        transition.startingPoint = homeSunButton.center
+        
+        return transition
+    }
+    
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "study" {
+            fetchCoredata()
+            let showCharacterVC = segue.destination as! ShowCharactersViewController
+            showCharacterVC.japaneseDictForRandom = self.showingCharacters
+            showCharacterVC.japaneseType = self.japaneseType
+            showCharacterVC.characterCoreDataDict = self.characterDict
+            showCharacterVC.backgroundColor = self.backgroundColor
+            showCharacterVC.transitioningDelegate = self
+            transition.circleColor = studyButton.backgroundColor!
+            showCharacterVC.modalPresentationStyle = .custom
+            present(showCharacterVC, animated: true, completion: nil)
+        } else if segue.identifier == "combo" {
+            let japaneseCharactersCVC = segue.destination as! JapaneseCharactersCollectionViewController
+            japaneseCharactersCVC.japaneseType = self.yVowelJapanese
+            japaneseCharactersCVC.backgoundColor = self.backgroundColor
+            japaneseCharactersCVC.transitioningDelegate = self
+            transition.circleColor = comboButton.backgroundColor!
+            japaneseCharactersCVC.modalPresentationStyle = .custom
+            present(japaneseCharactersCVC, animated: true, completion: nil)
+        } else {
+            let japaneseCharactersCVC = segue.destination as! JapaneseCharactersCollectionViewController
+            japaneseCharactersCVC.japaneseType = self.japaneseType
+            japaneseCharactersCVC.backgoundColor = self.backgroundColor
+            japaneseCharactersCVC.transitioningDelegate = self
+            transition.circleColor = characterButton.backgroundColor!
+            japaneseCharactersCVC.modalPresentationStyle = .custom
+            present(japaneseCharactersCVC, animated: true, completion: nil)
         }
     }
 }

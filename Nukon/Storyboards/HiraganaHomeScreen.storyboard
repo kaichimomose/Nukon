@@ -61,7 +61,7 @@
                                 </constraints>
                                 <state key="normal" image="study"/>
                                 <connections>
-                                    <action selector="studyButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="ZQg-FA-TbQ"/>
+                                    <segue destination="iKS-3b-hUZ" kind="show" identifier="study" id="PGh-ld-z9U"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Cg-hO0" customClass="combosButtons" customModule="Nukon" customModuleProvider="target">
@@ -71,7 +71,7 @@
                                 </constraints>
                                 <state key="normal" image="combos"/>
                                 <connections>
-                                    <action selector="comboButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="XFO-5A-Gph"/>
+                                    <segue destination="BkJ-uf-czH" kind="show" identifier="combo" id="PBc-Kd-ie0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
@@ -81,7 +81,7 @@
                                 </constraints>
                                 <state key="normal" image="character"/>
                                 <connections>
-                                    <action selector="charButtonPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="M2G-9P-Awk"/>
+                                    <segue destination="BkJ-uf-czH" kind="show" identifier="character" id="ciH-ne-K4m"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -121,10 +121,29 @@
             </objects>
             <point key="canvasLocation" x="-926" y="112"/>
         </scene>
+        <!--CharactersSelection-->
+        <scene sceneID="GIt-2H-O9N">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CharactersSelection" id="BkJ-uf-czH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVC-kD-XJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-239" y="1"/>
+        </scene>
+        <!--Speaking-->
+        <scene sceneID="oqM-uS-G0k">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Speaking" id="iKS-3b-hUZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnt-lw-qaa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-243" y="161"/>
+        </scene>
     </scenes>
     <resources>
         <image name="character" width="29" height="32"/>
         <image name="combos" width="35" height="32"/>
         <image name="study" width="35" height="35"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ciH-ne-K4m"/>
+    </inferredMetricsTieBreakers>
 </document>

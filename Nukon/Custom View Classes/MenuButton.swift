@@ -13,8 +13,6 @@ class studyButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-//        layer.contents = UIImage(named: "study")?.cgImage
         layer.contentsGravity = kCAGravityCenter
         
         layer.backgroundColor = UIColor.lavender.cgColor
@@ -47,10 +45,12 @@ class characterListButton: UIButton {
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(ovalIn: rect)
-        UIColor.aqua.setFill()
-        path.fill()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        layer.contentsGravity = kCAGravityCenter
+        
+        layer.backgroundColor = UIColor.aqua.cgColor
+        layer.cornerRadius = layer.frame.height / 2
     }
     
     
