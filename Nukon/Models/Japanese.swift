@@ -17,6 +17,6 @@ struct Japanese {
 enum JapaneseType: String {
     case hiragana = "HIRAGANA"
     case katakana = "KATAKANA"
-    case yVowelHiragana = "CONBO-HIRAGANA"
-    case yVowelKatakana = "CONBO-KATAKANA"
+    case yVowelHiragana = "COMBO-HIRAGANA"
+    case yVowelKatakana = "COMBO-KATAKANA"
 }

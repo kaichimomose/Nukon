@@ -151,6 +151,22 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         }
         
     }
+    
+    @IBAction func studyButonTapped(_ sender: Any) {
+        fetchCoredata()
+        if !self.showingCharacters.isEmpty {
+            let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
+            let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
+            showCharacterVC.japaneseDictForRandom = self.showingCharacters
+            showCharacterVC.japaneseType = self.japaneseType
+            showCharacterVC.characterCoreDataDict = self.characterDict
+            showCharacterVC.backgroundColor = self.backgroundColor
+            showCharacterVC.transitioningDelegate = self
+            transition.circleColor = studyButton.backgroundColor!
+            showCharacterVC.modalPresentationStyle = .custom
+            present(showCharacterVC, animated: true, completion: nil)
+        }
+    }
 }
 
 extension HiraganaHomeScreenViewController {

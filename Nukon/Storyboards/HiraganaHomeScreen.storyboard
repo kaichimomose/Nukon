@@ -61,7 +61,7 @@
                                 </constraints>
                                 <state key="normal" image="study"/>
                                 <connections>
-                                    <segue destination="iKS-3b-hUZ" kind="show" identifier="study" id="PGh-ld-z9U"/>
+                                    <action selector="studyButonTapped:" destination="VLa-bD-zdX" eventType="touchUpInside" id="oMF-qK-Jc7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Cg-hO0" customClass="combosButtons" customModule="Nukon" customModuleProvider="target">
