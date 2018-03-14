@@ -102,6 +102,10 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return self.numberOfUnlockedCell    //japaneseList.count
     }
     
+    func indexTitles(for collectionView: UICollectionView) -> [String]? {
+        return ["Vowel", "K", "S"]
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
