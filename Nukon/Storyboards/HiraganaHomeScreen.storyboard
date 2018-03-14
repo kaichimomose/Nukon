@@ -19,21 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-aUc">
-                                <rect key="frame" x="0.0" y="44" width="375" height="59"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="HIRAGANA">
-                                        <attributes>
-                                            <color key="NSColor" red="0.95686274509803915" green="0.94509803921568625" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="43" name="AvenirNext-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
-                                <rect key="frame" x="101.5" y="104" width="172" height="43"/>
+                                <rect key="frame" x="101.5" y="96" width="172" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0wV-Dm-O5P" secondAttribute="height" multiplier="4:1" id="wyb-pF-SG0"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="ひらがな">
                                         <attributes>
@@ -75,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="152" y="297.5" width="72.5" height="72.5"/>
+                                <rect key="frame" x="151.5" y="297.5" width="72.5" height="72.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KwN-pA-ucu" secondAttribute="height" multiplier="1:1" id="TzX-LW-Ytu"/>
                                 </constraints>
@@ -84,42 +74,128 @@
                                     <segue destination="BkJ-uf-czH" kind="show" identifier="character" id="ciH-ne-K4m"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-aUc">
+                                <rect key="frame" x="63.5" y="37" width="248" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bD5-JF-aUc" secondAttribute="height" multiplier="82:15" constant="-74.53333333333336" id="Pej-a2-2cK"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="HIRAGANA">
+                                        <attributes>
+                                            <color key="NSColor" red="0.95686274509803915" green="0.94509803921568625" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="43" name="AvenirNext-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USO-f0-7Y2">
+                                <rect key="frame" x="327" y="45" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="e5g-Ye-aYl"/>
+                                    <constraint firstAttribute="width" secondItem="USO-f0-7Y2" secondAttribute="height" multiplier="1:1" id="jIr-eH-zWO"/>
+                                </constraints>
+                                <state key="normal" image="info_icon"/>
+                                <connections>
+                                    <action selector="infoButtonTapped:" destination="VLa-bD-zdX" eventType="touchUpInside" id="cYD-Tr-r59"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.68627450980000004" green="0.79607843140000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="2dA-6x-yXy"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" constant="3.75" id="3eT-2p-Cba"/>
+                            <constraint firstItem="USO-f0-7Y2" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="0.195" id="3jQ-J9-b2M"/>
                             <constraint firstItem="ZHx-Cg-hO0" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="5fF-sq-O0p"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="150:667" constant="-27.608695652173907" id="6aa-qB-Yke"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Bd7-Gs-olg"/>
-                            <constraint firstItem="0wV-Dm-O5P" firstAttribute="top" secondItem="bD5-JF-aUc" secondAttribute="bottom" constant="1" id="GLD-0v-DdW"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="GX0-zj-fEh"/>
-                            <constraint firstItem="0wV-Dm-O5P" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="172:667" id="LCk-nv-C5V"/>
-                            <constraint firstItem="0wV-Dm-O5P" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Ldi-aC-MQq"/>
-                            <constraint firstItem="bD5-JF-aUc" firstAttribute="trailing" secondItem="oup-LF-boy" secondAttribute="trailing" id="R8c-2S-gN7"/>
+                            <constraint firstItem="bD5-JF-aUc" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="0.2" id="Hls-Hs-fmT"/>
+                            <constraint firstItem="0wV-Dm-O5P" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="PAC-hG-Dd6"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="RRN-YB-AUa"/>
+                            <constraint firstItem="USO-f0-7Y2" firstAttribute="leading" secondItem="bD5-JF-aUc" secondAttribute="trailing" multiplier="1.05" id="TfL-oi-bnM"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" constant="3.75" id="Vx4-af-Kan"/>
-                            <constraint firstItem="bD5-JF-aUc" firstAttribute="leading" secondItem="oup-LF-boy" secondAttribute="leading" id="c2M-eO-rqz"/>
-                            <constraint firstItem="bD5-JF-aUc" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="0.22" id="ctL-Wj-Jcc"/>
+                            <constraint firstItem="bD5-JF-aUc" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="WEb-z7-BvU"/>
                             <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" constant="3.75" id="cuQ-FW-Mab"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="egf-Ty-tbI"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="fDp-Ka-ZOn"/>
                             <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" constant="3.75" id="gEv-3n-3ld"/>
+                            <constraint firstItem="0wV-Dm-O5P" firstAttribute="top" secondItem="bD5-JF-aUc" secondAttribute="bottom" id="mef-cT-8Xf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oup-LF-boy"/>
                     </view>
                     <connections>
                         <outlet property="characterButton" destination="KwN-pA-ucu" id="xe0-XN-rL6"/>
                         <outlet property="comboButton" destination="ZHx-Cg-hO0" id="Nib-23-non"/>
+                        <outlet property="hiraganaDescriptionTextView" destination="bzy-fw-G2H" id="c80-pa-gNJ"/>
                         <outlet property="homeSunButton" destination="Yp0-Lz-ksZ" id="gkc-e9-fdT"/>
+                        <outlet property="info" destination="USO-f0-7Y2" id="r2e-0y-8K5"/>
+                        <outlet property="katakanaDescriptionTextView" destination="74A-o2-rg9" id="mb0-8u-5wW"/>
                         <outlet property="studyButton" destination="WjG-xd-Om5" id="Cfp-IU-qpq"/>
                         <outlet property="titleJapaneseLabel" destination="0wV-Dm-O5P" id="Nwd-Zc-a3c"/>
                         <outlet property="titleRomeLabel" destination="bD5-JF-aUc" id="C6d-1J-JKK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSZ-GJ-n54" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="bzy-fw-G2H" userLabel="HiraganaDescription">
+                    <rect key="frame" x="0.0" y="0.0" width="316" height="113"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0g-N2-NCg">
+                            <rect key="frame" x="0.0" y="0.0" width="316" height="113"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">Hiragana is but one character set within Japanese and arguably the most essential for beginners. Learn these characters and you foundation will be as solid as bedrock when learning and pronouncing words later on.</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.95294000000000001" green="0.43529000000000001" blue="0.42745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="14" name="AvenirNext-DemiBold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="6jx-AZ-gx3" firstAttribute="trailing" secondItem="m0g-N2-NCg" secondAttribute="trailing" id="1w4-KC-NWm"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="top" secondItem="bzy-fw-G2H" secondAttribute="top" id="CV7-35-PJu"/>
+                        <constraint firstAttribute="bottom" secondItem="m0g-N2-NCg" secondAttribute="bottom" id="Pgx-ok-Q3J"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="leading" secondItem="6jx-AZ-gx3" secondAttribute="leading" id="kQU-cF-Y0z"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="6jx-AZ-gx3"/>
+                </view>
+                <view contentMode="scaleToFill" id="74A-o2-rg9" userLabel="KatakanaDescription">
+                    <rect key="frame" x="0.0" y="0.0" width="316" height="113"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-e2-00W">
+                            <rect key="frame" x="0.0" y="0.0" width="316" height="113"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">Katakana is another character set within Japanese. You'll realize as you study that these characters are pronounced the same as Hiragana. However, this set is used to represent sounds of foreign words.</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="14" name="AvenirNext-DemiBold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="sRN-e2-00W" firstAttribute="top" secondItem="74A-o2-rg9" secondAttribute="top" id="8ao-CN-pGJ"/>
+                        <constraint firstItem="nTh-dq-7ks" firstAttribute="trailing" secondItem="sRN-e2-00W" secondAttribute="trailing" id="Lju-3B-KkK"/>
+                        <constraint firstAttribute="bottom" secondItem="sRN-e2-00W" secondAttribute="bottom" id="OEa-ta-ps7"/>
+                        <constraint firstItem="sRN-e2-00W" firstAttribute="leading" secondItem="nTh-dq-7ks" secondAttribute="leading" id="t3r-1H-u6x"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="nTh-dq-7ks"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="-926" y="112"/>
+            <point key="canvasLocation" x="-927.20000000000005" y="111.99400299850076"/>
         </scene>
         <!--CharactersSelection-->
         <scene sceneID="GIt-2H-O9N">
@@ -141,6 +217,7 @@
     <resources>
         <image name="character" width="29" height="32"/>
         <image name="combos" width="35" height="32"/>
+        <image name="info_icon" width="120" height="120"/>
         <image name="study" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>

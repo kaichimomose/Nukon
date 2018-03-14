@@ -291,7 +291,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My1-g8-PHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FAV-eI-vPr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3000.8000000000002" y="472.71364317841085"/>
+            <point key="canvasLocation" x="2895" y="458"/>
         </scene>
     </scenes>
     <resources>
