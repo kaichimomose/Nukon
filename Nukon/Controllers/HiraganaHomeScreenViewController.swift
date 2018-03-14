@@ -25,6 +25,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     
     var backgroundColor: UIColor!
     
+    
     var japaneseType: JapaneseType! {
         didSet {
             if japaneseType == .hiragana {
@@ -55,6 +56,14 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     @IBOutlet weak var comboButton: combosButtons!
     
     @IBOutlet weak var characterButton: characterListButton!
+    
+    @IBOutlet weak var info: UIButton!
+    
+    @IBOutlet var hiraganaDescriptionTextView: UIView!
+    
+    @IBOutlet var katakanaDescriptionTextView: UIView!
+    
+    
 
     //MARK: - Functions
     override func viewDidLoad() {
@@ -71,6 +80,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         } else {
             titleJapaneseLabel.text = "カタカナ"
         }
+        
         
         //Bring Home Sun Button to the front
         view.bringSubview(toFront: homeSunButton)
@@ -92,6 +102,40 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         // Dispose of any resources that can be recreated.
         
         
+    }
+    
+    func animateIn(with: JapaneseType) {
+        
+        if japaneseType == .hiragana {
+            self.view.addSubview(hiraganaDescriptionTextView)
+            hiraganaDescriptionTextView.layer.cornerRadius = 7
+            hiraganaDescriptionTextView.center = CGPoint(x: view.center.x - (view.center.x * 2), y: view.center.y + 200)
+            hiraganaDescriptionTextView.transform = CGAffineTransform(translationX: 0.01, y: 0.01)
+            hiraganaDescriptionTextView.alpha = 0
+            
+            UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
+                self.hiraganaDescriptionTextView.center.x = self.view.center.x
+                self.hiraganaDescriptionTextView.alpha = 1
+                self.hiraganaDescriptionTextView.transform = CGAffineTransform.identity
+            }, completion: nil)
+        } else {
+            self.view.addSubview(katakanaDescriptionTextView)
+            katakanaDescriptionTextView.layer.cornerRadius = 7
+            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y + 200)
+            katakanaDescriptionTextView.transform = CGAffineTransform(translationX: 0.01, y: 0.01)
+            katakanaDescriptionTextView.alpha = 0
+            
+            UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
+                self.katakanaDescriptionTextView.center.x = self.view.center.x
+                self.katakanaDescriptionTextView.alpha = 1
+                self.katakanaDescriptionTextView.transform = CGAffineTransform.identity
+            }, completion: nil)
+        }
+    }
+    
+    //info button is pressed
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        animateIn(with: japaneseType!)
     }
     
     
@@ -259,18 +303,7 @@ extension HiraganaHomeScreenViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "study" {
-            fetchCoredata()
-            let showCharacterVC = segue.destination as! ShowCharactersViewController
-            showCharacterVC.japaneseDictForRandom = self.showingCharacters
-            showCharacterVC.japaneseType = self.japaneseType
-            showCharacterVC.characterCoreDataDict = self.characterDict
-            showCharacterVC.backgroundColor = self.backgroundColor
-            showCharacterVC.transitioningDelegate = self
-            transition.circleColor = studyButton.backgroundColor!
-            showCharacterVC.modalPresentationStyle = .custom
-            present(showCharacterVC, animated: true, completion: nil)
-        } else if segue.identifier == "combo" {
+        if segue.identifier == "combo" {
             let japaneseCharactersCVC = segue.destination as! JapaneseCharactersCollectionViewController
             japaneseCharactersCVC.japaneseType = self.yVowelJapanese
             japaneseCharactersCVC.backgoundColor = self.backgroundColor
@@ -278,7 +311,7 @@ extension HiraganaHomeScreenViewController {
             transition.circleColor = comboButton.backgroundColor!
             japaneseCharactersCVC.modalPresentationStyle = .custom
             present(japaneseCharactersCVC, animated: true, completion: nil)
-        } else {
+        } else if segue.identifier == "character" {
             let japaneseCharactersCVC = segue.destination as! JapaneseCharactersCollectionViewController
             japaneseCharactersCVC.japaneseType = self.japaneseType
             japaneseCharactersCVC.backgoundColor = self.backgroundColor
