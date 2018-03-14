@@ -139,11 +139,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSZ-GJ-n54" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="bzy-fw-G2H" userLabel="HiraganaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="316" height="113"/>
+                    <rect key="frame" x="0.0" y="0.0" width="316" height="139"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0g-N2-NCg">
-                            <rect key="frame" x="0.0" y="0.0" width="316" height="113"/>
+                            <rect key="frame" x="0.0" y="0.0" width="316" height="139"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">Hiragana is but one character set within Japanese and arguably the most essential for beginners. Learn these characters and you foundation will be as solid as bedrock when learning and pronouncing words later on.</string>
@@ -167,11 +167,11 @@
                     <viewLayoutGuide key="safeArea" id="6jx-AZ-gx3"/>
                 </view>
                 <view contentMode="scaleToFill" id="74A-o2-rg9" userLabel="KatakanaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="316" height="113"/>
+                    <rect key="frame" x="0.0" y="0.0" width="316" height="139"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-e2-00W">
-                            <rect key="frame" x="0.0" y="0.0" width="316" height="113"/>
+                            <rect key="frame" x="0.0" y="0.0" width="316" height="139"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">Katakana is another character set within Japanese. You'll realize as you study that these characters are pronounced the same as Hiragana. However, this set is used to represent sounds of foreign words.</string>
