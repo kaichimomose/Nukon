@@ -101,9 +101,30 @@
                                     <action selector="infoButtonTapped:" destination="VLa-bD-zdX" eventType="touchUpInside" id="cYD-Tr-r59"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcs-BO-MYo">
+                                <rect key="frame" x="333" y="499.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xcs-BO-MYo" secondAttribute="height" multiplier="1:1" id="xRp-Fu-4Gf"/>
+                                </constraints>
+                                <state key="normal" image="arrowRight"/>
+                                <connections>
+                                    <action selector="arrowRightPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="48X-YE-s6d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Swi-ho-bhD">
+                                <rect key="frame" x="7" y="499.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Swi-ho-bhD" secondAttribute="height" multiplier="1:1" id="FPN-12-PY5"/>
+                                </constraints>
+                                <state key="normal" image="arrowLeft"/>
+                                <connections>
+                                    <action selector="arrowLeftPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="Gvw-Bn-IFM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.68627450980000004" green="0.79607843140000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="xcs-BO-MYo" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.55" id="10m-fT-bxA"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="2dA-6x-yXy"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" constant="3.75" id="3eT-2p-Cba"/>
                             <constraint firstItem="USO-f0-7Y2" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="0.195" id="3jQ-J9-b2M"/>
@@ -113,19 +134,26 @@
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="GX0-zj-fEh"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="0.2" id="Hls-Hs-fmT"/>
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="PAC-hG-Dd6"/>
+                            <constraint firstItem="xcs-BO-MYo" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="50:667" constant="-15" id="Qwc-Ye-X2J"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="RRN-YB-AUa"/>
                             <constraint firstItem="USO-f0-7Y2" firstAttribute="leading" secondItem="bD5-JF-aUc" secondAttribute="trailing" multiplier="1.05" id="TfL-oi-bnM"/>
                             <constraint firstItem="WjG-xd-Om5" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" constant="3.75" id="Vx4-af-Kan"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="WEb-z7-BvU"/>
+                            <constraint firstItem="Swi-ho-bhD" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.55" id="Zwk-GD-g3v"/>
+                            <constraint firstItem="Swi-ho-bhD" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="50:667" constant="-15" id="a7F-sg-5iX"/>
                             <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" constant="3.75" id="cuQ-FW-Mab"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="egf-Ty-tbI"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="fDp-Ka-ZOn"/>
                             <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" constant="3.75" id="gEv-3n-3ld"/>
+                            <constraint firstItem="Swi-ho-bhD" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" multiplier="0.13" id="gar-Zo-2cf"/>
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="top" secondItem="bD5-JF-aUc" secondAttribute="bottom" id="mef-cT-8Xf"/>
+                            <constraint firstItem="xcs-BO-MYo" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" multiplier="1.87" id="sqw-Ih-Ocu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oup-LF-boy"/>
                     </view>
                     <connections>
+                        <outlet property="arrowLeft" destination="Swi-ho-bhD" id="FCw-sJ-MCP"/>
+                        <outlet property="arrowRight" destination="xcs-BO-MYo" id="Z91-7D-8Rx"/>
                         <outlet property="characterButton" destination="KwN-pA-ucu" id="xe0-XN-rL6"/>
                         <outlet property="comboButton" destination="ZHx-Cg-hO0" id="Nib-23-non"/>
                         <outlet property="hiraganaDescriptionTextView" destination="bzy-fw-G2H" id="c80-pa-gNJ"/>
@@ -139,11 +167,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSZ-GJ-n54" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="bzy-fw-G2H" userLabel="HiraganaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="316" height="139"/>
+                    <rect key="frame" x="0.0" y="0.0" width="306" height="115"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0g-N2-NCg">
-                            <rect key="frame" x="0.0" y="0.0" width="316" height="139"/>
+                            <rect key="frame" x="0.0" y="0.0" width="306" height="115"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">Hiragana is but one character set within Japanese and arguably the most essential for beginners. Learn these characters and you foundation will be as solid as bedrock when learning and pronouncing words later on.</string>
@@ -159,19 +187,23 @@
                     </subviews>
                     <color key="backgroundColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="6jx-AZ-gx3" firstAttribute="trailing" secondItem="m0g-N2-NCg" secondAttribute="trailing" id="1w4-KC-NWm"/>
-                        <constraint firstItem="m0g-N2-NCg" firstAttribute="top" secondItem="bzy-fw-G2H" secondAttribute="top" id="CV7-35-PJu"/>
-                        <constraint firstAttribute="bottom" secondItem="m0g-N2-NCg" secondAttribute="bottom" id="Pgx-ok-Q3J"/>
-                        <constraint firstItem="m0g-N2-NCg" firstAttribute="leading" secondItem="6jx-AZ-gx3" secondAttribute="leading" id="kQU-cF-Y0z"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="leading" secondItem="6jx-AZ-gx3" secondAttribute="leading" id="3C7-9e-pLq"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="trailing" secondItem="6jx-AZ-gx3" secondAttribute="trailing" id="UUv-3C-LFY"/>
+                        <constraint firstItem="6jx-AZ-gx3" firstAttribute="bottom" secondItem="m0g-N2-NCg" secondAttribute="bottom" id="UxR-L5-p6B"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="top" secondItem="6jx-AZ-gx3" secondAttribute="top" id="cE7-iY-p0K"/>
+                        <constraint firstAttribute="trailing" secondItem="m0g-N2-NCg" secondAttribute="trailing" id="dqK-0q-slF"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="top" secondItem="6jx-AZ-gx3" secondAttribute="top" id="i9N-Rz-diq"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="leading" secondItem="bzy-fw-G2H" secondAttribute="leading" id="xKR-x4-gSy"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="centerX" secondItem="bzy-fw-G2H" secondAttribute="centerX" id="zT8-tO-C7u"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="6jx-AZ-gx3"/>
                 </view>
                 <view contentMode="scaleToFill" id="74A-o2-rg9" userLabel="KatakanaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="316" height="139"/>
+                    <rect key="frame" x="0.0" y="0.0" width="316" height="112"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-e2-00W">
-                            <rect key="frame" x="0.0" y="0.0" width="316" height="139"/>
+                            <rect key="frame" x="0.0" y="0.0" width="316" height="112"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">Katakana is another character set within Japanese. You'll realize as you study that these characters are pronounced the same as Hiragana. However, this set is used to represent sounds of foreign words.</string>
@@ -215,6 +247,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowLeft" width="150" height="143"/>
+        <image name="arrowRight" width="150" height="143"/>
         <image name="character" width="29" height="32"/>
         <image name="combos" width="35" height="32"/>
         <image name="info_icon" width="120" height="120"/>

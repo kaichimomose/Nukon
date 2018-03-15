@@ -63,8 +63,11 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     
     @IBOutlet var katakanaDescriptionTextView: UIView!
     
+    @IBOutlet weak var arrowLeft: UIButton!
     
-
+    @IBOutlet weak var arrowRight: UIButton!
+    
+    
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +89,9 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         view.bringSubview(toFront: homeSunButton)
         
         // Do any additional setup after loading the view.
+        arrowRight.alpha = 0
+        arrowLeft.alpha = 0
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,36 +115,52 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         if japaneseType == .hiragana {
             self.view.addSubview(hiraganaDescriptionTextView)
             self.view.bringSubview(toFront: hiraganaDescriptionTextView)
+            
             hiraganaDescriptionTextView.layer.cornerRadius = 7
             hiraganaDescriptionTextView.center = CGPoint(x: view.center.x - (view.center.x * 2), y: view.center.y + 200)
+            arrowRight.center.x = arrowRight.center.x - view.center.x
 //            hiraganaDescriptionTextView.transform = CGAffineTransform(translationX: 0.01, y: 0.01)
             hiraganaDescriptionTextView.alpha = 0
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+                self.arrowRight.alpha = 1
+                self.arrowRight.center.x = self.arrowRight.center.x + self.view.center.x
+            }, completion: { (Suceess: Bool) in
+                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
+                    self.hiraganaDescriptionTextView.center.x = self.view.center.x
+                    self.hiraganaDescriptionTextView.alpha = 1
+                }, completion: nil)
+            })
             
-            UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
-                self.hiraganaDescriptionTextView.center.x = self.view.center.x
-                self.hiraganaDescriptionTextView.alpha = 1
-            }, completion: nil)
         } else {
             self.view.addSubview(katakanaDescriptionTextView)
             self.view.bringSubview(toFront: katakanaDescriptionTextView)
             katakanaDescriptionTextView.layer.cornerRadius = 7
             katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y + 200)
             katakanaDescriptionTextView.alpha = 0
+            arrowLeft.center.x = arrowLeft.center.x + view.center.x
             
-            UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
-                self.katakanaDescriptionTextView.center.x = self.view.center.x
-                self.katakanaDescriptionTextView.alpha = 1
-            }, completion: nil)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+                self.arrowLeft.alpha = 1
+                self.arrowLeft.center.x = self.arrowLeft.center.x - self.view.center.x
+            }, completion: { (Suceess: Bool) in
+                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
+                    self.katakanaDescriptionTextView.center.x = self.view.center.x
+                    self.katakanaDescriptionTextView.alpha = 1
+                }, completion: nil)
+            })
+            
         }
     }
     
     func animateOut(type: JapaneseType) {
         
         if type == .hiragana {
+            
             UIView.animate(withDuration: 1.0, animations: {
                 self.hiraganaDescriptionTextView.center = CGPoint(x: self.view.center.x + (self.view.center.x * 2), y: self.view.center.y + 200)
                 self.hiraganaDescriptionTextView.alpha = 0
             })
+            
         } else {
             UIView.animate(withDuration: 1.0, animations: {
                 self.katakanaDescriptionTextView.center = CGPoint(x: self.view.center.x - (self.view.center.x * 2), y: self.view.center.y + 200)
@@ -159,6 +181,14 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             self.animateIn(with: self.japaneseType!)
         }
 //        animateIn(with: japaneseType!)
+    }
+    
+    @IBAction func arrowLeftPressed(_ sender: Any) {
+        animateOut(type: .katakana)
+    }
+    
+    @IBAction func arrowRightPressed(_ sender: Any) {
+        animateOut(type: .hiragana)
     }
     
     
