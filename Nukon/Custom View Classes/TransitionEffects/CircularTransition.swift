@@ -16,7 +16,7 @@ class CircularTransition: NSObject {
     
     var circleColor = UIColor()
     
-    var duration = 0.3
+    var duration = 0.1
     
     var presenting = true
     

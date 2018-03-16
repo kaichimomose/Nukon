@@ -182,7 +182,7 @@ class ShowCharactersViewController: UIViewController {
             self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
             self.pulsate()
-            self.effects.sound(nil, .right)
+            self.effects.sound(nil, .right, nil)
             self.enableJudgeButtons()
 //            let when = DispatchTime.now() + 1.5 // delay for the number of seconds
 //            DispatchQueue.main.asyncAfter(deadline: when) {
