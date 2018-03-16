@@ -20,6 +20,7 @@ class FirstCharacterCell: UICollectionViewCell {
     var pulseLayer: CAShapeLayer!
     
     //MARK: - Propaties
+    var row: Int!
     let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
     let speak = AVSpeechSynthesizer()
     
@@ -193,8 +194,8 @@ class FirstCharacterCell: UICollectionViewCell {
     
     @IBOutlet var buttons: [UIButton]!
     
-    @IBOutlet weak var upwardsArrow: UILabel!
-    @IBOutlet weak var downwardsArrow: UILabel!
+    @IBOutlet weak var upwardsArrowButton: UIButton!
+    @IBOutlet weak var downwardsArrowButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -382,19 +383,17 @@ class FirstCharacterCell: UICollectionViewCell {
         }
     }
     
-//    func flashingAnimation(Index: Int) {
-//        self.characterLabels[Index].alpha = 0.3
-//
-//        let flashing = {
-//            self.characterLabels[Index].alpha = 1
-//        }
-//
-//        UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .curveEaseInOut], animations: flashing, completion: nil)
-//    }
-//
-//    func stopFlashingAnimation(Index: Int) {
-//        self.characterLabels[Index].layer.removeAllAnimations()
-//    }
+    func flashingAnimation() {
+        self.upwardsArrowButton.alpha = 0.3
+        self.downwardsArrowButton.alpha = 0.3
+
+        let flashing = {
+            self.upwardsArrowButton.alpha = 1
+            self.downwardsArrowButton.alpha = 1
+        }
+
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .curveEaseInOut], animations: flashing, completion: nil)
+    }
     
     //MARK: - Actions
     @IBAction func firstChracterTapped(_ sender: Any) {
@@ -423,6 +422,16 @@ class FirstCharacterCell: UICollectionViewCell {
         collectionView.isUserInteractionEnabled = false
         characterDistributingAnimation()
         speakOrderly(list: japanese.letters)
+    }
+    
+    @IBAction func upwardsTapped(_ sender: Any) {
+        let index = self.row - 1
+        delegate?.scrollToItemIndexPath(index: index)
+    }
+    
+    @IBAction func downwardsTapped(_ sender: Any) {
+        let index = self.row + 1
+        delegate?.scrollToItemIndexPath(index: index)
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

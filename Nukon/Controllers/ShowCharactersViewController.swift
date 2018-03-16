@@ -164,7 +164,10 @@ class ShowCharactersViewController: UIViewController {
         }
         
         self.updateLabels()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.moveCharacter()
     }
     
     func updateLabels() {
@@ -426,7 +429,29 @@ class ShowCharactersViewController: UIViewController {
             self.buttonTitle = .start
             self.judge = .yet
             self.updateLabels()
+            moveCharacter()
         }
+    }
+    
+    func moveCharacter() {
+        let animation = {
+            
+            let downwards = {
+                self.characterButton.center.y = self.characterView.center.y + 35
+                
+            }
+            
+            UIView.animate(withDuration: 1.0, delay: 1.5, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: .curveEaseInOut, animations: downwards, completion: nil)
+            
+            let upwards = {
+                self.characterButton.center.y = self.characterButton.center.y - 35
+            }
+            
+            UIView.animate(withDuration: 2.0, delay: 4.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: .curveEaseInOut, animations: upwards, completion: nil)
+
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: .curveEaseInOut, animations: animation, completion: nil)
     }
     
     //MARK: - Actions
