@@ -102,15 +102,15 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return self.numberOfUnlockedCell    //japaneseList.count
     }
     
-    func indexTitles(for collectionView: UICollectionView) -> [String]? {
-        return ["Vowel", "K", "S"]
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - 10, height: collectionView.frame.height)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
@@ -118,12 +118,31 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         let firstCharacterCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifer, for: indexPath) as! FirstCharacterCell
         
         let row = indexPath.row
+        
+        //character initially unvisible
         firstCharacterCell.characterViews.forEach { view in
             view.alpha = 0
         }
         firstCharacterCell.checkboxesImageViews.forEach { imageView in
             imageView.alpha = 0
         }
+        
+        //arrows control
+        if self.numberOfUnlockedCell == 1 {
+            firstCharacterCell.upwardsArrow.alpha = 0
+            firstCharacterCell.downwardsArrow.alpha = 0
+        } else if row == 0 {
+            firstCharacterCell.upwardsArrow.alpha = 0
+            firstCharacterCell.downwardsArrow.alpha = 0.5
+        } else if row == self.numberOfUnlockedCell - 1{
+            firstCharacterCell.upwardsArrow.alpha = 0.5
+            firstCharacterCell.downwardsArrow.alpha = 0
+        } else {
+            firstCharacterCell.upwardsArrow.alpha = 0.5
+            firstCharacterCell.downwardsArrow.alpha = 0.5
+        }
+        
+        //send propaties
         firstCharacterCell.collectionView = self.collectionView
         firstCharacterCell.delegate = self
         firstCharacterCell.characterDict = self.consonantDict[japaneseList[row].sound]

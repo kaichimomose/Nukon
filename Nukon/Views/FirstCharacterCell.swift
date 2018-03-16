@@ -193,6 +193,9 @@ class FirstCharacterCell: UICollectionViewCell {
     
     @IBOutlet var buttons: [UIButton]!
     
+    @IBOutlet weak var upwardsArrow: UILabel!
+    @IBOutlet weak var downwardsArrow: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
