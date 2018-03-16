@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/HiraganaHomeScreenViewController.swift"
-            timestampString = "542821295.412673"
+            timestampString = "542856648.444646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "sunPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/HiraganaHomeScreenViewController.swift"
-            timestampString = "542821295.590764"
+            timestampString = "542856648.452143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "sunPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>

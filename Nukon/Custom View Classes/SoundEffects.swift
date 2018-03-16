@@ -20,6 +20,10 @@ enum Swoosh: String {
     case backThree = "swooshBackThree"
 }
 
+enum TransitionSound: String {
+    case stretch = "cartoon"
+}
+
 enum Guesses: String {
     case right = "bell_2x"
     case wrong = "boing"
@@ -33,7 +37,7 @@ struct SoundEffects {
     
     let fileType = "mp3"
     
-    mutating func sound(_ swooshType: Swoosh?, _ guessType: Guesses?) {
+    mutating func sound(_ swooshType: Swoosh?, _ guessType: Guesses?, _ transitionSoundType: TransitionSound?) {
         if let swoosh = swooshType {
             switch swoosh {
             case .one:
@@ -63,6 +67,13 @@ struct SoundEffects {
                 
             case .wrong:
                 guessEffectResource(.wrong)
+            }
+        }
+        
+        if let transSound = transitionSoundType {
+            switch transSound {
+            case .stretch:
+                transitionEffectResource(.stretch)
             }
         }
     }
@@ -108,7 +119,26 @@ struct SoundEffects {
         }
     }
     
-    
+    mutating func transitionEffectResource(_ type: TransitionSound) {
+        
+        guard let transitionSoundUrl = Bundle.main.url(forResource: type.rawValue, withExtension: fileType) else {return}
+        
+        do {
+            try AudioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try AudioSession.setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: transitionSoundUrl, fileTypeHint: AVFileType.mp3.rawValue)
+            
+            guard let player = player else {
+                return
+            }
+            
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     
     
     

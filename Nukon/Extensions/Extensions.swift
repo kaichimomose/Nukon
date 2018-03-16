@@ -47,9 +47,9 @@ extension UIColor {
 
 extension UIButton {
     
-    func animateShadow(pulsing: Bool) {
-        layer.shadowColor = UIColor.redSun.cgColor
-        layer.shadowRadius = 15
+    func animateShadow(pulsing: Bool, color: UIColor) {
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = 35
         
         let animation = CABasicAnimation(keyPath: "shadowOpacity")
         animation.fromValue = layer.shadowOpacity

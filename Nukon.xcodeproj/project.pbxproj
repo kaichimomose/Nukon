@@ -43,6 +43,9 @@
 		BFE76F2920433847005E9F0C /* OverViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE76F2720433847005E9F0C /* OverViewCollectionViewCell.xib */; };
 		F60611DA2049F673007407C3 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60611D92049F673007407C3 /* MenuButton.swift */; };
 		F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */; };
+		F63A61D3205AFAED00D86CC5 /* Stretch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F63A61D2205AFAED00D86CC5 /* Stretch.mp3 */; };
+		F63A61D5205B1FDC00D86CC5 /* realStretch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F63A61D4205B1FDC00D86CC5 /* realStretch.mp3 */; };
+		F63A61D7205B548D00D86CC5 /* cartoon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F63A61D6205B548D00D86CC5 /* cartoon.mp3 */; };
 		F649BAE42057395B0026733F /* swooshTwo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F649BADB2057395A0026733F /* swooshTwo.mp3 */; };
 		F649BAE52057395B0026733F /* boing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F649BADC2057395A0026733F /* boing.mp3 */; };
 		F649BAE62057395B0026733F /* swooshBackThree.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F649BADD2057395A0026733F /* swooshBackThree.mp3 */; };
@@ -102,6 +105,9 @@
 		BFE76F2720433847005E9F0C /* OverViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverViewCollectionViewCell.xib; sourceTree = "<group>"; };
 		F60611D92049F673007407C3 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabGradientButton.swift; sourceTree = "<group>"; };
+		F63A61D2205AFAED00D86CC5 /* Stretch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Stretch.mp3; sourceTree = "<group>"; };
+		F63A61D4205B1FDC00D86CC5 /* realStretch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = realStretch.mp3; sourceTree = "<group>"; };
+		F63A61D6205B548D00D86CC5 /* cartoon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cartoon.mp3; sourceTree = "<group>"; };
 		F649BADB2057395A0026733F /* swooshTwo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swooshTwo.mp3; sourceTree = "<group>"; };
 		F649BADC2057395A0026733F /* boing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boing.mp3; sourceTree = "<group>"; };
 		F649BADD2057395A0026733F /* swooshBackThree.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swooshBackThree.mp3; sourceTree = "<group>"; };
@@ -276,6 +282,9 @@
 		F649BADA2057395A0026733F /* Sound Effects */ = {
 			isa = PBXGroup;
 			children = (
+				F63A61D6205B548D00D86CC5 /* cartoon.mp3 */,
+				F63A61D2205AFAED00D86CC5 /* Stretch.mp3 */,
+				F63A61D4205B1FDC00D86CC5 /* realStretch.mp3 */,
 				F649BADB2057395A0026733F /* swooshTwo.mp3 */,
 				F649BADC2057395A0026733F /* boing.mp3 */,
 				F649BADD2057395A0026733F /* swooshBackThree.mp3 */,
@@ -377,12 +386,15 @@
 				F649BAE72057395B0026733F /* bell_2x.mp3 in Resources */,
 				F649BAE62057395B0026733F /* swooshBackThree.mp3 in Resources */,
 				BF9ADFCF202AC01A0024A71C /* CharactersSelection.storyboard in Resources */,
+				F63A61D5205B1FDC00D86CC5 /* realStretch.mp3 in Resources */,
 				F649BAEC2057395B0026733F /* swooshOne.mp3 in Resources */,
 				BF7199122038F46100E3A03D /* Speaking.storyboard in Resources */,
 				BF9ADFEB202BF1290024A71C /* FirstCharacterCell.xib in Resources */,
+				F63A61D7205B548D00D86CC5 /* cartoon.mp3 in Resources */,
 				BFE76F2920433847005E9F0C /* OverViewCollectionViewCell.xib in Resources */,
 				F649BAE82057395B0026733F /* swooshBackOne.mp3 in Resources */,
 				BFA13972204BCA7A00A28AA1 /* Assets.xcassets in Resources */,
+				F63A61D3205AFAED00D86CC5 /* Stretch.mp3 in Resources */,
 				F649BAE52057395B0026733F /* boing.mp3 in Resources */,
 				F649BAEB2057395B0026733F /* swooshBackTwo.mp3 in Resources */,
 			);
