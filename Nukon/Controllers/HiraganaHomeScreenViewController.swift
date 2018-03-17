@@ -63,6 +63,8 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     
     @IBOutlet var katakanaDescriptionTextView: UIView!
     
+    var menuButtons: [UIButton]!
+    
     
     //MARK: - Functions
     override func viewDidLoad() {
@@ -85,7 +87,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         view.bringSubview(toFront: homeSunButton)
         
         // Do any additional setup after loading the view.
-        
+        menuButtons = [self.homeSunButton, self.studyButton, self.comboButton, self.characterButton]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,10 +154,22 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         
     }
     
+    func disableSunButton() {
+        self.menuButtons.forEach({ (button) in
+            button.isEnabled = false
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.menuButtons.forEach({ (button) in
+                button.isEnabled = true
+            })
+        }
+    }
+    
     //info button is pressed
     @IBAction func infoButtonTapped(_ sender: Any) {
         if popCount == 1 {
             popInMenuButtons()
+            disableSunButton()
             popCount -= 1
         }
         
