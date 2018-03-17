@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FirstCharacterCell" customModule="Nukon" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="312" height="283"/>
+            <rect key="frame" x="0.0" y="0.0" width="312" height="399"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="312" height="283"/>
+                <rect key="frame" x="0.0" y="0.0" width="312" height="399"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cxh-eh-Pjp">
@@ -29,8 +29,67 @@
                                     <constraint firstAttribute="height" id="uLs-C6-qzk"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IBq-q7-jWI">
+                                <rect key="frame" x="0.0" y="5" width="312" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="46z-Pm-ogN"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="⬆︎">
+                                            <attributes>
+                                                <color key="NSColor" red="0.96523000000000003" green="0.95311999999999997" blue="0.89266000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="50" name="HiraginoSans-W6"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="28">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="56">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="84">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="112">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="140">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="168">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="196">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="224">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="252">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="280">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="308">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="336">
+                                                            <options/>
+                                                        </textTab>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="upwardsTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Mnv-9V-aD1"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="E7r-wr-XWc">
-                                <rect key="frame" x="0.0" y="1.5" width="312" height="280"/>
+                                <rect key="frame" x="0.0" y="59.5" width="312" height="280"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VKT-fL-eRe">
                                         <rect key="frame" x="0.0" y="0.0" width="312" height="225"/>
@@ -458,8 +517,67 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHu-wp-6GS">
+                                <rect key="frame" x="0.0" y="344.5" width="312" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="IPh-nP-UU1"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="⬇︎">
+                                            <attributes>
+                                                <color key="NSColor" red="0.96523000000000003" green="0.95311999999999997" blue="0.89266000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="50" name="HiraginoSans-W6"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="28">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="56">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="84">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="112">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="140">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="168">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="196">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="224">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="252">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="280">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="308">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="336">
+                                                            <options/>
+                                                        </textTab>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="downwardsTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="6Sl-TF-CiX"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jsl-NF-IVy">
-                                <rect key="frame" x="0.0" y="283" width="312" height="0.0"/>
+                                <rect key="frame" x="0.0" y="399" width="312" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="LtB-EM-Upd"/>
@@ -476,13 +594,14 @@
                 <constraint firstItem="cxh-eh-Pjp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wDm-zW-ibL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="427" height="211"/>
+            <size key="customSize" width="427" height="327"/>
             <connections>
                 <outlet property="aCheckboxImageView" destination="OI3-NE-ziq" id="0I3-qX-Xbv"/>
                 <outlet property="aVowelCharacter" destination="jXE-M2-DYf" id="ma5-UT-sgq"/>
                 <outlet property="aVowelSound" destination="OpJ-VC-iIC" id="giG-uh-vuU"/>
                 <outlet property="aVowelView" destination="8Yr-ig-hOH" id="zze-qi-sBD"/>
                 <outlet property="characterLabel" destination="dn0-1o-BLp" id="7cG-ZV-Slx"/>
+                <outlet property="downwardsArrowButton" destination="mHu-wp-6GS" id="Zu4-S0-fLG"/>
                 <outlet property="eCheckboxImageView" destination="jn6-65-p14" id="xLg-hT-4Yb"/>
                 <outlet property="eVowelCharacter" destination="5Qu-i8-A8E" id="ZO1-Mt-PQR"/>
                 <outlet property="eVowelSound" destination="aIs-vs-Whk" id="2bh-tZ-7rd"/>
@@ -499,13 +618,14 @@
                 <outlet property="uVowelCharacter" destination="2ph-ey-Ep1" id="yZQ-w9-f6o"/>
                 <outlet property="uVowelSound" destination="SQv-uC-iVW" id="HhQ-4D-jh4"/>
                 <outlet property="uVowelView" destination="1cy-oa-1UT" id="Pse-cN-Rko"/>
+                <outlet property="upwardsArrowButton" destination="IBq-q7-jWI" id="x6b-KL-mHD"/>
                 <outletCollection property="buttons" destination="JKb-aL-5qF" collectionClass="NSMutableArray" id="okI-t3-i1O"/>
                 <outletCollection property="buttons" destination="the-fq-Lny" collectionClass="NSMutableArray" id="BcX-ij-NJd"/>
                 <outletCollection property="buttons" destination="BDk-Mq-L44" collectionClass="NSMutableArray" id="RAq-Bf-dAA"/>
                 <outletCollection property="buttons" destination="LYK-Dc-YLL" collectionClass="NSMutableArray" id="rzW-OP-v1P"/>
                 <outletCollection property="buttons" destination="ig4-Qo-x1A" collectionClass="NSMutableArray" id="PBW-pB-FB7"/>
             </connections>
-            <point key="canvasLocation" x="120" y="-17.5"/>
+            <point key="canvasLocation" x="120" y="10.5"/>
         </collectionViewCell>
     </objects>
     <resources>

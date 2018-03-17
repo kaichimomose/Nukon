@@ -11,6 +11,7 @@ import UIKit
 protocol GetValueFromCell {
     func selectCharacter(consonant: String, index: Int, character: String, nilList: [String?])
     func deselectCharacter(consonant: String, index: Int, character: String)
+    func scrollToItemIndexPath(index: Int)
 }
 
 class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
@@ -90,6 +91,11 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
         }
     }
     
+    func scrollToItemIndexPath(index: Int) {
+        let indexPath = NSIndexPath(item: index, section: 0)
+        collectionView.scrollToItem(at: indexPath as IndexPath, at: .top, animated: true)
+    }
+    
 }
 
 extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -110,16 +116,40 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let firstCharacterCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifer, for: indexPath) as! FirstCharacterCell
         
         let row = indexPath.row
+        
+        //character initially unvisible
         firstCharacterCell.characterViews.forEach { view in
             view.alpha = 0
         }
         firstCharacterCell.checkboxesImageViews.forEach { imageView in
             imageView.alpha = 0
         }
+        
+        //arrows control
+        if self.numberOfUnlockedCell == 1 {
+            firstCharacterCell.upwardsArrowButton.alpha = 0
+            firstCharacterCell.downwardsArrowButton.alpha = 0
+        } else if row == 0 {
+            firstCharacterCell.upwardsArrowButton.alpha = 0
+            firstCharacterCell.downwardsArrowButton.alpha = 0.5
+        } else if row == self.numberOfUnlockedCell - 1{
+            firstCharacterCell.upwardsArrowButton.alpha = 0.5
+            firstCharacterCell.downwardsArrowButton.alpha = 0
+        } else {
+            firstCharacterCell.upwardsArrowButton.alpha = 0.5
+            firstCharacterCell.downwardsArrowButton.alpha = 0.5
+        }
+        
+        //send propaties
+        firstCharacterCell.row = row
         firstCharacterCell.collectionView = self.collectionView
         firstCharacterCell.delegate = self
         firstCharacterCell.characterDict = self.consonantDict[japaneseList[row].sound]

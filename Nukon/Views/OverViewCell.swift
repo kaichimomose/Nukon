@@ -9,6 +9,10 @@
 import UIKit
 
 class OverViewCell: UICollectionViewCell, GetValueFromCell {
+    func scrollToItemIndexPath(index: Int) {
+        
+    }
+    
     
     //MARK: - Properties
     var delegate: GetValueFromCollectionView?
