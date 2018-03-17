@@ -25,7 +25,6 @@
 		BF719914203BBEC100E3A03D /* Posibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF719913203BBEC100E3A03D /* Posibilities.swift */; };
 		BF76DDDC1FD9EF4A0030F52B /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD71FD9EF490030F52B /* CustomImageView.swift */; };
 		BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD81FD9EF490030F52B /* EditProfile.swift */; };
-		BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD91FD9EF490030F52B /* FoundationButton.swift */; };
 		BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDDA1FD9EF490030F52B /* GradientView.swift */; };
 		BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
@@ -58,9 +57,10 @@
 		F64BBE582056E3ED00909ED8 /* SoundEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64BBE572056E3ED00909ED8 /* SoundEffects.swift */; };
 		F64CE7702045AC2000C480EB /* HiraganaHomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */; };
 		F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */; };
-		F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */; };
 		F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691EEF82048B6CF00ED5DA8 /* SunButton.swift */; };
 		F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691EEFB2048BB4000ED5DA8 /* Extensions.swift */; };
+		F6ADBD4F205DB114008576D5 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADBD4E205DB114008576D5 /* Exit.swift */; };
+		F6ADBD51205DCB9D008576D5 /* water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6ADBD50205DCB9D008576D5 /* water.mp3 */; };
 		F6AED90120575BA100BCC631 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AED90020575BA100BCC631 /* CircularTransition.swift */; };
 		F6AED90520580A7700BCC631 /* ShowCharacters+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AED90420580A7700BCC631 /* ShowCharacters+extension.swift */; };
 		F6AED9092058511700BCC631 /* SimpleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AED9082058511700BCC631 /* SimpleTransition.swift */; };
@@ -87,7 +87,6 @@
 		BF719913203BBEC100E3A03D /* Posibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posibilities.swift; sourceTree = "<group>"; };
 		BF76DDD71FD9EF490030F52B /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		BF76DDD81FD9EF490030F52B /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
-		BF76DDD91FD9EF490030F52B /* FoundationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationButton.swift; sourceTree = "<group>"; };
 		BF76DDDA1FD9EF490030F52B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCounterView.swift; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
@@ -120,9 +119,10 @@
 		F64BBE572056E3ED00909ED8 /* SoundEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffects.swift; sourceTree = "<group>"; };
 		F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HiraganaHomeScreen.storyboard; sourceTree = "<group>"; };
 		F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiraganaHomeScreenViewController.swift; sourceTree = "<group>"; };
-		F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalityFeatureLabel.swift; sourceTree = "<group>"; };
 		F691EEF82048B6CF00ED5DA8 /* SunButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunButton.swift; sourceTree = "<group>"; };
 		F691EEFB2048BB4000ED5DA8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F6ADBD4E205DB114008576D5 /* Exit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exit.swift; sourceTree = "<group>"; };
+		F6ADBD50205DCB9D008576D5 /* water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = water.mp3; sourceTree = "<group>"; };
 		F6AED90020575BA100BCC631 /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		F6AED90420580A7700BCC631 /* ShowCharacters+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShowCharacters+extension.swift"; sourceTree = "<group>"; };
 		F6AED9082058511700BCC631 /* SimpleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransition.swift; sourceTree = "<group>"; };
@@ -256,17 +256,16 @@
 				F6AED8FF20575B8600BCC631 /* TransitionEffects */,
 				BF76DDD71FD9EF490030F52B /* CustomImageView.swift */,
 				BF76DDD81FD9EF490030F52B /* EditProfile.swift */,
-				BF76DDD91FD9EF490030F52B /* FoundationButton.swift */,
 				BF76DDDA1FD9EF490030F52B /* GradientView.swift */,
 				BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */,
 				F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */,
 				BF504222204CCAAD00490A1A /* MenuBar.swift */,
 				BF504224204CCEF700490A1A /* UIView+extension.swift */,
-				F64CE7752045B4C300C480EB /* VerticalityFeatureLabel.swift */,
 				F691EEF82048B6CF00ED5DA8 /* SunButton.swift */,
 				F60611D92049F673007407C3 /* MenuButton.swift */,
 				BF5042392054CD0E00490A1A /* CustomTabBarController.swift */,
 				F64BBE572056E3ED00909ED8 /* SoundEffects.swift */,
+				F6ADBD4E205DB114008576D5 /* Exit.swift */,
 			);
 			path = "Custom View Classes";
 			sourceTree = "<group>";
@@ -287,6 +286,7 @@
 				F63A61D4205B1FDC00D86CC5 /* realStretch.mp3 */,
 				F649BADB2057395A0026733F /* swooshTwo.mp3 */,
 				F649BADC2057395A0026733F /* boing.mp3 */,
+				F6ADBD50205DCB9D008576D5 /* water.mp3 */,
 				F649BADD2057395A0026733F /* swooshBackThree.mp3 */,
 				F649BADE2057395A0026733F /* bell_2x.mp3 */,
 				F649BADF2057395A0026733F /* swooshBackOne.mp3 */,
@@ -394,6 +394,7 @@
 				BFE76F2920433847005E9F0C /* OverViewCollectionViewCell.xib in Resources */,
 				F649BAE82057395B0026733F /* swooshBackOne.mp3 in Resources */,
 				BFA13972204BCA7A00A28AA1 /* Assets.xcassets in Resources */,
+				F6ADBD51205DCB9D008576D5 /* water.mp3 in Resources */,
 				F63A61D3205AFAED00D86CC5 /* Stretch.mp3 in Resources */,
 				F649BAE52057395B0026733F /* boing.mp3 in Resources */,
 				F649BAEB2057395B0026733F /* swooshBackTwo.mp3 in Resources */,
@@ -412,7 +413,6 @@
 				BF50423A2054CD1000490A1A /* CustomTabBarController.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
 				F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */,
-				BF76DDDE1FD9EF4A0030F52B /* FoundationButton.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
 				BF719914203BBEC100E3A03D /* Posibilities.swift in Sources */,
 				F64BBE582056E3ED00909ED8 /* SoundEffects.swift in Sources */,
@@ -433,11 +433,11 @@
 				BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */,
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF504229204D96CA00490A1A /* OverViewCell.swift in Sources */,
+				F6ADBD4F205DB114008576D5 /* Exit.swift in Sources */,
 				F6AED9092058511700BCC631 /* SimpleTransition.swift in Sources */,
 				BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */,
 				F6AED90120575BA100BCC631 /* CircularTransition.swift in Sources */,
 				BF504227204CEA4A00490A1A /* MenuCell.swift in Sources */,
-				F64CE7762045B4C300C480EB /* VerticalityFeatureLabel.swift in Sources */,
 				F60611DA2049F673007407C3 /* MenuButton.swift in Sources */,
 				F6AED90520580A7700BCC631 /* ShowCharacters+extension.swift in Sources */,
 				F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */,

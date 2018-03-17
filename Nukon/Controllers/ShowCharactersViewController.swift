@@ -43,8 +43,16 @@ class ShowCharactersViewController: UIViewController {
     //create pulse layer for when user guesses correctly
     var pulseLayer: CAShapeLayer!
     
-    //MARK: - Propaties
+    //MARK: - Properties
     var backgroundColor: UIColor!
+    
+    //MARK: Blur view and nested elements
+    @IBOutlet weak var confidenceWalkthrough: UIVisualEffectView!
+    
+    var effect: UIVisualEffect!
+    
+    @IBOutlet weak var exitWalkthrough: Exit!
+    
     
     //Mark: Sound Properties
     var effects = SoundEffects()
@@ -164,6 +172,14 @@ class ShowCharactersViewController: UIViewController {
         }
         
         self.updateLabels()
+        
+        effect = confidenceWalkthrough.effect
+        
+        confidenceWalkthrough.effect = nil
+        
+        exitWalkthrough.dismissedView = confidenceWalkthrough
+        
+        confidenceWalkthrough.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -596,6 +612,24 @@ class ShowCharactersViewController: UIViewController {
             self.dismissView()
         }
     }
+    
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        AnimateInWalkthrough()
+    }
+    
+    func AnimateInWalkthrough() {
+        confidenceWalkthrough.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.confidenceWalkthrough.isHidden = false
+            self.effects.swooshResource(.water)
+            self.confidenceWalkthrough.effect = self.effect
+            self.confidenceWalkthrough.transform = CGAffineTransform.identity
+        }, completion: nil)
+
+    }
+    
+    
     
 }
 
