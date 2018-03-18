@@ -464,7 +464,7 @@ class ShowCharactersViewController: UIViewController {
             self.buttonTitle = .start
             self.judge = .yet
             self.updateLabels()
-            moveCharacter()
+//            moveCharacter()
         }
     }
     

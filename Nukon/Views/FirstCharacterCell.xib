@@ -30,16 +30,16 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IBq-q7-jWI">
-                                <rect key="frame" x="0.0" y="5" width="312" height="50"/>
+                                <rect key="frame" x="0.0" y="7.5" width="312" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="46z-Pm-ogN"/>
+                                    <constraint firstAttribute="height" constant="45" id="46z-Pm-ogN"/>
                                 </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="⬆︎">
                                             <attributes>
                                                 <color key="NSColor" red="0.96523000000000003" green="0.95311999999999997" blue="0.89266000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="50" name="HiraginoSans-W6"/>
+                                                <font key="NSFont" size="40" name="HiraginoSans-W6"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
                                                         <textTab alignment="left" location="28">
@@ -518,16 +518,16 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHu-wp-6GS">
-                                <rect key="frame" x="0.0" y="344.5" width="312" height="50"/>
+                                <rect key="frame" x="0.0" y="347" width="312" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="IPh-nP-UU1"/>
+                                    <constraint firstAttribute="height" constant="45" id="IPh-nP-UU1"/>
                                 </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="⬇︎">
                                             <attributes>
                                                 <color key="NSColor" red="0.96523000000000003" green="0.95311999999999997" blue="0.89266000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="50" name="HiraginoSans-W6"/>
+                                                <font key="NSFont" size="40" name="HiraginoSans-W6"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
                                                         <textTab alignment="left" location="28">
