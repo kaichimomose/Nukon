@@ -203,6 +203,8 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             self.animateIn(with: self.japaneseType!)
             self.animateInDismissButton()
         }
+        
+        info.isEnabled = false
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
@@ -211,6 +213,8 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         UIView.animate(withDuration: 0.5) {
             self.dismissButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         }
+        
+        info.isEnabled = true
     }
     
     
