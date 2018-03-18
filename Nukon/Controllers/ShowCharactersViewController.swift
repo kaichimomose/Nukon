@@ -47,6 +47,18 @@ class ShowCharactersViewController: UIViewController {
     var backgroundColor: UIColor!
     
     //MARK: Blur view and nested elements
+    @IBOutlet weak var redButton: UIButton!
+    
+    @IBOutlet weak var orangeButton: UIButton!
+    
+    @IBOutlet weak var yellowButton: UIButton!
+    
+    @IBOutlet weak var limeButton: UIButton!
+    
+    @IBOutlet weak var greenButton: UIButton!
+    
+    
+    
     @IBOutlet weak var confidenceWalkthrough: UIVisualEffectView!
     
     var effect: UIVisualEffect!
@@ -180,6 +192,13 @@ class ShowCharactersViewController: UIViewController {
         exitWalkthrough.dismissedView = confidenceWalkthrough
         
         confidenceWalkthrough.isHidden = true
+        
+        
+        let blurColorButtons = [redButton, orangeButton, yellowButton, limeButton, greenButton]
+        
+        blurColorButtons.forEach { (button) in
+            button?.layer.cornerRadius = (button?.layer.frame.height)! / 2
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

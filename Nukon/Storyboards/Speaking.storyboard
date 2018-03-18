@@ -293,9 +293,6 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="notOkButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="jkd-SY-XBL"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMv-cA-c2V">
                                                     <rect key="frame" x="64" y="0.0" width="50" height="50"/>
@@ -304,9 +301,6 @@
                                                         <constraint firstAttribute="width" constant="50" id="0Po-9E-T1g"/>
                                                         <constraint firstAttribute="height" constant="50" id="sFD-RJ-A06"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="orangeButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="6GT-WU-QIj"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0J-9T-aBI">
                                                     <rect key="frame" x="128" y="0.0" width="50" height="50"/>
@@ -315,9 +309,6 @@
                                                         <constraint firstAttribute="width" constant="50" id="CCX-w2-Efk"/>
                                                         <constraint firstAttribute="height" constant="50" id="Z8U-FY-HDc"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="middleButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="ipg-cm-Cgp"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCY-ca-JXU">
                                                     <rect key="frame" x="192" y="0.0" width="50" height="50"/>
@@ -326,9 +317,6 @@
                                                         <constraint firstAttribute="width" constant="50" id="Bs5-rg-npB"/>
                                                         <constraint firstAttribute="height" constant="50" id="MRX-O3-HKW"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="yellowButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="TuJ-Lc-itV"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="903-UK-YhY">
                                                     <rect key="frame" x="256" y="0.0" width="50" height="50"/>
@@ -340,9 +328,6 @@
                                                     <state key="normal">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="goodButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="Lvg-dK-Wed"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -502,9 +487,14 @@
                         <outlet property="countCharacters" destination="SMm-NL-LFK" id="j2J-my-6ZG"/>
                         <outlet property="exitWalkthrough" destination="1sF-d3-9QY" id="17n-zV-3xE"/>
                         <outlet property="goodButton" destination="c7s-Y4-3dF" id="E1u-8m-4sQ"/>
+                        <outlet property="greenButton" destination="903-UK-YhY" id="XUI-PY-vIa"/>
+                        <outlet property="limeButton" destination="mCY-ca-JXU" id="8Kw-Jw-S3c"/>
                         <outlet property="nextCharacterButton" destination="Itv-7m-zqA" id="d77-lV-oBP"/>
                         <outlet property="notOkButton" destination="SMB-1n-3Q2" id="Odj-FK-36c"/>
+                        <outlet property="orangeButton" destination="YMv-cA-c2V" id="pdr-c0-6yY"/>
+                        <outlet property="redButton" destination="h1i-4V-epc" id="fwT-TC-Zi0"/>
                         <outlet property="soundLabel" destination="a35-um-jHB" id="H6c-dj-UzK"/>
+                        <outlet property="yellowButton" destination="L0J-9T-aBI" id="6wy-Bm-DTr"/>
                         <outletCollection property="judgeButtons" destination="SMB-1n-3Q2" collectionClass="NSMutableArray" id="LLp-xd-qwI"/>
                         <outletCollection property="judgeButtons" destination="nG5-GE-R15" collectionClass="NSMutableArray" id="dw2-Tg-DDX"/>
                         <outletCollection property="judgeButtons" destination="bLr-rC-1yz" collectionClass="NSMutableArray" id="BFj-z3-VWb"/>
