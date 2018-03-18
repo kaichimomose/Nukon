@@ -63,6 +63,9 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     
     @IBOutlet var katakanaDescriptionTextView: UIView!
     
+    @IBOutlet weak var dismissButton: UIButton!
+    
+    
     var menuButtons: [UIButton]!
     
     
@@ -85,6 +88,11 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         
         //Bring Home Sun Button to the front
         view.bringSubview(toFront: homeSunButton)
+        
+        //Ovalize dismiss Button and hide
+        dismissButton.layer.cornerRadius = dismissButton.layer.frame.height / 2
+        
+        dismissButton.isHidden = true
         
         // Do any additional setup after loading the view.
         menuButtons = [self.homeSunButton, self.studyButton, self.comboButton, self.characterButton]
@@ -113,7 +121,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             self.view.bringSubview(toFront: hiraganaDescriptionTextView)
             
             hiraganaDescriptionTextView.layer.cornerRadius = 7
-            hiraganaDescriptionTextView.center = CGPoint(x: view.center.x - (view.center.x * 2), y: view.center.y + 200)
+            hiraganaDescriptionTextView.center = CGPoint(x: view.center.x - (view.center.x * 2), y: view.center.y + 165)
             hiraganaDescriptionTextView.alpha = 0
             
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
@@ -125,7 +133,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             self.view.addSubview(katakanaDescriptionTextView)
             self.view.bringSubview(toFront: katakanaDescriptionTextView)
             katakanaDescriptionTextView.layer.cornerRadius = 7
-            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y + 200)
+            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y + 165)
             katakanaDescriptionTextView.alpha = 0
             
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
@@ -140,15 +148,24 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         
         if type == .hiragana {
             
-            UIView.animate(withDuration: 1.0, animations: {
-                self.hiraganaDescriptionTextView.center = CGPoint(x: self.view.center.x + (self.view.center.x * 2), y: self.view.center.y + 200)
-                self.hiraganaDescriptionTextView.alpha = 0
-            })
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 7, options: .curveEaseIn, animations: {
+                self.hiraganaDescriptionTextView.center = CGPoint(x: self.view.center.x - 50, y: self.view.center.y + 165)
+                
+            }){ (_) in
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.hiraganaDescriptionTextView.center = CGPoint(x: self.view.center.x + (self.view.center.x * 2), y: self.view.center.y + 165)
+                    self.hiraganaDescriptionTextView.alpha = 0.5
+                })
+            }
             
         } else {
-            UIView.animate(withDuration: 1.0, animations: {
-                self.katakanaDescriptionTextView.center = CGPoint(x: self.view.center.x - (self.view.center.x * 2), y: self.view.center.y + 200)
-                self.katakanaDescriptionTextView.alpha = 0
+            UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseIn, animations: {
+                self.katakanaDescriptionTextView.center = CGPoint(x: self.view.center.x + 50, y: self.view.center.y + 165)
+            }, completion: { (_) in
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.katakanaDescriptionTextView.center = CGPoint(x: self.view.center.x - (self.view.center.x * 2), y: self.view.center.y + 165)
+                    self.katakanaDescriptionTextView.alpha = 0.5
+                })
             })
         }
         
@@ -165,6 +182,15 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         }
     }
     
+    func animateInDismissButton() {
+        dismissButton.transform = CGAffineTransform.init(scaleX: 0.01, y: 0.01)
+        dismissButton.isHidden = false
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 9, options: .curveEaseIn, animations: {
+            self.dismissButton.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
+    
     //info button is pressed
     @IBAction func infoButtonTapped(_ sender: Any) {
         if popCount == 1 {
@@ -175,16 +201,18 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.85) {
             self.animateIn(with: self.japaneseType!)
+            self.animateInDismissButton()
         }
     }
     
-    @IBAction func arrowLeftPressed(_ sender: Any) {
-        animateOut(type: .katakana)
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        animateOut(type: self.japaneseType)
+        
+        UIView.animate(withDuration: 0.5) {
+            self.dismissButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        }
     }
     
-    @IBAction func arrowRightPressed(_ sender: Any) {
-        animateOut(type: .hiragana)
-    }
     
     //fetch core data
     func fetchCoredata(){
@@ -301,17 +329,17 @@ extension HiraganaHomeScreenViewController {
     //Menu Button Animations -----------------------------------------------------// 
     func popOutMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
-            self.studyButton.center.x = self.studyButton.center.x - 135
+            self.studyButton.center.x = self.studyButton.center.x - 115
             self.effects.sound(.one, nil, nil)
             self.studyButton.animateShadow(pulsing: true, color: UIColor.lavender)
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.comboButton.center.y = self.comboButton.center.y - 135
+                self.comboButton.center.y = self.comboButton.center.y - 115
                 self.effects.sound(.two, nil, nil)
                 self.comboButton.animateShadow(pulsing: true, color: UIColor.peach)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
-                    self.characterButton.center.x = self.characterButton.center.x + 135
+                    self.characterButton.center.x = self.characterButton.center.x + 115
                     self.effects.sound(.three, nil, nil)
                     self.characterButton.animateShadow(pulsing: true, color: UIColor.materialBeige)
                 }, completion: nil)
@@ -321,15 +349,15 @@ extension HiraganaHomeScreenViewController {
     
     func popInMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
-            self.studyButton.center.x = self.studyButton.center.x + 135
+            self.studyButton.center.x = self.studyButton.center.x + 115
             self.effects.sound(.backOne, nil, nil)
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.comboButton.center.y = self.comboButton.center.y + 135
+                self.comboButton.center.y = self.comboButton.center.y + 115
                 self.effects.sound(.backTwo, nil, nil)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
-                        self.characterButton.center.x = self.characterButton.center.x - 135
+                        self.characterButton.center.x = self.characterButton.center.x - 115
                         self.effects.sound(.backThree, nil, nil)
                 }, completion: nil)
             })

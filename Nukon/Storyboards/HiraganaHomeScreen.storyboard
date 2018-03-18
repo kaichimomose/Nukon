@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VLa-bD-zdX">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,17 +16,17 @@
             <objects>
                 <viewController storyboardIdentifier="Home" id="VLa-bD-zdX" customClass="HiraganaHomeScreenViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ELe-iZ-SAk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bUi-lu-CfC">
-                                <rect key="frame" x="0.0" y="25" width="375" height="124.5"/>
+                                <rect key="frame" x="0.0" y="25" width="320" height="124.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="95K-zo-qUa">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7uL-aN-DlV">
-                                                <rect key="frame" x="325" y="0.0" width="50" height="30"/>
+                                                <rect key="frame" x="270" y="0.0" width="50" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USO-f0-7Y2">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -50,7 +51,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-aUc">
-                                        <rect key="frame" x="70" y="30" width="235" height="59"/>
+                                        <rect key="frame" x="60" y="30" width="200" height="59"/>
                                         <attributedString key="attributedText">
                                             <fragment content="HIRAGANA">
                                                 <attributes>
@@ -63,7 +64,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
-                                        <rect key="frame" x="117.5" y="89" width="140" height="35.5"/>
+                                        <rect key="frame" x="100.5" y="89" width="119" height="35.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ひらがな">
                                                 <attributes>
@@ -81,18 +82,20 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yp0-Lz-ksZ" customClass="SunButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="126.5" y="272.5" width="122" height="122"/>
+                                <rect key="frame" x="97.5" y="235.5" width="125" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Yp0-Lz-ksZ" secondAttribute="height" multiplier="1:1" id="xqI-Mu-aEI"/>
+                                    <constraint firstAttribute="height" constant="125" id="DLt-iY-zeu"/>
+                                    <constraint firstAttribute="width" constant="125" id="xkU-uF-hkP"/>
                                 </constraints>
                                 <connections>
                                     <action selector="sunPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="X7c-YL-Wk4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjG-xd-Om5" customClass="studyButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="155" y="301" width="72.5" height="72.5"/>
+                                <rect key="frame" x="129" y="267" width="62" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="WjG-xd-Om5" secondAttribute="height" multiplier="1:1" id="NJb-0G-SGb"/>
+                                    <constraint firstAttribute="width" constant="62" id="JE5-Of-tNU"/>
+                                    <constraint firstAttribute="height" constant="62" id="efE-mr-5jz"/>
                                 </constraints>
                                 <state key="normal" image="study"/>
                                 <connections>
@@ -100,9 +103,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Cg-hO0" customClass="combosButtons" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="151.5" y="297.5" width="72.5" height="72.5"/>
+                                <rect key="frame" x="129" y="267" width="62" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ZHx-Cg-hO0" secondAttribute="height" multiplier="1:1" id="sKC-ud-ams"/>
+                                    <constraint firstAttribute="width" constant="62" id="Tr9-sA-wKy"/>
+                                    <constraint firstAttribute="height" constant="62" id="czd-CP-vOq"/>
                                 </constraints>
                                 <state key="normal" image="combos"/>
                                 <connections>
@@ -110,34 +114,58 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwN-pA-ucu" customClass="characterListButton" customModule="Nukon" customModuleProvider="target">
-                                <rect key="frame" x="151.5" y="297.5" width="72.5" height="72.5"/>
+                                <rect key="frame" x="129" y="267" width="62" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="KwN-pA-ucu" secondAttribute="height" multiplier="1:1" id="TzX-LW-Ytu"/>
+                                    <constraint firstAttribute="width" constant="62" id="WhI-WD-dhP"/>
+                                    <constraint firstAttribute="height" constant="62" id="sBX-eU-Kjv"/>
                                 </constraints>
                                 <state key="normal" image="character"/>
                                 <connections>
                                     <segue destination="BkJ-uf-czH" kind="show" identifier="character" id="ciH-ne-K4m"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PE2-pH-nWh">
+                                <rect key="frame" x="125" y="521.5" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="cCu-fF-f7H"/>
+                                    <constraint firstAttribute="height" constant="30" id="gye-Ys-86B"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Dismiss">
+                                            <attributes>
+                                                <color key="NSColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="15" name="AvenirNext-DemiBold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="VLa-bD-zdX" eventType="touchUpInside" id="gZ7-vi-vdY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.68627450980000004" green="0.79607843140000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="KwN-pA-ucu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="2dA-6x-yXy"/>
-                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" constant="3.75" id="3eT-2p-Cba"/>
-                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="5fF-sq-O0p"/>
-                            <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="150:667" constant="-27.608695652173907" id="6aa-qB-Yke"/>
+                            <constraint firstItem="KwN-pA-ucu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.05" id="2dA-6x-yXy"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="3eT-2p-Cba"/>
                             <constraint firstItem="KwN-pA-ucu" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="Bd7-Gs-olg"/>
                             <constraint firstItem="bUi-lu-CfC" firstAttribute="leading" secondItem="oup-LF-boy" secondAttribute="leading" id="Ct1-BI-yoA"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="GX0-zj-fEh"/>
                             <constraint firstItem="oup-LF-boy" firstAttribute="trailing" secondItem="bUi-lu-CfC" secondAttribute="trailing" id="NQo-X7-l5k"/>
-                            <constraint firstItem="WjG-xd-Om5" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="RRN-YB-AUa"/>
                             <constraint firstItem="bD5-JF-aUc" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="235:667" id="S0n-c1-XFH"/>
+                            <constraint firstItem="PE2-pH-nWh" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="TCs-8h-l77"/>
                             <constraint firstItem="bUi-lu-CfC" firstAttribute="top" secondItem="oup-LF-boy" secondAttribute="top" constant="5" id="VT6-g8-ecb"/>
-                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" constant="3.75" id="Vx4-af-Kan"/>
+                            <constraint firstItem="WjG-xd-Om5" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.05" id="Vx4-af-Kan"/>
                             <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="cuQ-FW-Mab"/>
-                            <constraint firstItem="KwN-pA-ucu" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="5:46" id="egf-Ty-tbI"/>
-                            <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="fDp-Ka-ZOn"/>
-                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" id="gEv-3n-3ld"/>
+                            <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.05" id="fDp-Ka-ZOn"/>
+                            <constraint firstItem="ZHx-Cg-hO0" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.05" id="gEv-3n-3ld"/>
+                            <constraint firstItem="oup-LF-boy" firstAttribute="bottom" secondItem="PE2-pH-nWh" secondAttribute="bottom" multiplier="1.03" id="k7g-jc-N06">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                             <constraint firstItem="0wV-Dm-O5P" firstAttribute="width" secondItem="ELe-iZ-SAk" secondAttribute="height" multiplier="140:667" id="wWR-uh-wXE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oup-LF-boy"/>
@@ -145,6 +173,7 @@
                     <connections>
                         <outlet property="characterButton" destination="KwN-pA-ucu" id="xe0-XN-rL6"/>
                         <outlet property="comboButton" destination="ZHx-Cg-hO0" id="Nib-23-non"/>
+                        <outlet property="dismissButton" destination="PE2-pH-nWh" id="Z07-kk-6Qq"/>
                         <outlet property="hiraganaDescriptionTextView" destination="bzy-fw-G2H" id="c80-pa-gNJ"/>
                         <outlet property="homeSunButton" destination="Yp0-Lz-ksZ" id="gkc-e9-fdT"/>
                         <outlet property="info" destination="USO-f0-7Y2" id="r2e-0y-8K5"/>
@@ -156,11 +185,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSZ-GJ-n54" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="bzy-fw-G2H" userLabel="HiraganaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="303" height="142"/>
+                    <rect key="frame" x="0.0" y="0.0" width="303" height="115"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0g-N2-NCg">
-                            <rect key="frame" x="0.0" y="0.0" width="303" height="112"/>
+                            <rect key="frame" x="0.0" y="0.0" width="303" height="115"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">Hiragana is but one character set within Japanese and arguably the most essential for beginners. Learn these characters and you foundation will be as solid as bedrock when learning and pronouncing words later on.</string>
@@ -173,31 +202,22 @@
                             </attributedString>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRl-Jq-74Y">
-                            <rect key="frame" x="0.0" y="112" width="303" height="30"/>
-                            <state key="normal" title="Got It !"/>
-                            <connections>
-                                <action selector="arrowRightPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="iCz-SO-QvG"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="m0g-N2-NCg" secondAttribute="trailing" id="6iW-w2-h8y"/>
-                        <constraint firstItem="m0g-N2-NCg" firstAttribute="leading" secondItem="6jx-AZ-gx3" secondAttribute="leading" id="Dgz-na-tUI"/>
-                        <constraint firstItem="hRl-Jq-74Y" firstAttribute="leading" secondItem="6jx-AZ-gx3" secondAttribute="leading" id="PQj-3w-0lW"/>
-                        <constraint firstItem="6jx-AZ-gx3" firstAttribute="trailing" secondItem="hRl-Jq-74Y" secondAttribute="trailing" id="U0P-dU-8lV"/>
-                        <constraint firstItem="hRl-Jq-74Y" firstAttribute="top" secondItem="m0g-N2-NCg" secondAttribute="bottom" id="aeZ-TN-j3E"/>
-                        <constraint firstItem="m0g-N2-NCg" firstAttribute="top" secondItem="6jx-AZ-gx3" secondAttribute="top" id="o2Q-RH-ffm"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="top" secondItem="6jx-AZ-gx3" secondAttribute="top" id="2Mx-F2-z9W"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="bottom" secondItem="6jx-AZ-gx3" secondAttribute="bottom" id="QDu-dI-aYC"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="trailing" secondItem="6jx-AZ-gx3" secondAttribute="trailing" id="dZR-0A-lgm"/>
+                        <constraint firstItem="m0g-N2-NCg" firstAttribute="leading" secondItem="6jx-AZ-gx3" secondAttribute="leading" id="gct-wp-MCc"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="6jx-AZ-gx3"/>
                 </view>
                 <view contentMode="scaleToFill" id="74A-o2-rg9" userLabel="KatakanaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="316" height="142"/>
+                    <rect key="frame" x="0.0" y="0.0" width="316" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-e2-00W">
-                            <rect key="frame" x="0.0" y="0.0" width="316" height="112"/>
+                            <rect key="frame" x="0.0" y="0.0" width="316" height="114"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">Katakana is another character set within Japanese. You'll realize as you study that these characters are pronounced the same as Hiragana. However, this set is used to represent sounds of foreign words.</string>
@@ -210,28 +230,18 @@
                             </attributedString>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwp-kS-2T8">
-                            <rect key="frame" x="0.0" y="112" width="316" height="30"/>
-                            <state key="normal" title="Got It !"/>
-                            <connections>
-                                <action selector="arrowLeftPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="HIC-9t-Mju"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="nTh-dq-7ks" firstAttribute="bottom" secondItem="dwp-kS-2T8" secondAttribute="bottom" id="3hv-UW-GB4"/>
-                        <constraint firstItem="sRN-e2-00W" firstAttribute="trailing" secondItem="nTh-dq-7ks" secondAttribute="trailing" id="DPj-mY-C42"/>
-                        <constraint firstItem="nTh-dq-7ks" firstAttribute="trailing" secondItem="dwp-kS-2T8" secondAttribute="trailing" id="PWV-I5-Hxm"/>
-                        <constraint firstItem="dwp-kS-2T8" firstAttribute="leading" secondItem="nTh-dq-7ks" secondAttribute="leading" id="did-pn-fIa"/>
-                        <constraint firstItem="sRN-e2-00W" firstAttribute="leading" secondItem="nTh-dq-7ks" secondAttribute="leading" id="fu2-5S-aC4"/>
-                        <constraint firstItem="sRN-e2-00W" firstAttribute="top" secondItem="nTh-dq-7ks" secondAttribute="top" id="lOe-f4-J3d"/>
-                        <constraint firstItem="dwp-kS-2T8" firstAttribute="top" secondItem="sRN-e2-00W" secondAttribute="bottom" id="pMC-x0-ezP"/>
+                        <constraint firstItem="sRN-e2-00W" firstAttribute="trailing" secondItem="nTh-dq-7ks" secondAttribute="trailing" id="3Bh-Rk-q3G"/>
+                        <constraint firstItem="sRN-e2-00W" firstAttribute="bottom" secondItem="nTh-dq-7ks" secondAttribute="bottom" id="AnW-QD-iM1"/>
+                        <constraint firstItem="sRN-e2-00W" firstAttribute="top" secondItem="nTh-dq-7ks" secondAttribute="top" id="BBX-ve-zah"/>
+                        <constraint firstItem="sRN-e2-00W" firstAttribute="leading" secondItem="nTh-dq-7ks" secondAttribute="leading" id="ZV4-Ww-9vW"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="nTh-dq-7ks"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-927.20000000000005" y="111.99400299850076"/>
+            <point key="canvasLocation" x="-928.125" y="111.97183098591549"/>
         </scene>
         <!--CharactersSelection-->
         <scene sceneID="GIt-2H-O9N">
