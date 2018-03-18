@@ -107,9 +107,9 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ae" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXE-M2-DYf">
-                                                                                <rect key="frame" x="7.5" y="15" width="40" height="20"/>
+                                                                                <rect key="frame" x="0.0" y="15" width="55" height="20"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="40" id="WRg-cF-eHW"/>
+                                                                                    <constraint firstAttribute="width" constant="55" id="WRg-cF-eHW"/>
                                                                                     <constraint firstAttribute="height" constant="20" id="vyf-2D-60d"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -188,9 +188,9 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8s-Kd-PzW">
-                                                                                        <rect key="frame" x="7.5" y="15" width="40" height="20"/>
+                                                                                        <rect key="frame" x="0.0" y="15" width="55" height="20"/>
                                                                                         <constraints>
-                                                                                            <constraint firstAttribute="width" constant="40" id="2Jv-G3-WOT"/>
+                                                                                            <constraint firstAttribute="width" constant="55" id="2Jv-G3-WOT"/>
                                                                                             <constraint firstAttribute="height" constant="20" id="SQd-zz-e3G"/>
                                                                                         </constraints>
                                                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -299,9 +299,9 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTt-eF-4bg">
-                                                                                        <rect key="frame" x="7.5" y="15" width="40" height="20"/>
+                                                                                        <rect key="frame" x="0.0" y="15" width="55" height="20"/>
                                                                                         <constraints>
-                                                                                            <constraint firstAttribute="width" constant="40" id="57V-AL-51C"/>
+                                                                                            <constraint firstAttribute="width" constant="55" id="57V-AL-51C"/>
                                                                                             <constraint firstAttribute="height" constant="20" id="Tj3-ko-18b"/>
                                                                                         </constraints>
                                                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -390,9 +390,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ph-ey-Ep1">
-                                                                                <rect key="frame" x="7" y="15" width="40" height="20"/>
+                                                                                <rect key="frame" x="-0.5" y="15" width="55" height="20"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="40" id="UKo-bk-Rye"/>
+                                                                                    <constraint firstAttribute="width" constant="55" id="UKo-bk-Rye"/>
                                                                                     <constraint firstAttribute="height" constant="20" id="sTE-Gl-O0e"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -450,10 +450,10 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Qu-i8-A8E">
-                                                                                <rect key="frame" x="7" y="15" width="40" height="20"/>
+                                                                                <rect key="frame" x="-0.5" y="15" width="55" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="20" id="TbO-Yy-aeS"/>
-                                                                                    <constraint firstAttribute="width" constant="40" id="lcm-ef-gYC"/>
+                                                                                    <constraint firstAttribute="width" constant="55" id="lcm-ef-gYC"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                                 <nil key="textColor"/>
