@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,14 +15,13 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nukon_logo" translatesAutoresizingMaskIntoConstraints="NO" id="zgz-gY-R8k">
-                                <rect key="frame" x="142" y="288" width="90" height="90"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="zgz-gY-R8k">
+                                <rect key="frame" x="120" y="305.66666666666669" width="174" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="YL7-tz-UW7"/>
-                                    <constraint firstAttribute="width" constant="90" id="ek4-RX-2JZ"/>
+                                    <constraint firstAttribute="height" constant="125" id="YL7-tz-UW7"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -29,16 +29,17 @@
                         <constraints>
                             <constraint firstItem="zgz-gY-R8k" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8Go-Vf-Cy5"/>
                             <constraint firstItem="zgz-gY-R8k" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="c6E-Dl-n9l"/>
+                            <constraint firstItem="zgz-gY-R8k" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="176:667" constant="-20.206896551724157" id="v3t-Hb-dPL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
-        <image name="nukon_logo" width="180" height="180"/>
+        <image name="AppIcon2" width="454" height="336"/>
     </resources>
 </document>
