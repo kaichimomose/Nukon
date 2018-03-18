@@ -436,7 +436,7 @@ class ShowCharactersViewController: UIViewController {
     func unenableJudgeButtons() {
         self.judgeButtons.forEach { button in
             button.alpha = 0.5
-            button.isEnabled = true
+            button.isEnabled = false
         }
     }
     
@@ -494,6 +494,9 @@ class ShowCharactersViewController: UIViewController {
         speakJapanese(string: self.shownCharacter)
         if self.judge == .yet {
             soundAnimation()
+        }
+        if self.order == .orderly {
+            enableJudgeButtons()
         }
     }
     
