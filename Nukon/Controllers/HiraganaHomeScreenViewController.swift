@@ -66,6 +66,28 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     @IBOutlet weak var dismissButton: UIButton!
     
     
+    //Mark: Stack View Outlets
+    @IBOutlet weak var studyStack: UIStackView!
+    
+    
+    @IBOutlet weak var ComboStack: UIStackView!
+    
+    
+    @IBOutlet weak var characterStack: UIStackView!
+    
+    
+    //Mark: Menu button labels
+    @IBOutlet weak var challengeLabel: UILabel!
+    
+    @IBOutlet weak var comboLabel: UILabel!
+    
+    @IBOutlet weak var characterLabel: UILabel!
+    
+    
+    
+    
+    
+    
     var menuButtons: [UIButton]!
     
     
@@ -96,6 +118,11 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         
         // Do any additional setup after loading the view.
         menuButtons = [self.homeSunButton, self.studyButton, self.comboButton, self.characterButton]
+        
+        //Menu Button Labels - Make them invisible
+        challengeLabel.alpha = 0
+        comboLabel.alpha = 0
+        challengeLabel.alpha = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,7 +148,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             self.view.bringSubview(toFront: hiraganaDescriptionTextView)
             
             hiraganaDescriptionTextView.layer.cornerRadius = 7
-            hiraganaDescriptionTextView.center = CGPoint(x: view.center.x - (view.center.x * 2), y: view.center.y + 165)
+            hiraganaDescriptionTextView.center = CGPoint(x: view.center.x - (view.center.x * 2), y: view.center.y + 140)
             hiraganaDescriptionTextView.alpha = 0
             
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
@@ -133,7 +160,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             self.view.addSubview(katakanaDescriptionTextView)
             self.view.bringSubview(toFront: katakanaDescriptionTextView)
             katakanaDescriptionTextView.layer.cornerRadius = 7
-            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y + 165)
+            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y + 140)
             katakanaDescriptionTextView.alpha = 0
             
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
@@ -332,18 +359,25 @@ extension HiraganaHomeScreenViewController {
     
     //Menu Button Animations -----------------------------------------------------// 
     func popOutMenuButtons() {
+        
+        UIView.animate(withDuration: 1.5) {
+            self.challengeLabel.alpha = 1
+            self.comboLabel.alpha = 1
+            self.characterLabel.alpha = 1
+        }
+        
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
-            self.studyButton.center.x = self.studyButton.center.x - 115
+            self.studyStack.center.x = self.studyStack.center.x - 115
             self.effects.sound(.one, nil, nil)
             self.studyButton.animateShadow(pulsing: true, color: UIColor.lavender)
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.comboButton.center.y = self.comboButton.center.y - 115
+                self.ComboStack.center.y = self.ComboStack.center.y - 100
                 self.effects.sound(.two, nil, nil)
                 self.comboButton.animateShadow(pulsing: true, color: UIColor.peach)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
-                    self.characterButton.center.x = self.characterButton.center.x + 115
+                    self.characterStack.center.x = self.characterStack.center.x + 115
                     self.effects.sound(.three, nil, nil)
                     self.characterButton.animateShadow(pulsing: true, color: UIColor.materialBeige)
                 }, completion: nil)
@@ -353,18 +387,24 @@ extension HiraganaHomeScreenViewController {
     
     func popInMenuButtons() {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
-            self.studyButton.center.x = self.studyButton.center.x + 115
+            self.studyStack.center.x = self.studyStack.center.x + 115
             self.effects.sound(.backOne, nil, nil)
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.comboButton.center.y = self.comboButton.center.y + 115
+                self.ComboStack.center.y = self.ComboStack.center.y + 95
                 self.effects.sound(.backTwo, nil, nil)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
-                        self.characterButton.center.x = self.characterButton.center.x - 115
+                        self.characterStack.center.x = self.characterStack.center.x - 115
                         self.effects.sound(.backThree, nil, nil)
                 }, completion: nil)
             })
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            self.challengeLabel.alpha = 0
+            self.comboLabel.alpha = 0
+            self.characterLabel.alpha = 0
         }
     }
     
