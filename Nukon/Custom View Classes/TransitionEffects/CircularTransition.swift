@@ -65,7 +65,7 @@ extension CircularTransition: UIViewControllerAnimatedTransitioning {
                 
                 UIView.animate(withDuration: duration + 0.2, animations: {
                     self.circle.transform = CGAffineTransform.identity
-//                    presentedView.center = viewCenter
+                    presentedView.center = viewCenter
                 }, completion: { (success: Bool) in
                     UIView.animate(withDuration: self.duration + 0.2, animations: {
                         self.circle.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
