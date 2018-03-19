@@ -434,14 +434,14 @@ class FirstCharacterCell: UICollectionViewCell {
         delegate?.scrollToItemIndexPath(index: index)
     }
     
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        guard let attributes = super.preferredLayoutAttributesFitting(layoutAttributes).copy() as? UICollectionViewLayoutAttributes else {return layoutAttributes}
-        
-        attributes.size.height = collectionView.frame.height
-        attributes.size.width = collectionView.frame.width
-        //        attributes.size.width = self.contentView.frame.size.width
-        return attributes
-    }
+//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+//        guard let attributes = super.preferredLayoutAttributesFitting(layoutAttributes).copy() as? UICollectionViewLayoutAttributes else {return layoutAttributes}
+//        
+//        attributes.size.height = collectionView.frame.height
+//        attributes.size.width = collectionView.frame.width
+//        //        attributes.size.width = self.contentView.frame.size.width
+//        return attributes
+//    }
 }
 
 
@@ -483,31 +483,3 @@ extension FirstCharacterCell {
         pulseLayer.add(fadeAnimation, forKey: "fade")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

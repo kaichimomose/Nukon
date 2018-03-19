@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bUi-lu-CfC">
-                                <rect key="frame" x="0.0" y="25" width="320" height="65.5"/>
+                                <rect key="frame" x="0.0" y="25" width="320" height="124.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="95K-zo-qUa">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
@@ -42,7 +42,7 @@
                                                             <constraint firstAttribute="width" constant="30" id="Q24-Jc-UsF"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-aUc">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-bUc">
                                                         <rect key="frame" x="70" y="0.0" width="180" height="30"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="HIRAGANA">
@@ -77,8 +77,21 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
-                                        <rect key="frame" x="90" y="30" width="140" height="35.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="nD5-JF-aUc">
+                                        <rect key="frame" x="42.5" y="30" width="235.5" height="59"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="HIRAGANA">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.95686274509803915" green="0.94509803921568625" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="43" name="AvenirNext-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
+                                        <rect key="frame" x="90" y="89" width="140" height="35.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ひらがな">
                                                 <attributes>
@@ -255,7 +268,6 @@
                         <outlet property="studyButton" destination="WjG-xd-Om5" id="Cfp-IU-qpq"/>
                         <outlet property="studyStack" destination="bM1-5W-Bb6" id="jew-Fh-jST"/>
                         <outlet property="titleJapaneseLabel" destination="0wV-Dm-O5P" id="Nwd-Zc-a3c"/>
-                        <outlet property="titleRomeLabel" destination="bD5-JF-aUc" id="C6d-1J-JKK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSZ-GJ-n54" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -325,14 +337,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVC-kD-XJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-239" y="1"/>
-        </scene>
-        <!--Speaking-->
-        <scene sceneID="oqM-uS-G0k">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Speaking" id="iKS-3b-hUZ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnt-lw-qaa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-243" y="161"/>
         </scene>
     </scenes>
     <resources>

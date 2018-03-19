@@ -73,11 +73,16 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     
     override func viewWillAppear(_ animated: Bool) {
         self.chooseJapaneseCharacterType(type: japaneseType)
+        self.fetchCoreData()
+        collectionView.reloadData()
+    }
+    
+    func fetchCoreData() {
         // Initialize Fetch Request\
         let fetchRequest: NSFetchRequest<Consonant> = Consonant.fetchRequest()
         // Add Specific type Descriptors
         fetchRequest.predicate = NSPredicate(format: "system == %@", japaneseType.rawValue)
-
+        
         do {
             let result = try self.coreDataStack.viewContext.fetch(fetchRequest)
             var unlockedcellCounter = 1
@@ -86,12 +91,12 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
                 let words = item.words?.allObjects as? [WordLearnt]
                 guard let wordsLearnt = words else {return}
                 var characterDict = [String: WordLearnt]()
-
+                
                 //counter for confidence to unlock
                 var isOk = 0 //green, yellow
                 var isSoso = 0 //light orange
                 var isNotOk = 0 //red, orange
-
+                
                 for wordLearnt in wordsLearnt {
                     characterDict[wordLearnt.word!] = wordLearnt
                     let confidence = Int(wordLearnt.confidenceCounter)
@@ -104,7 +109,7 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
                         isSoso += 1
                     }
                 }
-
+                
                 //unlock next chracters and save
                 if !item.unLockNext {
                     if isOk >= 1 && isNotOk == 0 {
@@ -139,7 +144,6 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
         }catch let error {
             print(error)
         }
-        collectionView.reloadData()
     }
     
     func scrollToItemIndexPath(menuindex: Int) {

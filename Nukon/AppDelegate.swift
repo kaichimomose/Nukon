@@ -21,23 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after app launch,
         //  but before state restoration.
-//        do {
-//            audio = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Metal_Gong", ofType: "mp3")!))
-//            audio.prepareToPlay()
-//            audio.enableRate = true
-//            audio.rate = 1.8
-//        } catch {
-//            print(error)
-//        }
+        do {
+            audio = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Metal_Gong", ofType: "mp3")!))
+            audio.prepareToPlay()
+            audio.enableRate = true
+            audio.rate = 1.8
+        } catch {
+            print(error)
+        }
         // Do any additional setup after loading the view.
         
-//        audio.play()
-        
-//        let initialViewController: UIViewController
-//        let tempStoryboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
-//        initialViewController = tempStoryboard.instantiateInitialViewController()!
-//        self.window?.rootViewController = initialViewController
-//        self.window?.makeKeyAndVisible()
+        audio.play()
+
         let isopened = UserDefaults.standard.bool(forKey: "OpenApp")
         let isFirstTime = UserDefaults.standard.bool(forKey: "FirstTimeUser")
         if !isopened && !isFirstTime {
@@ -49,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         UIApplication.shared.statusBarStyle = .lightContent
-//        Thread.sleep(forTimeInterval: 3.0)
+        Thread.sleep(forTimeInterval: 3.0)
         let isopened = UserDefaults.standard.bool(forKey: "OpenApp")
         let isFirstTime = UserDefaults.standard.bool(forKey: "FirstTimeUser")
         if isopened && !isFirstTime {
