@@ -63,7 +63,7 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
                                         <rect key="frame" x="100.5" y="89" width="119" height="35.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ひらがな">
@@ -250,14 +250,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVC-kD-XJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-239" y="1"/>
-        </scene>
-        <!--Speaking-->
-        <scene sceneID="oqM-uS-G0k">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Speaking" id="iKS-3b-hUZ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnt-lw-qaa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-243" y="161"/>
         </scene>
     </scenes>
     <resources>

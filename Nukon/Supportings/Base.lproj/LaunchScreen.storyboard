@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="zgz-gY-R8k">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group" translatesAutoresizingMaskIntoConstraints="NO" id="zgz-gY-R8k">
                                 <rect key="frame" x="120" y="305.66666666666669" width="174" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="YL7-tz-UW7"/>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppIcon2" width="454" height="336"/>
+        <image name="Group" width="1362" height="1008"/>
     </resources>
 </document>
