@@ -33,7 +33,7 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
     
     //collectionView layout
 //    let layout = UICollectionViewFlowLayout() //UPCarouselFlowLayout()
-//    let inset = UIEdgeInsets(top: 50, left: 10, bottom: 100, right: 10)
+//    let inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -44,9 +44,15 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
         collectionView.dataSource = self
         
         collectionView.register(UINib.init(nibName: "FirstCharacterCell", bundle: .main), forCellWithReuseIdentifier: cellReuseIdentifer)
-
+        
+//        layout.minimumLineSpacing = 0
+//        layout.minimumInteritemSpacing = 0
+//        layout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+//        layout.itemSize = CGSize(width: collectionView.frame.height, height: collectionView.frame.height)
+//
+//        collectionView.collectionViewLayout = layout
         collectionView.alwaysBounceVertical = true
-        collectionView.isPagingEnabled = true
+//        collectionView.isPagingEnabled = true
 
     }
     

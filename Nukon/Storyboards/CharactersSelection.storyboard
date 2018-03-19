@@ -62,7 +62,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="5uj-F4-vAt"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button" image="info_icon"/>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZ6-nA-9ji">
                                                         <rect key="frame" x="375" y="0.0" width="0.0" height="30"/>
@@ -279,6 +278,5 @@
     </scenes>
     <resources>
         <image name="HomeButton" width="120" height="109"/>
-        <image name="info_icon" width="120" height="120"/>
     </resources>
 </document>
