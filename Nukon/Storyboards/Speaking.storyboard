@@ -439,8 +439,7 @@
                                             </constraints>
                                             <state key="normal" image="exit"/>
                                             <connections>
-                                                <action selector="exitButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="t13-wg-e7n"/>
-                                                <action selector="exitWalkthroughButtonTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="flu-Rm-VBC"/>
+                                                <action selector="exitWalkThroughTapped:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="EU7-PD-TPa"/>
                                             </connections>
                                         </button>
                                     </subviews>

@@ -117,11 +117,8 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var nextCharacterButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var notOkButton: UIButton!
     @IBOutlet weak var goodButton: UIButton!
-    @IBOutlet weak var finishButton: UIButton!
     
     // create cancel or exit button, takes user back to overview screen
     @IBOutlet weak var cancelButton: UIButton!
@@ -178,6 +175,10 @@ class ShowCharactersViewController: UIViewController {
         // choose first chracter
         switch self.order {
             case .orderly:
+                
+                self.nextCharacterButton.alpha = 0.5
+                self.nextCharacterButton.isEnabled = false
+                
                 self.shownCharacter = orderCharacter()
             case .randomly:
                 self.shownCharacter = randomCharacter()
@@ -185,6 +186,7 @@ class ShowCharactersViewController: UIViewController {
         
         self.updateLabels()
         
+        //color buttons information view setting
         effect = confidenceWalkthrough.effect
         
         confidenceWalkthrough.effect = nil
@@ -202,7 +204,10 @@ class ShowCharactersViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.moveCharacter()
+        let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
+        if !usedBefore {
+            self.moveCharacter()
+        }
     }
     
     func updateLabels() {
@@ -335,8 +340,9 @@ class ShowCharactersViewController: UIViewController {
         
     }
     
+    // shows a character orderly
     func orderCharacter() -> String {
-        // shows a character orderly
+        
         let numberOfCharactersInList = soundAndLettersList[self.soundIndexCounter].1.count
         if self.vowelIndexCounter == numberOfCharactersInList {
             self.vowelIndexCounter = 0
@@ -406,12 +412,9 @@ class ShowCharactersViewController: UIViewController {
         let textToSpeak = AVSpeechUtterance(string: string)
         textToSpeak.rate = 0.001
         textToSpeak.volume = 1.0
-        //        let numberOfSeconds = 10.0
-        //        textToSpeak.preUtteranceDelay = numberOfSeconds
         let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
         let speak = AVSpeechSynthesizer()
         textToSpeak.voice = speakerVoice
-        //        speak.delegate = self
         speak.speak(textToSpeak)
     }
     
@@ -456,6 +459,10 @@ class ShowCharactersViewController: UIViewController {
             self.unenableJudgeButtons()
             switch self.order {
                 case .orderly:
+                    
+                    self.nextCharacterButton.alpha = 0.5
+                    self.nextCharacterButton.isEnabled = false
+                    
                     self.shownCharacter = orderCharacter()
                 case .randomly:
                     self.shownCharacter = randomCharacter()
@@ -470,7 +477,7 @@ class ShowCharactersViewController: UIViewController {
     
     func moveCharacter() {
         let animation = {
-            
+            //move downwards
             let downwards = {
                 self.characterButton.center.y = self.characterView.center.y + 35
                 
@@ -478,6 +485,7 @@ class ShowCharactersViewController: UIViewController {
             
             UIView.animate(withDuration: 1.0, delay: 1.5, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: .curveEaseInOut, animations: downwards, completion: nil)
             
+            //move upwards
             let upwards = {
                 self.characterButton.center.y = self.characterButton.center.y - 35
             }
@@ -496,47 +504,20 @@ class ShowCharactersViewController: UIViewController {
             soundAnimation()
         }
         if self.order == .orderly {
+            
+            self.nextCharacterButton.alpha = 1
+            self.nextCharacterButton.isEnabled = true
+            
             enableJudgeButtons()
         }
-    }
-    
-    
-    @IBAction func nextButtonTapped(_ sender: Any) {
         
-        refreshTask()
-        
-        if self.currentNumber < self.totalNumberOfCharacter {
-            if self.counter == self.currentNumber {
-                self.soundLabel.text = ""
-                self.shownCharacter = orderCharacter()
-            } else {
-                let nextNumber = self.currentNumber + 1
-                self.sound = self.shownCharacters[nextNumber - 1].0
-                self.shownCharacter = self.shownCharacters[nextNumber - 1].1
-                self.posibilities = self.shownCharacters[nextNumber - 1].2
-                self.currentNumber = nextNumber
-            }
-            self.judge = .yet
-            self.comment = .start
-            self.buttonTitle = .start
-            self.updateLabels()
-        }
-    }
-    
-    @IBAction func backButtonTapped(_ sender: Any) {
-        
-        refreshTask()
-        
-        if self.currentNumber > 1 {
-            let backNumber = self.currentNumber - 1
-            self.sound = self.shownCharacters[backNumber - 1].0
-            self.shownCharacter = self.shownCharacters[backNumber - 1].1
-            self.posibilities = self.shownCharacters[backNumber - 1].2
-            self.currentNumber = backNumber
-            self.comment = .start
-            self.buttonTitle = .start
-            self.judge = .yet
-            self.updateLabels()
+        let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
+        if !usedBefore {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.AnimateInWalkthrough()
+                //TODO: updata userdefalt "UsedBefore" ture
+//                UserDefaults.standard.set(true, forKey: "UsedBefore")
+            })
         }
     }
     
@@ -651,6 +632,10 @@ class ShowCharactersViewController: UIViewController {
 
     }
     
+    @IBAction func exitWalkThroughTapped(_ sender: Any) {
+        self.moveCharacter()
+    }
+    
     
     
 }
@@ -699,6 +684,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 self.commentLabel.text = Comment.recognizing.rawValue
                 self.nextCharacterButton.isEnabled = false
                 theBestString = result.bestTranscription.formattedString
+                //gets new appended character
                 if theBestString != "" && previousBestString != "" {
                     let index = theBestString.index(theBestString.startIndex, offsetBy: previousBestString.count)
                     appendedString = String(theBestString[index...])
