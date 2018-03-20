@@ -48,7 +48,7 @@
                                                             <fragment content="HIRAGANA">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.95686274509803915" green="0.94509803921568625" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="35" name="AvenirNext-Bold"/>
+                                                                    <font key="NSFont" size="32" name="AvenirNext-Bold"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -80,8 +80,8 @@
                                             <constraint firstItem="7uL-aN-DlV" firstAttribute="width" secondItem="95K-zo-qUa" secondAttribute="width" id="aXM-QJ-zeB"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
-                                        <rect key="frame" x="117.66666666666669" y="30.000000000000004" width="140" height="35.333333333333343"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
+                                        <rect key="frame" x="90" y="30" width="140" height="35.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ひらがな">
                                                 <attributes>

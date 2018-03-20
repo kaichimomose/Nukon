@@ -218,6 +218,18 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         }, completion: nil)
     }
     
+    //shakes chracterview
+    func shakeStudyStack() {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = 0.07
+        shakeAnimation.repeatCount = 4
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: self.studyStack.center.x - 10, y: self.studyStack.center.y))
+        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: self.studyStack.center.x + 10, y: self.studyStack.center.y))
+        
+        self.studyStack.layer.add(shakeAnimation, forKey: "position")
+    }
+    
     //info button is pressed
     @IBAction func infoButtonTapped(_ sender: Any) {
         if popCount == 1 {
@@ -314,6 +326,8 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             showCharacterVC.modalPresentationStyle = .custom
             self.effects.sound(nil, nil, .stretch)
             present(showCharacterVC, animated: true, completion: nil)
+        } else {
+            shakeStudyStack()
         }
     }
 }

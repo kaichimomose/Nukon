@@ -49,7 +49,7 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
 //        layout.minimumInteritemSpacing = 0
 //        layout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
 //        layout.itemSize = CGSize(width: collectionView.frame.height, height: collectionView.frame.height)
-//
+
 //        collectionView.collectionViewLayout = layout
         collectionView.alwaysBounceVertical = true
 //        collectionView.isPagingEnabled = true
@@ -115,13 +115,13 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
