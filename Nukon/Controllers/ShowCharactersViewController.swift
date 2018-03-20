@@ -404,7 +404,7 @@ class ShowCharactersViewController: UIViewController {
     
     func speakJapanese(string: String) {
         let textToSpeak = AVSpeechUtterance(string: string)
-        textToSpeak.rate = 0.01
+        textToSpeak.rate = 0.001
         textToSpeak.volume = 1.0
         //        let numberOfSeconds = 10.0
         //        textToSpeak.preUtteranceDelay = numberOfSeconds

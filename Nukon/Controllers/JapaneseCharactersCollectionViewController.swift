@@ -67,6 +67,7 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
         
+        practiceButton.layer.cornerRadius = 25
         practiceButton.alpha = 0.5
         practiceButton.isEnabled = false
     }
