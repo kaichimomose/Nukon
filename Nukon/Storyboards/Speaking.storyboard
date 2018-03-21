@@ -392,22 +392,6 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCg-fF-4Cb">
-                                <rect key="frame" x="67.5" y="227.5" width="240" height="127.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="cCg-fF-4Cb" secondAttribute="height" multiplier="15:8" id="Yde-MF-8ws"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Keep track of how well you know a character by selecting a color.">
-                                        <attributes>
-                                            <color key="NSColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="22" name="ArialRoundedMTBold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upRedArrow" translatesAutoresizingMaskIntoConstraints="NO" id="OMn-M1-PE5">
                                 <rect key="frame" x="27.5" y="468" width="37" height="36"/>
                                 <constraints>
@@ -476,7 +460,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sF-d3-9QY">
-                                <rect key="frame" x="163" y="101.5" width="50" height="50"/>
+                                <rect key="frame" x="163" y="100" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XuN-IP-ane"/>
                                     <constraint firstAttribute="width" constant="50" id="t8Y-Fg-gXw"/>
@@ -486,25 +470,41 @@
                                     <action selector="exitFirstWalkthrough:" destination="Eeb-5E-bxQ" eventType="touchUpInside" id="fRp-qc-Yod"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="o4c-B4-WHy">
+                                <rect key="frame" x="68" y="195" width="240" height="127.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="127.5" id="HAA-cJ-Lue"/>
+                                    <constraint firstAttribute="width" constant="240" id="TQY-VS-I8t"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Keep track of how well you know a character by selecting a color.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="22" name="ArialRoundedMTBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="cCg-fF-4Cb" firstAttribute="width" secondItem="j9X-EC-Ama" secondAttribute="height" multiplier="240:647" id="Cut-JL-hXR"/>
                             <constraint firstItem="OMn-M1-PE5" firstAttribute="top" secondItem="h1i-4V-epc" secondAttribute="bottom" multiplier="1.05" id="Gbx-sS-mwN"/>
-                            <constraint firstItem="cCg-fF-4Cb" firstAttribute="centerX" secondItem="j9X-EC-Ama" secondAttribute="centerX" id="H53-YD-Dlx"/>
                             <constraint firstItem="9Nk-JQ-Zud" firstAttribute="centerX" secondItem="GJO-Qq-qQo" secondAttribute="centerX" id="H78-X5-4Ad"/>
+                            <constraint firstItem="1sF-d3-9QY" firstAttribute="centerX" secondItem="j9X-EC-Ama" secondAttribute="centerX" id="HDA-Jg-IEs"/>
                             <constraint firstItem="5bY-mc-YUe" firstAttribute="centerX" secondItem="L0J-9T-aBI" secondAttribute="centerX" id="Hbo-Fg-OEq"/>
+                            <constraint firstItem="o4c-B4-WHy" firstAttribute="centerX" secondItem="j9X-EC-Ama" secondAttribute="centerX" id="JRh-EI-r9A"/>
                             <constraint firstItem="GJO-Qq-qQo" firstAttribute="top" secondItem="903-UK-YhY" secondAttribute="bottom" multiplier="1.05" id="Nk7-uW-xeS"/>
                             <constraint firstItem="5bY-mc-YUe" firstAttribute="top" secondItem="L0J-9T-aBI" secondAttribute="bottom" multiplier="1.05" id="Pc8-Nt-at7"/>
                             <constraint firstItem="9Nk-JQ-Zud" firstAttribute="top" secondItem="GJO-Qq-qQo" secondAttribute="bottom" multiplier="1.03" id="Pna-jC-G8B"/>
-                            <constraint firstItem="1sF-d3-9QY" firstAttribute="centerX" secondItem="cCg-fF-4Cb" secondAttribute="centerX" id="VJc-2g-nyR"/>
                             <constraint firstItem="OMn-M1-PE5" firstAttribute="centerX" secondItem="h1i-4V-epc" secondAttribute="centerX" id="aeo-or-Rbk"/>
                             <constraint firstItem="GJO-Qq-qQo" firstAttribute="centerX" secondItem="903-UK-YhY" secondAttribute="centerX" id="afO-ZI-a3m"/>
+                            <constraint firstItem="o4c-B4-WHy" firstAttribute="top" secondItem="1sF-d3-9QY" secondAttribute="bottom" multiplier="1.3" id="bUj-yW-fOn"/>
                             <constraint firstAttribute="trailing" secondItem="hJr-YR-dW4" secondAttribute="trailing" id="bcv-53-xd3"/>
                             <constraint firstItem="hJr-YR-dW4" firstAttribute="centerY" secondItem="j9X-EC-Ama" secondAttribute="centerY" multiplier="1.3" id="ckm-QK-b5s"/>
+                            <constraint firstItem="o4c-B4-WHy" firstAttribute="centerY" secondItem="j9X-EC-Ama" secondAttribute="centerY" multiplier="0.8" id="juN-7L-Std"/>
                             <constraint firstItem="0Gr-CU-aNi" firstAttribute="top" secondItem="5bY-mc-YUe" secondAttribute="bottom" multiplier="1.03" id="neo-bb-m8R"/>
-                            <constraint firstItem="cCg-fF-4Cb" firstAttribute="centerY" secondItem="j9X-EC-Ama" secondAttribute="centerY" multiplier="0.9" id="oGR-H9-n1d"/>
                             <constraint firstItem="AvN-EL-ABh" firstAttribute="top" secondItem="OMn-M1-PE5" secondAttribute="bottom" multiplier="1.03" id="ogX-kV-aLp"/>
-                            <constraint firstItem="cCg-fF-4Cb" firstAttribute="top" secondItem="1sF-d3-9QY" secondAttribute="bottom" multiplier="1.5" id="pro-Sm-0ir"/>
                             <constraint firstItem="hJr-YR-dW4" firstAttribute="leading" secondItem="j9X-EC-Ama" secondAttribute="leading" id="v5j-Su-PYc"/>
                             <constraint firstItem="0Gr-CU-aNi" firstAttribute="centerX" secondItem="5bY-mc-YUe" secondAttribute="centerX" id="wY1-L0-HDX"/>
                             <constraint firstItem="AvN-EL-ABh" firstAttribute="centerX" secondItem="OMn-M1-PE5" secondAttribute="centerX" id="ycj-jx-wpK"/>
@@ -555,7 +555,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upRedArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Fda-L7-b4a">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downRedArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Fda-L7-b4a">
                                 <rect key="frame" x="155" y="411.5" width="65" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="dfk-K4-lae"/>
@@ -583,6 +583,7 @@
     </scenes>
     <resources>
         <image name="cancel_button" width="120" height="121"/>
+        <image name="downRedArrow" width="144" height="151"/>
         <image name="exit" width="120" height="120"/>
         <image name="info_icon" width="120" height="120"/>
         <image name="microphone" width="40" height="60"/>

@@ -686,6 +686,15 @@ class ShowCharactersViewController: UIViewController {
             self.voiceRecognitionWalkthrough.transform = CGAffineTransform.identity
         }, completion: nil)
         
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseIn, animations: {
+            self.voiceRecognitionButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }) { (_) in
+            
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 4, initialSpringVelocity: 7, options: .curveEaseOut, animations: {
+                self.voiceRecognitionButton.transform = CGAffineTransform.identity
+            }, completion: nil)
+        }
+        
     }
     
     @IBAction func exitFirstWalkthrough(_ sender: Any) {
