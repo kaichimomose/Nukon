@@ -58,12 +58,25 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var greenButton: UIButton!
     
     
-    
+    //Mark: Confidence Walkthrough and Elements
     @IBOutlet weak var confidenceWalkthrough: UIVisualEffectView!
     
     var effect: UIVisualEffect!
     
-    @IBOutlet weak var exitWalkthrough: Exit!
+    @IBOutlet weak var exitWalkthrough: UIButton!
+    
+    
+    //Mark: Voice Recognition Walkthrough and elements
+    @IBOutlet var voiceRecognitionWalkthrough: UIVisualEffectView!
+    
+    var vcrEffect: UIVisualEffect!
+    
+    @IBOutlet weak var redArrowOnVcrWalkthrough: UIImageView!
+    
+    @IBOutlet weak var voiceRecognitionButton: UIButton!
+    
+    @IBOutlet weak var exitSecondWalkthrough: Exit!
+    
     
     
     //Mark: Sound Properties
@@ -123,12 +136,12 @@ class ShowCharactersViewController: UIViewController {
     // create cancel or exit button, takes user back to overview screen
     @IBOutlet weak var cancelButton: UIButton!
     
+    //information button, intiates the walkthrough process
+    @IBOutlet weak var information: UIButton!
+    
+    
     // image to be animated when user guesses correctly
     @IBOutlet weak var correctImage: UIImageView!
-    
-    // animate sparkle images when correct
-    @IBOutlet weak var sparkleOne: UIImageView!
-    @IBOutlet weak var sparkleTwo: UIImageView!
     
     
     @IBOutlet weak var characterButton: UIButton!
@@ -186,28 +199,50 @@ class ShowCharactersViewController: UIViewController {
         
         self.updateLabels()
         
-        //color buttons information view setting
+        //Walkthrough blur For confidences
+        confidenceWalkthrough.center = self.view.center
+        confidenceWalkthrough.frame = self.view.frame
+        
+        confidenceWalkthrough.alpha = 0
+        
         effect = confidenceWalkthrough.effect
         
         confidenceWalkthrough.effect = nil
         
-        exitWalkthrough.dismissedView = confidenceWalkthrough
         
-        confidenceWalkthrough.isHidden = true
-        
-        
+        //Color buttons information view setting
         let blurColorButtons = [redButton, orangeButton, yellowButton, limeButton, greenButton]
         
         blurColorButtons.forEach { (button) in
             button?.layer.cornerRadius = (button?.layer.frame.height)! / 2
         }
+        
+        //Walkthrough buttons for voice recognition
+        
+        voiceRecognitionWalkthrough.center = self.view.center
+        voiceRecognitionWalkthrough.frame = self.view.frame
+        
+        voiceRecognitionWalkthrough.alpha = 0
+        
+        exitSecondWalkthrough.blur = voiceRecognitionWalkthrough.effect
+        
+        voiceRecognitionWalkthrough.effect = nil
+        
+        exitSecondWalkthrough.dismissedView = voiceRecognitionWalkthrough
+        
+        
+        voiceRecognitionButton.layer.cornerRadius = voiceRecognitionButton.layer.frame.width / 2
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
+        
         if !usedBefore {
             self.moveCharacter()
         }
+        
     }
     
     func updateLabels() {
@@ -514,7 +549,7 @@ class ShowCharactersViewController: UIViewController {
         let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
         if !usedBefore {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                self.AnimateInWalkthrough()
+                self.animateInFirstWalkthrough()
                 //TODO: updata userdefalt "UsedBefore" ture
 //                UserDefaults.standard.set(true, forKey: "UsedBefore")
             })
@@ -617,23 +652,51 @@ class ShowCharactersViewController: UIViewController {
     }
     
     @IBAction func infoButtonTapped(_ sender: Any) {
-        AnimateInWalkthrough()
+        animateInFirstWalkthrough()
     }
     
-    func AnimateInWalkthrough() {
+    func animateInFirstWalkthrough() {
+        self.view.addSubview(confidenceWalkthrough)
+        
+        
         confidenceWalkthrough.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
         
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-            self.confidenceWalkthrough.isHidden = false
             self.effects.swooshResource(.water)
+            
             self.confidenceWalkthrough.effect = self.effect
+            self.confidenceWalkthrough.alpha = 1
+            self.confidenceWalkthrough.isHidden = false
             self.confidenceWalkthrough.transform = CGAffineTransform.identity
         }, completion: nil)
 
     }
     
-    @IBAction func exitWalkThroughTapped(_ sender: Any) {
-        self.moveCharacter()
+    func animateInSecondeWalkthrough() {
+        self.view.addSubview(voiceRecognitionWalkthrough)
+        
+        voiceRecognitionWalkthrough.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            
+            self.effects.swooshResource(.water)
+            self.voiceRecognitionWalkthrough.effect = self.effect
+            self.voiceRecognitionWalkthrough.alpha = 1
+            self.voiceRecognitionWalkthrough.isHidden = false
+            self.voiceRecognitionWalkthrough.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+    }
+    
+    @IBAction func exitFirstWalkthrough(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.confidenceWalkthrough.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            self.confidenceWalkthrough.effect = nil
+            self.confidenceWalkthrough.alpha = 0
+        }) { (_) in
+            self.confidenceWalkthrough.removeFromSuperview()
+            self.animateInSecondeWalkthrough()
+        }
     }
     
     
