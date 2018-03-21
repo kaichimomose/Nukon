@@ -31,6 +31,8 @@ extension UIColor {
     //background color
     static let hiraganaBackground = rgb(r: 179, g: 205, b: 253)
     static let katakanaBackground = rgb(r: 239, g: 168, b: 218)
+    static let hiraganaDarkBackground = rgb(r: 141, g: 163, b: 202)
+    static let katakanaDarkBackground = rgb(r: 209, g: 146, b: 192)
     
     //colors for study recognition
     static let materialOrange = UIColor.rgb(r: 275, g: 279, b: 115)

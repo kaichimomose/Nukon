@@ -148,6 +148,10 @@ class ShowCharactersViewController: UIViewController {
     
     @IBOutlet var judgeButtons: [UIButton]!
     
+    @IBOutlet weak var buttonsView: UIView!
+    
+    @IBOutlet weak var recordButtonView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -239,7 +243,20 @@ class ShowCharactersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
         
-        if !usedBefore {
+        if usedBefore {
+            self.information.isEnabled = false
+            self.information.alpha =  0.5
+            self.commentLabel.alpha = 0
+            
+            self.characterView.backgroundColor = self.backgroundColor
+            
+            switch self.japaneseType {
+            case .hiragana, .yVowelHiragana:
+                self.view.backgroundColor = UIColor.hiraganaDarkBackground
+            default:
+                self.view.backgroundColor = UIColor.katakanaDarkBackground
+            }
+            
             self.moveCharacter()
         }
         
@@ -525,11 +542,11 @@ class ShowCharactersViewController: UIViewController {
                 self.characterButton.center.y = self.characterButton.center.y - 35
             }
             
-            UIView.animate(withDuration: 2.0, delay: 4.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: .curveEaseInOut, animations: upwards, completion: nil)
+            UIView.animate(withDuration: 2.0, delay: 4.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: [.curveEaseInOut, .allowUserInteraction], animations: upwards, completion: nil)
 
         }
         
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: .curveEaseInOut, animations: animation, completion: nil)
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: [.curveEaseInOut, .allowUserInteraction], animations: animation, completion: nil)
     }
     
     //MARK: - Actions
@@ -538,21 +555,47 @@ class ShowCharactersViewController: UIViewController {
         if self.judge == .yet {
             soundAnimation()
         }
-        if self.order == .orderly {
-            
-            self.nextCharacterButton.alpha = 1
-            self.nextCharacterButton.isEnabled = true
-            
-            enableJudgeButtons()
-        }
         
         let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
-        if !usedBefore {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        if usedBefore {
+            let onboardAnimation = {
+                self.characterView.backgroundColor = .clear
+                self.buttonsView.backgroundColor = self.backgroundColor
+                self.commentLabel.alpha = 1
+                self.recordButtonView.backgroundColor = self.backgroundColor
+                self.nextCharacterButton.alpha = 1
+                self.judgeButtons.forEach { button in
+                    button.alpha = 1
+                }
+            }
+            
+            UIView.animate(withDuration: 1.0, delay: 2.0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: [], animations: onboardAnimation, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+                self.buttonsView.backgroundColor = .clear
+                self.recordButtonView.backgroundColor = .clear
+                
+                self.view.backgroundColor = self.backgroundColor
+                //make imformation button enable
+                self.information.isEnabled = true
+                self.information.alpha =  1
+                
+                //make buttons enable
+                self.nextCharacterButton.isEnabled = true
+                self.enableJudgeButtons()
+                
                 self.animateInFirstWalkthrough()
                 //TODO: updata userdefalt "UsedBefore" ture
-//                UserDefaults.standard.set(true, forKey: "UsedBefore")
+                UserDefaults.standard.set(true, forKey: "UsedBefore")
             })
+        } else {
+            if self.order == .orderly {
+                
+                self.nextCharacterButton.alpha = 1
+                self.nextCharacterButton.isEnabled = true
+                
+                enableJudgeButtons()
+            }
         }
     }
     
@@ -748,7 +791,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                 self.nextCharacterButton.isEnabled = false
                 theBestString = result.bestTranscription.formattedString
                 //gets new appended character
-                if theBestString != "" && previousBestString != "" {
+                if theBestString.count > previousBestString.count && theBestString != "" && previousBestString != "" {
                     let index = theBestString.index(theBestString.startIndex, offsetBy: previousBestString.count)
                     appendedString = String(theBestString[index...])
                     print(appendedString)
