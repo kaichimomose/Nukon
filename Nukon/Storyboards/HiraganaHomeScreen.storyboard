@@ -81,7 +81,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
-                                        <rect key="frame" x="90" y="30" width="140" height="35.5"/>
+                                        <rect key="frame" x="117.66666666666669" y="30.000000000000004" width="140" height="35.333333333333343"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ひらがな">
                                                 <attributes>
