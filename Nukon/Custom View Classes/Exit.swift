@@ -18,31 +18,59 @@ class Exit: UIButton {
     }
     */
     
+    var effects: SoundEffects?
+    
     var dismissedView: UIVisualEffectView!
     
+    var appointedView: UIVisualEffectView?
+    
+    var blur: UIVisualEffect!
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.transform = CGAffineTransform(scaleX: 0.80, y: 0.80)
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             self.transform = CGAffineTransform.identity
         }) { (_) in
-            self.dismissSuperView(self.dismissedView)
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                self.dismissSuperview(self.dismissedView)
+            }, completion: { (_) in
+                
+                if let view = self.appointedView {
+                    self.appointSuperview(view)
+                }
+            })
         }
-        
-        
     }
     
-    func dismissSuperView(_ view: UIVisualEffectView) {
+    func dismissSuperview(_ view: UIVisualEffectView) {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-            view.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            view.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
             view.effect = nil
+            view.alpha = 0
         }) { (_) in
-            view.isHidden = true
+            view.removeFromSuperview()
         }
+    }
+    
+    func appointSuperview(_ view: UIVisualEffectView) {
+        
+        view.center = view.superview!.center
+        view.frame = view.superview!.frame
+        
+        view.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.effects?.swooshResource(.water)
+            view.effect = self.blur
+            view.isHidden = false
+            view.transform = CGAffineTransform.identity
+        }, completion: nil)
 
     }
 }
