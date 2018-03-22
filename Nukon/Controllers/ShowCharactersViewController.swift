@@ -243,7 +243,7 @@ class ShowCharactersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
         
-        if usedBefore {
+        if !usedBefore {
             self.information.isEnabled = false
             self.information.alpha =  0.5
             self.commentLabel.alpha = 0
@@ -557,7 +557,7 @@ class ShowCharactersViewController: UIViewController {
         }
         
         let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
-        if usedBefore {
+        if !usedBefore {
             let onboardAnimation = {
                 self.characterView.backgroundColor = .clear
                 self.buttonsView.backgroundColor = self.backgroundColor
@@ -728,6 +728,15 @@ class ShowCharactersViewController: UIViewController {
             self.voiceRecognitionWalkthrough.isHidden = false
             self.voiceRecognitionWalkthrough.transform = CGAffineTransform.identity
         }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseIn, animations: {
+            self.voiceRecognitionButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }) { (_) in
+            
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 4, initialSpringVelocity: 7, options: .curveEaseOut, animations: {
+                self.voiceRecognitionButton.transform = CGAffineTransform.identity
+            }, completion: nil)
+        }
         
     }
     
