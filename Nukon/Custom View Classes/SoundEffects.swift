@@ -20,6 +20,7 @@ enum Swoosh: String {
     case backThree = "swooshBackThree"
     
     case water = "water"
+    case fire = "fire"
 }
 
 enum TransitionSound: String {
@@ -62,6 +63,9 @@ struct SoundEffects {
                 
             case .water:
                 swooshResource(.water)
+                
+            case .fire:
+                swooshResource(.fire)
             }
         }
         
