@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QuL-Ey-ryk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="v06-g8-cPR">
+            <objects>
+                <viewController id="QuL-Ey-ryk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O8q-ZU-1Tn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="TE0-WO-OTB">
+                                <rect key="frame" x="112.5" y="92" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="1XR-sP-RkK"/>
+                                    <constraint firstAttribute="width" constant="150" id="W0H-Bj-Ykd"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxd-D4-WBM">
+                                <rect key="frame" x="79.5" y="384" width="215.5" height="66"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="NUKON">
+                                        <attributes>
+                                            <color key="NSColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="57" name="ArialRoundedMTBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCT-YY-5sf">
+                                <rect key="frame" x="28" y="451.5" width="318.5" height="30.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="NEW LANGUAGE. NEW SOUL.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.73751133680000003" green="0.84046345950000001" blue="0.99844151739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="22" name="AvenirNext-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TE0-WO-OTB" firstAttribute="centerX" secondItem="O8q-ZU-1Tn" secondAttribute="centerX" id="AHy-sS-H5l"/>
+                            <constraint firstItem="TE0-WO-OTB" firstAttribute="centerY" secondItem="O8q-ZU-1Tn" secondAttribute="centerY" multiplier="0.5" id="CFd-sT-PGd"/>
+                            <constraint firstItem="Oxd-D4-WBM" firstAttribute="centerY" secondItem="O8q-ZU-1Tn" secondAttribute="centerY" multiplier="1.25" id="QeO-pk-Ckn"/>
+                            <constraint firstItem="Oxd-D4-WBM" firstAttribute="centerX" secondItem="O8q-ZU-1Tn" secondAttribute="centerX" id="S89-Mc-VFa"/>
+                            <constraint firstItem="aCT-YY-5sf" firstAttribute="centerX" secondItem="O8q-ZU-1Tn" secondAttribute="centerX" id="gsJ-CE-OIL"/>
+                            <constraint firstItem="aCT-YY-5sf" firstAttribute="centerY" secondItem="O8q-ZU-1Tn" secondAttribute="centerY" multiplier="1.4" id="htN-tu-qaS"/>
+                            <constraint firstItem="TE0-WO-OTB" firstAttribute="width" secondItem="O8q-ZU-1Tn" secondAttribute="height" multiplier="128:667" constant="22" id="p5m-zK-R7J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jeK-Po-Pg0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rb8-Rh-7fA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-570.39999999999998" y="144.3778110944528"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LOGO" width="524" height="576"/>
+    </resources>
+</document>

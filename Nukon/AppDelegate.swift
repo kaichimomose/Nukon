@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after app launch,
         //  but before state restoration.
         do {
-            audio = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Metal_Gong", ofType: "mp3")!))
+            audio = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "launch", ofType: "mp3")!))
             audio.prepareToPlay()
             audio.enableRate = true
             audio.rate = 1.8
