@@ -62,8 +62,6 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     @IBOutlet var katakanaDescriptionTextView: UIView!
     
 
-    
-    
     //Mark: Stack View Outlets
     @IBOutlet weak var studyStack: UIStackView!
     
@@ -80,11 +78,6 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     @IBOutlet weak var comboLabel: UILabel!
     
     @IBOutlet weak var characterLabel: UILabel!
-    
-    
-    
-    
-    
     
     var menuButtons: [UIButton]!
     
@@ -393,13 +386,12 @@ extension HiraganaHomeScreenViewController {
                 self.ComboStack.center.y = self.ComboStack.center.y - 125
                 self.effects.sound(.two, nil, nil)
                 self.comboButton.animateShadow(pulsing: true, color: UIColor.peach)
+                
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
                     self.studyStack.center.x = self.studyStack.center.x + 115
-                    self.challengeLabel.alpha = 1
                     self.effects.sound(.one, nil, nil)
                     self.studyButton.animateShadow(pulsing: true, color: UIColor.lavender)
-                    
                 }) { _ in
                     self.challengeLabel.alpha = 1
                 }
