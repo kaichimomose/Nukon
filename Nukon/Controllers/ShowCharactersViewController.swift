@@ -118,6 +118,12 @@ class ShowCharactersViewController: UIViewController {
     var currentNumber: Int = 1
     var recognitionIsEnd: Bool = true
     
+    var redCounter = 0
+    var orangeCounter = 0
+    var lightOrangeCounter = 0
+    var lightGreenCounter = 0
+    var greenCounter = 0
+    
     // values for voice recognization
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja-JP"))!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -130,8 +136,14 @@ class ShowCharactersViewController: UIViewController {
     @IBOutlet weak var nextCharacterButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
+    
     @IBOutlet weak var notOkButton: UIButton!
+    @IBOutlet weak var notBadButton: UIButton!
+    @IBOutlet weak var sosoButton: UIButton!
+    @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var goodButton: UIButton!
+    
+    @IBOutlet weak var confatableLevel: UILabel!
     
     // create cancel or exit button, takes user back to overview screen
     @IBOutlet weak var cancelButton: UIButton!
@@ -193,7 +205,8 @@ class ShowCharactersViewController: UIViewController {
         switch self.order {
             case .orderly:
                 
-                self.nextCharacterButton.alpha = 0.5
+                self.commentLabel.alpha = 0.0
+                self.nextCharacterButton.alpha = 0.0
                 self.nextCharacterButton.isEnabled = false
                 
                 self.shownCharacter = orderCharacter()
@@ -256,10 +269,9 @@ class ShowCharactersViewController: UIViewController {
             default:
                 self.view.backgroundColor = UIColor.katakanaDarkBackground
             }
-            
-            self.moveCharacter()
         }
         
+        self.moveCharacter()
     }
     
     func updateLabels() {
@@ -274,24 +286,27 @@ class ShowCharactersViewController: UIViewController {
         self.countCharacters.text = "\(self.currentNumber)/\(self.totalNumberOfCharacter)"
         switch self.judge {
         case .correct:
+            self.characterButton.isEnabled = false
             self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
+            //color animation
             self.pulsate()
+            //sound animation
             self.effects.sound(nil, .right, nil)
-            self.enableJudgeButtons()
-//            let when = DispatchTime.now() + 1.5 // delay for the number of seconds
-//            DispatchQueue.main.asyncAfter(deadline: when) {
-                // Your code with delay
-                //stops recording
+            self.fadeInJudgeButtons()
+            let when = DispatchTime.now() + 1.5 // delay for the number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                // code with delay
+                //makes characterbutton enable
+                self.characterButton.isEnabled = true
+            }
             self.nextCharacterButton.isEnabled = true
-//            }
         case .wrong, .wait:
             self.soundLabel.alpha = 1
             self.soundLabel.text = self.sound
             self.characterButton.backgroundColor = .materialBeige
             self.shakeCharacter()
-//            self.effects.sound(nil, .wrong)
-            self.enableJudgeButtons()
+            self.fadeInJudgeButtons()
 //            let when = DispatchTime.now() + 2 // delay for the number of seconds
 //            DispatchQueue.main.asyncAfter(deadline: when) {
                 // Your code with delay
@@ -474,25 +489,49 @@ class ShowCharactersViewController: UIViewController {
         self.soundLabel.alpha = 1
         self.soundLabel.text = self.sound
         
-        let fadeout = {
-            self.soundLabel.alpha = 0
-        }
+         if order == .randomly {
         
-        UIView.animate(withDuration: 2.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity:0.7, options: .curveEaseInOut, animations: fadeout, completion: nil)
+            let fadeout = {
+                self.soundLabel.alpha = 0
+            }
+
+            UIView.animate(withDuration: 2.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity:0.7, options: .curveEaseInOut, animations: fadeout, completion: nil)
+        }
     }
     
     func enableJudgeButtons() {
+        self.confatableLevel.alpha = 1
         self.judgeButtons.forEach { button in
+            button.transform = CGAffineTransform.identity
             button.alpha = 1
             button.isEnabled = true
         }
     }
     
     func unenableJudgeButtons() {
+        self.confatableLevel.alpha = 0
         self.judgeButtons.forEach { button in
-            button.alpha = 0.5
+//            button.transform = CGAffineTransform(scaleX: 0, y: 0)
+            button.alpha = 0.0
             button.isEnabled = false
         }
+    }
+    
+    
+    func fadeInJudgeButtons() {
+        let enable = {
+            self.enableJudgeButtons()
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity:0.7, options: .curveEaseInOut, animations: enable, completion: nil)
+    }
+    
+    func fadeOutJudgeButtons() {
+        let unenable = {
+            self.unenableJudgeButtons()
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity:0.7, options: .curveEaseInOut, animations: unenable, completion: nil)
     }
     
     func dismissView() {
@@ -508,22 +547,23 @@ class ShowCharactersViewController: UIViewController {
         if counter == totalNumberOfCharacter {
             self.dismissView()
         } else {
-            self.unenableJudgeButtons()
             switch self.order {
                 case .orderly:
                     
-                    self.nextCharacterButton.alpha = 0.5
+                    self.commentLabel.alpha = 0.0
+                    self.nextCharacterButton.alpha = 0.0
                     self.nextCharacterButton.isEnabled = false
                     
                     self.shownCharacter = orderCharacter()
                 case .randomly:
                     self.shownCharacter = randomCharacter()
             }
+            self.fadeOutJudgeButtons()
             self.comment = .start
             self.buttonTitle = .start
             self.judge = .yet
             self.updateLabels()
-//            moveCharacter()
+            moveCharacter()
         }
     }
     
@@ -532,14 +572,15 @@ class ShowCharactersViewController: UIViewController {
             //move downwards
             let downwards = {
                 self.characterButton.center.y = self.characterView.center.y + 35
-                
+                self.soundLabel.center.y = self.soundLabel.center.y + 35
             }
             
-            UIView.animate(withDuration: 1.0, delay: 1.5, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: .curveEaseInOut, animations: downwards, completion: nil)
+            UIView.animate(withDuration: 1.0, delay: 1.5, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: [.curveEaseInOut, .allowUserInteraction], animations: downwards, completion: nil)
             
             //move upwards
             let upwards = {
                 self.characterButton.center.y = self.characterButton.center.y - 35
+                self.soundLabel.center.y = self.soundLabel.center.y - 35
             }
             
             UIView.animate(withDuration: 2.0, delay: 4.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: [.curveEaseInOut, .allowUserInteraction], animations: upwards, completion: nil)
@@ -551,6 +592,10 @@ class ShowCharactersViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func characterTapped(_ sender: Any) {
+        //stop animation
+        self.characterButton.layer.removeAllAnimations()
+        self.soundLabel.layer.removeAllAnimations()
+        
         speakJapanese(string: self.shownCharacter)
         if self.judge == .yet {
             soundAnimation()
@@ -561,8 +606,8 @@ class ShowCharactersViewController: UIViewController {
             let onboardAnimation = {
                 self.characterView.backgroundColor = .clear
                 self.buttonsView.backgroundColor = self.backgroundColor
-                self.commentLabel.alpha = 1
                 self.recordButtonView.backgroundColor = self.backgroundColor
+                self.commentLabel.alpha = 1
                 self.nextCharacterButton.alpha = 1
                 self.judgeButtons.forEach { button in
                     button.alpha = 1
@@ -576,6 +621,7 @@ class ShowCharactersViewController: UIViewController {
                 self.recordButtonView.backgroundColor = .clear
                 
                 self.view.backgroundColor = self.backgroundColor
+                
                 //make imformation button enable
                 self.information.isEnabled = true
                 self.information.alpha =  1
@@ -591,10 +637,11 @@ class ShowCharactersViewController: UIViewController {
         } else {
             if self.order == .orderly {
                 
+                self.commentLabel.alpha = 1
                 self.nextCharacterButton.alpha = 1
                 self.nextCharacterButton.isEnabled = true
                 
-                enableJudgeButtons()
+                fadeInJudgeButtons()
             }
         }
     }
@@ -657,27 +704,37 @@ class ShowCharactersViewController: UIViewController {
     }
     
     @IBAction func notOkButtonTapped(_ sender: Any) {
+        self.redCounter += 1
+//        self.notOkButton.setTitle(String(self.redCounter), for: .normal)
         self.updateCoreData(confidence: 0)
         self.dissmissOrNextCharacter()
     }
     
     
     @IBAction func orangeButtonTapped(_ sender: Any) {
+        self.orangeCounter += 1
+//        self.notBadButton.setTitle(String(self.orangeCounter), for: .normal)
         self.updateCoreData(confidence: 1)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func middleButtonTapped(_ sender: Any) {
+        self.lightOrangeCounter += 1
+//        self.sosoButton.setTitle(String(self.lightOrangeCounter), for: .normal)
         self.updateCoreData(confidence: 2)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func yellowButtonTapped(_ sender: Any) {
+        self.lightGreenCounter += 1
+//        self.okButton.setTitle(String(self.lightGreenCounter), for: .normal)
         self.updateCoreData(confidence: 3)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func goodButtonTapped(_ sender: Any) {
+        self.greenCounter += 1
+//        self.goodButton.setTitle(String(self.greenCounter), for: .normal)
         self.updateCoreData(confidence: 4)
         self.dissmissOrNextCharacter()
     }
@@ -700,8 +757,7 @@ class ShowCharactersViewController: UIViewController {
     
     func animateInFirstWalkthrough() {
         self.view.addSubview(confidenceWalkthrough)
-        
-        
+
         confidenceWalkthrough.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
         
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {

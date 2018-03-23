@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Speech
 
 class Exit: UIButton {
 
@@ -42,9 +43,15 @@ class Exit: UIButton {
                 self.dismissSuperview(self.dismissedView)
             }, completion: { (_) in
                 
-                if let view = self.appointedView {
-                    self.appointSuperview(view)
-                }
+//                if let view = self.appointedView {
+//                    self.appointSuperview(view)
+//
+//                }
+                
+                SFSpeechRecognizer.requestAuthorization({ (authStatus) in
+                    print(authStatus)
+                })
+                
             })
         }
     }
@@ -73,4 +80,5 @@ class Exit: UIButton {
         }, completion: nil)
 
     }
+    
 }

@@ -32,8 +32,8 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
     let cellReuseIdentifer = "FirstCharacterCell"
     
     //collectionView layout
-//    let layout = UICollectionViewFlowLayout() //UPCarouselFlowLayout()
-//    let inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    let layout = UICollectionViewFlowLayout() //UPCarouselFlowLayout()
+    let inset = UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -45,12 +45,14 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
         
         collectionView.register(UINib.init(nibName: "FirstCharacterCell", bundle: .main), forCellWithReuseIdentifier: cellReuseIdentifer)
         
-//        layout.minimumLineSpacing = 0
-//        layout.minimumInteritemSpacing = 0
-//        layout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-//        layout.itemSize = CGSize(width: collectionView.frame.height, height: collectionView.frame.height)
+        let height: CGFloat = 350
+        let width = collectionView.frame.width
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.estimatedItemSize = CGSize(width: width, height: height)
+        layout.itemSize = CGSize(width: width, height: height)
 
-//        collectionView.collectionViewLayout = layout
+        collectionView.collectionViewLayout = layout
         collectionView.alwaysBounceVertical = true
 //        collectionView.isPagingEnabled = true
 
@@ -114,17 +116,17 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return self.numberOfUnlockedCell    //japaneseList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0
+//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let firstCharacterCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifer, for: indexPath) as! FirstCharacterCell
@@ -140,19 +142,19 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         }
         
         //arrows control
-        if self.numberOfUnlockedCell == 1 {
-            firstCharacterCell.upwardsArrowButton.alpha = 0
-            firstCharacterCell.downwardsArrowButton.alpha = 0
-        } else if row == 0 {
-            firstCharacterCell.upwardsArrowButton.alpha = 0
-            firstCharacterCell.downwardsArrowButton.alpha = 0.5
-        } else if row == self.numberOfUnlockedCell - 1{
-            firstCharacterCell.upwardsArrowButton.alpha = 0.5
-            firstCharacterCell.downwardsArrowButton.alpha = 0
-        } else {
-            firstCharacterCell.upwardsArrowButton.alpha = 0.5
-            firstCharacterCell.downwardsArrowButton.alpha = 0.5
-        }
+//        if self.numberOfUnlockedCell == 1 {
+//            firstCharacterCell.upwardsArrowButton.alpha = 0
+//            firstCharacterCell.downwardsArrowButton.alpha = 0
+//        } else if row == 0 {
+//            firstCharacterCell.upwardsArrowButton.alpha = 0
+//            firstCharacterCell.downwardsArrowButton.alpha = 0.5
+//        } else if row == self.numberOfUnlockedCell - 1{
+//            firstCharacterCell.upwardsArrowButton.alpha = 0.5
+//            firstCharacterCell.downwardsArrowButton.alpha = 0
+//        } else {
+//            firstCharacterCell.upwardsArrowButton.alpha = 0.5
+//            firstCharacterCell.downwardsArrowButton.alpha = 0.5
+//        }
         
         //send propaties
         firstCharacterCell.row = row

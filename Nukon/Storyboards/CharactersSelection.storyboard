@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yjq-3s-vRX">
-                                <rect key="frame" x="0.0" y="25" width="375" height="642"/>
+                                <rect key="frame" x="0.0" y="25" width="375" height="587"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vL3-zO-JuI">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
@@ -166,7 +166,7 @@
                                         </subviews>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CCQ-Ab-ppn">
-                                        <rect key="frame" x="0.0" y="96" width="375" height="496"/>
+                                        <rect key="frame" x="0.0" y="96" width="375" height="491"/>
                                         <color key="backgroundColor" red="0.70196078431372544" green="0.80392156862745101" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Par-ce-V5o">
                                             <size key="itemSize" width="162" height="278"/>
@@ -176,7 +176,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ConsonantViewCell" id="t0N-6X-xTJ" customClass="ConsonantViewCell" customModule="Nukon" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="109" width="162" height="278"/>
+                                                <rect key="frame" x="0.0" y="106.5" width="162" height="278"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="278"/>
@@ -206,7 +206,7 @@
                                                 </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OverViewCell" id="WYo-Vr-Pj4" customClass="OverViewCell" customModule="Nukon" customModuleProvider="target">
-                                                <rect key="frame" x="172" y="109" width="162" height="278"/>
+                                                <rect key="frame" x="172" y="106.5" width="162" height="278"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="278"/>
@@ -237,34 +237,37 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytF-Lt-8Sd">
-                                        <rect key="frame" x="0.0" y="592" width="375" height="50"/>
-                                        <color key="backgroundColor" red="0.96522730590000005" green="0.95312029119999997" blue="0.89265578990000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="OTz-AI-pWu"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                        <state key="normal" title="PRACTICE">
-                                            <color key="titleColor" red="0.93271499869999996" green="0.52084916830000005" blue="0.49745017289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath=".layer.cornerRadious">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="practiceButtonTapped:" destination="eFm-zB-KpV" eventType="touchUpInside" id="m06-fl-ooN"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytF-Lt-8Sd">
+                                <rect key="frame" x="5" y="612" width="365" height="50"/>
+                                <color key="backgroundColor" red="0.96522730590000005" green="0.95312029119999997" blue="0.89265578990000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="OTz-AI-pWu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="PRACTICE">
+                                    <color key="titleColor" red="0.93271499869999996" green="0.52084916830000005" blue="0.49745017289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath=".layer.cornerRadious">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="practiceButtonTapped:" destination="eFm-zB-KpV" eventType="touchUpInside" id="m06-fl-ooN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.70207160711288452" green="0.80449867248535156" blue="0.99143487215042114" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Yk4-WL-Ks1" firstAttribute="trailing" secondItem="Yjq-3s-vRX" secondAttribute="trailing" id="8q0-xW-gLs"/>
+                            <constraint firstItem="ytF-Lt-8Sd" firstAttribute="leading" secondItem="Yk4-WL-Ks1" secondAttribute="leading" constant="5" id="D5B-Ve-KBe"/>
+                            <constraint firstItem="ytF-Lt-8Sd" firstAttribute="top" secondItem="Yjq-3s-vRX" secondAttribute="bottom" id="Isz-gq-UPw"/>
+                            <constraint firstItem="ytF-Lt-8Sd" firstAttribute="trailing" secondItem="Yk4-WL-Ks1" secondAttribute="trailing" constant="-5" id="KYf-F9-ftm"/>
                             <constraint firstItem="Yjq-3s-vRX" firstAttribute="leading" secondItem="Yk4-WL-Ks1" secondAttribute="leading" id="OBk-j7-Hnw"/>
+                            <constraint firstItem="ytF-Lt-8Sd" firstAttribute="bottom" secondItem="Yk4-WL-Ks1" secondAttribute="bottom" constant="-5" id="Q0X-nK-YJu"/>
                             <constraint firstItem="Yjq-3s-vRX" firstAttribute="top" secondItem="Yk4-WL-Ks1" secondAttribute="top" constant="5" id="kZ4-he-WLI"/>
-                            <constraint firstItem="Yjq-3s-vRX" firstAttribute="bottom" secondItem="Yk4-WL-Ks1" secondAttribute="bottom" id="mgC-5p-Fia"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yk4-WL-Ks1"/>
                     </view>
@@ -278,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sC-Me-ec7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668.11594202898561" y="197.28260869565219"/>
+            <point key="canvasLocation" x="668" y="196.55172413793105"/>
         </scene>
     </scenes>
     <resources>
