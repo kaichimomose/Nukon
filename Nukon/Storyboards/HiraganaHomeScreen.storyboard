@@ -248,7 +248,7 @@
                             <rect key="frame" x="0.0" y="44" width="303" height="54"/>
                             <attributedString key="attributedText">
                                 <fragment>
-                                    <string key="content">Hiragana is but one character set within Japanese and arguably the most essential for beginners. Learn how these characters look and what sounds they make and your foundation will be as solid when reading and pronouncing words later on.</string>
+                                    <string key="content">Hiragana is but one character set within Japanese and arguably the most essential for beginners. Learn how these characters look and sound and your foundation will be solid when reading and pronouncing words later on.</string>
                                     <attributes>
                                         <color key="NSColor" red="0.95294000000000001" green="0.43529000000000001" blue="0.42745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <font key="NSFont" size="14" name="AvenirNext-DemiBold"/>
@@ -269,14 +269,14 @@
                     <viewLayoutGuide key="safeArea" id="6jx-AZ-gx3"/>
                 </view>
                 <view contentMode="scaleToFill" id="74A-o2-rg9" userLabel="KatakanaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="303" height="114"/>
+                    <rect key="frame" x="0.0" y="0.0" width="303" height="132"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-e2-00W">
-                            <rect key="frame" x="0.0" y="44" width="303" height="36"/>
+                            <rect key="frame" x="0.0" y="44" width="303" height="54"/>
                             <attributedString key="attributedText">
                                 <fragment>
-                                    <string key="content">Katakana is another character set within Japanese. You'll realize as you study that these characters are pronounced the same as Hiragana. However, this set is used to represent sounds of foreign words.</string>
+                                    <string key="content">Katakana is another character set within Japanese. You'll realize as you study that these characters have the same pronunciation as Hiragana characters. However, this set is used to represent foreign (non-Japanese) words.</string>
                                     <attributes>
                                         <color key="NSColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="14" name="AvenirNext-DemiBold"/>

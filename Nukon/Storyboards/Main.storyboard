@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo2" translatesAutoresizingMaskIntoConstraints="NO" id="bOF-me-kia">
-                                <rect key="frame" x="112.5" y="272" width="150" height="150"/>
+                                <rect key="frame" x="112.5" y="282" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="GBA-VJ-dg3"/>
                                     <constraint firstAttribute="height" constant="150" id="z83-5y-uFw"/>
@@ -58,7 +58,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bOF-me-kia" firstAttribute="centerX" secondItem="kHY-9a-Mwj" secondAttribute="centerX" id="1ZM-JM-kXe"/>
-                            <constraint firstItem="bOF-me-kia" firstAttribute="centerY" secondItem="kHY-9a-Mwj" secondAttribute="centerY" multiplier="1.04" id="oDr-1e-tRX"/>
+                            <constraint firstItem="bOF-me-kia" firstAttribute="centerY" secondItem="kHY-9a-Mwj" secondAttribute="centerY" multiplier="1.07" id="oDr-1e-tRX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zD3-cn-CDf"/>
                     </view>
