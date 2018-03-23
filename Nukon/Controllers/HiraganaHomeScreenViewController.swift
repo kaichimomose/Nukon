@@ -237,23 +237,28 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         let fetchRequest: NSFetchRequest<Consonant> = Consonant.fetchRequest()
         // Add Specific type Descriptors
         fetchRequest.predicate = NSPredicate(format: "system == %@ OR system == %@", japaneseType.rawValue, yVowelJapanese.rawValue)
+        // initializes showingCharacter
+        self.showingCharacters = [:]
         do {
             let result = try self.coreDataStack.viewContext.fetch(fetchRequest)
 
             for item in result {
                 guard let consonant = item.consonant else {return}
                 if item.isUnlocked {
-                    showingCharacters[consonant] = []
+                    var characterList = [String]()
                     let words = item.words?.allObjects as? [WordLearnt]
                     guard let wordsLearnt = words else {return}
                     for wordLearnt in wordsLearnt {
                         if wordLearnt.confidenceCounter > 0 {
-                            showingCharacters[consonant]?.append(wordLearnt.word!)
+                            characterList.append(wordLearnt.word!)
                             characterDict[wordLearnt.word!] = wordLearnt
                         }
                     }
-                    //sort letters
-                    showingCharacters[consonant]!.sort()
+                    if characterList.count > 0 {
+                        showingCharacters[consonant] = characterList
+                        //sort letters
+                        showingCharacters[consonant]!.sort()
+                    }
                 }
             }
         } catch let error {
@@ -309,6 +314,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     
     @IBAction func studyButonTapped(_ sender: Any) {
         fetchCoredata()
+        print(self.showingCharacters)
         if !self.showingCharacters.isEmpty {
             let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
             let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
