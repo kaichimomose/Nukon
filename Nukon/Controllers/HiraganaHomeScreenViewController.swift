@@ -126,7 +126,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     override func viewDidAppear(_ animated: Bool) {
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.homeSunButton.transform = CGAffineTransform(scaleX: 0.60, y: 0.60)
+            self.homeSunButton.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         }) { (_) in
             
             UIView.animate(withDuration: 0.5, animations: {
