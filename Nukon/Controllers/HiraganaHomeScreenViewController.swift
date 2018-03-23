@@ -57,13 +57,11 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     
     @IBOutlet weak var characterButton: characterListButton!
     
-    @IBOutlet weak var info: UIButton!
-    
     @IBOutlet var hiraganaDescriptionTextView: UIView!
     
     @IBOutlet var katakanaDescriptionTextView: UIView!
     
-    @IBOutlet weak var dismissButton: UIButton!
+
     
     
     //Mark: Stack View Outlets
@@ -111,11 +109,6 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         //Bring Home Sun Button to the front
         view.bringSubview(toFront: homeSunButton)
         
-        //Ovalize dismiss Button and hide
-        dismissButton.layer.cornerRadius = dismissButton.layer.frame.height / 2
-        
-        dismissButton.isHidden = true
-        
         // Do any additional setup after loading the view.
         menuButtons = [self.homeSunButton, self.studyButton, self.comboButton, self.characterButton]
         
@@ -132,6 +125,29 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         
         //Create pulsating layer on View Controller's View
         createPulseLayer()
+        
+        //Bring in description
+        animateIn(with: japaneseType!)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.homeSunButton.transform = CGAffineTransform(scaleX: 0.60, y: 0.60)
+        }) { (_) in
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.homeSunButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            }, completion: { (_) in
+                
+                UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 6.0, options: .curveEaseInOut, animations: {
+                    self.homeSunButton.transform = CGAffineTransform.identity
+                }, completion: nil)
+            })
+        }
+        
+        animateSunButtonLabel(show: true)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,7 +164,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             self.view.bringSubview(toFront: hiraganaDescriptionTextView)
             
             hiraganaDescriptionTextView.layer.cornerRadius = 7
-            hiraganaDescriptionTextView.center = CGPoint(x: view.center.x - (view.center.x * 2), y: view.center.y + 140)
+            hiraganaDescriptionTextView.center = CGPoint(x: view.center.x - (view.center.x * 2), y: view.center.y * 1.55)
             hiraganaDescriptionTextView.alpha = 0
             
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
@@ -160,7 +176,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             self.view.addSubview(katakanaDescriptionTextView)
             self.view.bringSubview(toFront: katakanaDescriptionTextView)
             katakanaDescriptionTextView.layer.cornerRadius = 7
-            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y + 140)
+            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y * 1.6)
             katakanaDescriptionTextView.alpha = 0
             
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
@@ -209,14 +225,6 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         }
     }
     
-    func animateInDismissButton() {
-        dismissButton.transform = CGAffineTransform.init(scaleX: 0.01, y: 0.01)
-        dismissButton.isHidden = false
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 9, options: .curveEaseIn, animations: {
-            self.dismissButton.transform = CGAffineTransform.identity
-        }, completion: nil)
-    }
     
     //shakes chracterview
     func shakeStudyStack() {
@@ -230,31 +238,8 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         self.studyStack.layer.add(shakeAnimation, forKey: "position")
     }
     
-    //info button is pressed
-    @IBAction func infoButtonTapped(_ sender: Any) {
-        if popCount == 1 {
-            popInMenuButtons()
-            disableSunButton()
-            popCount -= 1
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.85) {
-            self.animateIn(with: self.japaneseType!)
-            self.animateInDismissButton()
-        }
-        
-        info.isEnabled = false
-    }
     
-    @IBAction func dismissButtonTapped(_ sender: Any) {
-        animateOut(type: self.japaneseType)
-        
-        UIView.animate(withDuration: 0.5) {
-            self.dismissButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        }
-        
-        info.isEnabled = true
-    }
+    
     
     
     //fetch core data
@@ -290,7 +275,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     @IBAction func sunPressed(_ sender: Any) {
         
         UIView.animate(withDuration: 0.12, animations: {
-            self.homeSunButton.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+            self.homeSunButton.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         }) { (_) in
             UIView.animate(withDuration: 0.12, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 4, options: .curveLinear, animations: {
                 self.homeSunButton.transform = CGAffineTransform.identity
@@ -300,14 +285,33 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         //When sun button is pressed, animate the pulsating layer
         if popCount == 0 {
             homeSunButton.animateShadow(pulsing: false, color: UIColor.redSun)
+            animateSunButtonLabel(show: false)
             animatePulsatingLayer()
             popOutMenuButtons()
             popCount += 1
         } else {
             homeSunButton.animateShadow(pulsing: true, color: UIColor.redSun)
+            animateSunButtonLabel(show: true)
             animatePulsatingLayer()
             popInMenuButtons()
             popCount -= 1
+        }
+        
+    }
+    
+    func animateSunButtonLabel(show: Bool) {
+        
+        if show == true {
+            homeSunButton.titleLabel?.alpha = 0
+            UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .curveEaseInOut], animations: {
+                self.homeSunButton.titleLabel?.alpha = 1
+            }, completion: nil)
+            
+        } else {
+        
+            UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseOut, animations: {
+                self.homeSunButton.titleLabel?.alpha = 0
+            }, completion: nil)
         }
         
     }
@@ -375,15 +379,15 @@ extension HiraganaHomeScreenViewController {
     func popOutMenuButtons() {
         
         UIView.animate(withDuration: 1.5) {
-            self.challengeLabel.alpha = 1
             self.comboLabel.alpha = 1
             self.characterLabel.alpha = 1
         }
         
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
-            self.studyStack.center.x = self.studyStack.center.x - 115
-            self.effects.sound(.one, nil, nil)
-            self.studyButton.animateShadow(pulsing: true, color: UIColor.lavender)
+            self.characterStack.center.x = self.characterStack.center.x - 115
+            self.effects.sound(.three, nil, nil)
+            self.characterButton.animateShadow(pulsing: true, color: UIColor.materialBeige)
+            
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.ComboStack.center.y = self.ComboStack.center.y - 125
@@ -391,12 +395,18 @@ extension HiraganaHomeScreenViewController {
                 self.comboButton.animateShadow(pulsing: true, color: UIColor.peach)
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
-                    self.characterStack.center.x = self.characterStack.center.x + 115
-                    self.effects.sound(.three, nil, nil)
-                    self.characterButton.animateShadow(pulsing: true, color: UIColor.materialBeige)
-                }, completion: nil)
+                    self.studyStack.center.x = self.studyStack.center.x + 115
+                    self.challengeLabel.alpha = 1
+                    self.effects.sound(.one, nil, nil)
+                    self.studyButton.animateShadow(pulsing: true, color: UIColor.lavender)
+                    
+                }) { _ in
+                    self.challengeLabel.alpha = 1
+                }
             })
         }
+        
+        
     }
     
     func popInMenuButtons() {
