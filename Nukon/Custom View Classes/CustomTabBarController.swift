@@ -12,16 +12,19 @@ class CustomTabBarController: UITabBarController {
     
     //MARK:
     
+    var hiraganaController = HiraganaHomeScreenViewController()
+    var katakanaController = HiraganaHomeScreenViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let storyboard = UIStoryboard.init(name: "HiraganaHomeScreen", bundle: .main)
         
-        let hiraganaController = storyboard.instantiateViewController(withIdentifier: "Home") as! HiraganaHomeScreenViewController
+        hiraganaController = storyboard.instantiateViewController(withIdentifier: "Home") as! HiraganaHomeScreenViewController
         hiraganaController.japaneseType = .hiragana
         hiraganaController.backgroundColor = UIColor.hiraganaBackground
         hiraganaController.tabBarItem = UITabBarItem(title: "HIRAGANA", image: #imageLiteral(resourceName: "hirachar"), tag: 0)
         
-        let katakanaController = storyboard.instantiateViewController(withIdentifier: "Home") as! HiraganaHomeScreenViewController
+        katakanaController = storyboard.instantiateViewController(withIdentifier: "Home") as! HiraganaHomeScreenViewController
         katakanaController.japaneseType = .katakana
         katakanaController.backgroundColor = UIColor.katakanaBackground
         katakanaController.tabBarItem = UITabBarItem(title: "KATAKANA", image: #imageLiteral(resourceName: "katachar"), tag: 1)
@@ -36,14 +39,14 @@ class CustomTabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item.title == "HIRAGANA" {
+            katakanaController.popInMenuButtons()
+            katakanaController.popCount = 0
+        } else {
+            hiraganaController.popInMenuButtons()
+            hiraganaController.popCount = 0
+        }
     }
-    */
 
 }

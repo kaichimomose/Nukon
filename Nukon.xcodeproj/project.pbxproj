@@ -42,6 +42,9 @@
 		F60611DA2049F673007407C3 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60611D92049F673007407C3 /* MenuButton.swift */; };
 		F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */; };
 		F629807C2063770800356A55 /* launch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F629807B2063770800356A55 /* launch.mp3 */; };
+		F629807E20638CD200356A55 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F629807D20638CD200356A55 /* LaunchScreenViewController.swift */; };
+		F629808020638DE100356A55 /* LaunchScreenBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F629807F20638DE100356A55 /* LaunchScreenBackground.swift */; };
+		F62980822064425E00356A55 /* inflate.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F62980812064425E00356A55 /* inflate.mp3 */; };
 		F63A61D3205AFAED00D86CC5 /* Stretch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F63A61D2205AFAED00D86CC5 /* Stretch.mp3 */; };
 		F63A61D5205B1FDC00D86CC5 /* realStretch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F63A61D4205B1FDC00D86CC5 /* realStretch.mp3 */; };
 		F63A61D7205B548D00D86CC5 /* cartoon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F63A61D6205B548D00D86CC5 /* cartoon.mp3 */; };
@@ -105,6 +108,9 @@
 		F60611D92049F673007407C3 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F611A6AD1FDCA878004B4138 /* tabGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabGradientButton.swift; sourceTree = "<group>"; };
 		F629807B2063770800356A55 /* launch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = launch.mp3; sourceTree = "<group>"; };
+		F629807D20638CD200356A55 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		F629807F20638DE100356A55 /* LaunchScreenBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenBackground.swift; sourceTree = "<group>"; };
+		F62980812064425E00356A55 /* inflate.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = inflate.mp3; sourceTree = "<group>"; };
 		F63A61D2205AFAED00D86CC5 /* Stretch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Stretch.mp3; sourceTree = "<group>"; };
 		F63A61D4205B1FDC00D86CC5 /* realStretch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = realStretch.mp3; sourceTree = "<group>"; };
 		F63A61D6205B548D00D86CC5 /* cartoon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cartoon.mp3; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 				BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 				F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */,
+				F629807D20638CD200356A55 /* LaunchScreenViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -268,6 +275,7 @@
 				BF5042392054CD0E00490A1A /* CustomTabBarController.swift */,
 				F64BBE572056E3ED00909ED8 /* SoundEffects.swift */,
 				F6ADBD4E205DB114008576D5 /* Exit.swift */,
+				F629807F20638DE100356A55 /* LaunchScreenBackground.swift */,
 			);
 			path = "Custom View Classes";
 			sourceTree = "<group>";
@@ -283,6 +291,7 @@
 		F649BADA2057395A0026733F /* Sound Effects */ = {
 			isa = PBXGroup;
 			children = (
+				F62980812064425E00356A55 /* inflate.mp3 */,
 				F629807B2063770800356A55 /* launch.mp3 */,
 				F63A61D6205B548D00D86CC5 /* cartoon.mp3 */,
 				F63A61D2205AFAED00D86CC5 /* Stretch.mp3 */,
@@ -386,6 +395,7 @@
 				F64CE7702045AC2000C480EB /* HiraganaHomeScreen.storyboard in Resources */,
 				BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */,
 				BFB83CEA1FE19CF30017D0E7 /* Metal_Gong.mp3 in Resources */,
+				F62980822064425E00356A55 /* inflate.mp3 in Resources */,
 				F649BAE72057395B0026733F /* bell_2x.mp3 in Resources */,
 				F649BAE62057395B0026733F /* swooshBackThree.mp3 in Resources */,
 				BF9ADFCF202AC01A0024A71C /* CharactersSelection.storyboard in Resources */,
@@ -419,6 +429,7 @@
 				F691EEF92048B6CF00ED5DA8 /* SunButton.swift in Sources */,
 				BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */,
 				BF719914203BBEC100E3A03D /* Posibilities.swift in Sources */,
+				F629808020638DE100356A55 /* LaunchScreenBackground.swift in Sources */,
 				F64BBE582056E3ED00909ED8 /* SoundEffects.swift in Sources */,
 				BF50422B204DF26600490A1A /* ConsonantViewCell.swift in Sources */,
 				BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */,
@@ -446,6 +457,7 @@
 				F6AED90520580A7700BCC631 /* ShowCharacters+extension.swift in Sources */,
 				F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */,
 				F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */,
+				F629807E20638CD200356A55 /* LaunchScreenViewController.swift in Sources */,
 				BF76DDDC1FD9EF4A0030F52B /* CustomImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

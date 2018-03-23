@@ -61,10 +61,6 @@
                                                             <constraint firstAttribute="height" constant="30" id="e5g-Ye-aYl"/>
                                                             <constraint firstAttribute="width" constant="30" id="hfI-Nq-4Bc"/>
                                                         </constraints>
-                                                        <state key="normal" image="info_icon"/>
-                                                        <connections>
-                                                            <action selector="infoButtonTapped:" destination="VLa-bD-zdX" eventType="touchUpInside" id="cYD-Tr-r59"/>
-                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waS-vc-iIM">
                                                         <rect key="frame" x="375" y="0.0" width="0.0" height="30"/>
@@ -104,29 +100,19 @@
                                     <constraint firstAttribute="height" constant="100" id="DLt-iY-zeu"/>
                                     <constraint firstAttribute="width" constant="100" id="xkU-uF-hkP"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="sunPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="X7c-YL-Wk4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PE2-pH-nWh">
-                                <rect key="frame" x="152.66666666666666" y="730.66666666666663" width="70" height="30"/>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="cCu-fF-f7H"/>
-                                    <constraint firstAttribute="height" constant="30" id="gye-Ys-86B"/>
-                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Dismiss">
+                                        <fragment content="PRESS">
                                             <attributes>
-                                                <color key="NSColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="15" name="AvenirNext-DemiBold"/>
+                                                <color key="NSColor" red="0.95686274510000002" green="0.94509803920000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="11" name="AvenirNext-DemiBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="dismissButtonTapped:" destination="VLa-bD-zdX" eventType="touchUpInside" id="gZ7-vi-vdY"/>
+                                    <action selector="sunPressed:" destination="VLa-bD-zdX" eventType="touchUpInside" id="X7c-YL-Wk4"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AQA-pM-OVx">
@@ -228,17 +214,11 @@
                             <constraint firstItem="BYN-Gg-fCu" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.09" id="Lst-FH-UjH"/>
                             <constraint firstItem="oup-LF-boy" firstAttribute="trailing" secondItem="bUi-lu-CfC" secondAttribute="trailing" id="NQo-X7-l5k"/>
                             <constraint firstItem="BYN-Gg-fCu" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="QMx-FP-3bf"/>
-                            <constraint firstItem="PE2-pH-nWh" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="TCs-8h-l77"/>
                             <constraint firstItem="bUi-lu-CfC" firstAttribute="top" secondItem="oup-LF-boy" secondAttribute="top" constant="5" id="VT6-g8-ecb"/>
                             <constraint firstItem="AQA-pM-OVx" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="dNd-fS-bff"/>
                             <constraint firstItem="Yp0-Lz-ksZ" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.05" id="fDp-Ka-ZOn"/>
                             <constraint firstItem="bM1-5W-Bb6" firstAttribute="centerX" secondItem="ELe-iZ-SAk" secondAttribute="centerX" id="her-O0-xeT"/>
                             <constraint firstItem="bM1-5W-Bb6" firstAttribute="centerY" secondItem="ELe-iZ-SAk" secondAttribute="centerY" multiplier="1.09" id="jdW-WK-R5w"/>
-                            <constraint firstItem="oup-LF-boy" firstAttribute="bottom" secondItem="PE2-pH-nWh" secondAttribute="bottom" multiplier="1.022" id="k7g-jc-N06">
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </constraint>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oup-LF-boy"/>
                     </view>
@@ -250,10 +230,8 @@
                         <outlet property="characterStack" destination="BYN-Gg-fCu" id="Aa1-sw-PyM"/>
                         <outlet property="comboButton" destination="ZHx-Cg-hO0" id="Nib-23-non"/>
                         <outlet property="comboLabel" destination="jYM-ve-heO" id="FwY-MS-JHD"/>
-                        <outlet property="dismissButton" destination="PE2-pH-nWh" id="Z07-kk-6Qq"/>
                         <outlet property="hiraganaDescriptionTextView" destination="bzy-fw-G2H" id="c80-pa-gNJ"/>
                         <outlet property="homeSunButton" destination="Yp0-Lz-ksZ" id="gkc-e9-fdT"/>
-                        <outlet property="info" destination="USO-f0-7Y2" id="r2e-0y-8K5"/>
                         <outlet property="katakanaDescriptionTextView" destination="74A-o2-rg9" id="mb0-8u-5wW"/>
                         <outlet property="studyButton" destination="WjG-xd-Om5" id="Cfp-IU-qpq"/>
                         <outlet property="studyStack" destination="bM1-5W-Bb6" id="jew-Fh-jST"/>
@@ -263,14 +241,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSZ-GJ-n54" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="bzy-fw-G2H" userLabel="HiraganaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="303" height="115"/>
+                    <rect key="frame" x="0.0" y="0.0" width="303" height="132"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0g-N2-NCg">
-                            <rect key="frame" x="0.0" y="44" width="303" height="37"/>
+                            <rect key="frame" x="0.0" y="44" width="303" height="54"/>
                             <attributedString key="attributedText">
                                 <fragment>
-                                    <string key="content">Hiragana is but one character set within Japanese and arguably the most essential for beginners. Learn these characters and you foundation will be as solid as bedrock when learning and pronouncing words later on.</string>
+                                    <string key="content">Hiragana is but one character set within Japanese and arguably the most essential for beginners. Learn how these characters look and what sounds they make and your foundation will be as solid when reading and pronouncing words later on.</string>
                                     <attributes>
                                         <color key="NSColor" red="0.95294000000000001" green="0.43529000000000001" blue="0.42745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <font key="NSFont" size="14" name="AvenirNext-DemiBold"/>
@@ -291,11 +269,11 @@
                     <viewLayoutGuide key="safeArea" id="6jx-AZ-gx3"/>
                 </view>
                 <view contentMode="scaleToFill" id="74A-o2-rg9" userLabel="KatakanaDescription">
-                    <rect key="frame" x="0.0" y="0.0" width="316" height="114"/>
+                    <rect key="frame" x="0.0" y="0.0" width="303" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-e2-00W">
-                            <rect key="frame" x="0.0" y="44" width="316" height="36"/>
+                            <rect key="frame" x="0.0" y="44" width="303" height="36"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">Katakana is another character set within Japanese. You'll realize as you study that these characters are pronounced the same as Hiragana. However, this set is used to represent sounds of foreign words.</string>
@@ -333,7 +311,6 @@
     <resources>
         <image name="character" width="29" height="32"/>
         <image name="combos" width="35" height="32"/>
-        <image name="info_icon" width="120" height="120"/>
         <image name="study" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>

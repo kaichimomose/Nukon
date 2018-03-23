@@ -11,7 +11,7 @@ import UIKit
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let cellId = "MenuCell"
-    let imageName = ["circle", "circle_collection"]
+    let imageName = ["consonantOverview", "circle_collection"]
     
     var japaneseCharacterCVC: JapaneseCharactersCollectionViewController?
     
