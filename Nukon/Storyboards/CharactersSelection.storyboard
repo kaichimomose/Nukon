@@ -185,7 +185,7 @@
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8MK-pz-i3M">
                                                             <rect key="frame" x="0.0" y="0.0" width="162" height="278"/>
                                                             <color key="backgroundColor" red="0.70095258949999995" green="0.8035282493" blue="0.99167233710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AEw-mx-k8w">
+                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="AEw-mx-k8w">
                                                                 <size key="itemSize" width="50" height="50"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -215,7 +215,7 @@
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wo1-A8-IFh">
                                                             <rect key="frame" x="0.0" y="0.0" width="162" height="278"/>
                                                             <color key="backgroundColor" red="0.70095258949999995" green="0.8035282493" blue="0.99167233710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZxG-qx-wT4">
+                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ZxG-qx-wT4">
                                                                 <size key="itemSize" width="50" height="50"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -249,11 +249,6 @@
                                 <state key="normal" title="PRACTICE">
                                     <color key="titleColor" red="0.93271499869999996" green="0.52084916830000005" blue="0.49745017289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath=".layer.cornerRadious">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="practiceButtonTapped:" destination="eFm-zB-KpV" eventType="touchUpInside" id="m06-fl-ooN"/>
                                 </connections>
