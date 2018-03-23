@@ -231,10 +231,6 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
         self.studyStack.layer.add(shakeAnimation, forKey: "position")
     }
     
-    
-    
-    
-    
     //fetch core data
     func fetchCoredata(){
         // Initialize Fetch Request\
@@ -251,8 +247,10 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
                     let words = item.words?.allObjects as? [WordLearnt]
                     guard let wordsLearnt = words else {return}
                     for wordLearnt in wordsLearnt {
-                        showingCharacters[consonant]?.append(wordLearnt.word!)
-                        characterDict[wordLearnt.word!] = wordLearnt
+                        if wordLearnt.confidenceCounter > 0 {
+                            showingCharacters[consonant]?.append(wordLearnt.word!)
+                            characterDict[wordLearnt.word!] = wordLearnt
+                        }
                     }
                     //sort letters
                     showingCharacters[consonant]!.sort()

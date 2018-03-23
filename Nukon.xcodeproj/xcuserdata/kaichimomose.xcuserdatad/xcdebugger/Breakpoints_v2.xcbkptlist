@@ -26,13 +26,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Views/ConsonantViewCell.swift"
-            timestampString = "543477260.852947"
+            timestampString = "543481052.8208849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
             landmarkName = "scrollToItemIndexPath(index:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
+            timestampString = "543481052.832746"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "816"
+            endingLineNumber = "816"
+            landmarkName = "speechRecognizer(_:availabilityDidChange:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
+            timestampString = "543481052.833059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "825"
+            endingLineNumber = "825"
+            landmarkName = "startRecording()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.ShowCharactersViewController.(startRecording in _0FA3531EEF25053B101132B634271332)() throws -&gt; ()"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/ShowCharactersViewController.swift"
+                  timestampString = "543480552.650278"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "826"
+                  endingLineNumber = "826"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nukon.ShowCharactersViewController.(startRecording in _0FA3531EEF25053B101132B634271332)() throws -&gt; ()"
+                  moduleName = "Nukon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaichimomose/Desktop/Nukon/Nukon/Controllers/ShowCharactersViewController.swift"
+                  timestampString = "543480552.654784"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "825"
+                  endingLineNumber = "825"
+                  offsetFromSymbolStart = "2188">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

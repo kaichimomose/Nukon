@@ -8,6 +8,7 @@
 
 import UIKit
 import Speech
+import AVFoundation
 
 class Exit: UIButton {
 
@@ -51,7 +52,9 @@ class Exit: UIButton {
                 SFSpeechRecognizer.requestAuthorization({ (authStatus) in
                     print(authStatus)
                 })
-                
+                AVAudioSession.sharedInstance().requestRecordPermission({ (status) in
+                    print(status)
+                })
             })
         }
     }
