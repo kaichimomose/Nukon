@@ -126,7 +126,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     override func viewDidAppear(_ animated: Bool) {
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.homeSunButton.transform = CGAffineTransform(scaleX: 0.60, y: 0.60)
+            self.homeSunButton.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         }) { (_) in
             
             UIView.animate(withDuration: 0.5, animations: {
@@ -283,16 +283,21 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             homeSunButton.animateShadow(pulsing: false, color: UIColor.redSun)
             animateSunButtonLabel(show: false)
             animatePulsatingLayer()
+            homeSunButton.isEnabled = false
             popOutMenuButtons()
             popCount += 1
         } else {
             homeSunButton.animateShadow(pulsing: true, color: UIColor.redSun)
             animateSunButtonLabel(show: true)
             animatePulsatingLayer()
+            homeSunButton.isEnabled = false
             popInMenuButtons()
             popCount -= 1
         }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.homeSunButton.isEnabled = true
+        }
     }
     
     func animateSunButtonLabel(show: Bool) {

@@ -28,6 +28,7 @@ class LaunchScreenViewController: UIViewController {
         // Do any additional setup after loading the view.
         createExpansionLayer()
         createSunLayer()
+        sunLayer.isHidden = true
         
     }
     
@@ -42,17 +43,19 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 1.8) {
+        UIView.animate(withDuration: 1.2, animations: {
             self.logo.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+
+        }) { (_) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                self.sunLayer.isHidden = false
+                self.effects.swooshResource(.inflate)
+                self.sunLayerExpansion()
+            }
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.expansion()
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.effects.swooshResource(.inflate)
-            self.sunLayerExpansion()
         }
     }
 
