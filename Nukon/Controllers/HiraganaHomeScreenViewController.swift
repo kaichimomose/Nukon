@@ -389,18 +389,20 @@ extension HiraganaHomeScreenViewController {
             self.characterStack.center.x = self.characterStack.center.x - 115
             self.effects.sound(.three, nil, nil)
             self.characterButton.animateShadow(pulsing: true, color: UIColor.materialBeige)
+            self.characterButton.isEnabled = true
             
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.ComboStack.center.y = self.ComboStack.center.y - 125
                 self.effects.sound(.two, nil, nil)
                 self.comboButton.animateShadow(pulsing: true, color: UIColor.peach)
-                
+                self.comboButton.isEnabled = true
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
                     self.studyStack.center.x = self.studyStack.center.x + 115
                     self.effects.sound(.one, nil, nil)
                     self.studyButton.animateShadow(pulsing: true, color: UIColor.lavender)
+                    self.studyButton.isEnabled = true
                 }) { _ in
                     self.challengeLabel.alpha = 1
                 }
@@ -414,14 +416,17 @@ extension HiraganaHomeScreenViewController {
         UIView.animate(withDuration: 0.2, delay: 0.125, options: .curveEaseInOut, animations: {
             self.studyStack.center.x = self.homeSunButton.center.x
             self.effects.sound(.backOne, nil, nil)
+            self.studyButton.isEnabled = false
         }) { _ in
             UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.ComboStack.center.y = self.homeSunButton.center.y
                 self.effects.sound(.backTwo, nil, nil)
+                self.comboButton.isEnabled = false
             }, completion: { (_) in
                 UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
                         self.characterStack.center.x = self.homeSunButton.center.x
                         self.effects.sound(.backThree, nil, nil)
+                        self.characterButton.isEnabled = false
                 }, completion: nil)
             })
         }
