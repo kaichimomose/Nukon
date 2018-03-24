@@ -507,7 +507,7 @@ class ShowCharactersViewController: UIViewController {
             self.enableJudgeButtons()
         }
         
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity:0.7, options: .curveEaseInOut, animations: enable, completion: nil)
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity:0.7, options: [.curveEaseInOut, .allowUserInteraction], animations: enable, completion: nil)
     }
     
     func fadeOutJudgeButtons() {

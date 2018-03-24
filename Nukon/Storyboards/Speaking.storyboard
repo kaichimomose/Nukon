@@ -546,8 +546,8 @@
                             </label>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="1sF-d3-9QY" firstAttribute="top" secondItem="dyc-e7-m04" secondAttribute="bottom" constant="40" id="0mv-XV-8aw"/>
                             <constraint firstItem="OMn-M1-PE5" firstAttribute="top" secondItem="h1i-4V-epc" secondAttribute="bottom" multiplier="1.05" id="Gbx-sS-mwN"/>
-                            <constraint firstItem="dyc-e7-m04" firstAttribute="top" secondItem="j9X-EC-Ama" secondAttribute="top" constant="30" id="Ggb-5O-doA"/>
                             <constraint firstItem="9Nk-JQ-Zud" firstAttribute="centerX" secondItem="GJO-Qq-qQo" secondAttribute="centerX" id="H78-X5-4Ad"/>
                             <constraint firstItem="1sF-d3-9QY" firstAttribute="centerX" secondItem="j9X-EC-Ama" secondAttribute="centerX" id="HDA-Jg-IEs"/>
                             <constraint firstItem="5bY-mc-YUe" firstAttribute="centerX" secondItem="L0J-9T-aBI" secondAttribute="centerX" id="Hbo-Fg-OEq"/>
@@ -635,10 +635,10 @@
                             <constraint firstItem="Fda-L7-b4a" firstAttribute="centerX" secondItem="DGY-AH-who" secondAttribute="centerX" id="HMp-KP-GXY"/>
                             <constraint firstItem="YVA-iB-iiy" firstAttribute="centerX" secondItem="DGY-AH-who" secondAttribute="centerX" id="Pkx-9t-dbV"/>
                             <constraint firstItem="Fda-L7-b4a" firstAttribute="top" secondItem="YVA-iB-iiy" secondAttribute="bottom" multiplier="1.1" id="XWs-p8-UA0"/>
-                            <constraint firstItem="kZJ-Zl-M0g" firstAttribute="top" secondItem="DGY-AH-who" secondAttribute="top" constant="30" id="bwy-sU-tEz"/>
                             <constraint firstItem="kZJ-Zl-M0g" firstAttribute="centerX" secondItem="DGY-AH-who" secondAttribute="centerX" id="iwD-ZF-tIG"/>
                             <constraint firstItem="7V5-zD-2Aq" firstAttribute="centerY" secondItem="DGY-AH-who" secondAttribute="centerY" multiplier="1.7" id="jIW-Tf-l3q"/>
                             <constraint firstItem="YVA-iB-iiy" firstAttribute="centerY" secondItem="DGY-AH-who" secondAttribute="centerY" multiplier="0.9" constant="9.3499999999999659" id="lld-x0-vWq"/>
+                            <constraint firstItem="Gb0-sM-CJE" firstAttribute="top" secondItem="kZJ-Zl-M0g" secondAttribute="bottom" constant="41.666666666666671" id="lvh-KE-eeX"/>
                             <constraint firstItem="Gb0-sM-CJE" firstAttribute="centerX" secondItem="YVA-iB-iiy" secondAttribute="centerX" id="usG-B0-nQC"/>
                         </constraints>
                     </view>

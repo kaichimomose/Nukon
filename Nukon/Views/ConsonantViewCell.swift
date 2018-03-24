@@ -32,8 +32,8 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
     let cellReuseIdentifer = "FirstCharacterCell"
     
     //collectionView layout
-    let layout = UICollectionViewFlowLayout() //UPCarouselFlowLayout()
-    let inset = UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
+//    let layout = UICollectionViewFlowLayout() //UPCarouselFlowLayout()
+//    let inset = UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -45,14 +45,14 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
         
         collectionView.register(UINib.init(nibName: "FirstCharacterCell", bundle: .main), forCellWithReuseIdentifier: cellReuseIdentifer)
         
-        let height: CGFloat = 350
-        let width = collectionView.frame.width
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.estimatedItemSize = CGSize(width: width, height: height)
-        layout.itemSize = CGSize(width: width, height: height)
-
-        collectionView.collectionViewLayout = layout
+//        let height: CGFloat = 350
+//        let width = collectionView.frame.width
+//        layout.minimumLineSpacing = 0
+//        layout.minimumInteritemSpacing = 0
+//        layout.estimatedItemSize = CGSize(width: width, height: height)
+//        layout.itemSize = CGSize(width: width, height: height)
+//
+//        collectionView.collectionViewLayout = layout
         collectionView.alwaysBounceVertical = true
 //        collectionView.isPagingEnabled = true
 
@@ -114,6 +114,14 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.numberOfUnlockedCell    //japaneseList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 350)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

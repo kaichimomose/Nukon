@@ -35,7 +35,7 @@ extension UIColor {
     static let katakanaDarkBackground = rgb(r: 209, g: 146, b: 192)
     
     //colors for study recognition
-    static let materialOrange = UIColor.rgb(r: 275, g: 279, b: 115)
+    static let materialOrange = UIColor.rgb(r: 275, g: 179, b: 115)
     
     static let materialYellow = UIColor.rgb(r: 255, g: 225, b: 115)
     

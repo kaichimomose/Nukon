@@ -93,7 +93,7 @@ struct JapaneseCharacters {
                       "W": ["wa", "wo"],
                       "G": ["ga", "gi", "gu", "ge", "go"],
                       "Z": ["za", "zhi", "zu", "ze", "zo"],
-                      "D": ["da", "ji", "du", "de", "do"],
+                      "D": ["da", "ji", "zu", "de", "do"],
                       "B": ["ba", "bi", "bu", "be", "bo"],
                       "P": ["pa", "pi", "pu", "pe", "po"],
                       "Ky": ["kya", "kyu", "kyo"],

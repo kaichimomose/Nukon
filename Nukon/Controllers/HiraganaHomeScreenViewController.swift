@@ -461,8 +461,30 @@ extension HiraganaHomeScreenViewController {
             japaneseCharactersCVC.transitioningDelegate = self
             transition.circleColor = comboButton.backgroundColor!
             japaneseCharactersCVC.modalPresentationStyle = .custom
-            self.effects.sound(nil, nil, .stretch)
-            present(japaneseCharactersCVC, animated: true, completion: nil)
+            
+            let usedBefore: Bool
+            
+            if self.japaneseType == .hiragana {
+                usedBefore = UserDefaults.standard.bool(forKey: "UsedHiraganaCharacter")
+            } else {
+                usedBefore = UserDefaults.standard.bool(forKey: "UsedKatakanaCharacter")
+            }
+            
+            if usedBefore {
+                self.effects.sound(nil, nil, .stretch)
+                self.present(japaneseCharactersCVC, animated: true, completion: nil)
+            } else {
+                selectCombinationsAlert(japaneseType: self.japaneseType, closure: {
+                    self.effects.sound(nil, nil, .stretch)
+                    self.present(japaneseCharactersCVC, animated: true, completion: nil)
+                })
+                if self.japaneseType == .hiragana {
+                    UserDefaults.standard.set(true, forKey: "UsedHiraganaCharacter")
+                } else {
+                    UserDefaults.standard.set(true, forKey: "UsedKatakanaCharacter")
+                }
+            }
+            
         } else if segue.identifier == "character" {
             let japaneseCharactersCVC = segue.destination as! JapaneseCharactersCollectionViewController
             japaneseCharactersCVC.japaneseType = self.japaneseType
@@ -470,8 +492,29 @@ extension HiraganaHomeScreenViewController {
             japaneseCharactersCVC.transitioningDelegate = self
             transition.circleColor = characterButton.backgroundColor!
             japaneseCharactersCVC.modalPresentationStyle = .custom
-            self.effects.sound(nil, nil, .stretch)
-            present(japaneseCharactersCVC, animated: true, completion: nil)
+            
+            let usedBefore: Bool
+            
+            if self.japaneseType == .hiragana {
+                usedBefore = UserDefaults.standard.bool(forKey: "UsedComboHiraganaCharacter")
+            } else {
+                usedBefore = UserDefaults.standard.bool(forKey: "UsedComboKatakanaCharacter")
+            }
+            
+            if usedBefore {
+                self.effects.sound(nil, nil, .stretch)
+                self.present(japaneseCharactersCVC, animated: true, completion: nil)
+            } else {
+                selectCharactersAlert(japaneseType: self.japaneseType, closure: {
+                    self.effects.sound(nil, nil, .stretch)
+                    self.present(japaneseCharactersCVC, animated: true, completion: nil)
+                })
+                if self.japaneseType == .hiragana {
+                    UserDefaults.standard.set(true, forKey: "UsedComboHiraganaCharacter")
+                } else {
+                    UserDefaults.standard.set(true, forKey: "UsedComboKatakanaCharacter")
+                }
+            }
         }
     }
 }
