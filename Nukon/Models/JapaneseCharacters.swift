@@ -66,7 +66,7 @@ struct JapaneseCharacters {
     let yVowelKatakanaList = [
         Japanese(unLockNext: false, sound: "Ky", letters: ["キャ", "キュ", "キョ"]),
         Japanese(unLockNext: false, sound: "Sh", letters: ["シャ", "シュ", "ショ"]),
-        Japanese(unLockNext: false, sound: "Cy", letters: ["チャ", "チュ", "チョ"]),
+        Japanese(unLockNext: false, sound: "Ch", letters: ["チャ", "チュ", "チョ"]),
         Japanese(unLockNext: false, sound: "Ny", letters: ["ニャ", "ニュ", "ニョ"]),
         Japanese(unLockNext: false, sound: "Hy", letters: ["ヒャ", "ヒュ", "ヒョ"]),
         Japanese(unLockNext: false, sound: "My", letters: ["ミャ", "ミュ", "ミョ"]),

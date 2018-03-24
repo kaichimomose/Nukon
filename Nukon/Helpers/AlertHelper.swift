@@ -37,7 +37,7 @@ extension AlertPresentable where Self: UIViewController {
     
     func selectCharactersAlert(japaneseType: JapaneseType, closure: @escaping () -> ()){
         let alertVC = UIAlertController(
-            title: "Fundation",
+            title: "Fondation",
             message: "Here, you can study and learn the fundamental \(japaneseType.rawValue.lowercased()) characters.",
             preferredStyle: .alert
         )

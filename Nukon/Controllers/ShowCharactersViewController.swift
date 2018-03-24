@@ -23,14 +23,12 @@ enum Comment: String {
     case recognizing = "Recognizing"
     case again = "Record again"
     case next = "tap next"
-    case recap = "tap recap"
 }
 
 enum ButtonTitle {
     case start
     case hold
     case next
-    case recap
 }
 
 enum Order {
@@ -46,77 +44,40 @@ class ShowCharactersViewController: UIViewController {
     //MARK: - Properties
     var backgroundColor: UIColor!
     
-    //MARK: Blur view and nested elements
-    @IBOutlet weak var redButton: UIButton!
-    
-    @IBOutlet weak var orangeButton: UIButton!
-    
-    @IBOutlet weak var yellowButton: UIButton!
-    
-    @IBOutlet weak var limeButton: UIButton!
-    
-    @IBOutlet weak var greenButton: UIButton!
-    
-    
-    //Mark: Confidence Walkthrough and Elements
-    @IBOutlet weak var confidenceWalkthrough: UIVisualEffectView!
-    
-    var effect: UIVisualEffect!
-    
-    @IBOutlet weak var exitWalkthrough: UIButton!
-    
-    
-    //Mark: Voice Recognition Walkthrough and elements
-    @IBOutlet var voiceRecognitionWalkthrough: UIVisualEffectView!
-    
-    var vcrEffect: UIVisualEffect!
-    
-    @IBOutlet weak var redArrowOnVcrWalkthrough: UIImageView!
-    
-    @IBOutlet weak var voiceRecognitionButton: UIButton!
-    
-    @IBOutlet weak var exitSecondWalkthrough: Exit!
-    
-    
-    
-    //Mark: Sound Properties
+    //Sound Properties
     var effects = SoundEffects()
     
     //values to show characters
+    var japaneseType: JapaneseType!
+    
     var japaneseList: [Japanese]?
     var japaneseDict: [String: [String?]]?
     var japaneseDictForRandom: [String: [String]]?
+    
     let instance = PosibilitiesDict.instance
     var posibilitiesDict = [String: [String]]()
     var posibilities = [String]()
-    var japaneseType: JapaneseType!
+    
     var soundAndLettersList = [(String, [String?])]()
-    var vowels = JapaneseCharacters().vowelSounds
     var soundsList = JapaneseCharacters().soundsList
     var order: Order = .orderly
     
-    var judgedShownCharacters = [String: [(String, Int)]]()
-    
-    //coredata management
-    let coreDataStack = CoreDataStack.instance
-    var characterCoreDataDict: [String: WordLearnt]!
-
     var shownCharacter = ""
-    var soundType = ""
     var sound = ""
+    
     var vowelIndexCounter: Int = 0
     var soundIndexCounter: Int = 0
-    var counter: Int = 0
     var totalNumberOfCharacter: Int = 0
+    
     var judge = Judge.yet
     var comment = Comment.start
     var buttonTitle = ButtonTitle.start
     
-    var buffer: AVAudioPCMBuffer!
+    //coredata management
+    let coreDataStack = CoreDataStack.instance
+    var characterCoreDataDict: [String: WordLearnt]!
     
-    var shownCharacters = [(String, String, [String])]() //(sound, character, [posibilities])
     var currentNumber: Int = 1
-    var recognitionIsEnd: Bool = true
     
     var redCounter = 0
     var orangeCounter = 0
@@ -129,7 +90,38 @@ class ShowCharactersViewController: UIViewController {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    var recognitionIsEnd: Bool = true
     
+    //MARK: Blur view and nested elements
+    @IBOutlet weak var redButton: UIButton!
+    
+    @IBOutlet weak var orangeButton: UIButton!
+    
+    @IBOutlet weak var yellowButton: UIButton!
+    
+    @IBOutlet weak var limeButton: UIButton!
+    
+    @IBOutlet weak var greenButton: UIButton!
+    
+    
+    //MARK: Confidence Walkthrough and Elements
+    @IBOutlet weak var confidenceWalkthrough: UIVisualEffectView!
+    
+    var effect: UIVisualEffect!
+    
+    @IBOutlet weak var exitWalkthrough: UIButton!
+    
+    
+    //MARK: Voice Recognition Walkthrough and elements
+    @IBOutlet var voiceRecognitionWalkthrough: UIVisualEffectView!
+    
+    var vcrEffect: UIVisualEffect!
+    
+    @IBOutlet weak var redArrowOnVcrWalkthrough: UIImageView!
+    
+    @IBOutlet weak var voiceRecognitionButton: UIButton!
+    
+    @IBOutlet weak var exitSecondWalkthrough: Exit!
     
     @IBOutlet weak var characterView: UIView!
     @IBOutlet weak var countCharacters: UILabel!
@@ -150,11 +142,6 @@ class ShowCharactersViewController: UIViewController {
     
     //information button, intiates the walkthrough process
     @IBOutlet weak var information: UIButton!
-    
-    
-    // image to be animated when user guesses correctly
-    @IBOutlet weak var correctImage: UIImageView!
-    
     
     @IBOutlet weak var characterButton: UIButton!
     
@@ -294,7 +281,7 @@ class ShowCharactersViewController: UIViewController {
             //sound animation
             self.effects.sound(nil, .right, nil)
             self.fadeInJudgeButtons()
-            let when = DispatchTime.now() + 1.5 // delay for the number of seconds
+            let when = DispatchTime.now() + 2.0 // delay for the number of seconds
             DispatchQueue.main.asyncAfter(deadline: when) {
                 // code with delay
                 //makes characterbutton enable
@@ -391,7 +378,6 @@ class ShowCharactersViewController: UIViewController {
         // picks a list of possible characters of the picked character
         self.posibilities = self.posibilitiesDict[correntsound]!
         self.sound = correntsound
-        self.shownCharacters.append((correntsound, showCharacter!, self.posibilities))
         
         // deletes selected character
         self.soundAndLettersList[soundIndex].1.remove(at: vowelIndex)
@@ -401,8 +387,7 @@ class ShowCharactersViewController: UIViewController {
         }
         print(soundAndLettersList)
         //updates currentNumber
-        self.counter += 1
-        self.currentNumber = self.counter
+        self.currentNumber += 1
         return showCharacter!
         
     }
@@ -424,18 +409,19 @@ class ShowCharactersViewController: UIViewController {
             self.vowelIndexCounter += 1
             return orderCharacter()
         }
-        self.soundType = soundAndLettersList[self.soundIndexCounter].0
+        let soundType = soundAndLettersList[self.soundIndexCounter].0
         //makes correctsound
         let correctsound = soundsList[soundType]![self.vowelIndexCounter]
+        print(correctsound)
         
         self.vowelIndexCounter += 1
-        self.counter += 1
         
         self.posibilities = self.posibilitiesDict[correctsound]!
+        print(posibilities)
         self.sound = correctsound
-        self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
+        
         //updates currentNumber
-        self.currentNumber = self.counter
+        self.currentNumber += 1
         return showCharacter
     }
     
@@ -528,7 +514,7 @@ class ShowCharactersViewController: UIViewController {
     
     func dissmissOrNextCharacter(){
         refreshTask()
-        if counter == totalNumberOfCharacter {
+        if currentNumber == totalNumberOfCharacter {
             self.dismissView()
         } else {
             switch self.order {
@@ -666,8 +652,6 @@ class ShowCharactersViewController: UIViewController {
         case .hold:
             self.comment = .start
             self.buttonTitle = .start
-        case .recap:
-            return
         }
         self.judge = .yet
         self.updateLabels()
@@ -864,9 +848,9 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
                             break
                         }
                     }
-                    
+                    print(theBestString.count)
                     if willAppend {
-                        if theBestString.count > 2 && !self.isAlpha(char: theBestString.first!) {
+                        if theBestString.count > 2 {
                             self.judge = .wrong
                             
                             willAppend = false
@@ -921,7 +905,6 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         // give an buffer from microphone to the request
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
-            self.buffer = buffer
             self.recognitionRequest?.append(buffer)
         }
         
