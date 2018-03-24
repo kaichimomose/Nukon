@@ -6,11 +6,11 @@ studying Japanese ios App for English Speaker
 ## Features
 
 A few things you can do with Nukon:
-- review what Japanese word you have learned.
-- review how many Japanese word you have learned.
-- practice how to write Japanese characters.
-- practice pronunciation each characters.
+- study and learn japanese characters (hiragana and katakana) and their pronounciation
+- keep track your confort level for each character
+- practice pronounciation each character
+- listen to your pronounciation and give you visual feedback
 
 ### Voice Recognition for pronunciation
 
-![voicerecognitiondemo](./nukon-demo.gif)
+![voicerecognitiondemo](./voice_recognition_demo.gif)
