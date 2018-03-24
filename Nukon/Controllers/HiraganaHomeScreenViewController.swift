@@ -109,6 +109,11 @@ class HiraganaHomeScreenViewController: UIViewController, AlertPresentable,  UIV
         challengeLabel.alpha = 0
         comboLabel.alpha = 0
         characterLabel.alpha = 0
+        
+        
+        studyButton.isEnabled = false
+        comboButton.isEnabled = false
+        characterButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -47,7 +47,7 @@ class LaunchScreenViewController: UIViewController {
             self.logo.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
 
         }) { (_) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.sunLayer.isHidden = false
                 self.effects.swooshResource(.inflate)
                 self.sunLayerExpansion()
@@ -115,8 +115,8 @@ class LaunchScreenViewController: UIViewController {
         
         expansionAnimation.autoreverses = false
         
-        expansionAnimation.damping = 0.2
-        expansionAnimation.stiffness = 85
+        expansionAnimation.damping = 0.4
+//        expansionAnimation.stiffness = 85
         
 //        expansionAnimation.duration = 0.5
         expansionAnimation.isRemovedOnCompletion = false
