@@ -169,7 +169,7 @@ class HiraganaHomeScreenViewController: UIViewController, AlertPresentable,  UIV
             self.view.addSubview(katakanaDescriptionTextView)
             self.view.bringSubview(toFront: katakanaDescriptionTextView)
             katakanaDescriptionTextView.layer.cornerRadius = 7
-            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y * 1.6)
+            katakanaDescriptionTextView.center = CGPoint(x: view.center.x + (view.center.x * 2), y: view.center.y * 1.55)
             katakanaDescriptionTextView.alpha = 0
             
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
