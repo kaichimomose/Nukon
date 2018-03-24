@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Views/FirstCharacterCell.swift"
-            timestampString = "543551540.5949759"
+            timestampString = "543599241.030081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "427"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Views/ConsonantViewCell.swift"
-            timestampString = "543551540.595089"
+            timestampString = "543599241.0301991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "543551540.59519"
+            timestampString = "543599241.030261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "804"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/ShowCharactersViewController.swift"
-            timestampString = "543551540.5952441"
+            timestampString = "543599241.030315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "813"
@@ -106,13 +106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/HiraganaHomeScreenViewController.swift"
-            timestampString = "543550840.419398"
+            timestampString = "543599241.030387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "314"
             endingLineNumber = "314"
-            landmarkName = "HiraganaHomeScreenViewController"
-            landmarkType = "3">
+            landmarkName = "animateSunButtonLabel(show:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/HiraganaHomeScreenViewController.swift"
-            timestampString = "543550840.419503"
+            timestampString = "543599241.030436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "235"
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nukon/Controllers/HiraganaHomeScreenViewController.swift"
-            timestampString = "543550840.419553"
+            timestampString = "543599241.030485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "318"
             endingLineNumber = "318"
-            landmarkName = "studyButonTapped(_:)"
+            landmarkName = "animateSunButtonLabel(show:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

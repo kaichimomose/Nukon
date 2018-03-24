@@ -18,7 +18,6 @@
 		BF50423A2054CD1000490A1A /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5042392054CD0E00490A1A /* CustomTabBarController.swift */; };
 		BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */; };
 		BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */; };
-		BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */; };
 		BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */; };
 		BF7199122038F46100E3A03D /* Speaking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7199112038F46000E3A03D /* Speaking.storyboard */; };
 		BF719914203BBEC100E3A03D /* Posibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF719913203BBEC100E3A03D /* Posibilities.swift */; };
@@ -84,7 +83,6 @@
 		BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5FF9611FA0D35D00A46DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
 		BF7199112038F46000E3A03D /* Speaking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Speaking.storyboard; sourceTree = "<group>"; };
 		BF719913203BBEC100E3A03D /* Posibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posibilities.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 		BF5FF9671FA0D56300A46DE0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF5FF97A1FA0DA3300A46DE0 /* PracticeViewController.swift */,
 				BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 				F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */,
@@ -439,7 +436,6 @@
 				BFD0D7D21FDF6379000D6F1C /* MGPhotoHelper.swift in Sources */,
 				BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */,
 				BF504238204E667900490A1A /* Nukon.xcdatamodeld in Sources */,
-				BF5FF97B1FA0DA3300A46DE0 /* PracticeViewController.swift in Sources */,
 				BF9ADFED202D72BB0024A71C /* UPCarouselFlowLayout.swift in Sources */,
 				BF9ADFD1202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift in Sources */,
 				F611A6AE1FDCA878004B4138 /* tabGradientButton.swift in Sources */,

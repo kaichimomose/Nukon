@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 protocol AlertPresentable: class {
-    func selectAlert()
+    func selectChallengeAlert()
 }
 
 extension AlertPresentable where Self: UIViewController {
-    func selectAlert(){
+    func selectChallengeAlert(){
         let alertVC = UIAlertController(
-            title: "Oops!!",
-            message: "Please choose at least one sound",
+            title: "This is locked!",
+            message: "Until you learn at least one character.",
             preferredStyle: .alert
         )
         

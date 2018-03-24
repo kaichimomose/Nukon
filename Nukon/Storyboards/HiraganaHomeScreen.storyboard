@@ -42,7 +42,7 @@
                                                             <constraint firstAttribute="width" constant="30" id="Q24-Jc-UsF"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-bUc">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD5-JF-bUc">
                                                         <rect key="frame" x="70" y="0.0" width="235" height="30"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="HIRAGANA">
@@ -76,7 +76,7 @@
                                             <constraint firstItem="7uL-aN-DlV" firstAttribute="width" secondItem="95K-zo-qUa" secondAttribute="width" id="aXM-QJ-zeB"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wV-Dm-O5P">
                                         <rect key="frame" x="117.66666666666669" y="30.000000000000004" width="140" height="35.333333333333343"/>
                                         <attributedString key="attributedText">
                                             <fragment content="ひらがな">

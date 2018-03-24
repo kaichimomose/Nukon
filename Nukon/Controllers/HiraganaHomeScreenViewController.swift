@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import AVFoundation
 
-class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class HiraganaHomeScreenViewController: UIViewController, AlertPresentable,  UIViewControllerTransitioningDelegate {
     
     //MARK: - Properties
     var pulsatingLayer: CAShapeLayer!
@@ -319,7 +319,6 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
     
     @IBAction func studyButonTapped(_ sender: Any) {
         fetchCoredata()
-        print(self.showingCharacters)
         if !self.showingCharacters.isEmpty {
             let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
             let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
@@ -334,6 +333,7 @@ class HiraganaHomeScreenViewController: UIViewController, UIViewControllerTransi
             present(showCharacterVC, animated: true, completion: nil)
         } else {
             shakeStudyStack()
+            selectChallengeAlert()
         }
     }
 }
