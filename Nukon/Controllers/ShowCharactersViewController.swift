@@ -77,7 +77,7 @@ class ShowCharactersViewController: UIViewController {
     let coreDataStack = CoreDataStack.instance
     var characterCoreDataDict: [String: WordLearnt]!
     
-    var currentNumber: Int = 1
+    var currentNumber: Int = 0
     
     var redCounter = 0
     var orangeCounter = 0
