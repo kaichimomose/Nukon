@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo2" translatesAutoresizingMaskIntoConstraints="NO" id="TE0-WO-OTB">
-                                <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
+                                <rect key="frame" x="112.5" y="275" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="1XR-sP-RkK"/>
                                     <constraint firstAttribute="width" constant="150" id="W0H-Bj-Ykd"/>
@@ -28,7 +29,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TE0-WO-OTB" firstAttribute="centerX" secondItem="O8q-ZU-1Tn" secondAttribute="centerX" id="AHy-sS-H5l"/>
-                            <constraint firstItem="TE0-WO-OTB" firstAttribute="centerY" secondItem="O8q-ZU-1Tn" secondAttribute="centerY" id="CFd-sT-PGd"/>
+                            <constraint firstItem="TE0-WO-OTB" firstAttribute="centerY" secondItem="O8q-ZU-1Tn" secondAttribute="centerY" multiplier="1.05" id="CFd-sT-PGd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jeK-Po-Pg0"/>
                     </view>

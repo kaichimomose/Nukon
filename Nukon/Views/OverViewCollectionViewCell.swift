@@ -17,6 +17,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
     var japanese: Japanese! {
         didSet {
             let numberOfCharacters = japanese.letters.count
+            let soundList = JapaneseCharacters().soundsList[japanese.sound]
             switch numberOfCharacters {
                 case 3:
                     for i in 0..<japanese.letters.count {
@@ -27,7 +28,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                         soundLabels[apperIndex].alpha = 1
                         characterLabels[apperIndex].text = character
                         self.coloringAndUnlock(character: character, index: apperIndex)
-                        soundLabels[apperIndex].text = japanese.sound.lowercased() + vowels[apperIndex]
+                        soundLabels[apperIndex].text = soundList?[i]
                         if i < 2 {
                             let hideIndex = apperIndex + 1
                             chracterViews[hideIndex].backgroundColor = .clear
@@ -37,22 +38,22 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                         }
                     }
                 case 2:
-                for i in 0..<japanese.letters.count {
-                    let apperIndex = i*4
-                    let character = japanese.letters[i]
-                    checkboxesImageViews[apperIndex].isHidden = false
-                    characterLabels[apperIndex].alpha = 1
-                    soundLabels[apperIndex].alpha = 1
-                    characterLabels[apperIndex].text = character
-                    self.coloringAndUnlock(character: character, index: apperIndex)
-                    soundLabels[apperIndex].text = japanese.sound.lowercased() + vowels[apperIndex]
-                }
-                for j in 1...3 {
-                    chracterViews[j].backgroundColor = .clear
-                    checkboxesImageViews[j].isHidden = true
-                    characterLabels[j].alpha = 0
-                    soundLabels[j].alpha = 0
-                }
+                    for i in 0..<japanese.letters.count {
+                        let apperIndex = i*4
+                        let character = japanese.letters[i]
+                        checkboxesImageViews[apperIndex].isHidden = false
+                        characterLabels[apperIndex].alpha = 1
+                        soundLabels[apperIndex].alpha = 1
+                        characterLabels[apperIndex].text = character
+                        self.coloringAndUnlock(character: character, index: apperIndex)
+                        soundLabels[apperIndex].text = soundList?[i]
+                    }
+                    for j in 1...3 {
+                        chracterViews[j].backgroundColor = .clear
+                        checkboxesImageViews[j].isHidden = true
+                        characterLabels[j].alpha = 0
+                        soundLabels[j].alpha = 0
+                    }
                 case 1:
                     let character = japanese.letters[0]
                     checkboxesImageViews[2].isHidden = false
@@ -60,7 +61,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                     soundLabels[2].alpha = 1
                     self.coloringAndUnlock(character: character, index: 2)
                     characterLabels[2].text = character
-                    soundLabels[2].text = "n"
+                    soundLabels[2].text = soundList?[0]
                     for i in 0..<5 {
                         if i != 2 {
                             chracterViews[i].backgroundColor = .clear
@@ -77,11 +78,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
                         characterLabels[i].alpha = 1
                         soundLabels[i].alpha = 1
                         characterLabels[i].text = character
-                        if japanese.sound == "Vowel" {
-                            soundLabels[i].text = vowels[i]
-                        } else {
-                            soundLabels[i].text = japanese.sound.lowercased() + vowels[i]
-                        }
+                        soundLabels[i].text = soundList?[i]
                     }
             }
         }

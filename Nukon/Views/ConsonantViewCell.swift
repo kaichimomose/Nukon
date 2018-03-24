@@ -116,18 +116,6 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return self.numberOfUnlockedCell    //japaneseList.count
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let firstCharacterCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifer, for: indexPath) as! FirstCharacterCell
         
@@ -140,21 +128,6 @@ extension ConsonantViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         firstCharacterCell.checkboxesImageViews.forEach { imageView in
             imageView.alpha = 0
         }
-        
-        //arrows control
-//        if self.numberOfUnlockedCell == 1 {
-//            firstCharacterCell.upwardsArrowButton.alpha = 0
-//            firstCharacterCell.downwardsArrowButton.alpha = 0
-//        } else if row == 0 {
-//            firstCharacterCell.upwardsArrowButton.alpha = 0
-//            firstCharacterCell.downwardsArrowButton.alpha = 0.5
-//        } else if row == self.numberOfUnlockedCell - 1{
-//            firstCharacterCell.upwardsArrowButton.alpha = 0.5
-//            firstCharacterCell.downwardsArrowButton.alpha = 0
-//        } else {
-//            firstCharacterCell.upwardsArrowButton.alpha = 0.5
-//            firstCharacterCell.downwardsArrowButton.alpha = 0.5
-//        }
         
         //send propaties
         firstCharacterCell.row = row

@@ -76,6 +76,8 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
         self.chooseJapaneseCharacterType(type: japaneseType)
         self.fetchCoreData()
         collectionView.reloadData()
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
     }
     
     func fetchCoreData() {

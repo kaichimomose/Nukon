@@ -56,9 +56,7 @@ extension CircularTransition: UIViewControllerAnimatedTransitioning {
                 containerView.addSubview(circle)
                 
                 presentedView.center = startingPoint
-                
                 presentedView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
-                
                 presentedView.alpha = 0
                 
                 containerView.addSubview(presentedView)
@@ -123,26 +121,3 @@ extension CircularTransition: UIViewControllerAnimatedTransitioning {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

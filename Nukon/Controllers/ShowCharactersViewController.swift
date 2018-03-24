@@ -425,28 +425,12 @@ class ShowCharactersViewController: UIViewController {
             return orderCharacter()
         }
         self.soundType = soundAndLettersList[self.soundIndexCounter].0
-        var vowel: String!
-        switch numberOfCharactersInList {
-        case 3:
-            let index = self.vowelIndexCounter*2
-            vowel = self.vowels[index]
-        case 2:
-            let index = self.vowelIndexCounter*4
-            vowel = self.vowels[index]
-        default:
-            vowel = self.vowels[self.vowelIndexCounter]
-        }
+        //makes correctsound
+        let correctsound = soundsList[soundType]![self.vowelIndexCounter]
+        
         self.vowelIndexCounter += 1
         self.counter += 1
-        //makes correctsound
-        var correctsound = ""
-        if self.soundType == "Vowel" {
-            correctsound = vowel
-        } else if self.soundType == "Special-N" {
-            correctsound = "n"
-        } else {
-            correctsound = soundType.lowercased() + vowel
-        }
+        
         self.posibilities = self.posibilitiesDict[correctsound]!
         self.sound = correctsound
         self.shownCharacters.append((correctsound, showCharacter, self.posibilities))
@@ -478,7 +462,7 @@ class ShowCharactersViewController: UIViewController {
     func speakJapanese(string: String) {
         let textToSpeak = AVSpeechUtterance(string: string)
         textToSpeak.rate = 0.001
-        textToSpeak.volume = 1.0
+//        textToSpeak.volume = 1.0
         let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
         let speak = AVSpeechSynthesizer()
         textToSpeak.voice = speakerVoice
@@ -605,18 +589,22 @@ class ShowCharactersViewController: UIViewController {
         if !usedBefore {
             let onboardAnimation = {
                 self.characterView.backgroundColor = .clear
+                
+                self.confatableLevel.alpha = 1
                 self.buttonsView.backgroundColor = self.backgroundColor
-                self.recordButtonView.backgroundColor = self.backgroundColor
+                
                 self.commentLabel.alpha = 1
+                self.recordButtonView.backgroundColor = self.backgroundColor
                 self.nextCharacterButton.alpha = 1
+                
                 self.judgeButtons.forEach { button in
                     button.alpha = 1
                 }
             }
             
-            UIView.animate(withDuration: 1.0, delay: 2.0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: [], animations: onboardAnimation, completion: nil)
+            UIView.animate(withDuration: 1.0, delay: 3.5, options: [], animations: onboardAnimation, completion: nil)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
                 self.buttonsView.backgroundColor = .clear
                 self.recordButtonView.backgroundColor = .clear
                 
@@ -827,7 +815,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         
         let audioSession = AVAudioSession.sharedInstance()
         // sets category for record
-        try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
         try audioSession.setMode(AVAudioSessionModeMeasurement)
         try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         

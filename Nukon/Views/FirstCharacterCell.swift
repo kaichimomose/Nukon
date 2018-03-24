@@ -26,8 +26,7 @@ class FirstCharacterCell: UICollectionViewCell {
     
     var collectionView: UICollectionView!
     var delegate: GetValueFromCell?
-    
-    let vowels = JapaneseCharacters().vowelSounds
+
     var characterDict: [String: WordLearnt]!
     
     
@@ -39,15 +38,15 @@ class FirstCharacterCell: UICollectionViewCell {
                 characterLabel.font = characterLabel.font.withSize(100)
             }
             characterLabel.text = japanese.sound
+            let soundsList = JapaneseCharacters().soundsList[japanese.sound]
             let numberOfCharacters = japanese.letters.count
             var hiddenIndexes = [Int]()
+            
             for i in 0..<numberOfCharacters {
                 let character = japanese.letters[i]
-                var vowel: String!
                 var apperIndex: Int!
                 switch numberOfCharacters {
                     case 3:
-                        vowel = vowels[i*2]
                         if i == 0 {
                             apperIndex = 0
                             hiddenIndexes.append(1)
@@ -60,7 +59,6 @@ class FirstCharacterCell: UICollectionViewCell {
                             hiddenIndexes.append(4)
                         }
                     case 2:
-                        vowel = vowels[i*4]
                         if i == 0 {
                             apperIndex = 1
                             hiddenIndexes.append(0)
@@ -73,10 +71,9 @@ class FirstCharacterCell: UICollectionViewCell {
                     case 1:
                         self.coloringAndUnlock(character: character, index: 0)
                         characterLabels[0].text = character
-                        soundLabels[0].text = "n"
+                        soundLabels[0].text = soundsList?[0]
                         hiddenIndexes = [1, 2, 3, 4]
                     default:
-                        vowel = vowels[i]
                         apperIndex = i
                 }
                 if numberOfCharacters > 1 {
@@ -85,11 +82,7 @@ class FirstCharacterCell: UICollectionViewCell {
                     soundLabels[apperIndex].alpha = 1
                     characterLabels[apperIndex].text = character
                     self.coloringAndUnlock(character: character, index: apperIndex)
-                    if japanese.sound == "Vowel" {
-                        soundLabels[apperIndex].text = vowel
-                    } else {
-                        soundLabels[apperIndex].text = japanese.sound.lowercased() + vowel
-                    }
+                    soundLabels[apperIndex].text = soundsList?[i]
                 }
             }
             for hiddenIndex in hiddenIndexes {
