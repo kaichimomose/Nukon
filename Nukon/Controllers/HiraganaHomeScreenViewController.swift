@@ -40,7 +40,7 @@ class HiraganaHomeScreenViewController: UIViewController, AlertPresentable,  UIV
     
     let coreDataStack = CoreDataStack.instance
     
-    var showingCharacters = [String: [String]]()
+    var showingCharacters = [String: [String?]]()
     var characterDict = [String: WordLearnt]()
     var consonantDict = [String: Consonant]()
     
@@ -250,19 +250,30 @@ class HiraganaHomeScreenViewController: UIViewController, AlertPresentable,  UIV
             for item in result {
                 guard let consonant = item.consonant else {return}
                 if item.isUnlocked {
-                    var characterList = [String]()
+                    var wordlearntList = [(String, WordLearnt)]()
+                    var characterList = [String?]()
                     let words = item.words?.allObjects as? [WordLearnt]
                     guard let wordsLearnt = words else {return}
                     for wordLearnt in wordsLearnt {
+                        wordlearntList.append((wordLearnt.word!, wordLearnt))
+                    }
+                    wordlearntList.sort(by: {$0.0 < $1.0})
+                    var nilcount = 0
+                    for i in 0..<wordlearntList.count {
+                        let (character, wordLearnt) = wordlearntList[i]
                         if wordLearnt.confidenceCounter > 0 {
-                            characterList.append(wordLearnt.word!)
-                            characterDict[wordLearnt.word!] = wordLearnt
+                            characterList.append(character)
+                            characterDict[character] = wordLearnt
+                        } else {
+                            characterList.append(nil)
+                            nilcount += 1
+                            if nilcount == wordlearntList.count {
+                                characterList = []
+                            }
                         }
                     }
                     if characterList.count > 0 {
                         showingCharacters[consonant] = characterList
-                        //sort letters
-                        showingCharacters[consonant]!.sort()
                     }
                 }
             }
@@ -327,7 +338,7 @@ class HiraganaHomeScreenViewController: UIViewController, AlertPresentable,  UIV
         if !self.showingCharacters.isEmpty {
             let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
             let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
-            showCharacterVC.japaneseDictForRandom = self.showingCharacters
+            showCharacterVC.japaneseDict = self.showingCharacters
             showCharacterVC.japaneseType = self.japaneseType
             showCharacterVC.characterCoreDataDict = self.characterDict
             showCharacterVC.backgroundColor = self.backgroundColor

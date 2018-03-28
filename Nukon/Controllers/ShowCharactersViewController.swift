@@ -52,7 +52,6 @@ class ShowCharactersViewController: UIViewController {
     
     var japaneseList: [Japanese]?
     var japaneseDict: [String: [String?]]?
-    var japaneseDictForRandom: [String: [String]]?
     
     let instance = PosibilitiesDict.instance
     var posibilitiesDict = [String: [String]]()
@@ -171,17 +170,19 @@ class ShowCharactersViewController: UIViewController {
         
         self.unenableJudgeButtons()
         
-        if let japaneseList = self.japaneseList, let japaneseDict = self.japaneseDict {
-            for japanese in japaneseList{
-                if let letters = japaneseDict[japanese.sound] {
-                    // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
-                    self.soundAndLettersList.append((japanese.sound, letters))
+        if let japaneseDict = self.japaneseDict {
+            if let japaneseList = self.japaneseList {
+                for japanese in japaneseList{
+                    if let letters = japaneseDict[japanese.sound] {
+                        // create list of tuples ex.) ("vowel", [あ, い, う, え, お])
+                        self.soundAndLettersList.append((japanese.sound, letters))
+                    }
                 }
-            }
-        } else if let japaneseDict = self.japaneseDictForRandom {
-            self.order = .randomly
-            for (consonant, letters) in japaneseDict {
-                self.soundAndLettersList.append((consonant, letters))
+            } else {
+                self.order = .randomly
+                for (consonant, letters) in japaneseDict {
+                    self.soundAndLettersList.append((consonant, letters))
+                }
             }
         }
         
@@ -345,20 +346,12 @@ class ShowCharactersViewController: UIViewController {
     func numberOfCharacters() -> Int {
         // return total number of characters that are in the list
         var numberOfCharacters = 0
-        switch order {
-        case .orderly:
-            guard let japaneseDict = self.japaneseDict else {return 0}
-            for value in japaneseDict.values {
-                for character in value {
-                    if character != nil {
-                        numberOfCharacters += 1
-                    }
+        guard let japaneseDict = self.japaneseDict else {return 0}
+        for value in japaneseDict.values {
+            for character in value {
+                if character != nil {
+                    numberOfCharacters += 1
                 }
-            }
-        case .randomly:
-            guard let japaneseDict = self.japaneseDictForRandom else {return 0}
-            for value in japaneseDict.values {
-                numberOfCharacters += value.count
             }
         }
         return numberOfCharacters
@@ -371,10 +364,22 @@ class ShowCharactersViewController: UIViewController {
         let (sound, letters) = self.soundAndLettersList[soundIndex]
         // gets sounds
         var sounds = soundsList[sound]
+        print(sounds!)
         let vowelIndex = Int(arc4random()) % letters.count
         // picks a character with random numbers
-        let showCharacter = letters[vowelIndex]
+        print(vowelIndex)
+        let character = letters[vowelIndex]
+        guard let showCharacter = character else {
+            // deletes selected character
+            self.soundAndLettersList[soundIndex].1.remove(at: vowelIndex)
+            self.soundsList[sound]?.remove(at: vowelIndex)
+            if self.soundAndLettersList[soundIndex].1.count == 0 {
+                self.soundAndLettersList.remove(at: soundIndex)
+            }
+            return randomCharacter()
+        }
         let correntsound = sounds![vowelIndex]
+        print(correntsound)
         // picks a list of possible characters of the picked character
         self.posibilities = self.posibilitiesDict[correntsound]!
         self.sound = correntsound
@@ -388,7 +393,7 @@ class ShowCharactersViewController: UIViewController {
         print(soundAndLettersList)
         //updates currentNumber
         self.currentNumber += 1
-        return showCharacter!
+        return showCharacter
         
     }
     
