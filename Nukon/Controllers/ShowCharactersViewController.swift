@@ -42,7 +42,7 @@ class ShowCharactersViewController: UIViewController {
     var pulseLayer: CAShapeLayer!
     
     //MARK: - Properties
-    var backgroundColor: UIColor!
+    weak var backgroundColor: UIColor!
     
     //Sound Properties
     var effects = SoundEffects()
@@ -77,12 +77,6 @@ class ShowCharactersViewController: UIViewController {
     var characterCoreDataDict: [String: WordLearnt]!
     
     var currentNumber: Int = 0
-    
-    var redCounter = 0
-    var orangeCounter = 0
-    var lightOrangeCounter = 0
-    var lightGreenCounter = 0
-    var greenCounter = 0
     
     // values for voice recognization
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja-JP"))!
@@ -681,37 +675,27 @@ class ShowCharactersViewController: UIViewController {
     }
     
     @IBAction func notOkButtonTapped(_ sender: Any) {
-        self.redCounter += 1
-//        self.notOkButton.setTitle(String(self.redCounter), for: .normal)
         self.updateCoreData(confidence: 0)
         self.dissmissOrNextCharacter()
     }
     
     
     @IBAction func orangeButtonTapped(_ sender: Any) {
-        self.orangeCounter += 1
-//        self.notBadButton.setTitle(String(self.orangeCounter), for: .normal)
         self.updateCoreData(confidence: 1)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func middleButtonTapped(_ sender: Any) {
-        self.lightOrangeCounter += 1
-//        self.sosoButton.setTitle(String(self.lightOrangeCounter), for: .normal)
         self.updateCoreData(confidence: 2)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func yellowButtonTapped(_ sender: Any) {
-        self.lightGreenCounter += 1
-//        self.okButton.setTitle(String(self.lightGreenCounter), for: .normal)
         self.updateCoreData(confidence: 3)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func goodButtonTapped(_ sender: Any) {
-        self.greenCounter += 1
-//        self.goodButton.setTitle(String(self.greenCounter), for: .normal)
         self.updateCoreData(confidence: 4)
         self.dissmissOrNextCharacter()
     }
@@ -822,8 +806,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         var theBestString = ""
         var appendedString = ""
         
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
-            guard let `self` = self else { return }
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [unowned self] result, error in
             
             var isFinal = false
             

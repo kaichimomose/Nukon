@@ -24,11 +24,10 @@ class FirstCharacterCell: UICollectionViewCell {
     let speakerVoice = AVSpeechSynthesisVoice(language: "ja-JP")
     let speak = AVSpeechSynthesizer()
     
-    var collectionView: UICollectionView!
-    var delegate: GetValueFromCell?
+    weak var collectionView: UICollectionView!
+    weak var delegate: GetValueFromCell?
 
     var characterDict: [String: WordLearnt]!
-    
     
     var japanese: Japanese! {
         didSet {
@@ -415,16 +414,6 @@ class FirstCharacterCell: UICollectionViewCell {
         collectionView.isUserInteractionEnabled = false
         characterDistributingAnimation()
         speakOrderly(list: japanese.letters)
-    }
-    
-    @IBAction func upwardsTapped(_ sender: Any) {
-        let index = self.row - 1
-        delegate?.scrollToItemIndexPath(index: index)
-    }
-    
-    @IBAction func downwardsTapped(_ sender: Any) {
-        let index = self.row + 1
-        delegate?.scrollToItemIndexPath(index: index)
     }
     
 //    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

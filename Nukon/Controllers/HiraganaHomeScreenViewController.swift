@@ -14,35 +14,19 @@ class HiraganaHomeScreenViewController: UIViewController, AlertPresentable,  UIV
     
     //MARK: - Properties
     var pulsatingLayer: CAShapeLayer!
-    
     var effects = SoundEffects()
-    
-    var swoosh: Swoosh!
-    
     let transition = CircularTransition()
-    
     var popCount = 0
     
-    var backgroundColor: UIColor!
+    weak var backgroundColor: UIColor!
     
-    
-    var japaneseType: JapaneseType! {
-        didSet {
-            if japaneseType == .hiragana {
-                yVowelJapanese = .yVowelHiragana
-            } else {
-                yVowelJapanese = .yVowelKatakana
-            }
-        }
-    }
-    
-    var yVowelJapanese: JapaneseType!
+    var japaneseType: JapaneseType!
     
     let coreDataStack = CoreDataStack.instance
     
-    var showingCharacters = [String: [String?]]()
-    var characterDict = [String: WordLearnt]()
-    var consonantDict = [String: Consonant]()
+    lazy var showingCharacters = [String: [String?]]()
+    lazy var characterDict = [String: WordLearnt]()
+    lazy var consonantDict = [String: Consonant]()
     
     //MARK: - Outlets
     @IBOutlet weak var titleRomeLabel: UILabel!
@@ -240,6 +224,14 @@ class HiraganaHomeScreenViewController: UIViewController, AlertPresentable,  UIV
     func fetchCoredata(){
         // Initialize Fetch Request\
         let fetchRequest: NSFetchRequest<Consonant> = Consonant.fetchRequest()
+        // set yvowelJapanese type
+        let yVowelJapanese: JapaneseType = {
+            if japaneseType == .hiragana {
+                return .yVowelHiragana
+            } else {
+                return .yVowelKatakana
+            }
+        }()
         // Add Specific type Descriptors
         fetchRequest.predicate = NSPredicate(format: "system == %@ OR system == %@", japaneseType.rawValue, yVowelJapanese.rawValue)
         // initializes showingCharacter
@@ -472,7 +464,15 @@ extension HiraganaHomeScreenViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "combo" {
             let japaneseCharactersCVC = segue.destination as! JapaneseCharactersCollectionViewController
-            japaneseCharactersCVC.japaneseType = self.yVowelJapanese
+            // set yvowelJapanese type
+            let yVowelJapanese: JapaneseType = {
+                if japaneseType == .hiragana {
+                    return .yVowelHiragana
+                } else {
+                    return .yVowelKatakana
+                }
+            }()
+            japaneseCharactersCVC.japaneseType = yVowelJapanese
             japaneseCharactersCVC.backgoundColor = self.backgroundColor
             japaneseCharactersCVC.transitioningDelegate = self
             transition.circleColor = comboButton.backgroundColor!
@@ -490,7 +490,7 @@ extension HiraganaHomeScreenViewController {
                 self.effects.sound(nil, nil, .stretch)
                 self.present(japaneseCharactersCVC, animated: true, completion: nil)
             } else {
-                selectCombinationsAlert(japaneseType: self.japaneseType, closure: {
+                selectCombinationsAlert(japaneseType: self.japaneseType, closure: { [unowned self] in
                     self.effects.sound(nil, nil, .stretch)
                     self.present(japaneseCharactersCVC, animated: true, completion: nil)
                 })
@@ -522,6 +522,7 @@ extension HiraganaHomeScreenViewController {
                 self.present(japaneseCharactersCVC, animated: true, completion: nil)
             } else {
                 selectCharactersAlert(japaneseType: self.japaneseType, closure: {
+                    [unowned self] in
                     self.effects.sound(nil, nil, .stretch)
                     self.present(japaneseCharactersCVC, animated: true, completion: nil)
                 })

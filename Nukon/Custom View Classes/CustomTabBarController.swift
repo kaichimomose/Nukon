@@ -11,7 +11,6 @@ import UIKit
 class CustomTabBarController: UITabBarController {
     
     //MARK:
-    
     var hiraganaController = HiraganaHomeScreenViewController()
     var katakanaController = HiraganaHomeScreenViewController()
     

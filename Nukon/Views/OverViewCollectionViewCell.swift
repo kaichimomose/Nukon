@@ -135,7 +135,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
     var characterLabels: [UILabel]!
     var soundLabels: [UILabel]!
     
-    var delegate: GetValueFromCell?
+    weak var delegate: GetValueFromCell?
     
     //MARK: - Outlets
     @IBOutlet weak var stackView: UIStackView!

@@ -22,11 +22,11 @@ class Exit: UIButton {
     
     var effects: SoundEffects?
     
-    var dismissedView: UIVisualEffectView!
+    weak var dismissedView: UIVisualEffectView!
     
-    var appointedView: UIVisualEffectView?
+    weak var appointedView: UIVisualEffectView?
     
-    var blur: UIVisualEffect!
+    weak var blur: UIVisualEffect!
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

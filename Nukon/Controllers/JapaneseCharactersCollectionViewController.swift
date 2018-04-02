@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-protocol GetValueFromCollectionView {
+protocol GetValueFromCollectionView: class {
     func getSelectedValue(selectedJapanese: [String: [String?]], selectedJpaneseCoreData: [String: WordLearnt])
     func getDeselectedValue(selectedJapanese: [String: [String?]], selectedJpaneseCoreData: [String: WordLearnt])
 }
@@ -17,7 +17,7 @@ protocol GetValueFromCollectionView {
 class JapaneseCharactersCollectionViewController: UIViewController, GetValueFromCollectionView {
     
     //MARK: - Properties
-    var backgoundColor: UIColor!
+    weak var backgoundColor: UIColor!
     
     var japaneseList = [Japanese]()
     var japaneseType: JapaneseType!

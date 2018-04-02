@@ -13,7 +13,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     let cellId = "MenuCell"
     let imageName = ["consonantOverview", "circle_collection"]
     
-    var japaneseCharacterCVC: JapaneseCharactersCollectionViewController?
+    weak var japaneseCharacterCVC: JapaneseCharactersCollectionViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,8 +26,6 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width/2, height: frame.height)
