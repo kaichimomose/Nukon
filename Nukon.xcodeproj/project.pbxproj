@@ -19,6 +19,8 @@
 		BF5FF9531FA0D35D00A46DE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9521FA0D35D00A46DE0 /* AppDelegate.swift */; };
 		BF5FF96E1FA0D56300A46DE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */; };
 		BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */; };
+		BF65B1DD2075348D00D01315 /* Writing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF65B1DC2075348D00D01315 /* Writing.storyboard */; };
+		BF65B1DF2075486F00D01315 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65B1DE2075486F00D01315 /* WritingViewController.swift */; };
 		BF7199122038F46100E3A03D /* Speaking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7199112038F46000E3A03D /* Speaking.storyboard */; };
 		BF719914203BBEC100E3A03D /* Posibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF719913203BBEC100E3A03D /* Posibilities.swift */; };
 		BF76DDDC1FD9EF4A0030F52B /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD71FD9EF490030F52B /* CustomImageView.swift */; };
@@ -82,6 +84,8 @@
 		BF5FF9611FA0D35D00A46DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BF5FF9801FA0E2B400A46DE0 /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
+		BF65B1DC2075348D00D01315 /* Writing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Writing.storyboard; sourceTree = "<group>"; };
+		BF65B1DE2075486F00D01315 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
 		BF7199112038F46000E3A03D /* Speaking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Speaking.storyboard; sourceTree = "<group>"; };
 		BF719913203BBEC100E3A03D /* Posibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posibilities.swift; sourceTree = "<group>"; };
 		BF76DDD71FD9EF490030F52B /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */,
 				BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
+				BF65B1DE2075486F00D01315 /* WritingViewController.swift */,
 				F629807D20638CD200356A55 /* LaunchScreenViewController.swift */,
 			);
 			path = Controllers;
@@ -209,6 +214,7 @@
 				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
 				BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */,
 				BF7199112038F46000E3A03D /* Speaking.storyboard */,
+				BF65B1DC2075348D00D01315 /* Writing.storyboard */,
 				F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */,
 				F6DC51AD2062DD4B00B12027 /* LaunchScreen.storyboard */,
 			);
@@ -384,6 +390,7 @@
 				F63A61D5205B1FDC00D86CC5 /* realStretch.mp3 in Resources */,
 				F649BAEC2057395B0026733F /* swooshOne.mp3 in Resources */,
 				BF7199122038F46100E3A03D /* Speaking.storyboard in Resources */,
+				BF65B1DD2075348D00D01315 /* Writing.storyboard in Resources */,
 				BF9ADFEB202BF1290024A71C /* FirstCharacterCell.xib in Resources */,
 				F63A61D7205B548D00D86CC5 /* cartoon.mp3 in Resources */,
 				BFE76F2920433847005E9F0C /* OverViewCollectionViewCell.xib in Resources */,
@@ -405,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */,
+				BF65B1DF2075486F00D01315 /* WritingViewController.swift in Sources */,
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
 				BF50423A2054CD1000490A1A /* CustomTabBarController.swift in Sources */,
 				BF0A86991FB8C32B00B8305A /* AlertHelper.swift in Sources */,
