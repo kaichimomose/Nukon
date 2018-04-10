@@ -27,6 +27,13 @@
 		BF76DDDD1FD9EF4A0030F52B /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDD81FD9EF490030F52B /* EditProfile.swift */; };
 		BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDDA1FD9EF490030F52B /* GradientView.swift */; };
 		BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */; };
+		BF849862207C513100570755 /* Practice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF849861207C513100570755 /* Practice.storyboard */; };
+		BF849864207C567700570755 /* PracticeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF849863207C567700570755 /* PracticeMenuCell.swift */; };
+		BF849866207C584E00570755 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF849865207C584E00570755 /* PracticeViewController.swift */; };
+		BF849869207C6CDD00570755 /* SpeakingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF849867207C6CDD00570755 /* SpeakingCell.swift */; };
+		BF84986A207C6CDE00570755 /* SpeakingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF849868207C6CDD00570755 /* SpeakingCell.xib */; };
+		BF84986D207C6CF300570755 /* WritingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF84986B207C6CF300570755 /* WritingCell.swift */; };
+		BF84986E207C6CF300570755 /* WritingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF84986C207C6CF300570755 /* WritingCell.xib */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
 		BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97052B1FCBBDAD00A95E56 /* DateToString.swift */; };
 		BF9ADFCF202AC01A0024A71C /* CharactersSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */; };
@@ -92,6 +99,13 @@
 		BF76DDD81FD9EF490030F52B /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		BF76DDDA1FD9EF490030F52B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		BF76DDDB1FD9EF490030F52B /* LevelCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCounterView.swift; sourceTree = "<group>"; };
+		BF849861207C513100570755 /* Practice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Practice.storyboard; sourceTree = "<group>"; };
+		BF849863207C567700570755 /* PracticeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeMenuCell.swift; sourceTree = "<group>"; };
+		BF849865207C584E00570755 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
+		BF849867207C6CDD00570755 /* SpeakingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingCell.swift; sourceTree = "<group>"; };
+		BF849868207C6CDD00570755 /* SpeakingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeakingCell.xib; sourceTree = "<group>"; };
+		BF84986B207C6CF300570755 /* WritingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingCell.swift; sourceTree = "<group>"; };
+		BF84986C207C6CF300570755 /* WritingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WritingCell.xib; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
 		BF97052B1FCBBDAD00A95E56 /* DateToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharactersSelection.storyboard; sourceTree = "<group>"; };
@@ -188,6 +202,7 @@
 				BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 				BF65B1DE2075486F00D01315 /* WritingViewController.swift */,
+				BF849865207C584E00570755 /* PracticeViewController.swift */,
 				F629807D20638CD200356A55 /* LaunchScreenViewController.swift */,
 			);
 			path = Controllers;
@@ -212,10 +227,11 @@
 			isa = PBXGroup;
 			children = (
 				BF5FF96C1FA0D56300A46DE0 /* Main.storyboard */,
+				F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */,
 				BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */,
 				BF7199112038F46000E3A03D /* Speaking.storyboard */,
 				BF65B1DC2075348D00D01315 /* Writing.storyboard */,
-				F64CE76F2045AC2000C480EB /* HiraganaHomeScreen.storyboard */,
+				BF849861207C513100570755 /* Practice.storyboard */,
 				F6DC51AD2062DD4B00B12027 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -231,6 +247,11 @@
 				BF504228204D96CA00490A1A /* OverViewCell.swift */,
 				BFE76F2620433847005E9F0C /* OverViewCollectionViewCell.swift */,
 				BFE76F2720433847005E9F0C /* OverViewCollectionViewCell.xib */,
+				BF849863207C567700570755 /* PracticeMenuCell.swift */,
+				BF849867207C6CDD00570755 /* SpeakingCell.swift */,
+				BF849868207C6CDD00570755 /* SpeakingCell.xib */,
+				BF84986B207C6CF300570755 /* WritingCell.swift */,
+				BF84986C207C6CF300570755 /* WritingCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,8 +416,11 @@
 				F63A61D7205B548D00D86CC5 /* cartoon.mp3 in Resources */,
 				BFE76F2920433847005E9F0C /* OverViewCollectionViewCell.xib in Resources */,
 				F649BAE82057395B0026733F /* swooshBackOne.mp3 in Resources */,
+				BF84986E207C6CF300570755 /* WritingCell.xib in Resources */,
 				BFA13972204BCA7A00A28AA1 /* Assets.xcassets in Resources */,
+				BF84986A207C6CDE00570755 /* SpeakingCell.xib in Resources */,
 				F6ADBD51205DCB9D008576D5 /* water.mp3 in Resources */,
+				BF849862207C513100570755 /* Practice.storyboard in Resources */,
 				F63A61D3205AFAED00D86CC5 /* Stretch.mp3 in Resources */,
 				F649BAE52057395B0026733F /* boing.mp3 in Resources */,
 				F6DC51AE2062DD4B00B12027 /* LaunchScreen.storyboard in Resources */,
@@ -411,6 +435,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF84986D207C6CF300570755 /* WritingCell.swift in Sources */,
+				BF849864207C567700570755 /* PracticeMenuCell.swift in Sources */,
 				BF5FF9811FA0E2B400A46DE0 /* Japanese.swift in Sources */,
 				BF65B1DF2075486F00D01315 /* WritingViewController.swift in Sources */,
 				BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */,
@@ -436,6 +462,7 @@
 				BFE76F1B20425A4C005E9F0C /* CoreDataStack.swift in Sources */,
 				BF76DDE01FD9EF4A0030F52B /* LevelCounterView.swift in Sources */,
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
+				BF849869207C6CDD00570755 /* SpeakingCell.swift in Sources */,
 				BF504229204D96CA00490A1A /* OverViewCell.swift in Sources */,
 				F6ADBD4F205DB114008576D5 /* Exit.swift in Sources */,
 				F6AED9092058511700BCC631 /* SimpleTransition.swift in Sources */,
@@ -443,6 +470,7 @@
 				F6AED90120575BA100BCC631 /* CircularTransition.swift in Sources */,
 				BF504227204CEA4A00490A1A /* MenuCell.swift in Sources */,
 				F60611DA2049F673007407C3 /* MenuButton.swift in Sources */,
+				BF849866207C584E00570755 /* PracticeViewController.swift in Sources */,
 				F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */,
 				F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */,
 				F629807E20638CD200356A55 /* LaunchScreenViewController.swift in Sources */,

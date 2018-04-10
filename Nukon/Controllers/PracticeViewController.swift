@@ -2,335 +2,88 @@
 //  PracticeViewController.swift
 //  Nukon
 //
-//  Created by Kaichi Momose on 2017/10/25.
-//  Copyright © 2017 Kaichi Momose. All rights reserved.
+//  Created by Kaichi Momose on 2018/04/09.
+//  Copyright © 2018 Kaichi Momose. All rights reserved.
 //
 
 import UIKit
-import AVFoundation
-
-protocol JapaneseDelegate: class {
-    func sendJapanese(selectedJapanese: [String])
-}
-
-enum SelectedType: String {
-    case hiragana = "Hiragana"
-    case katakana = "Katakana"
-}
 
 class PracticeViewController: UIViewController {
 
+    //MARK: - Properties
+    let speakingCellReuseIdentifer = "SpeakingCell"
+    let writingCellReuseIdentifer = "WritingCell"
+    let backgoundColor: UIColor = .hiraganaBackground
     
+    //MARK: -Outlets
+    @IBOutlet weak var menuBar: MenuBar!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var menuBarCollectionView: UICollectionView!
     
-    @IBOutlet weak var hiraganaTab: UIButton!
-//    @IBOutlet weak var katakanaTab: tabGradientButton!
-//    @IBOutlet weak var kanjiTab: tabGradientButton!
-    
-    
-    
-    //------------------------------------------------------- 
-    @IBOutlet weak var hiraganaTabView: GradientView!
-    @IBOutlet weak var katakanaTabView: GradientView!
-    @IBOutlet weak var kanjiTabView: GradientView!
-    
-    
-    
-    //-------------------------------------------------------
-    @IBOutlet var hiraganaPopUpView: UIView!
-    @IBOutlet var katakanaPopUpView: UIView!
-    @IBOutlet var kanjiPopUpView: UIView!
-
-    
-    @IBOutlet weak var backgroundBlurView: UIView!
-    
-    @IBOutlet weak var hiraganaButton: CustomButton!
-    @IBOutlet weak var katakanaButton: CustomButton!
-    
-    @IBOutlet weak var hiraganaTabViewLeadingConstraints: NSLayoutConstraint!
-    @IBOutlet weak var katakanaTabViewLeadingConstraints: NSLayoutConstraint!
-    @IBOutlet weak var kanjiTabViewLeadingConstraints: NSLayoutConstraint!
-    
-    @IBOutlet weak var kanjiTextView: UITextView!
-    @IBOutlet weak var katakanaTextView: UITextView!
-    
-    @IBOutlet weak var hiraganaTextView: UITextView!
-    
-    var japaneseType: JapaneseType?
-    var sound: String?
-    
-//    var wordsLearnt = [WordLearnt]()
-//    var regularHiraganaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is hiragana or katakana
-//    var voicedHiraganaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
-//    var yVowelHiraganaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
-//    var regularKatakanaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is hiragana or katakana
-//    var voicedKatakanaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is voiced-hiragana or voiced-katakana
-//    var yVowelKatakanaWordsLearnt: Int = 0 //wordlearnt instances whose japanese type is y-vowel-hiragana or y-vowel-katakana
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        let tabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
-        hiraganaTabView.mask = tabMask
-        
-        let katakanaTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
-        katakanaTabView.mask = katakanaTabMask
-        
-        let kanjiTabMask = UIImageView(image: #imageLiteral(resourceName: "tabShape"))
-        kanjiTabView.mask = kanjiTabMask
-        
-        
-        kanjiTextView.isEditable = false
-        katakanaTextView.isEditable = false
-        hiraganaTextView.isEditable = false
-        
-        kanjiTextView.isScrollEnabled = true
-        katakanaTextView.isScrollEnabled = false
-        hiraganaTextView.isScrollEnabled = false
-        
-        
-//        hiraganaTabView.center.x -= (view.bounds.width)
-//        katakanaTabView.center.x -= (view.bounds.width)
-//        kanjiTabView.center.x -= (view.bounds.width)
-        
-        
-        hiraganaPopUpView.layer.cornerRadius = 20
-        katakanaPopUpView.layer.cornerRadius = 20
-        kanjiPopUpView.layer.cornerRadius = 20
-        
-        //ser navigation bar color and text color
-        self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationController?.navigationBar.tintColor = .black
-        
 
+        self.view.backgroundColor = self.backgoundColor
+        
+        menuBar.practiceVC = self
+        menuBarCollectionView.delegate = menuBar
+        menuBarCollectionView.dataSource = menuBar
+        menuBarCollectionView.backgroundColor = self.backgoundColor
+        
+        let selectedIndexpath = NSIndexPath(row: 0, section: 0)
+        menuBarCollectionView.selectItem(at: selectedIndexpath as IndexPath, animated: false, scrollPosition: [])
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.isScrollEnabled = false
+        
+        collectionView.register(UINib.init(nibName: "SpeakingCell", bundle: .main), forCellWithReuseIdentifier: speakingCellReuseIdentifer)
+        collectionView.register(UINib.init(nibName: "WritingCell", bundle: .main), forCellWithReuseIdentifier: writingCellReuseIdentifer)
     }
-    
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        hiraganaTabView.center.x -= (view.bounds.width)
-//        katakanaTabView.center.x -= (view.bounds.width)
-//        kanjiTabView.center.x -= (view.bounds.width)
-        
-        hiraganaTabViewLeadingConstraints.constant = -122
-        katakanaTabViewLeadingConstraints.constant = -122
-        kanjiTabViewLeadingConstraints.constant = -122
-        
-        
-        guard let japaneseType = self.japaneseType else {return}
-        switch japaneseType {
-        case .hiragana, .yVowelHiragana:
-            self.tappedHiraganaButton(self.hiraganaButton)
-        case .katakana, .yVowelKatakana:
-            self.tappedKatakanaButton(self.katakanaButton)
-        }
-    }
-    
 
-    @IBAction func tappedHiraganaButton(_ sender: Any) {
-//        let newLevelVC = storyboard?.instantiateViewController(withIdentifier: "NewLevelVC") as! NewLevelViewController
-//        if let japaneseType = self.japaneseType {
-//            newLevelVC.japaneseType = japaneseType
-//        } else {
-//            newLevelVC.selectedType = SelectedType.hiragana
-////            newLevelVC.numberOfRegular = regularHiraganaWordsLearnt
-////            newLevelVC.numberOfVoiced = voicedHiraganaWordsLearnt
-////            newLevelVC.numberOfYVowel = yVowelHiraganaWordsLearnt
-//        }
-//        if let sound = self.sound {
-//            newLevelVC.sound = sound
-//        }
-//        animateOutHiraganaPopUp()
-//        self.navigationController?.pushViewController(newLevelVC, animated: true)
-        animateOutHiraganaPopUp()
-        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
-        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-        japaneseCharactersCVC.japaneseType = .hiragana
-        self.navigationController?.pushViewController(japaneseCharactersCVC, animated: true)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func tappedKatakanaButton(_ sender: Any) {
-        animateOutKatakanaPopUp()
-        let storyboard = UIStoryboard(name: "CharactersSelection", bundle: .main)
-        let japaneseCharactersCVC = storyboard.instantiateViewController(withIdentifier: "CharactersSelection") as! JapaneseCharactersCollectionViewController
-        japaneseCharactersCVC.japaneseType = .katakana
-        self.navigationController?.pushViewController(japaneseCharactersCVC, animated: true)
-    }
-    
-    @IBAction func tappedKanjiButton(_ sender: Any) {
-        animateOutKanjiPopUp()
-        animateOutTab(tabViewConstraints: kanjiTabViewLeadingConstraints)
-    }
-    
-
-    @IBAction func unwindToPracticeViewController(_ segue: UIStoryboardSegue) {
-        self.navigationController?.navigationBar.barTintColor = .white
-    }
-}
-
-
-
-extension PracticeViewController {
-    //ANIMATIONS FOR DESCRIPTION POP UPS-------
-    
-    //HIRAGANA POP UP ANIMATION------
-    func animateInHiraganaPopUp() {
-        
-        self.backgroundBlurView.addSubview(hiraganaPopUpView)
-        
-        
-        hiraganaPopUpView.center.x = self.backgroundBlurView.center.x
-        hiraganaPopUpView.center.y = self.backgroundBlurView.center.y * 1.575
-        
-        hiraganaPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        hiraganaPopUpView.alpha = 0
-        
-        
-        
-        UIView.animate(withDuration: 0.7) {
-            
-            self.hiraganaPopUpView.alpha = 1
-            self.hiraganaPopUpView.transform = CGAffineTransform.identity
-            
-        }
-    }
-    
-    
-    func animateOutHiraganaPopUp() {
-        UIView.animate(withDuration: 0.1, animations: {
-            self.hiraganaPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.hiraganaPopUpView.alpha = 0
-            
-        }) { (success: Bool) in
-            self.hiraganaPopUpView.removeFromSuperview()
-        }
-    }
-    
-    
-    
-    //KATAKANA POP UP ANIMATION------
-    func animateInKatakanaPopUp() {
-        
-        self.backgroundBlurView.addSubview(katakanaPopUpView)
-        
-        
-        katakanaPopUpView.center.x = self.backgroundBlurView.center.x
-        katakanaPopUpView.center.y = self.backgroundBlurView.center.y * 1.575
-        
-        katakanaPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        katakanaPopUpView.alpha = 0
-        
-        
-        
-        UIView.animate(withDuration: 0.7) {
-            
-            self.katakanaPopUpView.alpha = 1
-            self.katakanaPopUpView.transform = CGAffineTransform.identity
-            
-        }
-    }
-    
-    func animateOutKatakanaPopUp() {
-        UIView.animate(withDuration: 0.1, animations: {
-            self.katakanaPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.katakanaPopUpView.alpha = 0
-            
-        }) { (success: Bool) in
-            self.katakanaPopUpView.removeFromSuperview()
-        }
-    }
-    
-    
-    
-    //KANJI POP UP ANIMATION------
-    func animateInKanjiPopUp() {
-        
-        self.backgroundBlurView.addSubview(kanjiPopUpView)
-        
-        
-        kanjiPopUpView.center.x = self.backgroundBlurView.center.x
-        kanjiPopUpView.center.y = self.backgroundBlurView.center.y * 1.575
-        
-        kanjiPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        kanjiPopUpView.alpha = 0
-        
-        
-        
-        UIView.animate(withDuration: 0.7) {
-            
-            self.kanjiPopUpView.alpha = 1
-            self.kanjiPopUpView.transform = CGAffineTransform.identity
-            
-        }
-    }
-    
-    
-    
-    func animateOutKanjiPopUp() {
-        UIView.animate(withDuration: 0.1, animations: {
-            self.kanjiPopUpView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.kanjiPopUpView.alpha = 0
-            
-        }) { (success: Bool) in
-            self.kanjiPopUpView.removeFromSuperview()
-        }
+    func scrollToItemIndexPath(menuindex: Int) {
+        collectionView.reloadData()
+        let indexPath = NSIndexPath(item: 0, section: menuindex)
+        collectionView.scrollToItem(at: indexPath as IndexPath, at: .centeredHorizontally, animated: false)
     }
     
 }
 
-
-extension PracticeViewController {
-    //ANIMATIONS FOR EACH TAB VIEW
+extension PracticeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func animateInTab(tabViewConstraints: NSLayoutConstraint) {
-//        tabViewConstraints.constant += 61
-        UIView.animate(withDuration: 0.3) {
-            if tabViewConstraints.constant == -122 {
-                tabViewConstraints.constant += 61
-                self.view.layoutIfNeeded()
-            }
-        }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
     }
     
-    func animateOutTab(tabViewConstraints: NSLayoutConstraint) {
-//        tabViewConstraints.constant -= 61
-        UIView.animate(withDuration: 0.5) {
-            if tabViewConstraints.constant == -61 {
-                tabViewConstraints.constant -= 61
-                self.view.layoutIfNeeded()
-            }
-        }
-        
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.section {
+            
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: speakingCellReuseIdentifer, for: indexPath) as! SpeakingCell
+            cell.backgroundColor = self.backgoundColor
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: writingCellReuseIdentifer, for: indexPath) as! WritingCell
+            cell.backgroundColor = self.backgoundColor
+            return cell
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

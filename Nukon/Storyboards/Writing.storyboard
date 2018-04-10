@@ -96,12 +96,12 @@
                                                                     <constraint firstAttribute="width" id="e5N-Nx-TKs"/>
                                                                 </constraints>
                                                             </view>
-                                                            <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XXD-gf-Bet">
+                                                            <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XXD-gf-Bet">
                                                                 <rect key="frame" x="20" y="0.0" width="335" height="31"/>
                                                                 <color key="backgroundColor" red="0.95462959999999997" green="0.94415122269999996" blue="0.86955779789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <segments>
-                                                                    <segment title="Practice"/>
-                                                                    <segment title="Test"/>
+                                                                    <segment title="PRACTICE"/>
+                                                                    <segment title="TEST"/>
                                                                 </segments>
                                                                 <color key="tintColor" red="0.9262382984161377" green="0.44775599241256714" blue="0.44235637784004211" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <connections>
@@ -184,9 +184,9 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="lWK-mb-dY5"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                 <size key="titleShadowOffset" width="5" height="5"/>
-                                                                <state key="normal" title="Clear">
+                                                                <state key="normal" title="CLEAR">
                                                                     <color key="titleColor" red="0.92623829840000005" green="0.44775599240000002" blue="0.44235637779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                             </button>
@@ -196,10 +196,10 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="u9D-1n-RWX"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                 <color key="tintColor" red="0.92623829840000005" green="0.44775599240000002" blue="0.44235637779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <size key="titleShadowOffset" width="5" height="5"/>
-                                                                <state key="normal" title="Recognize">
+                                                                <state key="normal" title="RECOGNIZE">
                                                                     <color key="titleColor" red="0.92623829840000005" green="0.44775599240000002" blue="0.44235637779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                             </button>
@@ -313,7 +313,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93900579210000001" green="0.65707200769999996" blue="0.8565930128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.70095258949999995" green="0.8035282493" blue="0.99167233710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="QcF-iK-pY4" firstAttribute="leading" secondItem="0PS-OJ-BJ2" secondAttribute="leading" id="1gC-TR-8B1"/>
                             <constraint firstAttribute="trailing" secondItem="QcF-iK-pY4" secondAttribute="trailing" id="5uT-ne-hqi"/>

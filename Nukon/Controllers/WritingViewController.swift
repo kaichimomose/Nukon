@@ -32,23 +32,9 @@ class WritingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let lineDashPattern: [NSNumber] = [10, 3]
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = UIColor.black.cgColor
-        shapeLayer.lineWidth = 2
-        shapeLayer.lineDashPattern = lineDashPattern
-        let horisontalpath = CGMutablePath()
-        horisontalpath.addLines(between: [CGPoint(x: 0, y: 0),
-                                CGPoint(x: horizontalDottedLine.frame.width, y: 0)])
-
-        shapeLayer.path = horisontalpath
-        horizontalDottedLine.layer.addSublayer(shapeLayer)
-        
-//        let varticalpath = CGMutablePath()
-//        varticalpath.addLines(between: [CGPoint(x: 0, y: 0),
-//                                          CGPoint(x: 0, y: varticalDottedLine.frame.height)])
-//        shapeLayer.path = varticalpath
-//        varticalDottedLine.layer.addSublayer(shapeLayer)
+        let font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        modeSwitchSegment.setTitleTextAttributes([NSAttributedStringKey.font: font],
+                                                for: .normal)
         
         clearButton.layer.cornerRadius = clearButton.frame.height/2
         clearButton.layer.borderColor = UIColor.redSun.cgColor
@@ -65,6 +51,29 @@ class WritingViewController: UIViewController {
             button.layer.cornerRadius = button.frame.height/2
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let lineDashPattern: [NSNumber] = [10, 5]
+        let horisontalShapeLayer = CAShapeLayer()
+        horisontalShapeLayer.strokeColor = UIColor.lightGray.cgColor
+        horisontalShapeLayer.lineWidth = 2
+        horisontalShapeLayer.lineDashPattern = lineDashPattern
+        let horisontalpath = CGMutablePath()
+        horisontalpath.addLines(between: [CGPoint(x: 0, y: 0),
+                                          CGPoint(x: horizontalDottedLine.bounds.maxX, y: 0)])
+        horisontalShapeLayer.path = horisontalpath
+        horizontalDottedLine.layer.addSublayer(horisontalShapeLayer)
+        
+        let varticalShapeLayer = CAShapeLayer()
+        varticalShapeLayer.strokeColor = UIColor.lightGray.cgColor
+        varticalShapeLayer.lineWidth = 2
+        varticalShapeLayer.lineDashPattern = lineDashPattern
+        let varticalpath = CGMutablePath()
+        varticalpath.addLines(between: [CGPoint(x: 0, y: 0),
+                                          CGPoint(x: 0, y: varticalDottedLine.frame.height)])
+        varticalShapeLayer.path = varticalpath
+        varticalDottedLine.layer.addSublayer(varticalShapeLayer)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,8 +85,8 @@ class WritingViewController: UIViewController {
         switch mode {
         case 1:
             characterLabel.isHidden = true
-            characterLabel.isHidden = true
-            characterLabel.isHidden = true
+            horizontalDottedLine.isHidden = true
+            varticalDottedLine.isHidden = true
             recognizeButton.isHidden = false
         default:
             characterLabel.isHidden = false
