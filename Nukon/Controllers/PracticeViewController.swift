@@ -267,6 +267,7 @@ extension PracticeViewController: UICollectionViewDelegate, UICollectionViewData
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: writingCellReuseIdentifer, for: indexPath) as! WritingCell
             cell.delegate = self
             cell.backgroundColor = self.backgroundColor
+            cell.japaneseType = self.japaneseType
             cell.shownCharacter = self.shownCharacter
             cell.sound = self.sound
             cell.order = .orderly

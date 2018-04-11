@@ -50,7 +50,20 @@ class SpeakingCell: UICollectionViewCell {
         }
     }
     
-    var order: Order!
+    var apperOnce = false
+    
+    var order: Order! {
+        didSet {
+            if order == .orderly {
+                if !apperOnce {
+                    self.commentLabel.alpha = 0.0
+                    self.nextCharacterButton.alpha = 0.0
+                    self.nextCharacterButton.isEnabled = false
+                    apperOnce = true
+                }
+            }
+        }
+    }
     
     var judge = Judge.yet
     var comment = Comment.start

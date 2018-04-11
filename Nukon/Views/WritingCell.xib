@@ -114,7 +114,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="288"/>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.95462959999999997" green="0.94415122269999996" blue="0.86955779789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="X0X-Ng-0LG" firstAttribute="centerX" secondItem="cHw-CV-JTt" secondAttribute="centerX" id="5Gk-Q7-1yu"/>
                                                             <constraint firstItem="JLN-d3-sbI" firstAttribute="top" secondItem="cHw-CV-JTt" secondAttribute="top" id="6ZT-w9-kuc"/>
@@ -318,6 +318,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="375" height="628"/>
             <connections>
+                <outlet property="backBoardView" destination="cHw-CV-JTt" id="p0v-9B-qQG"/>
                 <outlet property="characterLabel" destination="JLN-d3-sbI" id="LBo-1g-5Al"/>
                 <outlet property="characterView" destination="z1S-jG-cmi" id="18S-X1-gge"/>
                 <outlet property="clearButton" destination="1kL-VO-AkI" id="QE6-5D-Siw"/>

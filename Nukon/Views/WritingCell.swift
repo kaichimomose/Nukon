@@ -11,6 +11,7 @@ import UIKit
 class WritingCell: UICollectionViewCell {
 
     //MARK: - Properties
+    var japaneseType: JapaneseType!
     var shownCharacter: String!
     var totalNumberOfCharacter: Int!
     var currentNumber: Int!
@@ -34,6 +35,7 @@ class WritingCell: UICollectionViewCell {
     @IBOutlet weak var soundLabel: UILabel!
     @IBOutlet weak var modeSwitchSegment: UISegmentedControl!
     @IBOutlet weak var handwritingView: UIView!
+    @IBOutlet weak var backBoardView: UIView!
     @IBOutlet weak var characterView: UIView!
     @IBOutlet weak var characterLabel: UILabel!
     @IBOutlet weak var horizontalDottedLine: UIView!
@@ -53,11 +55,18 @@ class WritingCell: UICollectionViewCell {
         // Initialization code
         handwritingView.clipsToBounds = true
         handwritingView.isMultipleTouchEnabled = true
+        
+        self.backBoardView.layer.cornerRadius = 10
+        self.backBoardView.layer.shadowColor = UIColor.materialBeige.cgColor
+        self.backBoardView.layer.shadowRadius = 15
+        self.backBoardView.layer.shadowOpacity = 0.7
+        
         path.miterLimit = -10
         
         let font = UIFont.systemFont(ofSize: 16, weight: .bold)
         modeSwitchSegment.setTitleTextAttributes([NSAttributedStringKey.font: font],
                                                  for: .normal)
+        modeSwitchSegment.layer.cornerRadius = 4
         
         clearButton.layer.cornerRadius = clearButton.frame.height/2
         clearButton.layer.borderColor = UIColor.redSun.cgColor
@@ -125,7 +134,7 @@ class WritingCell: UICollectionViewCell {
         let strokeLayer = CAShapeLayer()
         strokeLayer.fillColor = nil
         strokeLayer.lineWidth = 5
-        strokeLayer.strokeColor = UIColor.white.cgColor
+        strokeLayer.strokeColor = UIColor.redSun.cgColor
         strokeLayer.path = path.cgPath
         handwritingView.layer.addSublayer(strokeLayer)
     }
@@ -139,18 +148,12 @@ class WritingCell: UICollectionViewCell {
     func updateLabels() {
         // updates all labels
         self.characterLabel.text = self.shownCharacter
+        if self.shownCharacter.count > 1 {
+            self.characterLabel.font = self.characterLabel.font.withSize(130)
+        } else {
+            self.characterLabel.font = self.characterLabel.font.withSize(250)
+        }
         self.soundLabel.text = self.sound
-//        switch self.judge {
-//        case .correct:
-//            //color animation
-//            self.pulsate()
-//            //sound animation
-//            self.effects.sound(nil, .right, nil)
-//            self.fadeInJudgeButtons()
-//        default:
-//            self.handwritingView.backgroundColor = .clear
-//        }
-        
     }
     
     func enableJudgeButtons() {
@@ -166,6 +169,42 @@ class WritingCell: UICollectionViewCell {
             //            button.transform = CGAffineTransform(scaleX: 0, y: 0)
             button.alpha = 0.0
             button.isEnabled = false
+        }
+    }
+    
+    func recognizeHiragana(pixelBuffer: CVPixelBuffer) {
+        let model = hiraganaModel3()
+        do {
+            let output = try model.prediction(image: pixelBuffer)
+            if output.classLabel == self.shownCharacter {
+                //color animation
+                self.pulsate()
+                //sound animation
+                self.effects.sound(nil, .right, nil)
+                self.fadeInJudgeButtons()
+            } else {
+                shakeCharacter()
+            }
+        } catch {
+            print("this is because \(error)")
+        }
+    }
+    
+    func recognizeKatakana(pixelBuffer: CVPixelBuffer) {
+        let model = katakanaModel()
+        do {
+            let output = try model.prediction(image: pixelBuffer)
+            if output.classLabel == self.shownCharacter {
+                //color animation
+                self.pulsate()
+                //sound animation
+                self.effects.sound(nil, .right, nil)
+                self.fadeInJudgeButtons()
+            } else {
+                shakeCharacter()
+            }
+        } catch {
+            print("this is because \(error)")
         }
     }
     
@@ -229,13 +268,14 @@ class WritingCell: UICollectionViewCell {
             default:
                 delegate.randomCharacter()
             }
+            //switch to practice
             self.modeSwitchSegment.selectedSegmentIndex = 0
             characterLabel.isHidden = false
             horizontalDottedLine.isHidden = false
             varticalDottedLine.isHidden = false
             recognizeButton.isHidden = true
-            self.handwritingView.backgroundColor = .clear
             self.clear()
+            
             self.fadeOutJudgeButtons()
         }
     }
@@ -243,18 +283,22 @@ class WritingCell: UICollectionViewCell {
     @IBAction func modeSwitched(_ sender: Any) {
         let mode = modeSwitchSegment.selectedSegmentIndex
         switch mode {
-        case 1:
+        case 1: //test
             characterLabel.isHidden = true
             horizontalDottedLine.isHidden = true
             varticalDottedLine.isHidden = true
-            recognizeButton.isHidden = false
-            self.handwritingView.backgroundColor = .black
-        default:
+            if self.japaneseType == .hiragana {
+                recognizeButton.isHidden = false
+            } else if self.japaneseType == .katakana {
+                if !sound.contains("g") && !sound.contains("z") && !sound.contains("d") && !sound.contains("j") && !sound.contains("b") && !sound.contains("p"){
+                     recognizeButton.isHidden = false
+                }
+            }
+        default: //practice
             characterLabel.isHidden = false
             horizontalDottedLine.isHidden = false
             varticalDottedLine.isHidden = false
             recognizeButton.isHidden = true
-            self.handwritingView.backgroundColor = .clear
         }
         self.clear()
     }
@@ -265,23 +309,20 @@ class WritingCell: UICollectionViewCell {
     }
     
     @IBAction func recognationButtonTapped(_ sender: Any) {
+        handwritingView.backgroundColor = .black
         let resultImage = UIImage.init(view: handwritingView)
-        let pixelBuffer = resultImage.pixelBuffer()
-        let model = hiraganaModel3()
-        do {
-            let output = try model.prediction(image: pixelBuffer!)
-            if output.classLabel == self.shownCharacter {
-                //color animation
-                self.pulsate()
-                //sound animation
-                self.effects.sound(nil, .right, nil)
-                self.fadeInJudgeButtons()
-            } else {
-                shakeCharacter()
-            }
-        } catch {
-            print("this is because \(error)")
+        guard let pixelBuffer = resultImage.pixelBuffer() else {return}
+        switch self.japaneseType {
+        case .hiragana:
+            recognizeHiragana(pixelBuffer: pixelBuffer)
+        case .katakana:
+            recognizeKatakana(pixelBuffer: pixelBuffer)
+        default:
+            handwritingView.backgroundColor = .clear
+            fadeInJudgeButtons()
+            return
         }
+        handwritingView.backgroundColor = .clear
         fadeInJudgeButtons()
     }
     
