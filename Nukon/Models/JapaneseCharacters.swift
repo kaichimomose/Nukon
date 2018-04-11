@@ -80,7 +80,7 @@ struct JapaneseCharacters {
     
     let vowelSounds = ["a", "i", "u", "e", "o"]
     
-    let soundsList = ["Vowel": ["a", "i", "u", "e", "o"],
+    static let soundsList = ["Vowel": ["a", "i", "u", "e", "o"],
                       "K": ["ka", "ki", "ku", "ke", "ko"],
                       "S": ["sa", "shi", "su", "se", "so"],
                       "T": ["ta", "chi", "tsu", "te", "to"],

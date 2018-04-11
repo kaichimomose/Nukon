@@ -72,6 +72,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="characterTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="gyI-WP-RRT"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="BW1-Eq-7nD">
                                                 <rect key="frame" x="179.5" y="175" width="16" height="36"/>
@@ -132,6 +135,9 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="redButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="eS3-Qf-eht"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8d-m2-chq">
                                                         <rect key="frame" x="91.5" y="0.0" width="50" height="50"/>
@@ -144,6 +150,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="orangeButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="9CT-Gj-Wyz"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhB-oy-LQG">
                                                         <rect key="frame" x="162.5" y="0.0" width="50" height="50"/>
@@ -156,6 +165,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="yellowButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="0og-Uk-POX"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmv-op-EMI">
                                                         <rect key="frame" x="233.5" y="0.0" width="50" height="50"/>
@@ -168,6 +180,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="limeButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="b5n-ld-e6g"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1g-ov-Cap">
                                                         <rect key="frame" x="304" y="0.0" width="50" height="50"/>
@@ -180,6 +195,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="greenButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="oyw-D2-Gjh"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lP0-ma-Neu">
                                                         <rect key="frame" x="375" y="0.0" width="0.0" height="50"/>
@@ -233,6 +251,11 @@
                                                 <state key="normal" image="microphone">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="buttonDown:" destination="gTV-IL-0wX" eventType="touchDown" id="Ftg-Ym-h2O"/>
+                                                    <action selector="buttonUp:" destination="gTV-IL-0wX" eventType="touchUpInside" id="BBh-6A-njp"/>
+                                                    <action selector="buttonUp:" destination="gTV-IL-0wX" eventType="touchUpOutside" id="acS-rG-mYv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -259,6 +282,7 @@
                     </stackView>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.70095258949999995" green="0.8035282493" blue="0.99167233710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="YAf-0R-WdZ" secondAttribute="bottom" id="NP7-sA-6Al"/>
                 <constraint firstItem="YAf-0R-WdZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fXn-Fi-Ila"/>
@@ -267,6 +291,21 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="375" height="763"/>
+            <connections>
+                <outlet property="buttonsView" destination="Ha1-7p-MeI" id="5nl-Jz-cVv"/>
+                <outlet property="characterButton" destination="TJb-DO-f63" id="sFl-7z-LWA"/>
+                <outlet property="characterView" destination="548-Vt-FWp" id="ve8-gX-8F6"/>
+                <outlet property="commentLabel" destination="EO8-VE-TI1" id="C7g-fp-AQq"/>
+                <outlet property="confatableLevel" destination="Lq9-kU-Dup" id="pCe-Mf-eX3"/>
+                <outlet property="nextCharacterButton" destination="YpL-Ge-mDW" id="cps-YY-dM9"/>
+                <outlet property="recordButtonView" destination="9Av-Qz-KjW" id="UA6-Mz-vxG"/>
+                <outlet property="soundLabel" destination="BW1-Eq-7nD" id="PLk-8g-HZE"/>
+                <outletCollection property="confortLevelButtons" destination="l8d-m2-chq" collectionClass="NSMutableArray" id="YhR-jf-xUh"/>
+                <outletCollection property="confortLevelButtons" destination="ZhB-oy-LQG" collectionClass="NSMutableArray" id="9En-u3-D6o"/>
+                <outletCollection property="confortLevelButtons" destination="Xmv-op-EMI" collectionClass="NSMutableArray" id="Vk5-fR-Eqh"/>
+                <outletCollection property="confortLevelButtons" destination="w1g-ov-Cap" collectionClass="NSMutableArray" id="q8z-3U-m6V"/>
+                <outletCollection property="confortLevelButtons" destination="Vve-Ws-CXQ" collectionClass="NSMutableArray" id="Gbn-jN-H6E"/>
+            </connections>
             <point key="canvasLocation" x="55.5" y="102.5"/>
         </collectionViewCell>
     </objects>

@@ -37,7 +37,7 @@ class FirstCharacterCell: UICollectionViewCell {
                 characterLabel.font = characterLabel.font.withSize(100)
             }
             characterLabel.text = japanese.sound
-            let soundsList = JapaneseCharacters().soundsList[japanese.sound]
+            let soundsList = JapaneseCharacters.soundsList[japanese.sound]
             let numberOfCharacters = japanese.letters.count
             var hiddenIndexes = [Int]()
             

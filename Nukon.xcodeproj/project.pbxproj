@@ -34,6 +34,8 @@
 		BF84986A207C6CDE00570755 /* SpeakingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF849868207C6CDD00570755 /* SpeakingCell.xib */; };
 		BF84986D207C6CF300570755 /* WritingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF84986B207C6CF300570755 /* WritingCell.swift */; };
 		BF84986E207C6CF300570755 /* WritingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF84986C207C6CF300570755 /* WritingCell.xib */; };
+		BF849872207D84EF00570755 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF849871207D84EE00570755 /* UIImage+Extension.swift */; };
+		BF849875207D850700570755 /* hiraganaModel3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF849874207D850700570755 /* hiraganaModel3.mlmodel */; };
 		BF93FD871FA7AAF7003C9F73 /* ShowCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */; };
 		BF97052C1FCBBDAD00A95E56 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97052B1FCBBDAD00A95E56 /* DateToString.swift */; };
 		BF9ADFCF202AC01A0024A71C /* CharactersSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */; };
@@ -106,6 +108,8 @@
 		BF849868207C6CDD00570755 /* SpeakingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeakingCell.xib; sourceTree = "<group>"; };
 		BF84986B207C6CF300570755 /* WritingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingCell.swift; sourceTree = "<group>"; };
 		BF84986C207C6CF300570755 /* WritingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WritingCell.xib; sourceTree = "<group>"; };
+		BF849871207D84EE00570755 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		BF849874207D850700570755 /* hiraganaModel3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = hiraganaModel3.mlmodel; sourceTree = "<group>"; };
 		BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharactersViewController.swift; sourceTree = "<group>"; };
 		BF97052B1FCBBDAD00A95E56 /* DateToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		BF9ADFCE202AC01A0024A71C /* CharactersSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharactersSelection.storyboard; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 		BF5FF9511FA0D35D00A46DE0 /* Nukon */ = {
 			isa = PBXGroup;
 			children = (
+				BF849873207D850700570755 /* Train Models */,
 				F691EEFA2048BB2400ED5DA8 /* Extensions */,
 				BF76DDD61FD9EF490030F52B /* Custom View Classes */,
 				BF5FF9671FA0D56300A46DE0 /* Controllers */,
@@ -299,6 +304,14 @@
 			path = "Custom View Classes";
 			sourceTree = "<group>";
 		};
+		BF849873207D850700570755 /* Train Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF849874207D850700570755 /* hiraganaModel3.mlmodel */,
+			);
+			path = "Train Models";
+			sourceTree = "<group>";
+		};
 		F649BADA2057395A0026733F /* Sound Effects */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +337,7 @@
 		F691EEFA2048BB2400ED5DA8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BF849871207D84EE00570755 /* UIImage+Extension.swift */,
 				F691EEFB2048BB4000ED5DA8 /* Extensions.swift */,
 			);
 			path = Extensions;
@@ -464,6 +478,7 @@
 				BF4ABFDF1FAE266E000EBCD3 /* JapaneseCharacters.swift in Sources */,
 				BF849869207C6CDD00570755 /* SpeakingCell.swift in Sources */,
 				BF504229204D96CA00490A1A /* OverViewCell.swift in Sources */,
+				BF849872207D84EF00570755 /* UIImage+Extension.swift in Sources */,
 				F6ADBD4F205DB114008576D5 /* Exit.swift in Sources */,
 				F6AED9092058511700BCC631 /* SimpleTransition.swift in Sources */,
 				BF76DDDF1FD9EF4A0030F52B /* GradientView.swift in Sources */,
@@ -471,6 +486,7 @@
 				BF504227204CEA4A00490A1A /* MenuCell.swift in Sources */,
 				F60611DA2049F673007407C3 /* MenuButton.swift in Sources */,
 				BF849866207C584E00570755 /* PracticeViewController.swift in Sources */,
+				BF849875207D850700570755 /* hiraganaModel3.mlmodel in Sources */,
 				F691EEFC2048BB4000ED5DA8 /* Extensions.swift in Sources */,
 				F64CE7722045AC9000C480EB /* HiraganaHomeScreenViewController.swift in Sources */,
 				F629807E20638CD200356A55 /* LaunchScreenViewController.swift in Sources */,

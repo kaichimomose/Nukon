@@ -12,7 +12,7 @@
         <!--Practice View Controller-->
         <scene sceneID="4dd-7f-JQb">
             <objects>
-                <viewController id="sxb-ZI-DMa" customClass="PracticeViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PracticeVC" id="sxb-ZI-DMa" customClass="PracticeViewController" customModule="Nukon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M88-MV-IUN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,9 @@
                                                             <constraint firstAttribute="width" constant="30" id="zLl-aT-x46"/>
                                                         </constraints>
                                                         <state key="normal" image="cancel_button"/>
+                                                        <connections>
+                                                            <action selector="exitButtonTapped:" destination="sxb-ZI-DMa" eventType="touchUpInside" id="wRZ-fS-Bbe"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="6il-1o-HOS">
                                                         <rect key="frame" x="70" y="0.0" width="235" height="30"/>
@@ -155,6 +158,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="tjB-Lt-chw" id="nFd-rZ-Jl6"/>
+                        <outlet property="countCharactersLabel" destination="6il-1o-HOS" id="Y01-Hg-6OV"/>
                         <outlet property="menuBar" destination="jiW-99-7dF" id="fPB-vF-bOc"/>
                         <outlet property="menuBarCollectionView" destination="Itp-pJ-HgH" id="PV7-pR-9ht"/>
                     </connections>
