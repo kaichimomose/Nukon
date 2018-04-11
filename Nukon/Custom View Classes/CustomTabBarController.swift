@@ -15,6 +15,8 @@ class CustomTabBarController: UITabBarController {
     var hiraganaController = HiraganaHomeScreenViewController()
     var katakanaController = HiraganaHomeScreenViewController()
     
+    var firstTimeOpened = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let storyboard = UIStoryboard.init(name: "HiraganaHomeScreen", bundle: .main)
@@ -40,12 +42,15 @@ class CustomTabBarController: UITabBarController {
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.title == "HIRAGANA" {
-            katakanaController.popInMenuButtons()
-            katakanaController.popCount = 0
-        } else {
+        if item.title == "KATAKANA" {
+            firstTimeOpened = false
             hiraganaController.popInMenuButtons()
             hiraganaController.popCount = 0
+        }
+        
+        if item.title == "HIRAGANA" && firstTimeOpened == false {
+            katakanaController.popInMenuButtons()
+            katakanaController.popCount = 0
         }
     }
 
