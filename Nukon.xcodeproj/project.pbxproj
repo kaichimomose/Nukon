@@ -207,9 +207,9 @@
 			children = (
 				F64CE7712045AC9000C480EB /* HiraganaHomeScreenViewController.swift */,
 				BF9ADFD0202AC16E0024A71C /* JapaneseCharactersCollectionViewController.swift */,
+				BF849865207C584E00570755 /* PracticeViewController.swift */,
 				BF93FD861FA7AAF7003C9F73 /* ShowCharactersViewController.swift */,
 				BF65B1DE2075486F00D01315 /* WritingViewController.swift */,
-				BF849865207C584E00570755 /* PracticeViewController.swift */,
 				F629807D20638CD200356A55 /* LaunchScreenViewController.swift */,
 			);
 			path = Controllers;

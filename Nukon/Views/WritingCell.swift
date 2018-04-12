@@ -154,6 +154,10 @@ class WritingCell: UICollectionViewCell {
             self.characterLabel.font = self.characterLabel.font.withSize(250)
         }
         self.soundLabel.text = self.sound
+        if order == .randomly {
+            self.modeSwitchSegment.alpha = 0.0
+            self.testView()
+        }
     }
     
     func enableJudgeButtons() {
@@ -206,6 +210,28 @@ class WritingCell: UICollectionViewCell {
         } catch {
             print("this is because \(error)")
         }
+    }
+    
+    func testView() {
+        characterLabel.isHidden = true
+        horizontalDottedLine.isHidden = true
+        varticalDottedLine.isHidden = true
+        if self.japaneseType == .hiragana {
+            if !sound.contains("ky") && !sound.contains("sh") && !sound.contains("ch") && !sound.contains("ny") && !sound.contains("hy") && !sound.contains("my") && !sound.contains("ry") && !sound.contains("gy") && !sound.contains("j") && !sound.contains("by") && !sound.contains("py") {
+                recognizeButton.isHidden = false
+            }
+        } else if self.japaneseType == .katakana {
+            if !sound.contains("g") && !sound.contains("z") && !sound.contains("d") && !sound.contains("j") && !sound.contains("b") && !sound.contains("p") && !sound.contains("ky") && !sound.contains("sh") && !sound.contains("ch") && !sound.contains("ny") && !sound.contains("hy") && !sound.contains("my") && !sound.contains("ry") && !sound.contains("gy") && !sound.contains("j") && !sound.contains("by") && !sound.contains("py"){
+                recognizeButton.isHidden = false
+            }
+        }
+    }
+    
+    func  practiceView() {
+        characterLabel.isHidden = false
+        horizontalDottedLine.isHidden = false
+        varticalDottedLine.isHidden = false
+        recognizeButton.isHidden = true
     }
     
     //MARK: - Animation
@@ -270,10 +296,7 @@ class WritingCell: UICollectionViewCell {
             }
             //switch to practice
             self.modeSwitchSegment.selectedSegmentIndex = 0
-            characterLabel.isHidden = false
-            horizontalDottedLine.isHidden = false
-            varticalDottedLine.isHidden = false
-            recognizeButton.isHidden = true
+            self.practiceView()
             self.clear()
             
             self.fadeOutJudgeButtons()
@@ -284,21 +307,9 @@ class WritingCell: UICollectionViewCell {
         let mode = modeSwitchSegment.selectedSegmentIndex
         switch mode {
         case 1: //test
-            characterLabel.isHidden = true
-            horizontalDottedLine.isHidden = true
-            varticalDottedLine.isHidden = true
-            if self.japaneseType == .hiragana {
-                recognizeButton.isHidden = false
-            } else if self.japaneseType == .katakana {
-                if !sound.contains("g") && !sound.contains("z") && !sound.contains("d") && !sound.contains("j") && !sound.contains("b") && !sound.contains("p"){
-                     recognizeButton.isHidden = false
-                }
-            }
+            self.testView()
         default: //practice
-            characterLabel.isHidden = false
-            horizontalDottedLine.isHidden = false
-            varticalDottedLine.isHidden = false
-            recognizeButton.isHidden = true
+            self.practiceView()
         }
         self.clear()
     }

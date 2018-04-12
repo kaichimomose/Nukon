@@ -292,7 +292,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="375" height="763"/>
             <connections>
-                <outlet property="buttonsView" destination="Ha1-7p-MeI" id="5nl-Jz-cVv"/>
+                <outlet property="buttonsView" destination="FfQ-uK-EUT" id="8tD-xg-R8I"/>
                 <outlet property="characterButton" destination="TJb-DO-f63" id="sFl-7z-LWA"/>
                 <outlet property="characterView" destination="548-Vt-FWp" id="ve8-gX-8F6"/>
                 <outlet property="commentLabel" destination="EO8-VE-TI1" id="C7g-fp-AQq"/>

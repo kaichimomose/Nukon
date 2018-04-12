@@ -34,6 +34,7 @@ enum ButtonTitle {
 class SpeakingCell: UICollectionViewCell {
     
     //MARK: - Properties
+    var originalBackgroundColor: UIColor?
     var shownCharacter: String!
     var totalNumberOfCharacter: Int!
     var currentNumber: Int!
@@ -83,24 +84,21 @@ class SpeakingCell: UICollectionViewCell {
     weak var delegate: CharacterDelegate!
 
     //MARK: - Outlets
+    @IBOutlet weak var characterButton: UIButton!
     @IBOutlet weak var characterView: UIView!
-    @IBOutlet weak var nextCharacterButton: UIButton!
-    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
     
     @IBOutlet var confortLevelButtons: [UIButton]!
-    
     @IBOutlet weak var confatableLevel: UILabel!
-    
-    @IBOutlet weak var characterButton: UIButton!
-    
     @IBOutlet weak var buttonsView: UIView!
     
+    @IBOutlet weak var nextCharacterButton: UIButton!
+    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var recordButtonView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+    
         self.characterButton.layer.cornerRadius = 10
         self.characterButton.layer.shadowColor = UIColor.materialBeige.cgColor
         self.characterButton.layer.shadowRadius = 15
@@ -313,6 +311,45 @@ class SpeakingCell: UICollectionViewCell {
         }
     }
     
+    func animateOnboard() {
+        let onboardAnimation = {
+            self.characterView.backgroundColor = .clear
+            
+            self.confatableLevel.alpha = 1
+            self.buttonsView.backgroundColor = self.originalBackgroundColor
+            
+            self.commentLabel.alpha = 1
+            self.recordButtonView.backgroundColor = self.originalBackgroundColor
+            self.nextCharacterButton.alpha = 1
+            
+            self.confortLevelButtons.forEach { button in
+                button.alpha = 1
+            }
+        }
+        
+        UIView.animate(withDuration: 1.0, delay: 3.5, options: [], animations: onboardAnimation, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+            self.buttonsView.backgroundColor = .clear
+            self.recordButtonView.backgroundColor = .clear
+            
+            self.backgroundColor = self.originalBackgroundColor
+            
+            //make buttons enable
+            self.nextCharacterButton.isEnabled = true
+            self.enableJudgeButtons()
+            
+            //show FirstWalkThrough 
+            self.delegate.animateInFirstWalkthrough()
+            
+            //change superview backgroundcolor
+            self.delegate.backToOriginalView()
+            
+            //updata userdefalt "UsedBefore" ture
+            UserDefaults.standard.set(true, forKey: "UsedBefore")
+        })
+    }
+    
     @IBAction func characterTapped(_ sender: Any) {
         //stop animation
         self.characterButton.layer.removeAllAnimations()
@@ -325,41 +362,7 @@ class SpeakingCell: UICollectionViewCell {
         
         let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
         if !usedBefore {
-            let onboardAnimation = {
-                self.characterView.backgroundColor = .clear
-                
-                self.confatableLevel.alpha = 1
-                self.buttonsView.backgroundColor = self.backgroundColor
-                
-                self.commentLabel.alpha = 1
-                self.recordButtonView.backgroundColor = self.backgroundColor
-                self.nextCharacterButton.alpha = 1
-                
-                self.confortLevelButtons.forEach { button in
-                    button.alpha = 1
-                }
-            }
-            
-            UIView.animate(withDuration: 1.0, delay: 3.5, options: [], animations: onboardAnimation, completion: nil)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                self.buttonsView.backgroundColor = .clear
-                self.recordButtonView.backgroundColor = .clear
-                
-                self.backgroundColor = self.backgroundColor
-                
-                //make imformation button enable
-//                self.information.isEnabled = true
-//                self.information.alpha =  1
-                
-                //make buttons enable
-                self.nextCharacterButton.isEnabled = true
-                self.enableJudgeButtons()
-                
-//                self.animateInFirstWalkthrough()
-                //TODO: updata userdefalt "UsedBefore" ture
-                UserDefaults.standard.set(true, forKey: "UsedBefore")
-            })
+            self.animateOnboard()
         } else {
             if self.order == .orderly {
                 

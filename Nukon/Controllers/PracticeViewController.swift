@@ -18,6 +18,8 @@ protocol CharacterDelegate: class {
     func orderCharacter()
     func dismissPracticeView()
     func updateCoreData(confidence: Int)
+    func animateInFirstWalkthrough()
+    func backToOriginalView()
 }
 
 class PracticeViewController: UIViewController, CharacterDelegate {
@@ -48,12 +50,34 @@ class PracticeViewController: UIViewController, CharacterDelegate {
     let coreDataStack = CoreDataStack.instance
     var characterCoreDataDict: [String: WordLearnt]!
     
+    //Bulr effect
+    var effect: UIVisualEffect!
+    var vcrEffect: UIVisualEffect!
+    
+    //Sound effect
+    var effects = SoundEffects()
+    
     //MARK: -Outlets
     @IBOutlet weak var menuBar: MenuBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuBarCollectionView: UICollectionView!
     @IBOutlet weak var countCharactersLabel: UILabel!
     
+    //MARK: Blur view and nested elements
+    @IBOutlet var buttons: [UIButton]!
+    
+    //MARK: Confidence Walkthrough and Elements
+    @IBOutlet weak var confidenceWalkthrough: UIVisualEffectView!
+    @IBOutlet weak var exitWalkthrough: UIButton!
+    
+    //MARK: Voice Recognition Walkthrough and elements
+    @IBOutlet weak var voiceRecognitionWalkthrough: UIVisualEffectView!
+    @IBOutlet weak var redArrowOnVcrWalkthrough: UIImageView!
+    @IBOutlet weak var voiceRecognitionButton: UIButton!
+    @IBOutlet weak var exitSecondWalkthrough: Exit!
+    
+    //information button, intiates the walkthrough process
+    @IBOutlet weak var information: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,15 +130,54 @@ class PracticeViewController: UIViewController, CharacterDelegate {
         }
         
         self.countCharactersLabel.text = "\(self.currentNumber)/\(self.totalNumberOfCharacter)"
+        
+        //Walkthrough blur For confidences
+        confidenceWalkthrough.center = self.view.center
+        confidenceWalkthrough.frame = self.view.frame
+        confidenceWalkthrough.alpha = 0
+        effect = confidenceWalkthrough.effect
+        confidenceWalkthrough.effect = nil
+        
+        buttons.forEach { (button) in
+            button.layer.cornerRadius = button.layer.frame.height/2
+        }
+        
+        //Walkthrough buttons for voice recognition
+        voiceRecognitionWalkthrough.center = self.view.center
+        voiceRecognitionWalkthrough.frame = self.view.frame
+        voiceRecognitionWalkthrough.alpha = 0
+        exitSecondWalkthrough.blur = voiceRecognitionWalkthrough.effect
+        voiceRecognitionWalkthrough.effect = nil
+        exitSecondWalkthrough.dismissedView = voiceRecognitionWalkthrough
+        voiceRecognitionButton.layer.cornerRadius = voiceRecognitionButton.layer.frame.width / 2
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
+        
+        if !usedBefore {
+            self.information.isEnabled = false
+            self.information.alpha =  0.5
+            switch self.japaneseType {
+            case .hiragana, .yVowelHiragana:
+                self.view.backgroundColor = UIColor.hiraganaDarkBackground
+            default:
+                self.view.backgroundColor = UIColor.katakanaDarkBackground
+            }
+        }
     }
     
     func scrollToItemIndexPath(menuindex: Int) {
         collectionView.reloadData()
+        if menuindex == 1 {
+            information.alpha = 0.5
+            information.isEnabled = false
+        } else {
+            information.alpha = 1.0
+            information.isEnabled = true
+        }
         let indexPath = NSIndexPath(item: 0, section: menuindex)
         collectionView.scrollToItem(at: indexPath as IndexPath, at: .centeredHorizontally, animated: false)
     }
@@ -221,8 +284,75 @@ class PracticeViewController: UIViewController, CharacterDelegate {
         coreDataStack.viewContext.refresh(wordLearnt, mergeChanges: true)
     }
     
+    //MARK: - Animations
+    //delegation
+    func animateInFirstWalkthrough() {
+        self.view.addSubview(confidenceWalkthrough)
+        
+        confidenceWalkthrough.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.effects.swooshResource(.water)
+            
+            self.confidenceWalkthrough.effect = self.effect
+            self.confidenceWalkthrough.alpha = 1
+            self.confidenceWalkthrough.isHidden = false
+            self.confidenceWalkthrough.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+    }
+    
+    func animateInSecondeWalkthrough() {
+        self.view.addSubview(voiceRecognitionWalkthrough)
+        
+        voiceRecognitionWalkthrough.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            
+            self.effects.swooshResource(.water)
+            self.voiceRecognitionWalkthrough.effect = self.effect
+            self.voiceRecognitionWalkthrough.alpha = 1
+            self.voiceRecognitionWalkthrough.isHidden = false
+            self.voiceRecognitionWalkthrough.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+            self.voiceRecognitionButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }) { (_) in
+            
+            UIView.animate(withDuration: 0.7, delay: 1.0, usingSpringWithDamping: 4, initialSpringVelocity: 7, options: .curveEaseOut, animations: {
+                self.voiceRecognitionButton.transform = CGAffineTransform.identity
+            }, completion: nil)
+        }
+        
+    }
+    
+    //delegation
+    func backToOriginalView() {
+        //make imformation button enable
+        self.information.isEnabled = true
+        self.information.alpha =  1
+        self.view.backgroundColor = self.backgroundColor
+    }
+    
+    //MARK: - Actions
     @IBAction func exitButtonTapped(_ sender: Any) {
         dismissPracticeView()
+    }
+    
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        animateInFirstWalkthrough()
+    }
+    
+    @IBAction func exitFirstWalkthrough(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.confidenceWalkthrough.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            self.confidenceWalkthrough.effect = nil
+            self.confidenceWalkthrough.alpha = 0
+        }) { (_) in
+            self.confidenceWalkthrough.removeFromSuperview()
+            self.animateInSecondeWalkthrough()
+        }
     }
     
 }
@@ -252,14 +382,30 @@ extension PracticeViewController: UICollectionViewDelegate, UICollectionViewData
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: speakingCellReuseIdentifer, for: indexPath) as! SpeakingCell
             cell.delegate = self
             cell.backgroundColor = self.backgroundColor
+            cell.originalBackgroundColor = self.backgroundColor
             cell.shownCharacter = self.shownCharacter
             cell.sound = self.sound
-            cell.order = .orderly
+            cell.order = self.order
             cell.currentNumber = self.currentNumber
             cell.totalNumberOfCharacter = self.totalNumberOfCharacter
             cell.judge = Judge.yet
             cell.comment = Comment.start
             cell.buttonTitle = ButtonTitle.start
+            
+            let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
+            if !usedBefore {
+                cell.commentLabel.alpha = 0
+                
+                cell.characterView.backgroundColor = self.backgroundColor
+                
+                switch self.japaneseType {
+                case .hiragana, .yVowelHiragana:
+                    cell.backgroundColor = UIColor.hiraganaDarkBackground
+                default:
+                    cell.backgroundColor = UIColor.katakanaDarkBackground
+                }
+            }
+            
             cell.updateLabels()
             cell.moveCharacter()
             return cell
@@ -270,7 +416,7 @@ extension PracticeViewController: UICollectionViewDelegate, UICollectionViewData
             cell.japaneseType = self.japaneseType
             cell.shownCharacter = self.shownCharacter
             cell.sound = self.sound
-            cell.order = .orderly
+            cell.order = self.order
             cell.currentNumber = self.currentNumber
             cell.totalNumberOfCharacter = self.totalNumberOfCharacter
             cell.judge = Judge.yet

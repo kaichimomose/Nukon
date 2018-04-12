@@ -10,8 +10,6 @@ import UIKit
 
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var japaneseType: JapaneseType?
-    var sound: String?
     let practiceCellId = "PracticeMenuCell"
     let cellId = "MenuCell"
     let imageName = ["consonantOverview", "circle_collection"]
@@ -30,49 +28,11 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let sound = self.sound, let japaneseType = self.japaneseType {
-            switch japaneseType {
-            case .hiragana:
-                if sound.contains("ky") || sound.contains("sh") || sound.contains("ch") || sound.contains("ny") || sound.contains("hy") || sound.contains("my") || sound.contains("ry") || sound.contains("gy") || sound.contains("j") || sound.contains("by") || sound.contains("py") {
-                    return 1
-                } else {
-                    return 2
-                }
-            case .katakana:
-                if sound.contains("g") || sound.contains("z") || sound.contains("d") || sound.contains("j") || sound.contains("b") || sound.contains("p") || sound.contains("ky") || sound.contains("sh") || sound.contains("ch") || sound.contains("ny") || sound.contains("hy") || sound.contains("my") || sound.contains("ry") || sound.contains("gy") || sound.contains("j") || sound.contains("by") || sound.contains("py") {
-                    return 1
-                } else {
-                    return 2
-                }
-            default:
-                return 1
-            }
-        } else {
-            return 2
-        }
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let sound = self.sound, let japaneseType = self.japaneseType {
-            switch japaneseType {
-            case .hiragana:
-                if sound.contains("ky") || sound.contains("sh") || sound.contains("ch") || sound.contains("ny") || sound.contains("hy") || sound.contains("my") || sound.contains("ry") || sound.contains("gy") || sound.contains("j") || sound.contains("by") || sound.contains("py") {
-                    return CGSize(width: frame.width, height: frame.height)
-                } else {
-                    return CGSize(width: frame.width/2, height: frame.height)
-                }
-            case .katakana:
-                if sound.contains("g") || sound.contains("z") || sound.contains("d") || sound.contains("j") || sound.contains("b") || sound.contains("p") || sound.contains("ky") || sound.contains("sh") || sound.contains("ch") || sound.contains("ny") || sound.contains("hy") || sound.contains("my") || sound.contains("ry") || sound.contains("gy") || sound.contains("j") || sound.contains("by") || sound.contains("py") {
-                    return CGSize(width: frame.width, height: frame.height)
-                } else {
-                    return CGSize(width: frame.width/2, height: frame.height)
-                }
-            default:
-                return CGSize(width: frame.width, height: frame.height)
-            }
-        } else {
-            return CGSize(width: frame.width/2, height: frame.height)
-        }
+        return CGSize(width: frame.width/2, height: frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
