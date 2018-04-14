@@ -158,6 +158,7 @@ class PracticeViewController: UIViewController, CharacterDelegate {
         let usedBefore = UserDefaults.standard.bool(forKey: "UsedBefore")
         
         if !usedBefore {
+            self.menuBarCollectionView.isUserInteractionEnabled = false
             self.information.isEnabled = false
             self.information.alpha =  0.5
             switch self.japaneseType {
@@ -206,7 +207,7 @@ class PracticeViewController: UIViewController, CharacterDelegate {
         print(sounds!)
         let vowelIndex = Int(arc4random()) % letters.count
         // picks a character with random numbers
-        print(vowelIndex)
+        print(soundIndex, vowelIndex)
         let character = letters[vowelIndex]
         if let showCharacter = character {
             let currectsound = sounds![vowelIndex]
@@ -284,6 +285,35 @@ class PracticeViewController: UIViewController, CharacterDelegate {
         coreDataStack.viewContext.refresh(wordLearnt, mergeChanges: true)
     }
     
+    func varticalDot() -> CAShapeLayer {
+        let lineDashPattern: [NSNumber] = [10, 5]
+        let varticalShapeLayer = CAShapeLayer()
+        varticalShapeLayer.strokeColor = UIColor.lightGray.cgColor
+        varticalShapeLayer.lineWidth = 2
+        varticalShapeLayer.lineDashPattern = lineDashPattern
+        let varticalpath = CGMutablePath()
+        let length = UIScreen.main.bounds.width - 80
+        varticalpath.addLines(between: [CGPoint(x: 0, y: 0),
+                                        CGPoint(x: 0, y: length)])
+        varticalShapeLayer.path = varticalpath
+        return varticalShapeLayer
+    }
+    
+    func horisontalDot() -> CAShapeLayer {
+        let lineDashPattern: [NSNumber] = [10, 5]
+        let horisontalShapeLayer = CAShapeLayer()
+        horisontalShapeLayer.strokeColor = UIColor.lightGray.cgColor
+        horisontalShapeLayer.lineWidth = 2
+        horisontalShapeLayer.lineDashPattern = lineDashPattern
+        let horisontalpath = CGMutablePath()
+        let length = UIScreen.main.bounds.width - 80
+        horisontalpath.addLines(between: [CGPoint(x: 0, y: 0),
+                                          CGPoint(x: length, y: 0)])
+        horisontalShapeLayer.path = horisontalpath
+        
+        return horisontalShapeLayer
+    }
+    
     //MARK: - Animations
     //delegation
     func animateInFirstWalkthrough() {
@@ -332,8 +362,10 @@ class PracticeViewController: UIViewController, CharacterDelegate {
         //make imformation button enable
         self.information.isEnabled = true
         self.information.alpha =  1
+        self.menuBarCollectionView.isUserInteractionEnabled = true
         self.view.backgroundColor = self.backgroundColor
     }
+    
     
     //MARK: - Actions
     @IBAction func exitButtonTapped(_ sender: Any) {
@@ -420,6 +452,8 @@ extension PracticeViewController: UICollectionViewDelegate, UICollectionViewData
             cell.currentNumber = self.currentNumber
             cell.totalNumberOfCharacter = self.totalNumberOfCharacter
             cell.judge = Judge.yet
+            cell.varticalDottedLine.layer.addSublayer(varticalDot())
+            cell.horizontalDottedLine.layer.addSublayer(horisontalDot())
             cell.updateLabels()
             return cell
         }

@@ -12,7 +12,8 @@ import UIKit
 extension UIImage{
     convenience init(view: UIView) {
         
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.11)
+        let radio = 32/view.bounds.size.width
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, radio)
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

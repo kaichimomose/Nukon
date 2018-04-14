@@ -83,29 +83,9 @@ class WritingCell: UICollectionViewCell {
             button.layer.cornerRadius = button.frame.height/2
         }
         
-        let lineDashPattern: [NSNumber] = [10, 5]
-        let horisontalShapeLayer = CAShapeLayer()
-        horisontalShapeLayer.strokeColor = UIColor.lightGray.cgColor
-        horisontalShapeLayer.lineWidth = 2
-        horisontalShapeLayer.lineDashPattern = lineDashPattern
-        let horisontalpath = CGMutablePath()
-        horisontalpath.addLines(between: [CGPoint(x: 0, y: 0),
-                                          CGPoint(x: horizontalDottedLine.bounds.maxX, y: 0)])
-        horisontalShapeLayer.path = horisontalpath
-        horizontalDottedLine.layer.addSublayer(horisontalShapeLayer)
-        
-        let varticalShapeLayer = CAShapeLayer()
-        varticalShapeLayer.strokeColor = UIColor.lightGray.cgColor
-        varticalShapeLayer.lineWidth = 2
-        varticalShapeLayer.lineDashPattern = lineDashPattern
-        let varticalpath = CGMutablePath()
-        varticalpath.addLines(between: [CGPoint(x: 0, y: 0),
-                                        CGPoint(x: 0, y: varticalDottedLine.frame.height)])
-        varticalShapeLayer.path = varticalpath
-        varticalDottedLine.layer.addSublayer(varticalShapeLayer)
-        
         disableJudgeButtons()
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
