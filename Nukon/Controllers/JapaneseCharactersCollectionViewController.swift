@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-protocol GetValueFromCollectionView {
+protocol GetValueFromCollectionView: class {
     func getSelectedValue(selectedJapanese: [String: [String?]], selectedJpaneseCoreData: [String: WordLearnt])
     func getDeselectedValue(selectedJapanese: [String: [String?]], selectedJpaneseCoreData: [String: WordLearnt])
 }
@@ -17,7 +17,7 @@ protocol GetValueFromCollectionView {
 class JapaneseCharactersCollectionViewController: UIViewController, GetValueFromCollectionView {
     
     //MARK: - Properties
-    var backgoundColor: UIColor!
+    weak var backgoundColor: UIColor!
     
     var japaneseList = [Japanese]()
     var japaneseType: JapaneseType!
@@ -199,18 +199,18 @@ class JapaneseCharactersCollectionViewController: UIViewController, GetValueFrom
     
     @IBAction func practiceButtonTapped(_ sender: Any) {
         if !selectedJapanese.isEmpty {
-            let storyboard = UIStoryboard(name: "Speaking", bundle: .main)
-            let showCharacterVC = storyboard.instantiateViewController(withIdentifier: "showCharactersVC") as! ShowCharactersViewController
-            showCharacterVC.japaneseList = self.japaneseList
-            showCharacterVC.japaneseDict = self.selectedJapanese
-            showCharacterVC.japaneseType = self.japaneseType
-            showCharacterVC.characterCoreDataDict = self.selectedJpaneseCoreData
-            showCharacterVC.backgroundColor = self.backgoundColor
+            let storyboard = UIStoryboard(name: "Practice", bundle: .main)
+            let practiceVC = storyboard.instantiateViewController(withIdentifier: "PracticeVC") as! PracticeViewController
+            practiceVC.japaneseList = self.japaneseList
+            practiceVC.japaneseDict = self.selectedJapanese
+            practiceVC.japaneseType = self.japaneseType
+            practiceVC.characterCoreDataDict = self.selectedJpaneseCoreData
+            practiceVC.backgroundColor = self.backgoundColor
             self.selectedJapanese = [:]
             self.selectedJpaneseCoreData = [:]
             self.practiceButton.alpha = 0.5
             self.practiceButton.isEnabled = false
-            present(showCharacterVC, animated: true, completion: nil)
+            present(practiceVC, animated: true, completion: nil)
         }
 
     }

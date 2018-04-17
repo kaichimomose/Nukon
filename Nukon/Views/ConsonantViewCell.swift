@@ -8,16 +8,15 @@
 
 import UIKit
 
-protocol GetValueFromCell {
+protocol GetValueFromCell: class {
     func selectCharacter(consonant: String, index: Int, character: String, nilList: [String?])
     func deselectCharacter(consonant: String, index: Int, character: String)
-    func scrollToItemIndexPath(index: Int)
 }
 
 class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
     
     //MARK: - Properties
-    var delegate: GetValueFromCollectionView?
+    weak var delegate: GetValueFromCollectionView?
     
     var japaneseList: [Japanese]!
     var japaneseType: JapaneseType!
@@ -97,11 +96,6 @@ class ConsonantViewCell: UICollectionViewCell, GetValueFromCell {
         if nilCount == numberOfContents {
             self.selectedJapanese[consonant] = nil
         }
-    }
-    
-    func scrollToItemIndexPath(index: Int) {
-        let indexPath = NSIndexPath(item: index, section: 0)
-        collectionView.scrollToItem(at: indexPath as IndexPath, at: .top, animated: true)
     }
     
 }

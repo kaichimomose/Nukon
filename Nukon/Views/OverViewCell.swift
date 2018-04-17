@@ -9,13 +9,8 @@
 import UIKit
 
 class OverViewCell: UICollectionViewCell, GetValueFromCell {
-    func scrollToItemIndexPath(index: Int) {
-        
-    }
-    
-    
     //MARK: - Properties
-    var delegate: GetValueFromCollectionView?
+    weak var delegate: GetValueFromCollectionView?
     
     var japaneseList: [Japanese]!
     var japaneseType: JapaneseType!

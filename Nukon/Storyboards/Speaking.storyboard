@@ -14,6 +14,9 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue-Bold</string>
         </array>
+        <array key="HiraginoMaruGothProN.ttc">
+            <string>HiraMaruProN-W4</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Show Characters View Controller-->
@@ -106,7 +109,7 @@
                                                             <constraint firstAttribute="width" constant="201" id="gli-S4-U1n"/>
                                                             <constraint firstAttribute="height" constant="201" id="uNV-6E-aKc"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="125"/>
+                                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="125"/>
                                                         <state key="normal">
                                                             <color key="titleColor" red="0.95294117649999999" green="0.43529411759999997" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>

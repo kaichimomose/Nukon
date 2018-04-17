@@ -10,10 +10,14 @@ import UIKit
 
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    let practiceCellId = "PracticeMenuCell"
     let cellId = "MenuCell"
     let imageName = ["consonantOverview", "circle_collection"]
+    let practiceType = ["SPEAKING", "WRITING"]
     
-    var japaneseCharacterCVC: JapaneseCharactersCollectionViewController?
+    weak var japaneseCharacterCVC: JapaneseCharactersCollectionViewController?
+    
+    weak var practiceVC: PracticeViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,8 +31,6 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return 2
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width/2, height: frame.height)
     }
@@ -38,14 +40,24 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
-        cell.iconImageView.image = UIImage(named: imageName[indexPath.row])?.withRenderingMode(.alwaysTemplate)
-        cell.tintColor = .lightGray
-        return cell
+        if japaneseCharacterCVC != nil {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
+            cell.iconImageView.image = UIImage(named: imageName[indexPath.row])?.withRenderingMode(.alwaysTemplate)
+            cell.tintColor = .lightGray
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: practiceCellId, for: indexPath) as! PracticeMenuCell
+            cell.PracticeTypeLabel.text = practiceType[indexPath.row]
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        japaneseCharacterCVC?.scrollToItemIndexPath(menuindex: indexPath.row)
+        if let japaneseCharacterCVC = self.japaneseCharacterCVC {
+            japaneseCharacterCVC.scrollToItemIndexPath(menuindex: indexPath.row)
+        } else if let practiceVC = self.practiceVC {
+            practiceVC.scrollToItemIndexPath(menuindex: indexPath.row)
+        }
     }
     
 }

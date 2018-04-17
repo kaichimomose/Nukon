@@ -10,39 +10,13 @@ import UIKit
 import CoreData.NSFetchedResultsController
 import Speech
 
-enum Judge {
-    case correct
-    case wrong
-    case wait
-    case yet
-}
-
-enum Comment: String {
-    case start = "Hold button to record"
-    case recording = "Recording, say just once"
-    case recognizing = "Recognizing"
-    case again = "Record again"
-    case next = "tap next"
-}
-
-enum ButtonTitle {
-    case start
-    case hold
-    case next
-}
-
-enum Order {
-    case orderly
-    case randomly
-}
-
 class ShowCharactersViewController: UIViewController {
     
     //create pulse layer for when user guesses correctly
     var pulseLayer: CAShapeLayer!
     
     //MARK: - Properties
-    var backgroundColor: UIColor!
+    weak var backgroundColor: UIColor!
     
     //Sound Properties
     var effects = SoundEffects()
@@ -53,12 +27,11 @@ class ShowCharactersViewController: UIViewController {
     var japaneseList: [Japanese]?
     var japaneseDict: [String: [String?]]?
     
-    let instance = PosibilitiesDict.instance
-    var posibilitiesDict = [String: [String]]()
+    let posibilitiesDict = PosibilitiesDict.posibilitiesDict
     var posibilities = [String]()
     
     var soundAndLettersList = [(String, [String?])]()
-    var soundsList = JapaneseCharacters().soundsList
+    var soundsList = JapaneseCharacters.soundsList
     var order: Order = .orderly
     
     var shownCharacter = ""
@@ -77,12 +50,6 @@ class ShowCharactersViewController: UIViewController {
     var characterCoreDataDict: [String: WordLearnt]!
     
     var currentNumber: Int = 0
-    
-    var redCounter = 0
-    var orangeCounter = 0
-    var lightOrangeCounter = 0
-    var lightGreenCounter = 0
-    var greenCounter = 0
     
     // values for voice recognization
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja-JP"))!
@@ -185,8 +152,6 @@ class ShowCharactersViewController: UIViewController {
                 }
             }
         }
-        
-        self.posibilitiesDict = instance.posibilitiesDict
         
         self.totalNumberOfCharacter = numberOfCharacters()
         // choose first chracter
@@ -342,7 +307,6 @@ class ShowCharactersViewController: UIViewController {
         self.characterView.layer.add(shakeAnimation, forKey: "position")
     }
     
-    
     func numberOfCharacters() -> Int {
         // return total number of characters that are in the list
         var numberOfCharacters = 0
@@ -378,11 +342,11 @@ class ShowCharactersViewController: UIViewController {
             }
             return randomCharacter()
         }
-        let correntsound = sounds![vowelIndex]
-        print(correntsound)
+        let currectsound = sounds![vowelIndex]
+        print(currectsound)
         // picks a list of possible characters of the picked character
-        self.posibilities = self.posibilitiesDict[correntsound]!
-        self.sound = correntsound
+        self.posibilities = self.posibilitiesDict[currectsound]!
+        self.sound = currectsound
         
         // deletes selected character
         self.soundAndLettersList[soundIndex].1.remove(at: vowelIndex)
@@ -416,14 +380,14 @@ class ShowCharactersViewController: UIViewController {
         }
         let soundType = soundAndLettersList[self.soundIndexCounter].0
         //makes correctsound
-        let correctsound = soundsList[soundType]![self.vowelIndexCounter]
-        print(correctsound)
+        let currectsound = soundsList[soundType]![self.vowelIndexCounter]
+        print(currectsound)
         
         self.vowelIndexCounter += 1
         
-        self.posibilities = self.posibilitiesDict[correctsound]!
+        self.posibilities = self.posibilitiesDict[currectsound]!
         print(posibilities)
-        self.sound = correctsound
+        self.sound = currectsound
         
         //updates currentNumber
         self.currentNumber += 1
@@ -681,37 +645,27 @@ class ShowCharactersViewController: UIViewController {
     }
     
     @IBAction func notOkButtonTapped(_ sender: Any) {
-        self.redCounter += 1
-//        self.notOkButton.setTitle(String(self.redCounter), for: .normal)
         self.updateCoreData(confidence: 0)
         self.dissmissOrNextCharacter()
     }
     
     
     @IBAction func orangeButtonTapped(_ sender: Any) {
-        self.orangeCounter += 1
-//        self.notBadButton.setTitle(String(self.orangeCounter), for: .normal)
         self.updateCoreData(confidence: 1)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func middleButtonTapped(_ sender: Any) {
-        self.lightOrangeCounter += 1
-//        self.sosoButton.setTitle(String(self.lightOrangeCounter), for: .normal)
         self.updateCoreData(confidence: 2)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func yellowButtonTapped(_ sender: Any) {
-        self.lightGreenCounter += 1
-//        self.okButton.setTitle(String(self.lightGreenCounter), for: .normal)
         self.updateCoreData(confidence: 3)
         self.dissmissOrNextCharacter()
     }
     
     @IBAction func goodButtonTapped(_ sender: Any) {
-        self.greenCounter += 1
-//        self.goodButton.setTitle(String(self.greenCounter), for: .normal)
         self.updateCoreData(confidence: 4)
         self.dissmissOrNextCharacter()
     }
@@ -822,8 +776,7 @@ extension ShowCharactersViewController: SFSpeechRecognizerDelegate {
         var theBestString = ""
         var appendedString = ""
         
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
-            guard let `self` = self else { return }
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [unowned self] result, error in
             
             var isFinal = false
             

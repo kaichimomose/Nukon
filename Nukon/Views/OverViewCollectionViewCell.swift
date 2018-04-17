@@ -17,7 +17,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
     var japanese: Japanese! {
         didSet {
             let numberOfCharacters = japanese.letters.count
-            let soundList = JapaneseCharacters().soundsList[japanese.sound]
+            let soundList = JapaneseCharacters.soundsList[japanese.sound]
             switch numberOfCharacters {
                 case 3:
                     for i in 0..<japanese.letters.count {
@@ -135,7 +135,7 @@ class OverViewCollectionViewCell: UICollectionViewCell {
     var characterLabels: [UILabel]!
     var soundLabels: [UILabel]!
     
-    var delegate: GetValueFromCell?
+    weak var delegate: GetValueFromCell?
     
     //MARK: - Outlets
     @IBOutlet weak var stackView: UIStackView!
